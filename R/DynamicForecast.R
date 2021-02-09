@@ -8,17 +8,18 @@
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
 #' @importFrom stats smooth.spline
+#' @importFrom splines bs
 #'
 #' @examples
 #' DynamicForecast(Data = Data, Title = "14 days lag forecast")
 
 library(stats)
 DynamicForecast <- function(Data, Title) {
-  fit01  <- lm(Case ~ bs(Day, knots = NULL), data = Data)
-  fit10   <- lm(Case ~ bs(Day, knots = BREAKS), data = Data)
-  fit11  <- smooth.spline(Data[, 2], Data[, 3])
+  fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
+  fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS), data = Data)
+  fit11  <- stats::smooth.spline(Data[, 2], Data[, 3])
   fita1  <- forecast::auto.arima(Data$Case)
-  fitpi1 <- lm(Case ~ Day + I(Day^2), data = Data)
+  fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
   Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
              by = "day", length.out = length(Data$Case))
