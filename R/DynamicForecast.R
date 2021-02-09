@@ -5,6 +5,9 @@
 #'
 #' @return results
 #' @export
+#' @importFrom stats lm
+#' @importFrom stats fitted.values
+#' @importFrom stats smooth.spline
 #'
 #' @examples
 #' DynamicForecast(Data = Data, Title = "14 days lag forecast")
