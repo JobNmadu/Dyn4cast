@@ -13,6 +13,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 ggsave
+#' @importFrom xlsx write.xlsx2
 #' @importFrom magrittr %>%
 #' @importFrom formattable comma
 #'

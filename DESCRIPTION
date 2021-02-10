@@ -22,7 +22,8 @@ Imports:
     tidyr,
     ggplot2,
     magrittr,
-    formattable
+    formattable,
+    xlsx
 Depends: 
     tidyverse
 Suggests: 
