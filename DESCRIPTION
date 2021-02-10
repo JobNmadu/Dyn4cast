@@ -8,7 +8,7 @@ Authors@R:
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
 Maintainer: The package maintainer <job.nmadu@gmail.com>
-Description: Estimates predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
+Description: Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
