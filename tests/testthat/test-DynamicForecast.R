@@ -1,5 +1,5 @@
 test_that("DynamicForecast works", {
-  DDD <- as.data.frame(read.csv("data/Data.csv"))
+  DDD <- as.data.frame(read.csv("data/day_14.csv"))
   test_model <- DynamicForecast(Data = DDD, Title = "14 days lag forecast")
   write.csv(test_model$RMSE, "doc/model_rmse.csv")
   write_delim(test_model$Forecast, "doc/model_forecast.csv", delim = ",")
