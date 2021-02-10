@@ -12,8 +12,10 @@
 #' @importFrom splines bs
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 ggsave
 #' @importFrom magrittr %>%
 #' @importFrom formattable comma
+#'
 #' @examples
 #' DynamicForecast(Data = Data, Title = "14 days lag forecast")
 
