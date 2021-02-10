@@ -17,7 +17,12 @@ Imports:
     stats,
     forecast,
     lubridate,
-    splines
+    splines,
+    Metrics,
+    tidyr,
+    ggplot2,
+    magrittr,
+    formattable
 Depends: 
     tidyverse
 Suggests: 

@@ -3,5 +3,5 @@ test_that("DynamicForecast works", {
   test_model <- DynamicForecast(Data = DDD, Title = "14 days lag forecast")
   test_plot <- test_model$Plot
 
-  expect_identical(test_plot, "figures/plot_14")
+  expect_identical(test_plot, figures/plot_14)
 })
