@@ -1,0 +1,10 @@
+Model,Confirmed cases
+Without knots,2201040
+Smooth Spline,1034155
+With knots,-227444
+Quadratic Polynomial,695087
+Lower ARIMA,306643
+Upper ARIMA,1232883
+Essembled with equal weight,1213955
+Essembled based on weight of model,165329
+Essembled based on weight of fit of each model,997119

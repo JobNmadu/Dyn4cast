@@ -6,7 +6,7 @@
 \alias{Dyn4cast-package}
 \title{Dyn4cast: Dymanic Forecast of five models and thier Essembles}
 \description{
-Estimates predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
+Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
 }
 \author{
 \strong{Maintainer}: Job Nmadu \email{job.nmadu@gmail.com} (\href{https://orcid.org/0000-0002-1320-8957}{ORCID})

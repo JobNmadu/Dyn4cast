@@ -1,0 +1,10 @@
+"","x"
+"Without knots",231.33
+"Smooth Spline",182.96
+"With knots",169.03
+"Polynomial",338.66
+"Lower ARIMA",188.13
+"Upper ARIMA",188.13
+"Essembled with equal weight",192.22
+"Essembled based on weight of model",433.4
+"Essembled based on weight of fit of each model",258.08
