@@ -2,6 +2,8 @@ test_that("DynamicForecast works", {
   DDD <- as.data.frame(read.csv("data/Data.csv"))
   test_model <- DynamicForecast(Data = DDD, Title = "14 days lag forecast")
   ggsave(filename = "figures/test_plot.png", test_model$Plot)
+  test_model$Forecast <- formattable::comma(as.data.frame(test_model$Forecast))
+  test_model$RMSE <- formattable::comma(as.data.frame(test_model$RMSE))
   xlsx::write.xlsx2(test_model$Forecast, file = "doc/test_model.xlsx",
               col.names = TRUE, row.names = FALSE)
   xlsx::write.xlsx2(test_model$RMSE, file = "doc/test_rmse.xlsx",

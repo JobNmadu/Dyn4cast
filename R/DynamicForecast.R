@@ -74,7 +74,7 @@ DynamicForecast <- function(Data, Title) {
 
   #RMSE <- 1/RMSE
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
-  KK91$Date <- as.Date(KK91$Date, origin = "2021-02-09")
+  KK91$Date <- as.Date(KK91$Date, origin = "1970-01-01")
   KK91$`Essembled with equal weight` <- kk3191[["mean"]]
   KK91$`Essembled based on weight of model` <- kk4191[["mean"]]
   P_weight91 <- (fitted.values(fit01) * RMSE_weight91$`Without knots`) +

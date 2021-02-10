@@ -4,12 +4,12 @@
 \name{Dyn4cast-package}
 \alias{Dyn4cast}
 \alias{Dyn4cast-package}
-\title{Dyn4cast: What the Package Does (One Line, Title Case)}
+\title{Dyn4cast: Dymanic Forecast of five models and thier Essembles}
 \description{
-What the package does (one paragraph).
+Estimates predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Job Nmadu \email{job.nmadu@gmail.com} (\href{https://orcid.org/0000-0002-1320-8957}{ORCID})
 
 }
 \keyword{internal}
