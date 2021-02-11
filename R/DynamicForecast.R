@@ -30,12 +30,6 @@
 #' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = "2021-02-08")
 
 DynamicForecast <- function(Data, BREAKS, Date) {
-  DDf <- c("Without knots", "Smooth Spline",
-           "With knots", "Quadratic Polynomial",
-           "Lower ARIMA", "Upper ARIMA",
-           "Essembled with equal weight",
-           "Essembled based on weight of model",
-           "Essembled based on weight of fit of each model" )
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -99,7 +93,7 @@ DynamicForecast <- function(Data, BREAKS, Date) {
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
   KK91$`Essembled based on weight of fit of each model` <- kk5191[["mean"]]
-  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
+  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3191)
   RMSE91$`Essembled based on weight of model` <- Metrics::rmse(Data$Case,
                                                                fitted.values(kk4091))
   RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data$Day,
