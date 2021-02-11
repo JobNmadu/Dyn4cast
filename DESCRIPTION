@@ -24,7 +24,8 @@ Imports:
     ggplot2,
     magrittr,
     formattable,
-    xlsx
+    xlsx,
+    readxl
 Depends: 
     tidyverse
 Suggests: 

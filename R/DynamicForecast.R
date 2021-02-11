@@ -22,16 +22,17 @@
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 scale_color_hue
 #' @importFrom xlsx write.xlsx2
+#' @importFrom readxl read_excel
 #' @importFrom magrittr %>%
 #' @importFrom formattable comma
 #' @importFrom forecast auto.arima
 #' @importFrom forecast forecast
 #'
 #' @examples
-#' Data <- readxl::read_excel("data/Data.xlsx")
+#' Data <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
 #' Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
 #' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274),
-#'  Date = ""2021-02-10"")
+#'  Date = "2021-02-10")
 
 DynamicForecast <- function(Data, BREAKS, Date) {
   Data$Day <- ss <- seq(1:length(Data$Case))
