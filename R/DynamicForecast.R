@@ -1,6 +1,5 @@
-#' @param DynamicForecast name
-#'
 #' @param Data A data.frame
+#'
 #' @param Title A text
 #'
 #' @return results
@@ -20,7 +19,6 @@
 #' @examples
 #' DynamicForecast(Data = Data, Title = "14 days lag forecast")
 
-library(stats)
 DynamicForecast <- function(Data, Title) {
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = c(70, 131, 173, 228, 274)),

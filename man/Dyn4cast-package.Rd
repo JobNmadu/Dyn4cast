@@ -8,6 +8,14 @@
 \description{
 Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/JobNmadu/Dyn4cast}
+  \item Report bugs at \url{https://github.com/JobNmadu/Dyn4cast/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Job Nmadu \email{job.nmadu@gmail.com} (\href{https://orcid.org/0000-0002-1320-8957}{ORCID})
 
