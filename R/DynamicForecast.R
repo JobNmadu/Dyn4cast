@@ -14,9 +14,17 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 ggsave
+#' @importFrom ggplot2 geom_line
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 theme_bw
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 labs
+#' @importFrom ggplot2 scale_color_hue
 #' @importFrom xlsx write.xlsx2
 #' @importFrom magrittr %>%
 #' @importFrom formattable comma
+#' @importFrom forecast auto.arima
+#' @importFrom forecast forecast
 #'
 #' @examples
 #' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = "2021-02-08")
