@@ -1,4 +1,5 @@
 #' @param Data A data.frame
+#'
 #' @param BREAKS A vector
 #' @param Date A date
 #'
@@ -18,9 +19,10 @@
 #' @importFrom formattable comma
 #'
 #' @examples
-#' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = 2021-02-08")
+#' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = "2021-02-08")
 
 DynamicForecast <- function(Data, BREAKS, Date) {
+  Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
                 data = Data)

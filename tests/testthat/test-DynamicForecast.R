@@ -1,10 +1,7 @@
 test_that("DynamicForecast works", {
   DDD <- as.data.frame(read.csv("data/day_14.csv"))
-  test_model <- DynamicForecast(Data = DDD, Title = "14 days lag forecast")
-  write.csv(test_model$RMSE, "doc/model_rmse.csv")
-  write_delim(test_model$Forecast, "doc/model_forecast.csv", delim = ",")
-  ggsave("figures/plot_model.png", test_model$Plot)
-  expect_identical("doc/model_forecast.csv", "doc/model_day_14.csv")
-  expect_identical("doc/model_rmse.csv", "doc/rmse_day_14.csv")
-  expect_identical("figures/plot_model.png", "figures/plot_day_14.png")
+  test_model <- DynamicForecast(Data = DDD,
+                                BREAKS = c(70, 131, 173, 228, 274),
+                                Date = "2021-02-08")
+  expect_identical(test_model, DynamicForecast(Data = DDD, BREAKS = c(70, 131, 173, 228, 274), Date = "2021-02-08"))
 })
