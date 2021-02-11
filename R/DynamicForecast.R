@@ -1,6 +1,6 @@
 #' @param Data A data.frame
-#'
-#' @param Title A text
+#' @param BREAKS A vector
+#' @param Date A date
 #'
 #' @return results
 #' @export
@@ -18,17 +18,17 @@
 #' @importFrom formattable comma
 #'
 #' @examples
-#' DynamicForecast(Data = Data, Title = "14 days lag forecast")
+#' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = 2021-02-08")
 
-DynamicForecast <- function(Data, Title) {
+DynamicForecast <- function(Data, BREAKS, Date) {
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
-  fit10   <- lm(Case ~ splines::bs(Day, knots = c(70, 131, 173, 228, 274)),
+  fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
                 data = Data)
-  fit11  <- stats::smooth.spline(Data[, 2], Data[, 3])
+  fit11  <- stats::smooth.spline(Data$Day, Data$Case)
   fita1  <- forecast::auto.arima(Data$Case)
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
-  MaximumDate <- as.Date("2021-02-08")
+  MaximumDate <- as.Date(Date)
   Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
                by = "day", length.out = length(Data$Case))
   Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
@@ -45,7 +45,7 @@ DynamicForecast <- function(Data, Title) {
                fitted.values(fit11) + fitted.values(fitpi1) +
                fita1[["fitted"]])/5
   kk3191 <- forecast::forecast(kk3091, h = length(Dsf19))
-  kk4091 <- lm(Data[,2]~fitted.values(fit01)*fitted.values(fit10)*
+  kk4091 <- lm(Data$Day~fitted.values(fit01)*fitted.values(fit10)*
                  fitted.values(fit11)*fitted.values(fitpi1)*
                  fita1[["fitted"]])
   kk4191 <- forecast::forecast(fitted.values(kk4091), h = length(Dsf19))
@@ -63,13 +63,13 @@ DynamicForecast <- function(Data, Title) {
                    "With Knots", "Polynomial", "Lower ARIMA", "Upper ARIMA")
   #KK91$Date <- as.character(KK91$Date)
 
-  RMSE91 <- c("Without knots" = Metrics::rmse(Data[, 3],
+  RMSE91 <- c("Without knots" = Metrics::rmse(Data$Case,
                                               fitted.values(fit01)),
-              "Smooth Spline" = Metrics::rmse(Data[, 3], fitted.values(fit10)),
-              "With knots" = Metrics::rmse(Data[, 3], fitted.values(fit11)),
-              "Polynomial" = Metrics::rmse(Data[, 3], fitted.values(fitpi1)),
-              "Lower ARIMA" = Metrics::rmse(Data[, 3], fita1[["fitted"]]),
-              "Upper ARIMA" = Metrics::rmse(Data[, 3], fita1[["fitted"]]))
+              "Smooth Spline" = Metrics::rmse(Data$Case, fitted.values(fit10)),
+              "With knots" = Metrics::rmse(Data$Case, fitted.values(fit11)),
+              "Polynomial" = Metrics::rmse(Data$Case, fitted.values(fitpi1)),
+              "Lower ARIMA" = Metrics::rmse(Data$Case, fita1[["fitted"]]),
+              "Upper ARIMA" = Metrics::rmse(Data$Case, fita1[["fitted"]]))
 
   #RMSE <- 1/RMSE
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
@@ -84,10 +84,10 @@ DynamicForecast <- function(Data, Title) {
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
   KK91$`Essembled based on weight of fit of each model` <- kk5191[["mean"]]
-  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data[, 3], kk3091)
-  RMSE91$`Essembled based on weight of model` <- Metrics::rmse(Data[,3],
+  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
+  RMSE91$`Essembled based on weight of model` <- Metrics::rmse(Data$Case,
                                                                fitted.values(kk4091))
-  RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data[,2],
+  RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data$Day,
                                                                            P_weight91)
   DDf91 <- c("Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
