@@ -93,11 +93,10 @@ DynamicForecast <- function(Data, BREAKS, Date) {
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
   KK91$`Essembled based on weight of fit of each model` <- kk5191[["mean"]]
-  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3191)
+  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
   RMSE91$`Essembled based on weight of model` <- Metrics::rmse(Data$Case,
                                                                fitted.values(kk4091))
-  RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data$Day,
-                                                                           P_weight91)
+  RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data$Day, P_weight91)
   DDf91 <- c("Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
              "Lower ARIMA", "Upper ARIMA",
