@@ -1,0 +1,63 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Dyn4cast
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](#)
+    [![R build status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
+    [![Codecov test coverage](https://codecov.io/gh/Jeniffen/projectr/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
+<!-- badges: end -->
+
+ The __Dyn4cast__ package is designed to be a lightweight package, with the 
+    aim of simplifying the estimation, prediction and forecast of time-varying daraset, especially where the data is cntining and is routine. The package takes away the efforts of putting together a library of more than than packages which were used to develop it. 
+
+## Installation
+
+Althouth it would be possible to install the released version of Dyn4cast from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("Dyn4cast")
+```
+presently, only the development version is available.
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("JobNmadu/Dyn4cast")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(Dyn4cast)
+## basic example code
+niz2 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
+niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
+
+Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
+lastdayfo21 <- Dss[length(Dss)]
+KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+
+knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_28$RMSE), "html")
+Days_28$Plot
+
+```
+
+
