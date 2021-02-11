@@ -20,5 +20,8 @@ results
 DynamicForecast
 }
 \examples{
-DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274), Date = "2021-02-08")
+Data <- readxl::read_excel("data/Data.xlsx")
+Data$Date <- as.Date(Data$Date, format = '\%m/\%d/\%Y')
+DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274),
+ Date = ""2021-02-10"")
 }
