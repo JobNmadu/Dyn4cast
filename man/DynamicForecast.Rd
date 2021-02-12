@@ -2,22 +2,28 @@
 % Please edit documentation in R/DynamicForecast.R
 \name{DynamicForecast}
 \alias{DynamicForecast}
-\title{DynamicForecast}
+\title{DynamicForecast This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots and ARIMA.}
 \usage{
 DynamicForecast(Data, BREAKS, Date)
 }
 \arguments{
-\item{Data}{A data.frame}
+\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R.}
 
-\item{BREAKS}{A vector}
+\item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
-\item{Date}{A date}
+\item{Date}{The date indicating the day forecasting is starting. It must be a recognized date format.}
 }
 \value{
-results
+Forecast The forecast is equivalent to the length of the dataset (equal days forecast)
+
+RMSE Root Mean Sqaure Error (rmse) for each forecast
+
+Plot The plot of the forecasts
+
+Date This is the date range for the forecast
 }
 \description{
-DynamicForecast
+DynamicForecast This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots and ARIMA.
 }
 \examples{
 Data <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
