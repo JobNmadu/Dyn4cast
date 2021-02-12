@@ -1,10 +1,14 @@
-#' DynamicForecast
-#' @param Data A data.frame
+#' DynamicForecast This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots and ARIMA.
+#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R.
 #'
-#' @param BREAKS A vector
-#' @param Date A date
+#' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
+#' @param Date The date indicating the day forecasting is starting. It must be a recognized date format.
 #'
-#' @return results
+#' @return Forecast The forecast is equivalent to the length of the dataset (equal days forecast)
+#' @return RMSE Root Mean Sqaure Error (rmse) for each forecast
+#' @return Plot The plot of the forecasts
+#' @return Date This is the date range for the forecast
+#'
 #' @export
 #' @import tidyverse
 #' @importFrom stats lm
@@ -143,7 +147,7 @@ DynamicForecast <- function(Data, BREAKS, Date) {
     geom_line(size = 1L) +
     scale_color_hue() +
     theme_bw() +
-    theme(legend.position = "none") +
+    theme() +
     labs(title = Title,
          subtitle = " ",
          caption = " ")
