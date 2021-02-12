@@ -30,16 +30,15 @@ KK_28 <- readxl::read_excel("data-raw/data/Data.xlsx")
 KK_28$Date <- as.Date(KK_28$Date, format = '\%m/\%d/\%Y')
 Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case))
 lastdayfo21 <- Dss[length(Dss)]
-Data <- niz2[KK_28$Date <= lastdayfo21 - 28, ]
+Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ]
 DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274),
  Date = "2021-02-10")
 
- @examples
 KK_14 <- readxl::read_excel("data-raw/data/Data.xlsx")
 KK_14$Date <- as.Date(KK_14$Date, format = '\%m/\%d/\%Y')
 Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
 lastdayfo21 <- Dss[length(Dss)]
-Data <- niz2[KK_14$Date <= lastdayfo21 - 14, ]
-DynamicForecast(Data = KK_28, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
+DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
 
 }
