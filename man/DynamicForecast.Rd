@@ -26,8 +26,20 @@ Date This is the date range for the forecast
 DynamicForecast This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots and ARIMA.
 }
 \examples{
-Data <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
-Data$Date <- as.Date(Data$Date, format = '\%m/\%d/\%Y')
+KK_28 <- readxl::read_excel("data-raw/data/Data.xlsx")
+KK_28$Date <- as.Date(KK_28$Date, format = '\%m/\%d/\%Y')
+Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case))
+lastdayfo21 <- Dss[length(Dss)]
+Data <- niz2[KK_28$Date <= lastdayfo21 - 28, ]
 DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274),
  Date = "2021-02-10")
+
+ @examples
+KK_14 <- readxl::read_excel("data-raw/data/Data.xlsx")
+KK_14$Date <- as.Date(KK_14$Date, format = '\%m/\%d/\%Y')
+Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
+lastdayfo21 <- Dss[length(Dss)]
+Data <- niz2[KK_14$Date <= lastdayfo21 - 14, ]
+DynamicForecast(Data = KK_28, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+
 }
