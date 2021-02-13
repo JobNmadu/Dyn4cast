@@ -1,6 +1,6 @@
 Package: Dyn4cast
 Title: Dymanic Forecast of five models and thier Essembles
-Version: 0.11.11.00
+Version: 11.11.00
 Authors@R: 
     person(given = "Job",
            family = "Nmadu",
@@ -8,7 +8,7 @@ Authors@R:
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
 Maintainer: The package maintainer <job.nmadu@gmail.com>
-Description: Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
+Description: Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine, Quadratic polynomials and ARIMA and thier Essembles.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -25,7 +25,8 @@ Imports:
     magrittr,
     formattable,
     xlsx,
-    readxl
+    readxl,
+    utils
 Depends: 
     tidyverse
 Suggests: 

@@ -6,7 +6,7 @@
 \alias{Dyn4cast-package}
 \title{Dyn4cast: Dymanic Forecast of five models and thier Essembles}
 \description{
-Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine and ARIMA.
+Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine, Quadratic polynomials and ARIMA and thier Essembles.
 }
 \seealso{
 Useful links:

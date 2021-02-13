@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 # Dyn4cast
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](#)
-    [![R build status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-    [![Codecov test coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
+`r badgecreatr::badge_codecov(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
+`r badger::badge_github_actions("JobNmadu/Dyn4cast")`
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 <!-- badges: end -->
 
  The __Dyn4cast__ package is designed to be a lightweight package, with the 
@@ -51,16 +51,16 @@ niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
 
 Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
 lastdayfo21 <- Dss[length(Dss)]
-
+BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_28$RMSE), "html")
 Days_28$Plot
 
 KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
-Days_14 <- DynamicForecast(Data = KK_28, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_14$RMSE), "html")

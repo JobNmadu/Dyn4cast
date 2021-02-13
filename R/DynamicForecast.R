@@ -1,15 +1,23 @@
-#' DynamicForecast This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots and ARIMA.
-#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R.
+#' @name Dyn4cast
+#'
+#' @title Dymanic Forecast of five models and thier Essembles
+#'
+#' @description This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA.
+#'
+#' @param Data A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R. In future versions provisions shall be made of quarterly, monthly and yearly data
 #'
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
-#' @param Date The date indicating the day forecasting is starting. It must be a recognized date format.
+#' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
 #'
-#' @return Forecast The forecast is equivalent to the length of the dataset (equal days forecast)
-#' @return RMSE Root Mean Sqaure Error (rmse) for each forecast
-#' @return Plot The plot of the forecasts
-#' @return Date This is the date range for the forecast
+#' utils::globalVariables(c("Date", "Day", "Forecast", "Models"))
 #'
-#' @export
+#' @return A list with the following components:
+#' \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
+#' \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
+#' \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
+#' \item{\code{Date}}{This is the date range for the forecast.}
+#'
+#' @export DynamicForecast
 #' @import tidyverse
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
@@ -31,25 +39,30 @@
 #' @importFrom formattable comma
 #' @importFrom forecast auto.arima
 #' @importFrom forecast forecast
+#' @importFrom utils globalVariables
 #'
 #' @examples
-#' KK_28 <- readxl::read_excel("data-raw/data/Data.xlsx")
-#' KK_28$Date <- as.Date(KK_28$Date, format = '%m/%d/%Y')
-#' Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case))
-#' lastdayfo21 <- Dss[length(Dss)]
-#' Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ]
-#' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274),
-#'  Date = "2021-02-10")
+#' KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data
+#' KK_28$Date <- as.Date(KK_28$Date, format = '%m/%d/%Y') # The date is reformatted
+#' Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data length for forecast
+#' lastdayfo21 <- Dss[length(Dss)] # The maximum length
+#' Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
+#' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
+#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 #'
-#' KK_14 <- readxl::read_excel("data-raw/data/Data.xlsx")
+#' KK_14 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
 #' KK_14$Date <- as.Date(KK_14$Date, format = '%m/%d/%Y')
 #' Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
-#' DynamicForecast(Data = Data, BREAKS = c(70, 131, 173, 228, 274) , Date = "2021-02-10")
+#' BREAKS = c(70, 131, 173, 228, 274)
+#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10")
 #'
 
-DynamicForecast <- function(Data, BREAKS, Date) {
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+utils::globalVariables(c("Date" , "Day" , "Forecast" , "Models"))
+
+DynamicForecast <- function(Data, BREAKS, MaximumDate) {
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -58,7 +71,7 @@ DynamicForecast <- function(Data, BREAKS, Date) {
   fita1  <- forecast::auto.arima(Data$Case)
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
-  MaximumDate <- as.Date(Date)
+  MaximumDate <- as.Date(MaximumDate)
   Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
                by = "day", length.out = length(Data$Case))
   Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
