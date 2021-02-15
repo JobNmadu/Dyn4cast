@@ -1,5 +1,5 @@
 Package: Dyn4cast
-Title: Dymanic Forecast of five models and thier Essembles
+Title: Dynamic Forecast of five models and thier Essembles
 Version: 11.11.00
 Authors@R: 
     person(given = "Job",
@@ -8,7 +8,7 @@ Authors@R:
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
 Maintainer: The package maintainer <job.nmadu@gmail.com>
-Description: Estimates, predict and obtain time-varying forecast of lm, Smooth Spline, bs-Spine, Quadratic polynomials and ARIMA and thier Essembles.
+Description: This package estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The package is so far stable but can only take in daily datasets for now. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forcast_.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

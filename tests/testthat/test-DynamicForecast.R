@@ -7,7 +7,7 @@ test_that("DynamicForecast works", {
   test_model <- DynamicForecast(Data = DDD,
                                 BREAKS = BREAKS,
                                 MaximumDate = "2021-02-08")
-  expect_equal(test_model, DynamicForecast(Data = DDD, BREAKS = BREAKS,
+  expect_identical(test_model, DynamicForecast(Data = DDD, BREAKS = BREAKS,
                                            MaximumDate = "2021-02-08"))
 }
 )

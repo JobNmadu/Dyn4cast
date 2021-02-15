@@ -16,37 +16,43 @@ knitr::opts_chunk$set(
 # Dyn4cast
 
 <!-- badges: start -->
-`r badgecreatr::badge_codecov(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
-`r badger::badge_github_actions("JobNmadu/Dyn4cast")`
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Travis build status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
+[![Coverage status](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/github/JobNmadu/Dyn4cast?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
 <!-- badges: end -->
 
  The __Dyn4cast__ package is designed to be a lightweight package, with the 
-    aim of simplifying the estimation, prediction and forecast of time-varying daraset, especially where the data is cntining and is routine. The package takes away the efforts of putting together a library of more than than packages which were used to develop it. 
+    aim of simplifying the estimation, prediction and forecast of time-varying dataset, especially where the data is continuously collected on routine and regular basis. The package takes away the efforts of loading the libraries of more than 10 packages which have been used to develop the functions for forecasting the data. 
 
 ## Installation
 
-Althouth it would be possible to install the released version of Dyn4cast from [CRAN](https://CRAN.R-project.org) with:
+Althouth it would be possible to install the released version of Dyn4cast from [CRAN](https://CRAN.R-project.org) in future, presently, only the development version is available. The canonical form to do this is:
 
 ``` r
 install.packages("Dyn4cast")
 ```
-presently, only the development version is available.
 
-And the development version from [GitHub](https://github.com/) with:
+The development version is the only one available now and can be installed from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("JobNmadu/Dyn4cast")
 ```
+
+## Basic usage
+
+At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognised format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day_ the data is collected while Case is the variable for forecasting. The other arguements parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, eval = FALSE}
+
 library(Dyn4cast)
 ## basic example code
-niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
+niz2 <- readxl::read_excel("~/Data.xlsx")
 niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
 
 Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
@@ -56,15 +62,39 @@ KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_28$RMSE), "html")
+knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
 Days_28$Plot
 
 KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_14$RMSE), "html")
+knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
 Days_14$Plot
 ```
 
+![](docs/README.html)
+
+## Suggested packages
+Although not a dependency, the package derives functionally from a number of other packages ans so may require you to install such packages if they are not yet installed. the packages are listed below:
+
+```{r install-suggested, eval = FALSE}
+install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))
+```
+
+## Things the package can do
+The package is capable of estimation, prediction and forecasting of the following models.  
+- Spline without knots  
+- Spline with knots  
+- Smooth Spline  
+- ARIMA  
+- Quadratic  
+- Essembled with equal weight  
+- Essembled based on weight  
+- Essembled based on weight of fit  
+
+Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Essembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  
+
+## Other suggestions?
+The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. 
 

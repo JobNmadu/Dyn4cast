@@ -2,28 +2,34 @@
 % Please edit documentation in R/DynamicForecast.R
 \name{Dyn4cast}
 \alias{Dyn4cast}
-\title{Dymanic Forecast of five models and thier Essembles}
+\title{Dynamic Forecast of five models and their Essembles}
 \arguments{
 \item{Data}{A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R. In future versions provisions shall be made of quarterly, monthly and yearly data}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
-\item{MaximumDate}{The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
-
-utils::globalVariables(c("Date", "Day", "Forecast", "Models"))}
+\item{MaximumDate}{The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01}
 }
 \value{
 A list with the following components:
+\item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
+\item{\code{Spline with knots}}{The estimated spline model without the breaks (knots).}
+\item{\code{Smooth Spline}}{The smooth spline estimates.}
+\item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Areage model.}
+\item{\code{Quadratic}}{The estimated quadratic polynomial model.}
+\item{\code{Essembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
+\item{\code{Essembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
+\item{\code{Essembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
 \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
 \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
 \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA.
+This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forcast}
 }
 \examples{
-KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data
+KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data
 KK_28$Date <- as.Date(KK_28$Date, format = '\%m/\%d/\%Y') # The date is reformatted
 Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data length for forecast
 lastdayfo21 <- Dss[length(Dss)] # The maximum length
@@ -31,7 +37,7 @@ Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10")
 
-KK_14 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
+KK_14 <- readxl::read_excel("~/Data.xlsx")
 KK_14$Date <- as.Date(KK_14$Date, format = '\%m/\%d/\%Y')
 Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
 lastdayfo21 <- Dss[length(Dss)]

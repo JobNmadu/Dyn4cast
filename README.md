@@ -5,36 +5,52 @@
 
 <!-- badges: start -->
 
-[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
-[![R build
-status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Travis build
+status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
+[![Coverage
+status](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/github/JobNmadu/Dyn4cast?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
 <!-- badges: end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
 the aim of simplifying the estimation, prediction and forecast of
-time-varying daraset, especially where the data is cntining and is
-routine. The package takes away the efforts of putting together a
-library of more than than packages which were used to develop it.
+time-varying dataset, especially where the data is continuously
+collected on routine and regular basis. The package takes away the
+efforts of loading the libraries of more than 10 packages which have
+been used to develop the functions for forecasting the data.
 
 ## Installation
 
 Althouth it would be possible to install the released version of
-Dyn4cast from [CRAN](https://CRAN.R-project.org) with:
+Dyn4cast from [CRAN](https://CRAN.R-project.org) in future, presently,
+only the development version is available. The canonical form to do this
+is:
 
 ``` r
 install.packages("Dyn4cast")
 ```
 
-presently, only the development version is available.
-
-And the development version from [GitHub](https://github.com/) with:
+The development version is the only one available now and can be
+installed from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("JobNmadu/Dyn4cast")
 ```
+
+## Basic usage
+
+At present, the package exports a single function, `DynamicForecast`,
+which takes two required arguments: the `Data` of any recognised format
+but should be a **dataframe** containing two columns `Date` and `Case`.
+The Date is the *day* the data is collected while Case is the variable
+for forecasting. The other arguements parsed to the function are
+`MaximumDate`, which is the last date Data was collected and `BREAKS`,
+which is a vector of numbers and used as `knots` in estimating spline
+polynomials.
 
 ## Example
 
@@ -42,20 +58,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(Dyn4cast)
-#> Loading required package: tidyverse
-#> -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-#> v ggplot2 3.3.3     v purrr   0.3.4
-#> v tibble  3.0.6     v dplyr   1.0.4
-#> v tidyr   1.1.2     v stringr 1.4.0
-#> v readr   1.4.0     v forcats 0.5.1
-#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 ## basic example code
-niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
+niz2 <- readxl::read_excel("~/Data.xlsx")
 niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
 
 Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
@@ -63,383 +67,53 @@ lastdayfo21 <- Dss[length(Dss)]
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
-#> Warning in RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, :
-#> Coercing LHS to a list
 
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
-```
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Model
-</th>
-<th style="text-align:left;">
-Confirmed cases
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Without knots
-</td>
-<td style="text-align:left;">
-1606956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:left;">
-1414254
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-With knots
-</td>
-<td style="text-align:left;">
-991316
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quadratic Polynomial
-</td>
-<td style="text-align:left;">
-380508
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lower ARIMA
-</td>
-<td style="text-align:left;">
--126404
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:left;">
-939766
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled with equal weight
-</td>
-<td style="text-align:left;">
-1381412
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of model
-</td>
-<td style="text-align:left;">
-153587
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of fit of each model
-</td>
-<td style="text-align:left;">
-1072054
-</td>
-</tr>
-</tbody>
-</table>
-
-``` r
-knitr::kable(as.data.frame(Days_28$RMSE), "html")
-```
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Days\_28$RMSE
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Without knots
-</td>
-<td style="text-align:right;">
-221.72
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:right;">
-171.18
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-With knots
-</td>
-<td style="text-align:right;">
-153.91
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Polynomial
-</td>
-<td style="text-align:right;">
-305.21
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lower ARIMA
-</td>
-<td style="text-align:right;">
-169.16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:right;">
-169.16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled with equal weight
-</td>
-<td style="text-align:right;">
-175.47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of model
-</td>
-<td style="text-align:right;">
-358.35
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of fit of each model
-</td>
-<td style="text-align:right;">
-193.35
-</td>
-</tr>
-</tbody>
-</table>
-
-``` r
+knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
 Days_28$Plot
-```
 
-<img src="man/figures/README-example-1.png" width="100%" />
-
-``` r
 KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
-#> Warning in RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, :
-#> Coercing LHS to a list
 
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
-```
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Model
-</th>
-<th style="text-align:left;">
-Confirmed cases
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Without knots
-</td>
-<td style="text-align:left;">
-1606956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:left;">
-1414254
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-With knots
-</td>
-<td style="text-align:left;">
-991316
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quadratic Polynomial
-</td>
-<td style="text-align:left;">
-380508
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lower ARIMA
-</td>
-<td style="text-align:left;">
--126404
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:left;">
-939766
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled with equal weight
-</td>
-<td style="text-align:left;">
-1381412
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of model
-</td>
-<td style="text-align:left;">
-153587
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of fit of each model
-</td>
-<td style="text-align:left;">
-1072054
-</td>
-</tr>
-</tbody>
-</table>
-
-``` r
-knitr::kable(as.data.frame(Days_14$RMSE), "html")
-```
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Days\_14$RMSE
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Without knots
-</td>
-<td style="text-align:right;">
-221.72
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:right;">
-171.18
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-With knots
-</td>
-<td style="text-align:right;">
-153.91
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Polynomial
-</td>
-<td style="text-align:right;">
-305.21
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lower ARIMA
-</td>
-<td style="text-align:right;">
-169.16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:right;">
-169.16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled with equal weight
-</td>
-<td style="text-align:right;">
-175.47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of model
-</td>
-<td style="text-align:right;">
-358.35
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Essembled based on weight of fit of each model
-</td>
-<td style="text-align:right;">
-193.35
-</td>
-</tr>
-</tbody>
-</table>
-
-``` r
+knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
 Days_14$Plot
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+![](docs/README.html)
+
+## Suggested packages
+
+Although not a dependency, the package derives functionally from a
+number of other packages ans so may require you to install such packages
+if they are not yet installed. the packages are listed below:
+
+``` r
+install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))
+```
+
+## Things the package can do
+
+The package is capable of estimation, prediction and forecasting of the
+following models.  
+- Spline without knots  
+- Spline with knots  
+- Smooth Spline  
+- ARIMA  
+- Quadratic  
+- Essembled with equal weight  
+- Essembled based on weight  
+- Essembled based on weight of fit
+
+Note that a *warning* (not *error*) is thrown up while estimating the
+RMSE for the `Essembled with equal weight` model. It was thoroughly
+investigated and causes no harm. Efforts are still on to silence the
+warning, which I will soon. The warning is one of such issues that is
+general to R. If you set your *chunk option* to `warning = FALSE` you
+will not notice the warning.
+
+## Other suggestions?
+
+The package is still very much in progress as such feedback,
+particularly at this developmental stage, would be greatly welcome and
+appreciated.
