@@ -60,6 +60,7 @@ lastdayfo21 <- Dss[length(Dss)]
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+summary(Days_28$`Ensembled based on summed weight`)
 
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
@@ -67,6 +68,8 @@ Days_28$Plot
 
 KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+
+summary(Days_14$`Ensembled based on weight`)
 
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
@@ -91,6 +94,7 @@ The package is capable of estimation, prediction and forecasting of the followin
 - Quadratic  
 - Ensembled with equal weight  
 - Ensembled based on weight  
+- Ensembled based on summed weight  
 - Ensembled based on weight of fit  
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  

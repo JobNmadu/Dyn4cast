@@ -17,9 +17,10 @@ A list with the following components:
 \item{\code{Smooth Spline}}{The smooth spline estimates.}
 \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
-\item{\code{Ensembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-\item{\code{Ensembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
-\item{\code{Ensembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
+\item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
+\item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed agaisnt the trend with interaction among the varaibles.}
+\item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed agaisnt the trend.}
+\item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
 \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
 \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
 \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }

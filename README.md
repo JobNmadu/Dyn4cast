@@ -67,6 +67,7 @@ lastdayfo21 <- Dss[length(Dss)]
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+summary(Days_28$`Ensembled based on summed weight`)
 
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
@@ -74,6 +75,8 @@ Days_28$Plot
 
 KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+
+summary(Days_14$`Ensembled based on weight`)
 
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
@@ -103,6 +106,7 @@ following models.
 - Quadratic  
 - Ensembled with equal weight  
 - Ensembled based on weight  
+- Ensembled based on summed weight  
 - Ensembled based on weight of fit
 
 Note that a *warning* (not *error*) is thrown up while estimating the
