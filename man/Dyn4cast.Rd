@@ -4,11 +4,13 @@
 \alias{Dyn4cast}
 \title{Dynamic Forecast of five models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R. In future versions provisions shall be made of quarterly, monthly and yearly data}
+\item{Data}{A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
 \item{MaximumDate}{The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01}
+
+\item{Trend}{The type of trend. There are three options \strong{Day, Month and Year}.}
 }
 \value{
 A list with the following components:
@@ -36,7 +38,8 @@ Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data len
 lastdayfo21 <- Dss[length(Dss)] # The maximum length
 Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+ Trend = "Day")
 
 KK_14 <- readxl::read_excel("~/Data.xlsx")
 KK_14$Date <- as.Date(KK_14$Date, format = '\%m/\%d/\%Y')
@@ -44,6 +47,7 @@ Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
 lastdayfo21 <- Dss[length(Dss)]
 Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
-DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10")
+DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+ Trend = "Day")
 
 }

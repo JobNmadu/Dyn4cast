@@ -6,8 +6,9 @@ test_that("DynamicForecast works", {
 
   test_model <- DynamicForecast(Data = DDD,
                                 BREAKS = BREAKS,
-                                MaximumDate = "2021-02-08")
+                                MaximumDate = "2021-02-08", Trend = "Day")
   expect_identical(test_model, DynamicForecast(Data = DDD, BREAKS = BREAKS,
-                                           MaximumDate = "2021-02-08"))
+                                           MaximumDate = "2021-02-08",
+                                           Trend = "Day"))
 }
 )

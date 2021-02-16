@@ -4,10 +4,10 @@
 #'
 #' @description This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forcast_
 #'
-#' @param Data A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R. In future versions provisions shall be made of quarterly, monthly and yearly data
-#'
+#' @param Data A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
+#' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #'
 #' @return A list with the following components:
 #' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
@@ -55,7 +55,8 @@
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
 #' Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+#'  Trend = "Day")
 #'
 #' KK_14 <- readxl::read_excel("~/Data.xlsx")
 #' KK_14$Date <- as.Date(KK_14$Date, format = '%m/%d/%Y')
@@ -63,7 +64,8 @@
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
-#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+#'  Trend = "Day")
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
@@ -78,7 +80,7 @@ utils::globalVariables(c("Spline without knots",
                          "Ensembled based on weight of fit","Date", "Day",
                          "Forecast", "Models"))
 
-DynamicForecast <- function(Data, BREAKS, MaximumDate) {
+DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -88,8 +90,18 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate) {
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
   MaximumDate <- as.Date(MaximumDate)
-  Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
-               by = "day", length.out = length(Data$Case))
+
+  Dsf19 <- if (Trend== "Day") {
+    seq(as.Date(MaximumDate + lubridate::days(1)),
+        by = "day", length.out = length(Data$Case))
+  } else if (Trend == "Month") {
+    seq(as.Date(MaximumDate + lubridate::months(1)),
+        by = "month", length.out = length(Data$Case))
+  } else {
+    seq(as.Date(MaximumDate + lubridate::years(1)),
+        by = "year", length.out = length(Data$Case))
+  }
+
   Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
   Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   Title <- paste(Dsf19day01, "-", Dsf19daylast,
