@@ -76,7 +76,7 @@ knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
 Days_14$Plot
 ```
 
-![](docs/README.html)
+![](https://github.com/JobNmadu/Dyn4cast/tree/master/docs/README.html)
 
 ## Suggested packages
 Although not a dependency, the package derives functionally from a number of other packages ans so may require you to install such packages if they are not yet installed. the packages are listed below:
