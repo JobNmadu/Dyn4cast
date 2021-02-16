@@ -2,7 +2,7 @@
 % Please edit documentation in R/DynamicForecast.R
 \name{Dyn4cast}
 \alias{Dyn4cast}
-\title{Dynamic Forecast of five models and their Essembles}
+\title{Dynamic Forecast of five models and their Ensembles}
 \arguments{
 \item{Data}{A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R. In future versions provisions shall be made of quarterly, monthly and yearly data}
 
@@ -26,7 +26,7 @@ A list with the following components:
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-This function estimates, predict and forecast five models and their Essembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forcast}
+This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forcast}
 }
 \examples{
 KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data
