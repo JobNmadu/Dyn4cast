@@ -4,7 +4,7 @@
 #'
 #' @description This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forcast_
 #'
-#' @param Data A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.
+#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
