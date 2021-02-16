@@ -13,11 +13,11 @@
 #' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
 #' \item{\code{Spline with knots}}{The estimated spline model without the breaks (knots).}
 #' \item{\code{Smooth Spline}}{The smooth spline estimates.}
-#' \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Areage model.}
+#' \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 #' \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
-#' \item{\code{Essembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-#' \item{\code{Essembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
-#' \item{\code{Essembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
+#' \item{\code{Ensembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
+#' \item{\code{Ensembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
+#' \item{\code{Ensembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
 #' \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
 #' \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
 #' \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
@@ -71,9 +71,9 @@ utils::globalVariables(c("Spline without knots",
                          "Smooth Spline",
                          "ARIMA",
                          "Quadratic",
-                         "Essembled with equal weight",
-                         "Essembled based on weight",
-                         "Essembled based on weight of fit","Date", "Day",
+                         "Ensembled with equal weight",
+                         "Ensembled based on weight",
+                         "Ensembled based on weight of fit","Date", "Day",
                          "Forecast", "Models"))
 
 DynamicForecast <- function(Data, BREAKS, MaximumDate) {
@@ -135,8 +135,8 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate) {
   #RMSE <- 1/RMSE
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
   KK91$Date <- as.Date(KK91$Date, origin = "1970-01-01")
-  KK91$`Essembled with equal weight` <- kk3191[["mean"]]
-  KK91$`Essembled based on weight of model` <- kk4191[["mean"]]
+  KK91$`Ensembled with equal weight` <- kk3191[["mean"]]
+  KK91$`Ensembled based on weight of model` <- kk4191[["mean"]]
   P_weight91 <- (Without.knots * RMSE_weight91$`Without knots`) +
     (With.knots * RMSE_weight91$`Smooth Spline`) +
     (Smooth * RMSE_weight91$`With knots`) +
@@ -144,17 +144,17 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate) {
     (ARIMA * RMSE_weight91$`Lower ARIMA`)
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
-  KK91$`Essembled based on weight of fit of each model` <- kk5191[["mean"]]
-  RMSE91$`Essembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
-  RMSE91$`Essembled based on weight of model` <- Metrics::rmse(Data$Case,
+  KK91$`Ensembled based on weight of fit of each model` <- kk5191[["mean"]]
+  RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
+  RMSE91$`Ensembled based on weight of model` <- Metrics::rmse(Data$Case,
                                                                fitted.values(kk4091))
-  RMSE91$`Essembled based on weight of fit of each model` <- Metrics::rmse(Data$Day, P_weight91)
+  RMSE91$`Ensembled based on weight of fit of each model` <- Metrics::rmse(Data$Day, P_weight91)
   DDf91 <- c("Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
              "Lower ARIMA", "Upper ARIMA",
-             "Essembled with equal weight",
-             "Essembled based on weight of model",
-             "Essembled based on weight of fit of each model" )
+             "Ensembled with equal weight",
+             "Ensembled based on weight of model",
+             "Ensembled based on weight of fit of each model" )
   Forcasts91 <- colSums(KK91[,-c(1,2)])
   Fore_f91 <- as.data.frame(cbind("Model" = DDf91,
                                   "Confirmed cases" =
@@ -172,12 +172,12 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate) {
       round(RMSE91$`Lower ARIMA`, 2),
     "Upper ARIMA"  =
       round(RMSE91$`Upper ARIMA`, 2),
-    "Essembled with equal weight"  =
-      round(RMSE91$`Essembled with equal weight`, 2),
-    "Essembled based on weight of model"  =
-      round(RMSE91$`Essembled based on weight of model`, 2),
-    "Essembled based on weight of fit of each model"  =
-      round(RMSE91$`Essembled based on weight of fit of each model`, 2)
+    "Ensembled with equal weight"  =
+      round(RMSE91$`Ensembled with equal weight`, 2),
+    "Ensembled based on weight of model"  =
+      round(RMSE91$`Ensembled based on weight of model`, 2),
+    "Ensembled based on weight of fit of each model"  =
+      round(RMSE91$`Ensembled based on weight of fit of each model`, 2)
   )
   RMSE_f91 <- cbind("Models" = DDf91, "RMSE" = RMSE_f91)
 
@@ -201,9 +201,9 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate) {
     "Smooth Spline" = fit11,
     "ARIMA" = fita1,
     "Quadratic" = fitpi1,
-    "Essembled with equal weight" = kk3091,
-    "Essembled based on weight" = kk4091,
-    "Essembled based on weight of fit" = P_weight91,
+    "Ensembled with equal weight" = kk3091,
+    "Ensembled based on weight" = kk4091,
+    "Ensembled based on weight of fit" = P_weight91,
     "Forecast" = Fore_f91,
     "RMSE"     = RMSE_f91,
     "Plot"     = KK0091,

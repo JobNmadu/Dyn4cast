@@ -15,11 +15,11 @@ A list with the following components:
 \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
 \item{\code{Spline with knots}}{The estimated spline model without the breaks (knots).}
 \item{\code{Smooth Spline}}{The smooth spline estimates.}
-\item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Areage model.}
+\item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
-\item{\code{Essembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-\item{\code{Essembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
-\item{\code{Essembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
+\item{\code{Ensembled with equal weight}}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
+\item{\code{Ensembled based on weight}}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend.}
+\item{\code{Ensembled based on weight of fit}}{Estimated Essemble model. The fit of each model is measured by the rmse.}
 \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
 \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
 \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
