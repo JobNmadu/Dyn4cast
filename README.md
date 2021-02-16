@@ -46,11 +46,11 @@ devtools::install_github("JobNmadu/Dyn4cast")
 At present, the package exports a single function, `DynamicForecast`,
 which takes two required arguments: the `Data` of any recognised format
 but should be a **dataframe** containing two columns `Date` and `Case`.
-The Date is the *day* the data is collected while Case is the variable
+The Date is the *day, month or year* the data is collected while Case is the variable
 for forecasting. The other arguements parsed to the function are
 `MaximumDate`, which is the last date Data was collected and `BREAKS`,
 which is a vector of numbers and used as `knots` in estimating spline
-polynomials.
+polynomials. Trend is the type of series **Day, Month, Year**. The recognised format for date is YYYY-MM-DD. For month or year, the date should be the last day e.g. 2021-02-28 or 2020-12-31.
 
 ## Example
 
