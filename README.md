@@ -101,12 +101,12 @@ following models.
 - Smooth Spline  
 - ARIMA  
 - Quadratic  
-- Essembled with equal weight  
-- Essembled based on weight  
-- Essembled based on weight of fit
+- Ensembled with equal weight  
+- Ensembled based on weight  
+- Ensembled based on weight of fit
 
 Note that a *warning* (not *error*) is thrown up while estimating the
-RMSE for the `Essembled with equal weight` model. It was thoroughly
+RMSE for the `Ensembled with equal weight` model. It was thoroughly
 investigated and causes no harm. Efforts are still on to silence the
 warning, which I will soon. The warning is one of such issues that is
 general to R. If you set your *chunk option* to `warning = FALSE` you
