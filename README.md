@@ -52,24 +52,15 @@ for forecasting. The other arguements parsed to the function are
 which is a vector of numbers and used as `knots` in estimating spline
 polynomials. Trend is the type of series **Day, Month, Year**. The recognised format for date is YYYY-MM-DD. For month or year, the date should be the last day e.g. 2021-02-28 or 2020-12-31.
 
+## Citation
+This package can be cited as:
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
-library(Dyn4cast)
-#> Loading required package: tidyverse
-#> -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-#> v ggplot2 3.3.3     v purrr   0.3.4
-#> v tibble  3.0.6     v dplyr   1.0.4
-#> v tidyr   1.1.2     v stringr 1.4.0
-#> v readr   1.4.0     v forcats 0.5.1
-#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
+Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.
+
 ## basic example code
 niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
 niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
@@ -638,3 +629,5 @@ will not notice the warning.
 The package is still very much in progress as such feedback,
 particularly at this developmental stage, would be greatly welcome and
 appreciated.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)
