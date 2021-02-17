@@ -54,14 +54,13 @@ polynomials. Trend is the type of series **Day, Month, Year**. The recognised fo
 
 ## Citation
 This package can be cited as:
+Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.
-
-## basic example code
+## Basic example code
 niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
 niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
 
@@ -73,7 +72,20 @@ Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02
 #> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
 #> Coercing LHS to a list
 summary(Days_28$`Ensembled based on summed weight`)
-#> 
+#> ``` r
+library(Dyn4cast)
+#> Loading required package: tidyverse
+#> -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+#> v ggplot2 3.3.3     v purrr   0.3.4
+#> v tibble  3.0.6     v dplyr   1.0.4
+#> v tidyr   1.1.2     v stringr 1.4.0
+#> v readr   1.4.0     v forcats 0.5.1
+#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
+#> Registered S3 method overwritten by 'quantmod':
+#>   method            from
+#>   as.zoo.data.frame zoo
 #> Call:
 #> lm(formula = Data$Day ~ Without.knots + With.knots + Smooth + 
 #>     Quadratic + ARIMA)
