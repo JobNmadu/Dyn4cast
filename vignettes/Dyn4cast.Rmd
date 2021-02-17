@@ -1,0 +1,19 @@
+---
+title: "Dyn4cast"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Dyn4cast}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Dyn4cast)
+```

@@ -16,10 +16,10 @@ knitr::opts_chunk$set(
 # Dyn4cast
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
-[![Coverage status](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/github/JobNmadu/Dyn4cast?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
+[![Travis build status](https://travis-ci.com/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.com/JobNmadu/Dyn4cast)
+[![Codecov test coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 <!-- badges: end -->
 
  The __Dyn4cast__ package is designed to be a lightweight package, with the 
@@ -43,6 +43,10 @@ devtools::install_github("JobNmadu/Dyn4cast")
 ## Basic usage
 
 At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognised format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day_ the data is collected while Case is the variable for forecasting. The other arguements parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
+
+## Citation
+This package can be cited as:  
+Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.  
 
 ## Example
 
@@ -100,3 +104,4 @@ Note that a *warning* (not _error_) is thrown up while estimating the RMSE for t
 ## Other suggestions?
 The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)

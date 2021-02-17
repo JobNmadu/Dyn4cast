@@ -5,14 +5,14 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
-[![Coverage
-status](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/github/JobNmadu/Dyn4cast?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
+[![Travis build
+status](https://travis-ci.com/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.com/JobNmadu/Dyn4cast)
+[![Codecov test
+coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 <!-- badges: end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
@@ -46,33 +46,24 @@ devtools::install_github("JobNmadu/Dyn4cast")
 At present, the package exports a single function, `DynamicForecast`,
 which takes two required arguments: the `Data` of any recognised format
 but should be a **dataframe** containing two columns `Date` and `Case`.
-The Date is the *day, month or year* the data is collected while Case is the variable
+The Date is the *day* the data is collected while Case is the variable
 for forecasting. The other arguements parsed to the function are
 `MaximumDate`, which is the last date Data was collected and `BREAKS`,
 which is a vector of numbers and used as `knots` in estimating spline
-polynomials. Trend is the type of series **Day, Month, Year**. The recognised format for date is YYYY-MM-DD. For month or year, the date should be the last day e.g. 2021-02-28 or 2020-12-31.
+polynomials.
 
 ## Citation
-This package can be cited as:
-Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.
+
+This package can be cited as:  
+Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their
+Ensembles. R package version 11.11.00.
+<https://github.com/JobNmadu/Dyn4cast>.
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-## Basic example code
-niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
-niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
-
-Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
-lastdayfo21 <- Dss[length(Dss)]
-BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
-#> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
-#> Coercing LHS to a list
-summary(Days_28$`Ensembled based on summed weight`)
-#> ``` r
+``` r
 library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
@@ -86,6 +77,19 @@ library(Dyn4cast)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
+## basic example code
+niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
+niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
+
+Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
+lastdayfo21 <- Dss[length(Dss)]
+BREAKS = c(70, 131, 173, 228, 274)
+KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+#> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
+#> Coercing LHS to a list
+summary(Days_28$`Ensembled based on summed weight`)
+#> 
 #> Call:
 #> lm(formula = Data$Day ~ Without.knots + With.knots + Smooth + 
 #>     Quadratic + ARIMA)
@@ -642,4 +646,5 @@ The package is still very much in progress as such feedback,
 particularly at this developmental stage, would be greatly welcome and
 appreciated.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)

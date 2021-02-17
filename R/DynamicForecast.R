@@ -95,7 +95,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
     seq(as.Date(MaximumDate + lubridate::days(1)),
         by = "day", length.out = length(Data$Case))
   } else if (Trend == "Month") {
-    seq(as.Date(MaximumDate + lubridate::months(1)),
+    seq(as.Date(MaximumDate + lubridate::month(1)),
         by = "month", length.out = length(Data$Case))
   } else {
     seq(as.Date(MaximumDate + lubridate::years(1)),

@@ -4,7 +4,7 @@
 \alias{Dyn4cast}
 \title{Dynamic Forecast of five models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Case) DAILY dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.}
+\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
