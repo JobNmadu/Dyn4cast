@@ -183,7 +183,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
              "Ensembled based on weight of fit" )
   Forcasts91 <- colSums(KK91[,-c(1,2)])
   Fore_f91 <- as.data.frame(cbind("Model" = DDf91,
-                                  "Confirmed cases" =
+                                  "Case" =
                                     formattable::comma(round(Forcasts91, 0))))
   RMSE_f91 <- c(
     "Without knots" =
