@@ -111,4 +111,9 @@ Note that a *warning* (not _error_) is thrown up while estimating the RMSE for t
 ## Other suggestions?
 The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. 
 
+## Code of Conduct
+
+Please note that the Dyn4cast project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)

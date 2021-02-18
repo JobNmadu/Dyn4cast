@@ -130,7 +130,7 @@ knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 Model
 </th>
 <th style="text-align:left;">
-Confirmed cases
+Case
 </th>
 </tr>
 </thead>
@@ -423,7 +423,7 @@ knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 Model
 </th>
 <th style="text-align:left;">
-Confirmed cases
+Case
 </th>
 </tr>
 </thead>
@@ -652,6 +652,13 @@ will not notice the warning.
 The package is still very much in progress as such feedback,
 particularly at this developmental stage, would be greatly welcome and
 appreciated.
+
+## Code of Conduct
+
+Please note that the Dyn4cast project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 [![Netlify
 Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)
