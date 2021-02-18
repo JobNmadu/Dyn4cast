@@ -48,6 +48,7 @@
 #' @importFrom forecast forecast
 #' @importFrom utils globalVariables
 #' @importFrom zoo yearmon
+#' @importFrom qpdf pdf_compress
 #'
 #' @examples
 #' KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data
