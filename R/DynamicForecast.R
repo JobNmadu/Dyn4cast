@@ -99,15 +99,15 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
     Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
     Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   } else if (Trend == "Month") {
-    Dsf19 <- seq(as.Date(zoo::as.yearmon(MaximumDate + lubridate::month(1))),
+    Dsf19 <- seq(as.Date(MaximumDate + lubridate::month(1)),
         by = "month", length.out = length(Data$Case))
     Dsf19day01 <- zoo::as.yearmon(Dsf19[1], "%b %y")
     Dsf19daylast <- zoo::as.yearmon(Dsf19[length(Dsf19)], "%b %y")
   } else {
     Dsf19 <- seq(as.Date(MaximumDate + lubridate::years(1)),
         by = "year", length.out = length(Data$Case))
-    Dsf19day01 <- format(Dsf19[1], "%Y")
-    Dsf19daylast <- format(Dsf19[length(Dsf19)], "%Y")
+    Dsf19day01 <- format(as.Date(Dsf19[1]), "%Y")
+    Dsf19daylast <- format(as.Date(Dsf19[length(Dsf19)]), "%Y")
   }
 
   Title <- paste(Dsf19day01, "-", Dsf19daylast,
