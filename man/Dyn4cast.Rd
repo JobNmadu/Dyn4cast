@@ -4,7 +4,7 @@
 \alias{Dyn4cast}
 \title{Dynamic Forecast of five models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.}
+\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognised by R i.e. YYYY-MM-DD. If the data is monthly series, the recognised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
@@ -20,16 +20,16 @@ A list with the following components:
 \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
 \item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-\item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed agaisnt the trend with interaction among the varaibles.}
+\item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
 \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed agaisnt the trend.}
 \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
 \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
-\item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
+\item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
 \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forcast}
+This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}
 }
 \examples{
 KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data

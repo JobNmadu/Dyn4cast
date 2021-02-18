@@ -1,3 +1,5 @@
+
+library(qpdf)
 test_that("DynamicForecast works", {
   #DDD <- as.data.frame(read.csv("data/day_14.csv"))
   DDD <-readxl::read_excel("data/day_14.xlsx")

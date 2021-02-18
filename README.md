@@ -24,7 +24,7 @@ been used to develop the functions for forecasting the data.
 
 ## Installation
 
-Althouth it would be possible to install the released version of
+Although it would be possible to install the released version of
 Dyn4cast from [CRAN](https://CRAN.R-project.org) in future, presently,
 only the development version is available. The canonical form to do this
 is:
@@ -47,7 +47,7 @@ At present, the package exports a single function, `DynamicForecast`,
 which takes two required arguments: the `Data` of any recognised format
 but should be a **dataframe** containing two columns `Date` and `Case`.
 The Date is the *day* the data is collected while Case is the variable
-for forecasting. The other arguements parsed to the function are
+for forecasting. The other arguments parsed to the function are
 `MaximumDate`, which is the last date Data was collected and `BREAKS`,
 which is a vector of numbers and used as `knots` in estimating spline
 polynomials.
@@ -83,6 +83,13 @@ niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
 
 Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
 lastdayfo21 <- Dss[length(Dss)]
+
+#Dss <- seq(niz2$Date[1], by = "month", length.out = length(niz2$Case))
+#lastdayfo21 <- Dss[length(Dss)] # for monthly data
+
+#Dss <- seq(niz2$Date[1], by = "year", length.out = length(niz2$Case))
+#lastdayfo21 <- Dss[length(Dss)] # for yearly data
+
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")

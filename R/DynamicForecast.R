@@ -2,9 +2,9 @@
 #'
 #' @title Dynamic Forecast of five models and their Ensembles
 #'
-#' @description This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forcast_
+#' @description This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
 #'
-#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. YYYY-MM-DD. If the data is monthly series, the recogmised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quartely data is not available.
+#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognised by R i.e. YYYY-MM-DD. If the data is monthly series, the recognised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
@@ -16,11 +16,11 @@
 #' \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 #' \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
 #' \item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-#' \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed agaisnt the trend with interaction among the varaibles.}
+#' \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
 #' \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed agaisnt the trend.}
 #' \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
 #' \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
-#' \item{\code{RMSE}}{Root Mean Sqaure Error (rmse) for each forecast.}
+#' \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
 #' \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
 #' \item{\code{Date}}{This is the date range for the forecast.}
 #'
@@ -47,6 +47,7 @@
 #' @importFrom forecast auto.arima
 #' @importFrom forecast forecast
 #' @importFrom utils globalVariables
+#' @importFrom zoo yearmon
 #'
 #' @examples
 #' KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data
@@ -91,19 +92,23 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
   MaximumDate <- as.Date(MaximumDate)
 
-  Dsf19 <- if (Trend== "Day") {
-    seq(as.Date(MaximumDate + lubridate::days(1)),
-        by = "day", length.out = length(Data$Case))
+ if (Trend == "Day") {
+    Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
+                 by = "day", length.out = length(Data$Case))
+    Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
+    Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   } else if (Trend == "Month") {
-    seq(as.Date(MaximumDate + lubridate::month(1)),
+    Dsf19 <- seq(as.Date(zoo::as.yearmon(MaximumDate + lubridate::month(1))),
         by = "month", length.out = length(Data$Case))
+    Dsf19day01 <- zoo::as.yearmon(Dsf19[1], "%b %y")
+    Dsf19daylast <- zoo::as.yearmon(Dsf19[length(Dsf19)], "%b %y")
   } else {
-    seq(as.Date(MaximumDate + lubridate::years(1)),
+    Dsf19 <- seq(as.Date(MaximumDate + lubridate::years(1)),
         by = "year", length.out = length(Data$Case))
+    Dsf19day01 <- format(Dsf19[1], "%Y")
+    Dsf19daylast <- format(Dsf19[length(Dsf19)], "%Y")
   }
 
-  Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
-  Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   Title <- paste(Dsf19day01, "-", Dsf19daylast,
                  collapse="")
   Without.knots <- fitted.values(fit01)

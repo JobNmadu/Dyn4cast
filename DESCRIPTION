@@ -1,5 +1,5 @@
 Package: Dyn4cast
-Title: Dynamic Forecast of five models and thier Ensembles
+Title: Dynamic Forecast of five models and their Ensembles
 Version: 11.11.00
 Authors@R: 
     person(given = "Job",
@@ -27,15 +27,19 @@ Imports:
     xlsx,
     readxl,
     utils,
-    lifecycle
+    lifecycle,
+    zoo,
+    qpdf
 Depends: 
     tidyverse
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    covr
+    covr,
+    spelling
 Config/testthat/edition: 3
 URL: https://github.com/JobNmadu/Dyn4cast
 BugReports: https://github.com/JobNmadu/Dyn4cast/issues
 VignetteBuilder: knitr
+Language: en-US
