@@ -6,7 +6,7 @@
 ## usethis namespace: start
 ## usethis namespace: end
 NULL
-#'Dynamic Forecast of five models and thier Essembles
+#'Dynamic Forecast of five models and their Ensembles
 #'
 #' This is a package to dynamically estimate and forecast a model.
 #'

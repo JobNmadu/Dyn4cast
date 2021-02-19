@@ -32,7 +32,7 @@ A list with the following components:
 This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}
 }
 \examples{
-KK_28 <- readxl::read_excel("~/Data.xlsx") # Nigeria COVID-19 data
+KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data
 KK_28$Date <- as.Date(KK_28$Date, format = '\%m/\%d/\%Y') # The date is reformatted
 Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data length for forecast
 lastdayfo21 <- Dss[length(Dss)] # The maximum length
@@ -41,7 +41,7 @@ BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
  Trend = "Day")
 
-KK_14 <- readxl::read_excel("~/Data.xlsx")
+KK_14 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
 KK_14$Date <- as.Date(KK_14$Date, format = '\%m/\%d/\%Y')
 Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
 lastdayfo21 <- Dss[length(Dss)]

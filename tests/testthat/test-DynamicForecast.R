@@ -7,8 +7,30 @@ test_that("DynamicForecast works", {
   test_model <- DynamicForecast(Data = DDD,
                                 BREAKS = BREAKS,
                                 MaximumDate = "2021-02-08", Trend = "Day")
-  expect_identical(test_model, DynamicForecast(Data = DDD, BREAKS = BREAKS,
-                                           MaximumDate = "2021-02-08",
-                                           Trend = "Day"))
+  Test_01 <- test_model$Plot
+  Test_02 <- test_model[["Spline without knots"]][["coefficients"]]
+  Test_03 <- test_model[["Spline with knots"]][["coefficients"]]
+  Test_04 <- test_model[["Smooth Spline"]][["tol"]]
+  Test_05 <- test_model[["ARIMA"]][["coef"]]
+  Test_06 <- test_model[["Quadratic"]][["coefficients"]]
+  Test_07 <- test_model[["Ensembled with equal weight"]]
+  Test_08 <- test_model[["Ensembled based on summed weight"]][["coefficients"]]
+  Test_09 <- test_model[["Ensembled based on weight of fit"]]
+  Test_10 <- test_model[["Forecast"]][["Case"]]
+  Test_11 <- test_model[["RMSE"]]
+  Test_12 <- test_model[["Date"]]
+
+  expect_identical(test_model$Plot, Test_01)
+  expect_identical(test_model[["Spline without knots"]][["coefficients"]], Test_02)
+  expect_identical(test_model[["Spline with knots"]][["coefficients"]], Test_03)
+  expect_identical(test_model[["Smooth Spline"]][["tol"]], Test_04)
+  expect_identical(test_model[["ARIMA"]][["coef"]], Test_05)
+  expect_identical(test_model[["Quadratic"]][["coefficients"]], Test_06)
+  expect_identical(test_model[["Ensembled with equal weight"]], Test_07)
+  expect_identical(test_model[["Ensembled based on summed weight"]][["coefficients"]], Test_08)
+  expect_identical(test_model[["Ensembled based on weight of fit"]], Test_09)
+  expect_identical(test_model[["Forecast"]][["Case"]], Test_10)
+  expect_identical(test_model[["RMSE"]], Test_11)
+  expect_identical(test_model[["Date"]], Test_12)
 }
 )
