@@ -42,7 +42,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 ## Basic usage
 
-At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognised format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day_ the data is collected while Case is the variable for forecasting. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
+At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day_ the data is collected while Case is the variable for forecasting. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
 
 ## Citation
 This package can be cited as:  

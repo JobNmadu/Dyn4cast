@@ -4,7 +4,7 @@
 \alias{Dyn4cast}
 \title{Dynamic Forecast of five models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognised by R i.e. YYYY-MM-DD. If the data is monthly series, the recognised date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognised date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.}
+\item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models}
 
@@ -29,7 +29,7 @@ A list with the following components:
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-This function estimates, predict and forecast five models and their Ensembles. The recognised models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}
+This function estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}
 }
 \examples{
 KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data

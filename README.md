@@ -44,7 +44,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 ## Basic usage
 
 At present, the package exports a single function, `DynamicForecast`,
-which takes two required arguments: the `Data` of any recognised format
+which takes two required arguments: the `Data` of any recognized format
 but should be a **dataframe** containing two columns `Date` and `Case`.
 The Date is the *day* the data is collected while Case is the variable
 for forecasting. The other arguments parsed to the function are
@@ -659,3 +659,6 @@ Please note that the Dyn4cast project is released with a [Contributor
 Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
+
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)
