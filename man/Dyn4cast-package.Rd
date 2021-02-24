@@ -2,8 +2,6 @@
 % Please edit documentation in R/Dyn4cast-package.R
 \docType{package}
 \name{Dyn4cast-package}
-\alias{Dyn4cast}
-\alias{Dyn4cast-package}
 \title{Dyn4cast: Dynamic Forecast of five models and their Ensembles}
 \description{
 This package estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The package is so far stable but can only take in daily datasets for now. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_.
