@@ -109,7 +109,7 @@ The package is capable of estimation, prediction and forecasting of the followin
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  
 
 ## Other suggestions?
-The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. 
+The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. Please fork your feedback at GitHub.
 
 ## Code of Conduct
 
