@@ -1,12 +1,15 @@
-#' @name Dyn4cast
+#' @section Quasiquotation:
+#'
+#'The `DynamicForecast()` estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
 #'
 #' @title Dynamic Forecast of five models and their Ensembles
 #'
-#' @description This function estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
-#'
 #' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.
-#' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models
-#' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01
+#'
+#' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models.
+#'
+#' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.
+#'
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #'
 #' @return A list with the following components:
@@ -24,7 +27,6 @@
 #' \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
 #' \item{\code{Date}}{This is the date range for the forecast.}
 #'
-#' @export DynamicForecast
 #' @import tidyverse
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
@@ -48,17 +50,20 @@
 #' @importFrom forecast forecast
 #' @importFrom utils globalVariables
 #' @importFrom zoo yearmon
-#' @importFrom qpdf pdf_compress
+#'
+#' @name DynamicForecast
+#'
+#' @export DynamicForecast
 #'
 #' @examples
+#' library(Dyn4cast)
 #' KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data
 #' KK_28$Date <- as.Date(KK_28$Date, format = '%m/%d/%Y') # The date is reformatted
 #' Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data length for forecast
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
 #' Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#'  Trend = "Day")
+#' Dyn4cast::DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #'
 #' KK_14 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
 #' KK_14$Date <- as.Date(KK_14$Date, format = '%m/%d/%Y')
@@ -66,8 +71,7 @@
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
-#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#'  Trend = "Day")
+#' Dyn4cast::DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))

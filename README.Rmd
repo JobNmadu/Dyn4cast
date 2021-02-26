@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 <!-- badges: end -->
 
- The __Dyn4cast__ package is designed to be a lightweight package, with the 
+The __Dyn4cast__ package is designed to be a lightweight package, with the 
     aim of simplifying the estimation, prediction and forecast of time-varying dataset, especially where the data is continuously collected on routine and regular basis. The package takes away the efforts of loading the libraries of more than 10 packages which have been used to develop the functions for forecasting the data. 
 
 ## Installation
@@ -42,7 +42,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 ## Basic usage
 
-At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day_ the data is collected while Case is the variable for forecasting. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
+At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day/month/year_ the data is collected while Case is the variable for forecasting. The Date must be in the recognized format i.e. 'YYYY-MM-DD'. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
 
 ## Citation
 This package can be cited as:  
