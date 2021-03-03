@@ -7,8 +7,6 @@
 
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
 [![Travis build
 status](https://travis-ci.com/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.com/JobNmadu/Dyn4cast)
 [![Codecov test
@@ -652,7 +650,7 @@ will not notice the warning.
 
 The package is still very much in progress as such feedback,
 particularly at this developmental stage, would be greatly welcome and
-appreciated.
+appreciated. Please fork your feedback at GitHub.
 
 ## Code of Conduct
 
@@ -660,6 +658,3 @@ Please note that the Dyn4cast project is released with a [Contributor
 Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
-
-[![Netlify
-Status](https://api.netlify.com/api/v1/badges/35759360-85c9-4db9-95ae-d691c181c15b/deploy-status)](https://app.netlify.com/sites/jobnmadu/deploys)
