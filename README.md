@@ -23,9 +23,9 @@ been used to develop the functions for forecasting the data.
 ## Installation
 
 Although it would be possible to install the released version of
-Dyn4cast from [CRAN](https://CRAN.R-project.org) in future, presently,
-only the development version is available. The canonical form to do this
-is:
+*Dyn4cast* from [CRAN](https://CRAN.R-project.org) in future, presently,
+only the development version is available. The canonical form for
+[CRAN](https://CRAN.R-project.org) is:
 
 ``` r
 install.packages("Dyn4cast")
@@ -48,7 +48,7 @@ The Date is the *day/month/year* the data is collected while Case is the
 variable for forecasting. The Date must be in the recognized format
 i.e. ‘YYYY-MM-DD’. The other arguments parsed to the function are
 `MaximumDate`, which is the last date Data was collected and `BREAKS`,
-which is a vector of numbers and used as `knots` in estimating spline
+which is a vector of numbers and is used as `knots` in estimating spline
 polynomials.
 
 ## Citation
