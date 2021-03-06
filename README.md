@@ -654,9 +654,8 @@ appreciated. Please fork your feedback at GitHub.
 
 ## Bibliography
 
-Mahoney, M. (2021). Model averaging methods: how and why to build
-ensemble models.
-[](https://www.mm218.dev/posts/2021/01/model-averaging/)
+Mahoney, M. (2021). [Model averaging methods: how and why to build
+ensemble models.](https://www.mm218.dev/posts/2021/01/model-averaging/)
 
 Hyndman, R. J. (2020). Quantile forecasting with ensembles and
 combinations in *Business Forecasting: The Emerging Role of Artificial

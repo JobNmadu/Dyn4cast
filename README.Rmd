@@ -111,7 +111,7 @@ Note that a *warning* (not _error_) is thrown up while estimating the RMSE for t
 The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. Please fork your feedback at GitHub.
 
 ## Bibliography
-Mahoney, M. (2021). Model averaging methods: how and why to build ensemble models. [](https://www.mm218.dev/posts/2021/01/model-averaging/)  
+Mahoney, M. (2021). [Model averaging methods: how and why to build ensemble models.](https://www.mm218.dev/posts/2021/01/model-averaging/)  
 
 Hyndman, R. J. (2020). Quantile forecasting with ensembles and combinations in _Business Forecasting: The Emerging Role of Artificial Intelligence and Machine Learning_, eds. Gilliland, Tashman & Sglavo. John Wiley & Sons. 
 
