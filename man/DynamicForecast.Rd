@@ -2,6 +2,7 @@
 % Please edit documentation in R/DynamicForecast.R
 \name{DynamicForecast}
 \alias{DynamicForecast}
+\alias{Data}
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \arguments{
 \item{Data}{A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.}

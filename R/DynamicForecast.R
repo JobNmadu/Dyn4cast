@@ -1,6 +1,6 @@
 #' @section Quasiquotation:
 #'
-#'The `DynamicForecast()` estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
+#' The `DynamicForecast()` estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
 #'
 #' @title Dynamic Forecast of Five Models and their Ensembles
 #'
@@ -54,6 +54,8 @@
 #' @name DynamicForecast
 #'
 #' @export DynamicForecast
+#'
+#' @aliases Data
 #'
 #' @examples
 #' library(Dyn4cast)
