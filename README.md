@@ -652,6 +652,17 @@ The package is still very much in progress as such feedback,
 particularly at this developmental stage, would be greatly welcome and
 appreciated. Please fork your feedback at GitHub.
 
+## Bibliography
+
+Mahoney, M. (2021). Model averaging methods: how and why to build
+ensemble models.
+[](https://www.mm218.dev/posts/2021/01/model-averaging/)
+
+Hyndman, R. J. (2020). Quantile forecasting with ensembles and
+combinations in *Business Forecasting: The Emerging Role of Artificial
+Intelligence and Machine Learning*, eds. Gilliland, Tashman & Sglavo.
+John Wiley & Sons.
+
 ## Code of Conduct
 
 Please note that the Dyn4cast project is released with a [Contributor
