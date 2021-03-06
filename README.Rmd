@@ -26,7 +26,7 @@ The __Dyn4cast__ package is designed to be a lightweight package, with the
 
 ## Installation
 
-Although it would be possible to install the released version of Dyn4cast from [CRAN](https://CRAN.R-project.org) in future, presently, only the development version is available. The canonical form to do this is:
+Although it would be possible to install the released version of _Dyn4cast_ from [CRAN](https://CRAN.R-project.org) in future, presently, only the development version is available. The canonical form for  [CRAN](https://CRAN.R-project.org) is:
 
 ``` r
 install.packages("Dyn4cast")
@@ -41,7 +41,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 ## Basic usage
 
-At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day/month/year_ the data is collected while Case is the variable for forecasting. The Date must be in the recognized format i.e. 'YYYY-MM-DD'. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and used as `knots` in estimating spline polynomials.
+At present, the package exports a single function, `DynamicForecast`, which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day/month/year_ the data is collected while Case is the variable for forecasting. The Date must be in the recognized format i.e. 'YYYY-MM-DD'. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and is used as `knots` in estimating spline polynomials.
 
 ## Citation
 This package can be cited as:  
@@ -55,20 +55,20 @@ This is a basic example which shows you how to solve a common problem:
 
 library(Dyn4cast)
 ## basic example code
-niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
-niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
+load("data/data.rda")
+Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
 
-Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
+Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case))
 lastdayfo21 <- Dss[length(Dss)]
 
-#Dss <- seq(niz2$Date[1], by = "month", length.out = length(niz2$Case))
+#Dss <- seq(Data$Date[1], by = "month", length.out = length(Data$Case))
 #lastdayfo21 <- Dss[length(Dss)] # for monthly data
 
-#Dss <- seq(niz2$Date[1], by = "year", length.out = length(niz2$Case))
+#Dss <- seq(Data$Date[1], by = "year", length.out = length(Data$Case))
 #lastdayfo21 <- Dss[length(Dss)] # for yearly data
 
 BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
+KK_28 <- Data[Data$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 summary(Days_28$`Ensembled based on summed weight`)
 
@@ -76,7 +76,7 @@ knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
 Days_28$Plot
 
-KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
+KK_14 <- Data[Data$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 
 summary(Days_14$`Ensembled based on weight`)

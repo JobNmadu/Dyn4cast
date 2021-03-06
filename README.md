@@ -77,20 +77,20 @@ library(Dyn4cast)
 #>   method            from
 #>   as.zoo.data.frame zoo
 ## basic example code
-niz2 <- readxl::read_excel("data-raw/data/Data.xlsx")
-niz2$Date <- as.Date(niz2$Date, format = '%m/%d/%Y')
+load("data/data.rda")
+Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
 
-Dss <- seq(niz2$Date[1], by = "day", length.out = length(niz2$Case))
+Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case))
 lastdayfo21 <- Dss[length(Dss)]
 
-#Dss <- seq(niz2$Date[1], by = "month", length.out = length(niz2$Case))
+#Dss <- seq(Data$Date[1], by = "month", length.out = length(Data$Case))
 #lastdayfo21 <- Dss[length(Dss)] # for monthly data
 
-#Dss <- seq(niz2$Date[1], by = "year", length.out = length(niz2$Case))
+#Dss <- seq(Data$Date[1], by = "year", length.out = length(Data$Case))
 #lastdayfo21 <- Dss[length(Dss)] # for yearly data
 
 BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- niz2[niz2$Date <= lastdayfo21 - 28, ]
+KK_28 <- Data[Data$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
 #> Coercing LHS to a list
@@ -323,7 +323,7 @@ Days_28$Plot
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
-KK_14 <- niz2[niz2$Date <= lastdayfo21 - 14, ]
+KK_14 <- Data[Data$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
 #> Coercing LHS to a list

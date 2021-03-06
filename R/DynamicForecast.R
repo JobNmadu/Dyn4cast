@@ -2,7 +2,7 @@
 #'
 #'The `DynamicForecast()` estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
 #'
-#' @title Dynamic Forecast of five models and their Ensembles
+#' @title Dynamic Forecast of Five Models and their Ensembles
 #'
 #' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.
 #'
@@ -57,21 +57,19 @@
 #'
 #' @examples
 #' library(Dyn4cast)
-#' KK_28 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx") # Nigeria COVID-19 data
-#' KK_28$Date <- as.Date(KK_28$Date, format = '%m/%d/%Y') # The date is reformatted
-#' Dss <- seq(KK_28$Date[1], by = "day", length.out = length(KK_28$Case)) #data length for forecast
+#' Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y') # The date is reformatted
+#' Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case)) #data length for forecast
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
-#' Data <- KK_28[KK_28$Date <= lastdayfo21 - 28, ] # desired length of forecast
+#' Data <- Data[Data$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' Dyn4cast::DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #'
-#' KK_14 <- readxl::read_excel("F:/Dyn4cast/R/data/Data.xlsx")
-#' KK_14$Date <- as.Date(KK_14$Date, format = '%m/%d/%Y')
-#' Dss <- seq(KK_14$Date[1], by = "day", length.out = length(KK_14$Case))
+#' Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
+#' Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case))
 #' lastdayfo21 <- Dss[length(Dss)]
-#' Data <- KK_14[KK_14$Date <= lastdayfo21 - 14, ]
+#' Data <- Data[Data$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
-#' Dyn4cast::DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
