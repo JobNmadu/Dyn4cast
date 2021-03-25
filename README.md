@@ -11,6 +11,7 @@ status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?bra
 status](https://travis-ci.com/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.com/JobNmadu/Dyn4cast)
 [![Codecov test
 coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
+[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast)
 <!-- badges: end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
@@ -67,8 +68,8 @@ library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
 #> v ggplot2 3.3.3     v purrr   0.3.4
-#> v tibble  3.1.0     v dplyr   1.0.4
-#> v tidyr   1.1.2     v stringr 1.4.0
+#> v tibble  3.1.0     v dplyr   1.0.5
+#> v tidyr   1.1.3     v stringr 1.4.0
 #> v readr   1.4.0     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 #> x dplyr::filter() masks stats::filter()
