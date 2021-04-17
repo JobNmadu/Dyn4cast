@@ -18,7 +18,7 @@
 \value{
 A list with the following components:
 \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
-\item{\code{Spline with knots}}{The estimated spline model without the breaks (knots).}
+\item{\code{Spline with knots}}{The estimated spline model with the breaks (knots).}
 \item{\code{Smooth Spline}}{The smooth spline estimates.}
 \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
 \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
