@@ -12,8 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="120" />
-# Dyn4cast
+
+# Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="120" />  
 
 <!-- badges: start -->
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
