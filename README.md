@@ -8,7 +8,7 @@
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
 [![Travis build
-status](https://travis-ci.com/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.com/JobNmadu/Dyn4cast)
+status](https://app.travis-ci.com/github/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
 [![Codecov test
 coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
