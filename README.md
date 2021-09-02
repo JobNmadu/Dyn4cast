@@ -77,18 +77,11 @@ library(Dyn4cast)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-## basic example code
 load("data/data.rda")
 Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
 
 Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case))
 lastdayfo21 <- Dss[length(Dss)]
-
-#Dss <- seq(Data$Date[1], by = "month", length.out = length(Data$Case))
-#lastdayfo21 <- Dss[length(Dss)] # for monthly data
-
-#Dss <- seq(Data$Date[1], by = "year", length.out = length(Data$Case))
-#lastdayfo21 <- Dss[length(Dss)] # for yearly data
 
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- Data[Data$Date <= lastdayfo21 - 28, ]
