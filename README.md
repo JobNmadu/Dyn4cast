@@ -3,7 +3,7 @@
 
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-<!-- badges: start -->
+<!-- badges: start 
 
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
@@ -12,7 +12,7 @@ status](https://app.travis-ci.com/github/JobNmadu/Dyn4cast.svg?branch=master)](h
 [![Codecov test
 coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-<!-- badges: end -->
+badges: end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
 the aim of simplifying the estimation, prediction and forecast of
