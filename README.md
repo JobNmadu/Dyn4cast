@@ -3,16 +3,12 @@
 
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-<!-- badges: start 
-
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
-[![Travis build
-status](https://app.travis-ci.com/github/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
-[![Codecov test
-coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
+<!-- badges
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
+[![Travis build status](https://app.travis-ci.com/github/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
+[![Codecov test coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-badges: end -->
+ end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
 the aim of simplifying the estimation, prediction and forecast of
@@ -68,7 +64,7 @@ library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 #> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.3     v dplyr   1.0.7
+#> v tibble  3.1.4     v dplyr   1.0.7
 #> v tidyr   1.1.3     v stringr 1.4.0
 #> v readr   2.0.1     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
@@ -112,7 +108,6 @@ summary(Days_28$`Ensembled based on summed weight`)
 #> Residual standard error: 21.12 on 314 degrees of freedom
 #> Multiple R-squared:  0.9487, Adjusted R-squared:  0.9479 
 #> F-statistic:  1162 on 5 and 314 DF,  p-value: < 2.2e-16
-
 knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 ```
 
@@ -321,7 +316,6 @@ KK_14 <- Data[Data$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #> Warning in RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, :
 #> Coercing LHS to a list
-
 summary(Days_14$`Ensembled based on weight`)
 #> 
 #> Call:
@@ -405,7 +399,6 @@ summary(Days_14$`Ensembled based on weight`)
 #> Residual standard error: 0.5601 on 288 degrees of freedom
 #> Multiple R-squared:      1,  Adjusted R-squared:      1 
 #> F-statistic: 2.808e+05 on 31 and 288 DF,  p-value: < 2.2e-16
-
 knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 ```
 
