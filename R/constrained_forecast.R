@@ -15,7 +15,10 @@
 #' @export constrained_forecast
 #'
 #' @examples
-# constrained_forecast(Model = Model, lower, upper)
+#' X <- 0:35
+#' lower <- 0
+#' upper <- 35
+# constrained_forecast(Model = x, lower, upper)
 
 constrained_forecast <- function(Model, lower, upper) {
   F2 <- Model$upper
