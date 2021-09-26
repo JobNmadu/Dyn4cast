@@ -23,6 +23,6 @@ Scale Parameter for Integer Modelling and Forecast
 X <- 0:35
 lower <- 0
 upper <- 35
-scaled_logit(x = x, lower = lower, upper = upper)
+scaled_logit(x = X, lower = lower, upper = upper)
 
 }

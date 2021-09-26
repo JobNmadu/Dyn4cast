@@ -12,7 +12,7 @@
 #' X <- 0:35
 #' lower <- 0
 #' upper <- 35
-#' inv_scaled_logit(x = x, lower = lower, upper = upper)
+#' inv_scaled_logit(x = X, lower = lower, upper = upper)
 
 inv_scaled_logit <- function(x, lower, upper) {
   (upper - lower) * exp(x) / (1 + exp(x)) + lower
