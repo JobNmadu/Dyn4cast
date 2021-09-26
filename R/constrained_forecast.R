@@ -11,7 +11,7 @@
 #' \item{\code{Lower 95%}}{Forecast at lower 95% confidence level.}
 #' \item{\code{Upper 95%}}{Forecast at upper 95% confidence level.}
 #'
-#' @importFrom inv_scaled_logit inv_scaled_logit
+#' @importFrom Dyn4cast inv_scaled_logit
 #' @export constrained_forecast
 #'
 #' @examples
