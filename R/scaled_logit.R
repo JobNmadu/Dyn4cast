@@ -5,7 +5,6 @@
 #' @param lower Integer or variable representing the lower limits for the scaling (-inf or 0)
 #' @param upper Integer or variable representing the upper limits for the scaling (0 or inf)
 #'
-#' @return
 #' @export scaled_logit
 #'
 #' @examples

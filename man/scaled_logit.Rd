@@ -13,9 +13,6 @@ scaled_logit(x, lower, upper)
 
 \item{upper}{Integer or variable representing the upper limits for the scaling (0 or inf)}
 }
-\value{
-
-}
 \description{
 Scale Parameter for Integer Modelling and Forecast
 }
