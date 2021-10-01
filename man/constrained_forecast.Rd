@@ -24,7 +24,15 @@ A list of forecast values within 80\% and 95\% confidence band. The values are:
 Constrained Forecast of One-sided Integer Response Model
 }
 \examples{
-X <- 0:35
-lower <- 0
-upper <- 35
+data(StatesAffected)
+library(splines)
+library(forecast)
+lower <- 1
+upper <- 37
+Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
+data = StatesAffected)
+FitModel <- scaled_logit(x = fitted.values(Model), lower = lower,
+ upper = upper)
+ForecastModel <- forecast(FitModel, h = length(nrow(StatesAffected)))
+ForecastValues <- constrained_forecast(Model = ForecastModel, lower, upper)
 }

@@ -29,7 +29,12 @@ Imports:
     utils,
     lifecycle,
     zoo,
-    qpdf
+    qpdf,
+    ModelMetrics,
+    broom,
+    qpcR,
+    wle,
+    dplyr
 Depends: 
     tidyverse,
     R (>= 2.10)
