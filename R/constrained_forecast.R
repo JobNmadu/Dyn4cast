@@ -13,17 +13,18 @@
 #'
 #' @export constrained_forecast
 #'
+#' @aliases Data1
+#'
 #' @examples
-#' data(StatesAffected)
 #' library(splines)
 #' library(forecast)
 #' lower <- 1
 #' upper <- 37
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-#' data = StatesAffected)
+#' data = Data1)
 #' FitModel <- scaled_logit(x = fitted.values(Model), lower = lower,
 #'  upper = upper)
-#' ForecastModel <- forecast(FitModel, h = length(nrow(StatesAffected)))
+#' ForecastModel <- forecast(FitModel, h = length(200))
 #' ForecastValues <- constrained_forecast(Model = ForecastModel, lower, upper)
 
 constrained_forecast <- function(Model, lower, upper) {

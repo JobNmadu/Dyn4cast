@@ -2,6 +2,7 @@
 % Please edit documentation in R/constrained_forecast.R
 \name{constrained_forecast}
 \alias{constrained_forecast}
+\alias{Data1}
 \title{Constrained Forecast of One-sided Integer Response Model}
 \usage{
 constrained_forecast(Model, lower, upper)
@@ -24,15 +25,14 @@ A list of forecast values within 80\% and 95\% confidence band. The values are:
 Constrained Forecast of One-sided Integer Response Model
 }
 \examples{
-data(StatesAffected)
 library(splines)
 library(forecast)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-data = StatesAffected)
+data = Data1)
 FitModel <- scaled_logit(x = fitted.values(Model), lower = lower,
  upper = upper)
-ForecastModel <- forecast(FitModel, h = length(nrow(StatesAffected)))
+ForecastModel <- forecast(FitModel, h = length(200))
 ForecastValues <- constrained_forecast(Model = ForecastModel, lower, upper)
 }
