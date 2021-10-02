@@ -7,7 +7,7 @@ saveRDS(Data, "inst/Data.RDS")
 usethis::use_data(Data, overwrite = TRUE)
 
 Data1 <- readxl::read_excel("data-raw/data/data1.xlsx")
-Data1$Date <- as.Date(Data$Date)
+Data1$Date <- as.Date(Data1$Date)
 saveRDS(Data1, "inst/StatesAffected.RDS")
 
 usethis::use_data(Data1, overwrite = TRUE)
