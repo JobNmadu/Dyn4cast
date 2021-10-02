@@ -110,9 +110,13 @@
 #' @importFrom qpcR PRESS
 #' @importFrom dplyr mutate
 #' @importFrom stats predict
+#' @importFrom utils globalVariables
 #'
 #' @examples
 #'
+
+utils::globalVariables("prob")
+
 MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy) {
   Predy = 0
   Preds = 0
@@ -136,8 +140,8 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
     0
   } else if (Form == "GLM" & Name != "Log") {
     KK <- broom::augment(Model, data = Observed) %>%
-      dplyr::mutate(prob = 1/(1 + exp(-KK$.fitted)), Observed) %>%
-      dplyr::mutate(Predicted = ifelse(prob > 0.5, 1, 0))
+      dplyr::mutate(prob =  1/(1 + exp(-KK$.fitted)), Observed) %>%
+      dplyr::mutate(Predicted =  ifelse(prob > 0.5, 1, 0))
     KK$Predicted
   } else {
     stats::predict(Model, type = "response")
