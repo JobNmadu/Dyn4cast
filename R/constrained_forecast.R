@@ -1,6 +1,8 @@
 #' Constrained Forecast of One-sided Integer Response Model
 #'
-#' @param Model This is the forecast of the scaled fitted values of supported models.
+#' This package estimates the lower and upper 80% and 95% forecasts of the Model. The final values are within the lower and upper limits of the base data.
+#'
+#' @param Model This is the exponential values from the `inv_scaled_logit` package.
 #' @param lower The lower limit of the forecast
 #' @param upper The upper limit of the forecast
 #'

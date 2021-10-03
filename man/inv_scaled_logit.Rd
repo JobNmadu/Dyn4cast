@@ -2,7 +2,7 @@
 % Please edit documentation in R/inv_scaled_logit.R
 \name{inv_scaled_logit}
 \alias{inv_scaled_logit}
-\title{Exponential Values  after Integer Forecasting}
+\title{Exponential Values after One-Sided Response Integer Variable Forecasting}
 \usage{
 inv_scaled_logit(x, lower, upper)
 }
@@ -14,11 +14,11 @@ inv_scaled_logit(x, lower, upper)
 \item{upper}{Upper limits of the forecast values}
 }
 \description{
-Exponential Values  after Integer Forecasting
+This package is used to estimate exponential lower (80\% and 95\%) and upper (80\% and 95\%) values from the outcome of the \code{scaled_logit} package. The exponentiation ensures that the forecast does not go beyond the upper and lower limits of the base data.
 }
 \examples{
-x <- 0:35
-lower <- 0
+x <- 1:35
+lower <- 1
 upper <- 35
 inv_scaled_logit(x = x, lower = lower, upper = upper)
 }

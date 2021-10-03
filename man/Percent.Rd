@@ -13,12 +13,12 @@ Percent(Data, Type, digits = 2, format = "f", ...)
 
 \item{digits}{Number of decimal points for the output}
 
-\item{format}{The format of the output, the default is a character factor}
+\item{format}{The format of the output which is internal and the default is a character factor}
 
 \item{...}{Additional arguments that may be passed to the function}
 }
 \description{
-Attach Per Cent Sign to Data
+This package is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector of values
 }
 \examples{
 Data <- c(1.2, 0.5, 0.103, 7, 0.1501)

@@ -74,7 +74,7 @@ A list with the following components:
 \item{\code{True positive rate}}{of the Model.}
 }
 \description{
-Collection of Machine Learning Model Metrics for Easy Reference
+This Package estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
 }
 \examples{
 library(splines)

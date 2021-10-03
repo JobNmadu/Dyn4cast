@@ -8,7 +8,7 @@
 constrained_forecast(Model, lower, upper)
 }
 \arguments{
-\item{Model}{This is the forecast of the scaled fitted values of supported models.}
+\item{Model}{This is the exponential values from the \code{inv_scaled_logit} package.}
 
 \item{lower}{The lower limit of the forecast}
 
@@ -22,7 +22,7 @@ A list of forecast values within 80\% and 95\% confidence band. The values are:
 \item{\code{Upper 95\%}}{Forecast at upper 95\% confidence level.}
 }
 \description{
-Constrained Forecast of One-sided Integer Response Model
+This package estimates the lower and upper 80\% and 95\% forecasts of the Model. The final values are within the lower and upper limits of the base data.
 }
 \examples{
 library(splines)

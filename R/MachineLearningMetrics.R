@@ -1,5 +1,7 @@
 #' Collection of Machine Learning Model Metrics for Easy Reference
 #'
+#' This Package estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
+#'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
 #' @param Model The Estimated Model (*Model* = a + bx)
@@ -155,12 +157,15 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   kutuf <- if  (kutuf != 0) kutuf else .5
 
   RD01 <- signif(ifelse(Name == "ARIMA",  Model$aic,
-                       ifelse(Name == "SMOOTH"| Name == "Values", 0, stats::AIC(Model))), 2)
+                       ifelse(Name == "SMOOTH"| Name == "Values", 0,
+                              stats::AIC(Model))), 2)
   RD02 <- signif(ifelse(Name == "ARIMA",  Model$bic,
-                       ifelse(Name == "SMOOTH"| Name == "Values", 0, stats::BIC(Model))), 2)
+                       ifelse(Name == "SMOOTH"| Name == "Values", 0,
+                              stats::BIC(Model))), 2)
   RD03 <- signif(ifelse(Name == "ARIMA" |
                          Name == "SMOOTH"| Form == "GLM"| Form == "ALM"|
-                         Name == "Values"| Name == "Logit", 0, summary(Model)$r.squared), 2)
+                         Name == "Values"| Name == "Logit", 0,
+                        summary(Model)$r.squared), 2)
   RD04 <- signif(ifelse(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
                          Form == "ALM"| Name == "Values"| Name == "Logit", 0,
                        summary(Model)$adj.r.squared), 2)
@@ -173,13 +178,16 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
                       ModelMetrics::auc(yvalue, Preds)), 2)
   RD10 = signif(Metrics::bias(yvalue, Preds), 2)
   RD11 = signif(ifelse(Form == "LM" | TTy == "Number"| Form == "ALM",
-                       ModelMetrics::ce(yvalue, Predy), ModelMetrics::ce(Model)), 2)
-  RD12 = signif(ifelse(Form == "LM" | Form == "ALM", Metrics::f1(yvalue, Predy),
+                       ModelMetrics::ce(yvalue, Predy),
+                       ModelMetrics::ce(Model)), 2)
+  RD12 = signif(ifelse(Form == "LM" | Form == "ALM",
+                       Metrics::f1(yvalue, Predy),
                       ModelMetrics::f1Score(yvalue, Preds,
                                             cutoff = kutuf)), 2)
   RD13 = signif(sum(na.omit((Metrics::ll(yvalue, Preds))), 2))
-  RD14 = signif(ifelse(Form == "LM" | Form == "ALM", ModelMetrics::logLoss(yvalue, Predy),
-                      ModelMetrics::logLoss(yvalue, Preds)), 2)
+  RD14 = signif(ifelse(Form == "LM" | Form == "ALM",
+                       ModelMetrics::logLoss(yvalue, Predy),
+                       ModelMetrics::logLoss(yvalue, Preds)), 2)
   RD15 = if(Form == "GLM"){
     signif(ModelMetrics::mae(actual = yvalue, predicted = Preds), 2)
   } else if (Form == "LM"| TTy == "Number"| Form == "ALM"){
@@ -190,22 +198,26 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
 
   RD16 = signif(Metrics::mape(yvalue, Predy), 2)
   RD17 = signif(ifelse(Name != "Values",
-                       Metrics::mapk(actual = Observed, predicted = Model, k = K),
-                       0), 2)
+                       Metrics::mapk(actual = Observed, predicted = Model,
+                                     k = K), 0), 2)
   RD18 = signif(Metrics::mase(yvalue, Preds), 2)
   RD19 = signif(Metrics::mdae(yvalue, Predy), 2)
-  RD20 = signif(ifelse(Form == "LM" | Form == "ALM", ModelMetrics::mse(yvalue, Predy),
+  RD20 = signif(ifelse(Form == "LM" | Form == "ALM",
+                       ModelMetrics::mse(yvalue, Predy),
                       ModelMetrics::mse(yvalue, Preds)), 2)
   RD21 = signif(Metrics::msle(yvalue, Preds), 2)
   RD22 = signif(Metrics::percent_bias(yvalue, Predy), 2)
-  RD23 = signif(ifelse(Form == "LM" | Form == "ALM", ModelMetrics::precision(yvalue, Predy),
+  RD23 = signif(ifelse(Form == "LM" | Form == "ALM",
+                       ModelMetrics::precision(yvalue, Predy),
                       ModelMetrics::precision(yvalue, Preds,
                                               cutoff = kutuf)), 2)
   RD24 = signif(Metrics::rae(yvalue, Predy), 2)
-  RD25 = signif((ifelse(Form == "LM" | Form == "ALM", ModelMetrics::recall(yvalue, Predy),
+  RD25 = signif((ifelse(Form == "LM" | Form == "ALM",
+                        ModelMetrics::recall(yvalue, Predy),
                        ModelMetrics::recall(yvalue, Preds,
                                             cutoff = kutuf))), 2)
-  RD26 = signif(ifelse(Form == "LM" | Form == "ALM", ModelMetrics::rmse(yvalue, Predy),
+  RD26 = signif(ifelse(Form == "LM" | Form == "ALM",
+                       ModelMetrics::rmse(yvalue, Predy),
                       ModelMetrics::rmse(yvalue, Preds)), 2)
   RD27 = signif(Metrics::rmsle(yvalue, Preds), 2)
   RD28 = signif(Metrics::rrse(yvalue, Preds), 2)
@@ -230,8 +242,8 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   }
 
   RD37 = WLE
-  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC", signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
-
+  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
+                 signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
                       ModelMetrics::brier(yvalue, Preds),
                       ModelMetrics::brier(Model)), 0)
@@ -260,7 +272,6 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
                       ModelMetrics::ppv(yvalue, Preds, cutoff = kutuf)), 0)
   RD49 = signif(ifelse(Form == "LM" | Form == "ALM", 0,
                       ModelMetrics::npv(yvalue, Preds, cutoff = kutuf)), 0)
-
   results <- list(
     "Absolute Error" = RD06,
     "Absolute Percent Error" = RD07,
