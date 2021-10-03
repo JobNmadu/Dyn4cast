@@ -1,4 +1,4 @@
-#' Collection of Regression Metrics for Easy Reference
+#' Collection of Machine Learning Model Metrics for Easy Reference
 #'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
@@ -10,7 +10,7 @@
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)
 #'
 #' @return A list with the following components:
-#'#' \item{\code{Absolute Error}}{of the Model.}
+#' \item{\code{Absolute Error}}{of the Model.}
 #' \item{\code{Absolute Percent Error}}{of the Model.}
 #' \item{\code{Accuracy}}{of the Model.}
 #' \item{\code{Adjusted R Square}}{of the Model.}
@@ -69,7 +69,6 @@
 #' @importFrom Metrics ape
 #' @importFrom Metrics apk
 #' @importFrom Metrics bias
-#' @importFrom Metrics ce
 #' @importFrom Metrics f1
 #' @importFrom Metrics ll
 #' @importFrom Metrics mape
@@ -113,13 +112,18 @@
 #' @importFrom utils globalVariables
 #'
 #' @examples
-#'
-
-utils::globalVariables("prob")
+#' library(splines)
+#' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
+#' data = Data1)
+#' MachineLearningMetrics(Observed = Data1,
+#' yvalue = Data1$states,
+#'  Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0,
+#'  TTy = "Number")
 
 MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy) {
   Predy = 0
   Preds = 0
+  Probable = 0
   Predy <- if (Name == "ARIMA") {
     Model[["fitted"]]
   } else if (Form == "ALM") {
@@ -140,8 +144,8 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
     0
   } else if (Form == "GLM" & Name != "Log") {
     KK <- broom::augment(Model, data = Observed) %>%
-      dplyr::mutate(prob =  1/(1 + exp(-KK$.fitted)), Observed) %>%
-      dplyr::mutate(Predicted =  ifelse(prob > 0.5, 1, 0))
+      dplyr::mutate(Probable =  1/(1 + exp(-KK$.fitted)), Observed) %>%
+      dplyr::mutate(Predicted =  ifelse(Probable > 0.5, 1, 0))
     KK$Predicted
   } else {
     stats::predict(Model, type = "response")
@@ -165,11 +169,11 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   RD07 = signif(sum(Metrics::ape(yvalue, Predy)), 2)
   RD08 = signif(Metrics::apk(actual = yvalue, predicted = Preds, k = K), 2)
   RD09 = signif(ifelse(Form == "LM"| Form == "ALM" |Form == "ARDL" |
-                        TTy == "Number" | Name == "nil" & ppk == 1, ModelMetrics::auc(yvalue, Predy),
+                        TTy == "Number" | Name == "nil" & ppk == 1, 0,
                       ModelMetrics::auc(yvalue, Preds)), 2)
   RD10 = signif(Metrics::bias(yvalue, Preds), 2)
   RD11 = signif(ifelse(Form == "LM" | TTy == "Number"| Form == "ALM",
-                       Metrics::ce(yvalue, Predy), ModelMetrics::ce(Model)), 2)
+                       ModelMetrics::ce(yvalue, Predy), ModelMetrics::ce(Model)), 2)
   RD12 = signif(ifelse(Form == "LM" | Form == "ALM", Metrics::f1(yvalue, Predy),
                       ModelMetrics::f1Score(yvalue, Preds,
                                             cutoff = kutuf)), 2)

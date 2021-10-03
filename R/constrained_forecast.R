@@ -1,4 +1,3 @@
-
 #' Constrained Forecast of One-sided Integer Response Model
 #'
 #' @param Model This is the forecast of the scaled fitted values of supported models.

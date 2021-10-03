@@ -29,7 +29,7 @@
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
 #' @importFrom stats smooth.spline
-#' @importFrom Metrics rmse
+#' @importFrom ModelMetrics rmse
 #' @importFrom splines bs
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
@@ -48,14 +48,13 @@
 #' @importFrom forecast forecast
 #' @importFrom utils globalVariables
 #' @importFrom zoo yearmon
+#' @importFrom lifecycle badge
 #'
 #' @name DynamicForecast
 #'
 #' @export DynamicForecast
 #'
 #' @aliases Data
-#'
-#' `r lifecycle::badge('experimental')`
 #'
 #' @examples
 #' library(Dyn4cast)
@@ -85,6 +84,8 @@ utils::globalVariables(c("Spline without knots",
                          "Ensembled based on summed weight",
                          "Ensembled based on weight of fit","Date", "Day",
                          "Forecast", "Models"))
+
+lifecycle::badge('experimental')
 
 DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   Data$Day <- ss <- seq(1:length(Data$Case))
@@ -150,13 +151,13 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
                    "With Knots", "Polynomial", "Lower ARIMA", "Upper ARIMA")
   #KK91$Date <- as.character(KK91$Date)
 
-  RMSE91 <- c("Without knots" = Metrics::rmse(Data$Case,
+  RMSE91 <- c("Without knots" = ModelMetrics::rmse(Data$Case,
                                               Without.knots),
-              "Smooth Spline" = Metrics::rmse(Data$Case, With.knots),
-              "With knots" = Metrics::rmse(Data$Case, Smooth),
-              "Polynomial" = Metrics::rmse(Data$Case, Quadratic),
-              "Lower ARIMA" = Metrics::rmse(Data$Case, ARIMA),
-              "Upper ARIMA" = Metrics::rmse(Data$Case, ARIMA))
+              "Smooth Spline" = ModelMetrics::rmse(Data$Case, With.knots),
+              "With knots" = ModelMetrics::rmse(Data$Case, Smooth),
+              "Polynomial" = ModelMetrics::rmse(Data$Case, Quadratic),
+              "Lower ARIMA" = ModelMetrics::rmse(Data$Case, ARIMA),
+              "Upper ARIMA" = ModelMetrics::rmse(Data$Case, ARIMA))
 
   #RMSE <- 1/RMSE
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
@@ -172,12 +173,12 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
   KK91$`Ensembled based on weight of fit` <- kk5191[["mean"]]
-  RMSE91$`Ensembled with equal weight` <- Metrics::rmse(Data$Case, kk3091)
-  RMSE91$`Ensembled based on weight` <- Metrics::rmse(Data$Case,
+  RMSE91$`Ensembled with equal weight` <- ModelMetrics::rmse(Data$Case, kk3091)
+  RMSE91$`Ensembled based on weight` <- ModelMetrics::rmse(Data$Case,
                                                                fitted.values(kk4091))
-  RMSE91$`Ensembled based on summed weight` <- Metrics::rmse(Data$Case,
+  RMSE91$`Ensembled based on summed weight` <- ModelMetrics::rmse(Data$Case,
                                                                fitted.values(kk6091))
-  RMSE91$`Ensembled based on weight of fit` <- Metrics::rmse(Data$Day, P_weight91)
+  RMSE91$`Ensembled based on weight of fit` <- ModelMetrics::rmse(Data$Day, P_weight91)
   DDf91 <- c("Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
              "Lower ARIMA", "Upper ARIMA",
