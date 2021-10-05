@@ -1,7 +1,7 @@
 ## code to prepare `Data` dataset goes here
 
 library(readxl)
-Data1 <- read_excel("data/data1.xlsx")
-Data1$Date <- as.Date(Data1$Date)
+StatesAffected <- read_excel("data/data1.xlsx")
+StatesAffected$Date <- as.Date(StatesAffected$Date)
 
-usethis::use_data(Data1, overwrite = TRUE)
+usethis::use_data(StatesAffected, overwrite = TRUE)

@@ -79,9 +79,9 @@ This Package estimates over 40 various Metrics for assessing the quality of Mach
 \examples{
 library(splines)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-data = Data1)
-MachineLearningMetrics(Observed = Data1,
-yvalue = Data1$states,
+data = StatesAffected)
+MachineLearningMetrics(Observed = StatesAffected,
+yvalue = StatesAffected$states,
  Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0,
  TTy = "Number")
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/constrained_forecast.R
 \name{constrained_forecast}
 \alias{constrained_forecast}
-\alias{Data1}
+\alias{StatesAffected}
 \title{Constrained Forecast of One-sided Integer Response Model}
 \usage{
 constrained_forecast(Model, lower, upper)
@@ -30,7 +30,7 @@ library(forecast)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-data = Data1)
+data = StatesAffected)
 FitModel <- scaled_logit(x = fitted.values(Model), lower = lower,
  upper = upper)
 ForecastModel <- forecast(FitModel, h = length(200))

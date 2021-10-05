@@ -14,7 +14,7 @@
 #' lower <- 1
 #' upper <- 37
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-#' data = Data1)
+#' data = StatesAffected)
 #' scaled_logit(x = fitted.values(Model), lower = lower,
 #'  upper = upper)
 #'

@@ -1,7 +1,7 @@
 ## code to prepare `Data` dataset goes here
 
 library(readxl)
-Data <- read_excel("data/Data.xlsx")
-Data$Date <- as.Date(Data$Date)
+COVID19Nig <- read_excel("data/Data.xlsx")
+COVID19Nig$Date <- as.Date(COVID19Nig$Date)
 
-usethis::use_data(Data, overwrite = TRUE)
+usethis::use_data(COVID19Nig, overwrite = TRUE)

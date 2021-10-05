@@ -54,21 +54,22 @@
 #'
 #' @export DynamicForecast
 #'
-#' @aliases Data
+#' @aliases COVID19Nig
 #'
 #' @examples
 #' library(Dyn4cast)
-#' Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y') # The date is reformatted
-#' Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case)) #data length for forecast
+#' COVID19Nig$Date <- as.Date(COVID19Nig$Date,
+#' format = '%m/%d/%Y') # The date is reformatted
+#' Dss <- seq(COVID19Nig$Date[1], by = "day",
+#' length.out = length(COVID19Nig$Case)) #data length for forecast
+#'
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
-#' Data <- Data[Data$Date <= lastdayfo21 - 28, ] # desired length of forecast
+#' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 #' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
 #'
-#' Data$Date <- as.Date(Data$Date, format = '%m/%d/%Y')
-#' Dss <- seq(Data$Date[1], by = "day", length.out = length(Data$Case))
 #' lastdayfo21 <- Dss[length(Dss)]
-#' Data <- Data[Data$Date <= lastdayfo21 - 14, ]
+#' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
 #' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
 #'

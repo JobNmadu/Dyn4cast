@@ -1,13 +1,13 @@
 ## code to prepare `Data` dataset goes here
 
-Data <- readxl::read_excel("data-raw/data/Data.xlsx")
-Data$Date <- as.Date(Data$Date)
-saveRDS(Data, "inst/Data.RDS")
+COVID19Nig <- readxl::read_excel("data-raw/data/Data.xlsx")
+COVID19Nig$Date <- as.Date(COVID19Nig$Date)
+saveRDS(COVID19Nig, "inst/COVID19Nig.RDS")
 
-usethis::use_data(Data, overwrite = TRUE)
+usethis::use_data(COVID19Nig, overwrite = TRUE)
 
-Data1 <- readxl::read_excel("data-raw/data/data1.xlsx")
-Data1$Date <- as.Date(Data1$Date)
-saveRDS(Data1, "inst/StatesAffected.RDS")
+StatesAffected <- readxl::read_excel("data-raw/data/data1.xlsx")
+StatesAffected$Date <- as.Date(StatesAffected$Date)
+saveRDS(StatesAffected, "inst/StatesAffected.RDS")
 
-usethis::use_data(Data1, overwrite = TRUE)
+usethis::use_data(StatesAffected, overwrite = TRUE)
