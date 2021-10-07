@@ -6,7 +6,8 @@ test_that("DynamicForecast works", {
 
   test_model <- DynamicForecast(Data = DDD,
                                 BREAKS = BREAKS,
-                                MaximumDate = "2021-02-08", Trend = "Day")
+                                MaximumDate = "2021-02-08", Trend = "Day",
+                                Type = "Integer")
   Test_01 <- test_model$Plot
   Test_02 <- test_model[["Spline without knots"]][["coefficients"]]
   Test_03 <- test_model[["Spline with knots"]][["coefficients"]]

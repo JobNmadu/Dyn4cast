@@ -12,6 +12,8 @@
 \item{MaximumDate}{The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.}
 
 \item{Trend}{The type of trend. There are three options \strong{Day, Month and Year}.}
+
+\item{Type}{The type of response variable. There are two options \strong{Continuous and Integer}. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.}
 }
 \value{
 A list with the following components:
@@ -24,9 +26,11 @@ A list with the following components:
 \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
 \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed against the trend.}
 \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
-\item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
+\item{\code{Unconstrained Forecast}}{The forecast if the response variable is continuous. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
+\item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
 \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
-\item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
+\item{\code{Unconstrained forecast Plot}}{The combined plots of the uncontrained forecasts using ggplot. }
+\item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
@@ -42,11 +46,13 @@ length.out = length(COVID19Nig$Case)) #data length for forecast
 lastdayfo21 <- Dss[length(Dss)] # The maximum length
 Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+Trend = "Day", Type = "Integer")
 
 lastdayfo21 <- Dss[length(Dss)]
 Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
-DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
+DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+Trend = "Day", Type = "Integer")
 
 }

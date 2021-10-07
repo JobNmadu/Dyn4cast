@@ -9,6 +9,7 @@
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.
 #'
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
+#' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
 #'
 #' @return A list with the following components:
 #' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
@@ -20,9 +21,11 @@
 #' \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
 #' \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed against the trend.}
 #' \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
-#' \item{\code{Forecast}}{The forecast is equivalent to the length of the dataset (equal days forecast).}
+#' \item{\code{Unconstrained Forecast}}{The forecast if the response variable is continuous. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
+#' \item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
 #' \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
-#' \item{\code{Plot}}{The combined plots of the forecasts using ggplot. }
+#' \item{\code{Unconstrained forecast Plot}}{The combined plots of the uncontrained forecasts using ggplot. }
+#' \item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
 #' \item{\code{Date}}{This is the date range for the forecast.}
 #'
 #' @import tidyverse
@@ -66,12 +69,14 @@
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+#' Trend = "Day", Type = "Integer")
 #'
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
-#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day")
+#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+#' Trend = "Day", Type = "Integer")
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
@@ -88,7 +93,7 @@ utils::globalVariables(c("Spline without knots",
 
 lifecycle::badge('experimental')
 
-DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
+DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -96,6 +101,10 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   fit11  <- stats::smooth.spline(Data$Day, Data$Case)
   fita1  <- forecast::auto.arima(Data$Case)
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
+  Linear <-  lm(Case ~      Day, data = Data)
+  Semilog <- lm(Case ~      log(Day), data = Data)
+  Growth <-  lm(log(Case+1) ~ Day, data = Data)
+
   Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
   MaximumDate <- as.Date(MaximumDate)
 
@@ -123,12 +132,19 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   Smooth <- fitted.values(fit11)
   ARIMA <- fita1[["fitted"]]
   Quadratic <- fitted.values(fitpi1)
+  Linear1  <- fitted.values(Linear)
+  Semilog1 <- fitted.values(Semilog)
+  Growth1  <- fitted.values(Growth)
 
   kk91   <- forecast::forecast(Without.knots,  h = length(Dsf19))
   kk091  <- forecast::forecast(With.knots,  h = length(Dsf19))
   kk191  <- forecast::forecast(Smooth,  h = length(Dsf19))
   kk1091 <- forecast::forecast(Quadratic, h = length(Dsf19))
   kk291  <- forecast::forecast(fita1, h = length(Dsf19))
+  LinearF  <- forecast::forecast(Linear1, h = length(Dsf19))
+  SemilogF <- forecast::forecast(Semilog1, h = length(Dsf19))
+  GrowthF  <- forecast::forecast(Growth1, h = length(Dsf19))
+
   kk3091 <- (Without.knots + With.knots +
                Smooth + Quadratic +
                ARIMA)/5
@@ -140,17 +156,24 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
                  ARIMA)
   kk6191 <- forecast::forecast(fitted.values(kk6091), h = length(Dsf19))
 
-  KK91 <- as.data.frame(cbind("Date" = Dsf19,"Day" = ss, "Without Knots" =
-                                kk91[["mean"]], "Smooth spline" =
-                                kk091[["mean"]], "With Knots" =
-                                kk191[["mean"]], "Polynomial" =
-                                kk1091[["mean"]], "Lower ARIMA" =
-                                kk291[["lower"]], "Upper ARIMA" =
-                                kk291[["upper"]]))
-  KK91 <- KK91[,-c(7,9)]
-  names(KK91) <- c("Date", "Day", "Without Knots", "Smooth spline",
-                   "With Knots", "Polynomial", "Lower ARIMA", "Upper ARIMA")
-  #KK91$Date <- as.character(KK91$Date)
+  KK91 <- as.data.frame(cbind("Date" = Dsf19,"Day" = ss,
+                              "Linear" = LinearF[["mean"]],
+                              "Semilog" = SemilogF[["mean"]],
+                              "Growth" = GrowthF[["mean"]],
+                              "Without Knots" = kk91[["mean"]],
+                              "Smooth spline" = kk091[["mean"]],
+                              "With Knots" = kk191[["mean"]],
+                              "Polynomial" = kk1091[["mean"]],
+                              "Lower ARIMA" = kk291[["lower"]],
+                              "Upper ARIMA" = kk291[["upper"]]))
+  KK91 <- KK91[,-c(10,12)]
+  names(KK91) <- c("Date", "Day", "Linear", "Semilog", "Growth",
+                   "Without Knots", "Smooth spline", "With Knots",
+                   "Polynomial", "Lower ARIMA", "Upper ARIMA")
+  RMSE91L <- as.data.frame(cbind(
+    "Linear" = ModelMetrics::rmse(Data$Case, Linear1),
+    "Semilog" = ModelMetrics::rmse(Data$Case, Semilog1),
+    "Growth" = ModelMetrics::rmse(Data$Case, Growth1)))
 
   RMSE91 <- c("Without knots" = ModelMetrics::rmse(Data$Case,
                                               Without.knots),
@@ -160,7 +183,6 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
               "Lower ARIMA" = ModelMetrics::rmse(Data$Case, ARIMA),
               "Upper ARIMA" = ModelMetrics::rmse(Data$Case, ARIMA))
 
-  #RMSE <- 1/RMSE
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
   KK91$Date <- as.Date(KK91$Date, origin = "1970-01-01")
   KK91$`Ensembled with equal weight` <- kk3191[["mean"]]
@@ -180,46 +202,40 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
   RMSE91$`Ensembled based on summed weight` <- ModelMetrics::rmse(Data$Case,
                                                                fitted.values(kk6091))
   RMSE91$`Ensembled based on weight of fit` <- ModelMetrics::rmse(Data$Day, P_weight91)
-  DDf91 <- c("Without knots", "Smooth Spline",
+  DDf91 <- c("Linear", "Semilog", "Growth", "Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
              "Lower ARIMA", "Upper ARIMA",
-             "Ensembled with equal weight",
-             "Ensembled based on weight",
-             "Ensembled based on summed weight",
-             "Ensembled based on weight of fit" )
+             "Essembled with equal weight",
+             "Essembled based on weight",
+             "Essembled based on summed weight",
+             "Essembled based on weight of fit" )
   Forcasts91 <- colSums(KK91[,-c(1,2)])
   Fore_f91 <- as.data.frame(cbind("Model" = DDf91,
                                   "Case" =
                                     formattable::comma(round(Forcasts91, 0))))
-  RMSE_f91 <- c(
-    "Without knots" =
-      round(RMSE91$`Without knots`, 2),
-    "Smooth Spline"  =
-      round(RMSE91$`Smooth Spline`, 2),
-    "With knots"  =
-      round(RMSE91$`With knots`, 2),
-    "Polynomial"  =
-      round(RMSE91$Polynomial, 2),
-    "Lower ARIMA"  =
-      round(RMSE91$`Lower ARIMA`, 2),
-    "Upper ARIMA"  =
-      round(RMSE91$`Upper ARIMA`, 2),
-    "Ensembled with equal weight"  =
-      round(RMSE91$`Ensembled with equal weight`, 2),
-    "Ensembled based on weight"  =
-      round(RMSE91$`Ensembled based on weight`, 2),
-    "Ensembled based on weight"  =
-      round(RMSE91$`Ensembled based on summed weight`, 2),
-    "Ensembled based on weight of fit"  =
-      round(RMSE91$`Ensembled based on weight of fit`, 2)
-  )
+  RMSE_f91 <- c("Linear" =  round(RMSE91L$Linear, 2),
+                "Semilog" = round(RMSE91L$Semilog, 2),
+                "Growrh" = round(RMSE91L$Growth, 2),
+                "Without knots" = round(RMSE91$`Without knots`, 2),
+                "Smooth Spline"  = round(RMSE91$`Smooth Spline`, 2),
+                "With knots"  = round(RMSE91$`With knots`, 2),
+                "Polynomial"  = round(RMSE91$Polynomial, 2),
+                "Lower ARIMA"  = round(RMSE91$`Lower ARIMA`, 2),
+                "Upper ARIMA"  = round(RMSE91$`Upper ARIMA`, 2),
+                "Ensembled with equal weight"  =
+                  round(RMSE91$`Ensembled with equal weight`, 2),
+                "Ensembled based on weight"  =
+                  round(RMSE91$`Ensembled based on weight`, 2),
+                "Ensembled based on weight"  =
+                  round(RMSE91$`Ensembled based on summed weight`, 2),
+                "Ensembled based on weight of fit"  =
+                  round(RMSE91$`Ensembled based on weight of fit`, 2))
   RMSE_f91 <- cbind("Models" = DDf91, "RMSE" = RMSE_f91)
 
   KK191 <- KK91 %>%
     tidyr::pivot_longer(-c(Date, Day), names_to = "Models",
                         values_to = "Forecast")
   KK191$Date <- as.Date(KK191$Date)
-  #KK911$Date <- as.character(as.Date(KK191$Date, origin = "2021-02-09"))
   KK0091 <- ggplot2::ggplot(KK191) +
     aes(x = Date, y = Forecast, colour = Models, group = Models) +
     geom_line(size = 1L) +
@@ -229,6 +245,100 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
     labs(title = Title,
          subtitle = " ",
          caption = " ")
+
+  if (Type == "Continuous") {
+    Fore_f91c  = NULL
+    KK0091c    = NULL
+  } else {
+    lower = min(Data$Case)
+    upper = max(Data$Case)
+    kkF  <- forecast::forecast(scaled_logit(x = Without.knots,
+                                            lower = lower, upper = upper),
+                               h = length(Dsf19))
+    kkc <- constrained_forecast(Model = kkF, lower = lower, upper = upper)
+    kk0F <- forecast::forecast(scaled_logit(x = With.knots, lower = lower,
+                                            upper = upper), h = length(Dsf19))
+    kk0c <- constrained_forecast(Model = kk0F, lower = lower, upper = upper)
+    kk1F <- forecast::forecast(scaled_logit(x = Smooth, lower = lower,
+                                            upper = upper), h = length(Dsf19))
+    kk1c <- constrained_forecast(Model = kk1F, lower = lower, upper = upper)
+    kk10F <- forecast::forecast(scaled_logit(x = Quadratic, lower = lower,
+                                             upper = upper),
+                                h = length(Dsf19))
+    kk10c <- constrained_forecast(Model = kk10F, lower = lower, upper = upper)
+    kk2F <- forecast::forecast(scaled_logit(x = ARIMA, lower = lower,
+                                            upper = upper), h = length(Dsf19))
+    kk2c <- constrained_forecast(Model = kk2F, lower = lower, upper = upper)
+    kk31F <- forecast::forecast(scaled_logit(x = kk3091, lower = lower,
+                                             upper = upper),
+                                h = length(Dsf19))
+    kk31c <- constrained_forecast(Model = kk31F, lower = lower, upper = upper)
+    kk41F <- forecast::forecast(scaled_logit(x = fitted.values(kk4091),
+                                             lower = lower, upper = upper),
+                                h = length(Dsf19))
+    kk41c <- constrained_forecast(Model = kk41F, lower = lower, upper = upper)
+    kk61F <- forecast::forecast(scaled_logit(x = fitted.values(kk6091),
+                                             lower = lower, upper = upper),
+                                h = length(Dsf19))
+    kk61c <- constrained_forecast(Model = kk61F, lower = lower, upper = upper)
+    KK91c <- as.data.frame(cbind("Date" = Dsf19, "Day" = 1:length(Dsf19),
+                                 "Linear" = LinearF[["mean"]],
+                                 "Semilog" = SemilogF[["mean"]],
+                                 "Growth" = GrowthF[["mean"]]))
+    KK91c$`Smooth spline 80%` = kk1c$Lower80
+    KK91c$`Smooth spline 95%` = kk1c$Upper95
+    KK91c$`Without knots 80%` = kk0c$Lower80
+    KK91c$`Without knots 95%` = kk0c$Upper95
+    KK91c$`With knots 80%`    = kkc$Lower80
+    KK91c$`With knots 95%`    = kkc$Upper95
+    KK91c$`Polynomial 80%`    = kk10c$Lower80
+    KK91c$`Polynomial 95%`    = kk10c$Upper95
+    KK91c$`ARIMA 80%`         = kk2c$Lower80
+    KK91c$`ARIMA 95%`         = kk2c$Upper95
+    KK91c$Date <- as.Date(KK91c$Date, origin = "1970-01-01")
+    DDfc <- c("Linear", "Semilog", "Growth", "Without knots 80%",
+              "Without knots 95%", "Smooth Spline 80%",
+              "Smooth Spline 95%", "With knots 80%", "With knots 95%",
+              "Quadratic Polynomial 80%", "Quadratic Polynomial 95%",
+              "ARIMA 80%", "ARIMA 95%",
+              "Essembled with equal weight 80%",
+              "Essembled with equal weight 95%",
+              "Essembled based on weight 80%", "Essembled based on weight 95%",
+              "Essembled based on summed weight 80%",
+              "Essembled based on summed weight 95%",
+              "Essembled based on weight of fit 80%",
+              "Essembled based on weight of fit 95%" )
+    KK91c$`Essembled with equal weight 80%` <- kk31c$Lower80
+    KK91c$`Essembled with equal weight 95%` <- kk31c$Upper95
+    KK91c$`Essembled based on weight 80%` <- kk41c$Lower80
+    KK91c$`Essembled based on weight 95%` <- kk41c$Upper95
+    KK91c$`Essembled based on summed weight 80%` <- kk61c$Lower80
+    KK91c$`Essembled based on summed weight 95%` <- kk61c$Upper95
+    kk51F <- forecast::forecast(scaled_logit(x = P_weight91,
+                                             lower = lower, upper = upper),
+                                h = length(Dsf19))
+    kk51c <- constrained_forecast(Model = kk51F, lower = lower, upper = upper)
+    KK91c$`Essembled based on weight of fit 80%` <- kk51c$Lower80
+    KK91c$`Essembled based on weight of fit 95%` <- kk51c$Upper95
+    Forcasts91c <- colSums(KK91c[,-c(1,2)])
+    Fore_f91c <- as.data.frame(cbind("Model" = DDfc,
+                                     "Confirmed cases" =
+                                       comma(round(Forcasts91c, 0))))
+    KK191c <- KK91c %>%
+      tidyr::pivot_longer(-c(Date, Day), names_to = "Models",
+                          values_to = "Forecast")
+    KK191c$Date <- as.Date(KK191c$Date)
+    KK0091c <- ggplot2::ggplot(KK191c) +
+      aes(x = Date, y = Forecast, colour = Models, group = Models) +
+      geom_line(size = 1L) +
+      scale_color_hue() +
+      theme_bw() +
+      theme() +
+      labs(title = Title,
+           subtitle = " ",
+           caption = " ")
+  }
+
   results <- list(
     "Spline without knots" = fit01,
     "Spline with knots" = fit10,
@@ -239,10 +349,12 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend) {
     "Ensembled based on weight" = kk4091,
     "Ensembled based on summed weight" = kk6091,
     "Ensembled based on weight of fit" = P_weight91,
-    "Forecast" = Fore_f91,
+    "Normal Forecast" = Fore_f91,
     "RMSE"     = RMSE_f91,
-    "Plot"     = KK0091,
-    "Date"     = Title
+    "Unconstrained forecast Plot"     = KK0091,
+    "Date"     = Title,
+    "Constrained Forecast" = Fore_f91c,
+    "Constrained forecast Plot"     = KK0091c
   )
   return(results)
 }
