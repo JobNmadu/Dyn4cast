@@ -2,7 +2,7 @@
 #'
 #' The `DynamicForecast()` estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
 #'
-#' @param Data A two column (Date, Case) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available.
+#' @param Data A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available. The Response **y** variable must be specified. If there are other variables in the data, then the date must be in column one.
 #'
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models.
 #'
@@ -94,6 +94,7 @@ utils::globalVariables(c("Spline without knots",
 lifecycle::badge('experimental')
 
 DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
+
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -349,7 +350,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
     "Ensembled based on weight" = kk4091,
     "Ensembled based on summed weight" = kk6091,
     "Ensembled based on weight of fit" = P_weight91,
-    "Normal Forecast" = Fore_f91,
+    "Unconstrained Forecast" = Fore_f91,
     "RMSE"     = RMSE_f91,
     "Unconstrained forecast Plot"     = KK0091,
     "Date"     = Title,

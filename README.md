@@ -85,9 +85,7 @@ lastdayfo21 <- Dss[length(Dss)]
 
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
-#> Warning in RMSE91$`Ensembled with equal weight` <-
-#> ModelMetrics::rmse(Data$Case, : Coercing LHS to a list
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
 summary(Days_28$`Ensembled based on summed weight`)
 #> 
 #> Call:
@@ -113,7 +111,20 @@ summary(Days_28$`Ensembled based on summed weight`)
 #> Multiple R-squared:  0.9487, Adjusted R-squared:  0.9479 
 #> F-statistic:  1162 on 5 and 314 DF,  p-value: < 2.2e-16
 
-knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_28$`Unconstrained Forecast`),
+             row.names = FALSE, "html")
+```
+
+<table>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+
+``` r
+knitr::kable(as.data.frame(Days_28$`Constrained Forecast`),
+             row.names = FALSE, "html")
 ```
 
 <table>
@@ -123,89 +134,177 @@ knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
 Model
 </th>
 <th style="text-align:left;">
-Case
+Confirmed cases
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Without knots
+Linear
 </td>
 <td style="text-align:left;">
-1606956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:left;">
-1414254
+277722
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-With knots
+Semilog
 </td>
 <td style="text-align:left;">
-991316
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quadratic Polynomial
-</td>
-<td style="text-align:left;">
-380508
+179540
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Lower ARIMA
+Growth
 </td>
 <td style="text-align:left;">
--126404
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:left;">
-939766
+2721
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled with equal weight
+Without knots 80%
 </td>
 <td style="text-align:left;">
-1381412
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ensembled based on weight
-</td>
-<td style="text-align:left;">
-153587
+187609
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on summed weight
+Without knots 95%
 </td>
 <td style="text-align:left;">
-210948
+782270
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight of fit
+Smooth Spline 80%
 </td>
 <td style="text-align:left;">
-1072054
+234556
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Smooth Spline 95%
+</td>
+<td style="text-align:left;">
+744670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots 80%
+</td>
+<td style="text-align:left;">
+235264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots 95%
+</td>
+<td style="text-align:left;">
+678456
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial 80%
+</td>
+<td style="text-align:left;">
+406348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial 95%
+</td>
+<td style="text-align:left;">
+430240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARIMA 80%
+</td>
+<td style="text-align:left;">
+86426
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARIMA 95%
+</td>
+<td style="text-align:left;">
+847342
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight 80%
+</td>
+<td style="text-align:left;">
+188264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight 95%
+</td>
+<td style="text-align:left;">
+730946
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight 80%
+</td>
+<td style="text-align:left;">
+80211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight 95%
+</td>
+<td style="text-align:left;">
+179294
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight 80%
+</td>
+<td style="text-align:left;">
+223874
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight 95%
+</td>
+<td style="text-align:left;">
+351414
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit 80%
+</td>
+<td style="text-align:left;">
+60739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit 95%
+</td>
+<td style="text-align:left;">
+807642
 </td>
 </tr>
 </tbody>
@@ -227,6 +326,30 @@ RMSE
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Linear
+</td>
+<td style="text-align:left;">
+307.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Semilog
+</td>
+<td style="text-align:left;">
+310.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Growth
+</td>
+<td style="text-align:left;">
+475.6
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Without knots
@@ -277,7 +400,7 @@ Upper ARIMA
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled with equal weight
+Essembled with equal weight
 </td>
 <td style="text-align:left;">
 175.47
@@ -285,7 +408,7 @@ Ensembled with equal weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight
+Essembled based on weight
 </td>
 <td style="text-align:left;">
 358.35
@@ -293,7 +416,7 @@ Ensembled based on weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on summed weight
+Essembled based on summed weight
 </td>
 <td style="text-align:left;">
 357.6
@@ -301,7 +424,7 @@ Ensembled based on summed weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight of fit
+Essembled based on weight of fit
 </td>
 <td style="text-align:left;">
 193.35
@@ -311,16 +434,20 @@ Ensembled based on weight of fit
 </table>
 
 ``` r
-Days_28$Plot
+Days_28$`Unconstrained forecast Plot`
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
+Days_28$`Constrained forecast Plot`
+```
+
+<img src="man/figures/README-example-2.png" width="100%" />
+
+``` r
 KK_14 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
-Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
-#> Warning in RMSE91$`Ensembled with equal weight` <-
-#> ModelMetrics::rmse(Data$Case, : Coercing LHS to a list
+Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
 
 summary(Days_14$`Ensembled based on weight`)
 #> 
@@ -406,7 +533,20 @@ summary(Days_14$`Ensembled based on weight`)
 #> Multiple R-squared:      1,  Adjusted R-squared:      1 
 #> F-statistic: 2.808e+05 on 31 and 288 DF,  p-value: < 2.2e-16
 
-knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_14$`Unconstrained Forecast`),
+             row.names = FALSE, "html")
+```
+
+<table>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+
+``` r
+knitr::kable(as.data.frame(Days_14$`Constrained Forecast`),
+             row.names = FALSE, "html")
 ```
 
 <table>
@@ -416,89 +556,177 @@ knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
 Model
 </th>
 <th style="text-align:left;">
-Case
+Confirmed cases
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Without knots
+Linear
 </td>
 <td style="text-align:left;">
-1606956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smooth Spline
-</td>
-<td style="text-align:left;">
-1414254
+277722
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-With knots
+Semilog
 </td>
 <td style="text-align:left;">
-991316
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quadratic Polynomial
-</td>
-<td style="text-align:left;">
-380508
+179540
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Lower ARIMA
+Growth
 </td>
 <td style="text-align:left;">
--126404
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Upper ARIMA
-</td>
-<td style="text-align:left;">
-939766
+2721
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled with equal weight
+Without knots 80%
 </td>
 <td style="text-align:left;">
-1381412
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ensembled based on weight
-</td>
-<td style="text-align:left;">
-153587
+187609
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on summed weight
+Without knots 95%
 </td>
 <td style="text-align:left;">
-210948
+782270
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight of fit
+Smooth Spline 80%
 </td>
 <td style="text-align:left;">
-1072054
+234556
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Smooth Spline 95%
+</td>
+<td style="text-align:left;">
+744670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots 80%
+</td>
+<td style="text-align:left;">
+235264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots 95%
+</td>
+<td style="text-align:left;">
+678456
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial 80%
+</td>
+<td style="text-align:left;">
+406348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial 95%
+</td>
+<td style="text-align:left;">
+430240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARIMA 80%
+</td>
+<td style="text-align:left;">
+86426
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARIMA 95%
+</td>
+<td style="text-align:left;">
+847342
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight 80%
+</td>
+<td style="text-align:left;">
+188264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight 95%
+</td>
+<td style="text-align:left;">
+730946
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight 80%
+</td>
+<td style="text-align:left;">
+80211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight 95%
+</td>
+<td style="text-align:left;">
+179294
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight 80%
+</td>
+<td style="text-align:left;">
+223874
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight 95%
+</td>
+<td style="text-align:left;">
+351414
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit 80%
+</td>
+<td style="text-align:left;">
+60739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit 95%
+</td>
+<td style="text-align:left;">
+807642
 </td>
 </tr>
 </tbody>
@@ -520,6 +748,30 @@ RMSE
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Linear
+</td>
+<td style="text-align:left;">
+307.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Semilog
+</td>
+<td style="text-align:left;">
+310.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Growth
+</td>
+<td style="text-align:left;">
+475.6
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Without knots
@@ -570,7 +822,7 @@ Upper ARIMA
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled with equal weight
+Essembled with equal weight
 </td>
 <td style="text-align:left;">
 175.47
@@ -578,7 +830,7 @@ Ensembled with equal weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight
+Essembled based on weight
 </td>
 <td style="text-align:left;">
 358.35
@@ -586,7 +838,7 @@ Ensembled based on weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on summed weight
+Essembled based on summed weight
 </td>
 <td style="text-align:left;">
 357.6
@@ -594,7 +846,7 @@ Ensembled based on summed weight
 </tr>
 <tr>
 <td style="text-align:left;">
-Ensembled based on weight of fit
+Essembled based on weight of fit
 </td>
 <td style="text-align:left;">
 193.35
@@ -604,10 +856,16 @@ Ensembled based on weight of fit
 </table>
 
 ``` r
-Days_14$Plot
+Days_14$`Unconstrained forecast Plot`
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="man/figures/README-example-3.png" width="100%" />
+
+``` r
+Days_14$`Constrained forecast Plot`
+```
+
+<img src="man/figures/README-example-4.png" width="100%" />
 
 ## Suggested packages
 
@@ -655,6 +913,10 @@ Hyndman, R. J. (2020). Quantile forecasting with ensembles and
 combinations in *Business Forecasting: The Emerging Role of Artificial
 Intelligence and Machine Learning*, eds. Gilliland, Tashman & Sglavo.
 John Wiley & Sons.
+
+Hyndman, R.J., & Athanasopoulos, G. (2021). *Forecasting: principles and
+practice*, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3.
+Accessed on July 30, 2021.
 
 ## Code of Conduct
 

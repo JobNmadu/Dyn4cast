@@ -22,7 +22,7 @@ A list of forecast values within 80\% and 95\% confidence band. The values are:
 \item{\code{Upper 95\%}}{Forecast at upper 95\% confidence level.}
 }
 \description{
-This package estimates the lower and upper 80\% and 95\% forecasts of the Model. The final values are within the lower and upper limits of the base data.
+This package estimates the lower and upper 80\% and 95\% forecasts of the Model. The final values are within the lower and upper limits of the base data. Used in conjunction with <scaled_logit> and <inv_scaled_logit> functions, they are adapted from Hyndman & Athanasopoulos (2021) and modified for independent use rather than be restricted to be used with a particular package.
 }
 \examples{
 library(splines)

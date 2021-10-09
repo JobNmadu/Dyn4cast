@@ -52,7 +52,7 @@ Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles.
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example, eval = TRUE}
+```{r example, eval = TRUE, warning = FALSE}
 
 library(Dyn4cast)
 load("data/COVID19Nig.rda")
@@ -63,21 +63,29 @@ lastdayfo21 <- Dss[length(Dss)]
 
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
 summary(Days_28$`Ensembled based on summed weight`)
 
-knitr::kable(as.data.frame(Days_28$Forecast), row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_28$`Unconstrained Forecast`),
+             row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_28$`Constrained Forecast`),
+             row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
-Days_28$Plot
+Days_28$`Unconstrained forecast Plot`
+Days_28$`Constrained forecast Plot`
 
 KK_14 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
-Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day")
+Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
 
 summary(Days_14$`Ensembled based on weight`)
 
-knitr::kable(as.data.frame(Days_14$Forecast), row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_14$`Unconstrained Forecast`),
+             row.names = FALSE, "html")
+knitr::kable(as.data.frame(Days_14$`Constrained Forecast`),
+             row.names = FALSE, "html")
 knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
-Days_14$Plot
+Days_14$`Unconstrained forecast Plot`
+Days_14$`Constrained forecast Plot`
 ```
 
 ## Suggested packages
@@ -107,7 +115,9 @@ The package is still very much in progress as such feedback, particularly at thi
 ## Bibliography
 Mahoney, M. (2021). [Model averaging methods: how and why to build ensemble models.](https://www.mm218.dev/posts/2021/01/model-averaging/)  
 
-Hyndman, R. J. (2020). Quantile forecasting with ensembles and combinations in _Business Forecasting: The Emerging Role of Artificial Intelligence and Machine Learning_, eds. Gilliland, Tashman & Sglavo. John Wiley & Sons. 
+Hyndman, R. J. (2020). Quantile forecasting with ensembles and combinations in _Business Forecasting: The Emerging Role of Artificial Intelligence and Machine Learning_, eds. Gilliland, Tashman & Sglavo. John Wiley & Sons.
+
+Hyndman, R.J., & Athanasopoulos, G. (2021). _Forecasting: principles and practice_, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3. Accessed on July 30, 2021.
 
 ## Code of Conduct  
 
