@@ -10,6 +10,7 @@
 #'
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
+#' @param ... Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.
 #'
 #' @return A list with the following components:
 #' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
@@ -65,18 +66,19 @@
 #' format = '%m/%d/%Y') # The date is reformatted
 #' Dss <- seq(COVID19Nig$Date[1], by = "day",
 #' length.out = length(COVID19Nig$Case)) #data length for forecast
+#' ORIGIN = "2020-02-29"
 #'
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 #' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#' Trend = "Day", Type = "Integer")
+#' Trend = "Day", Type = "Integer", origin = ORIGIN)
 #'
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
 #' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#' Trend = "Day", Type = "Integer")
+#' Trend = "Day", Type = "Integer", origin = ORIGIN)
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
@@ -93,7 +95,7 @@ utils::globalVariables(c("Spline without knots",
 
 lifecycle::badge('experimental')
 
-DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
+DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
 
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
@@ -106,8 +108,22 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
   Semilog <- lm(Case ~      log(Day), data = Data)
   Growth <-  lm(log(Case+1) ~ Day, data = Data)
 
-  Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
-  MaximumDate <- as.Date(MaximumDate)
+  MaxDayDat <- 0
+  if (is.null(MaximumDate)){
+    Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
+    Dss191 <- seq(max(Dss19)+1, by = 1, length.out = length(Data$Day))
+    DayDat0 <- as.Date(Dss19[length(Dss19)], origin = ...)
+    DayDat1 <- as.Date(Dss191[length(Dss191)], origin = ...)
+    MaxDayDat <- as.Date(DayDat0)
+  }else{
+    MaximumDate <- as.Date(MaximumDate)
+  }
+
+  if (MaximumDate == MaxDayDat){
+    MaximumDate <- MaxDayDat
+  }else{
+    MaximumDate <- MaximumDate
+  }
 
  if (Trend == "Day") {
     Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
@@ -197,11 +213,12 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
 
   kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
   KK91$`Ensembled based on weight of fit` <- kk5191[["mean"]]
-  RMSE91$`Ensembled with equal weight` <- ModelMetrics::rmse(Data$Case, kk3091)
-  RMSE91$`Ensembled based on weight` <- ModelMetrics::rmse(Data$Case,
-                                                               fitted.values(kk4091))
-  RMSE91$`Ensembled based on summed weight` <- ModelMetrics::rmse(Data$Case,
-                                                               fitted.values(kk6091))
+  RMSE91$`Ensembled with equal weight` <-
+    ModelMetrics::rmse(Data$Case, kk3091)
+  RMSE91$`Ensembled based on weight` <-
+    ModelMetrics::rmse(Data$Case, fitted.values(kk4091))
+  RMSE91$`Ensembled based on summed weight` <-
+    ModelMetrics::rmse(Data$Case, fitted.values(kk6091))
   RMSE91$`Ensembled based on weight of fit` <- ModelMetrics::rmse(Data$Day, P_weight91)
   DDf91 <- c("Linear", "Semilog", "Growth", "Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
@@ -304,7 +321,8 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type) {
               "ARIMA 80%", "ARIMA 95%",
               "Essembled with equal weight 80%",
               "Essembled with equal weight 95%",
-              "Essembled based on weight 80%", "Essembled based on weight 95%",
+              "Essembled based on weight 80%",
+              "Essembled based on weight 95%",
               "Essembled based on summed weight 80%",
               "Essembled based on summed weight 95%",
               "Essembled based on weight of fit 80%",
