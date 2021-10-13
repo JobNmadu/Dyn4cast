@@ -2,7 +2,7 @@
 #'
 #' @param formula a symbolic description of the model to be fit. The details of model specification are given below.
 #' @param data an optional data frame containing the variables in the model. By default the variables are taken from the environment which Mallows Cp is called from.
-#' @param Model logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).
+#' @param model logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).
 #' @param x logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).
 #' @param y logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).
 #' @param var.full the value of variance to be used in the denominator of the Mallows Cp, if 0 the variance estimated from the full model is used.
@@ -16,7 +16,7 @@
 #'
 #' @export
 #'
-Mallows_Cp <- function(formula, data = list(), Model = TRUE, x = FALSE,
+Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
                        y = FALSE, var.full = 0, contrasts = NULL,
                        verbose  =FALSE) {
   ret.x <- x
@@ -25,10 +25,10 @@ Mallows_Cp <- function(formula, data = list(), Model = TRUE, x = FALSE,
   mt <- terms(formula, data = data)
   mf <- cl <- match.call()
   mf$var.full <- mf$contrasts <- NULL
-  mf$Model <- mf$x <- mf$y <- NULL
+  mf$model <- mf$x <- mf$y <- NULL
   mf$verbose <- NULL
   mf$drop.unused.levels <- TRUE
-  mf[[1]] <- as.name("Model.frame")
+  mf[[1]] <- as.name("model.frame")
   mf <- eval(mf, sys.frame(sys.parent()))
   xvars <- as.character(attr(mt, "variables"))[-1]
   inter <- attr(mt, "intercept")
@@ -84,8 +84,8 @@ Mallows_Cp <- function(formula, data = list(), Model = TRUE, x = FALSE,
   result$xlevels <- xlev
   result$terms <- mt
 
-  if (Model)
-    result$Model <- mf
+  if (model)
+    result$model <- mf
   if (ret.x)
     result$x <- xdata
   if (ret.y)
@@ -115,9 +115,9 @@ summary.Mallows.Cp <- function (object, num.max=20, verbose=FALSE, ...) {
     num.max <- 1
   }
 
-  if(is.null(nModel == nrow(cp))) nModel <- 1
-  num.max <- min(nModel, num.max)
-  if (nModel != 1) {
+  if(is.null(nmodel == nrow(cp))) nmodel <- 1
+  num.max <- min(nmodel, num.max)
+  if (nmodel != 1) {
     nvar <- ncol(cp)-1
     nparam <- apply(cp[,(1:nvar)],1,sum)
     cp <- cp[cp[,(nvar+1)]<=(nparam+0.00001),]
