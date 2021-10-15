@@ -7,7 +7,7 @@
 Mallows_Cp(
   formula,
   data = list(),
-  Model = TRUE,
+  model = TRUE,
   x = FALSE,
   y = FALSE,
   var.full = 0,
@@ -20,7 +20,7 @@ Mallows_Cp(
 
 \item{data}{an optional data frame containing the variables in the model. By default the variables are taken from the environment which Mallows Cp is called from.}
 
-\item{Model}{logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).}
+\item{model}{logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).}
 
 \item{x}{logical. If TRUE the corresponding components of the fit (the model frame, the model matrix, the response).}
 

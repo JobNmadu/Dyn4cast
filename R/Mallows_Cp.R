@@ -59,6 +59,8 @@ Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
     var.full <- 0
   }
 
+  dyn.load(paste0("Mallows_Cp", .Platform$dynlib.ext))
+
   z <- .Fortran("Mallows_Cp",
                 as.double(ydata),
                 as.matrix(xdata),
