@@ -42,19 +42,40 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 ## Basic usage
 
-At present, the package exports a single function, `DynamicForecast`,
-which takes two required arguments: the `Data` of any recognized format
-but should be a **dataframe** containing two columns `Date` and `Case`.
-The Date is the *day/month/year* the data is collected while Case is the
-variable for forecasting. The Date must be in the recognized format
-i.e. ‘YYYY-MM-DD’. The other arguments parsed to the function are
-`MaximumDate`, which is the last date Data was collected and `BREAKS`,
-which is a vector of numbers and is used as `knots` in estimating spline
-polynomials.
+At present, the package exports the following functions:
+
+1.  `DynamicForecast` which takes two required arguments: the `Data` of
+    any recognized format but should be a **dataframe** containing two
+    columns `Date` and `Case`. The Date is the *day/month/year* the data
+    is collected while Case is the variable for forecasting. The Date
+    must be in the recognized format i.e. ‘YYYY-MM-DD’. The other
+    arguments parsed to the function are `MaximumDate`, which is the
+    last date Data was collected and `BREAKS`, which is a vector of
+    numbers and is used as `knots` in estimating spline polynomials.
+
+2.  `constrained_forecast` which constrain forecast of one-sided integer
+    forecast to line between the lower and upper limits of the base
+    data. The function estimates the lower and upper 80% and 95%
+    forecasts of the estimated model. This function works with two other
+    fuctions, that is, `inv_scaled_ligit` and `scaled_logit` which are
+    adapted from Hyndman & Athanasopoulos (2021) and both of which are
+    adopted.
+
+3.  `Percent` which affix the % sign on a value or a vectors of values.
+
+4.  `MachineLearningMetrics` which collects more than 40 metrics that
+    are useful in model selection. The beauty of this function is the
+    simplicity with which these metrics are collected from difference
+    packages and saves the user the need to load more than 10 libraries
+    in order to get these metrics.
+
+5.  `Mallows_CP` for determing the the Mallows CP. This function is a
+    work in progress but contributors are welcome.
 
 ## Citation
 
-This package can be cited as:  
+This package can be cited as:
+
 Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their
 Ensembles. R package version 11.11.00.
 <https://github.com/JobNmadu/Dyn4cast>.
@@ -116,8 +137,120 @@ knitr::kable(as.data.frame(Days_28$`Unconstrained Forecast`),
 ```
 
 <table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:left;">
+Case
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+Linear
+</td>
+<td style="text-align:left;">
+277722
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Semilog
+</td>
+<td style="text-align:left;">
+179540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Growth
+</td>
+<td style="text-align:left;">
+2721
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Without knots
+</td>
+<td style="text-align:left;">
+1606956
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Smooth Spline
+</td>
+<td style="text-align:left;">
+1414254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots
+</td>
+<td style="text-align:left;">
+991316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial
+</td>
+<td style="text-align:left;">
+380508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lower ARIMA
+</td>
+<td style="text-align:left;">
+-126404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Upper ARIMA
+</td>
+<td style="text-align:left;">
+939766
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight
+</td>
+<td style="text-align:left;">
+1381412
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight
+</td>
+<td style="text-align:left;">
+153587
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight
+</td>
+<td style="text-align:left;">
+210948
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit
+</td>
+<td style="text-align:left;">
+1072054
+</td>
 </tr>
 </tbody>
 </table>
@@ -538,8 +671,120 @@ knitr::kable(as.data.frame(Days_14$`Unconstrained Forecast`),
 ```
 
 <table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:left;">
+Case
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+Linear
+</td>
+<td style="text-align:left;">
+277722
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Semilog
+</td>
+<td style="text-align:left;">
+179540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Growth
+</td>
+<td style="text-align:left;">
+2721
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Without knots
+</td>
+<td style="text-align:left;">
+1606956
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Smooth Spline
+</td>
+<td style="text-align:left;">
+1414254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+With knots
+</td>
+<td style="text-align:left;">
+991316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quadratic Polynomial
+</td>
+<td style="text-align:left;">
+380508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lower ARIMA
+</td>
+<td style="text-align:left;">
+-126404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Upper ARIMA
+</td>
+<td style="text-align:left;">
+939766
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled with equal weight
+</td>
+<td style="text-align:left;">
+1381412
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight
+</td>
+<td style="text-align:left;">
+153587
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on summed weight
+</td>
+<td style="text-align:left;">
+210948
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Essembled based on weight of fit
+</td>
+<td style="text-align:left;">
+1072054
+</td>
 </tr>
 </tbody>
 </table>

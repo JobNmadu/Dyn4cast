@@ -33,7 +33,6 @@ Imports:
     ModelMetrics,
     broom,
     qpcR,
-    wle,
     dplyr
 Depends: 
     tidyverse,
