@@ -41,7 +41,6 @@ A list with the following components:
 \item{\code{GINI Coefficient}}{of the Model.}
 \item{\code{kappa statistic}}{of the Model.}
 \item{\code{Log Loss}}{of the Model.}
-\item{\code{Mallow’s cp}}{of the Model.}
 \item{\code{Matthews Correlation Coefficient}}{of the Model.}
 \item{\code{Mean Log Loss}}{of the Model.}
 \item{\code{Mean Absolute Error}}{of the Model.}

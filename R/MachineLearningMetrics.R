@@ -28,7 +28,7 @@
 #' \item{\code{GINI Coefficient}}{of the Model.}
 #' \item{\code{kappa statistic}}{of the Model.}
 #' \item{\code{Log Loss}}{of the Model.}
-#' \item{\code{Mallow’s cp}}{of the Model.}
+# #' \item{\code{Mallow’s cp}}{of the Model.}
 #' \item{\code{Matthews Correlation Coefficient}}{of the Model.}
 #' \item{\code{Mean Log Loss}}{of the Model.}
 #' \item{\code{Mean Absolute Error}}{of the Model.}
@@ -107,7 +107,7 @@
 #' @importFrom ModelMetrics tpr
 #' @importFrom ModelMetrics ppv
 #' @importFrom ModelMetrics npv
-#' @importFrom wle mle.cp
+# #' @importFrom wle mle.cp
 #' @importFrom qpcR PRESS
 #' @importFrom dplyr mutate
 #' @importFrom stats predict
@@ -232,16 +232,16 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   #RD35 = randtests::turning.point.test(Observed)
   #if (ppk != 2) RD36 = randtests::turning.point.test(Predy) else RD36 = randtests::turning.point.test(Preds)
 
-  WLE  = if (Name == "ARIMA" | Name == "SMOOTH"| Name == "Values"|
-             Name == "EssemWet"| Name == "Logit"| Form == "GLM") {
-    0
-  } else if (Form == "ALM") {
-    signif(max(summary(wle::mle.cp(Model, data = Observed))$cp))
-  } else {
-    signif(max(summary(wle::mle.cp(Model))$cp))
-  }
-
-  RD37 = WLE
+ # WLE  = if (Name == "ARIMA" | Name == "SMOOTH"| Name == "Values"|
+ #            Name == "EssemWet"| Name == "Logit"| Form == "GLM") {
+ #   0
+ # } else if (Form == "ALM") {
+ #   signif(max(summary(wle::mle.cp(Model, data = Observed))$cp))
+ # } else {
+ #   signif(max(summary(wle::mle.cp(Model))$cp))
+ # }
+#
+ # RD37 = WLE
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
@@ -289,7 +289,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
     "GINI Coefficient" = RD40,
     "kappa statistic" = RD41,
     "Log Loss" = RD13,
-    "Mallow's cp" = RD37,
+    #"Mallow's cp" = RD37,
     "Matthews Correlation Coefficient" = RD45,
     "Mean Log Loss" = RD14,
     "Mean Absolute Error" = RD15,
