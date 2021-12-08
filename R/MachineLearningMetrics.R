@@ -232,16 +232,16 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   #RD35 = randtests::turning.point.test(Observed)
   #if (ppk != 2) RD36 = randtests::turning.point.test(Predy) else RD36 = randtests::turning.point.test(Preds)
 
- # WLE  = if (Name == "ARIMA" | Name == "SMOOTH"| Name == "Values"|
- #            Name == "EssemWet"| Name == "Logit"| Form == "GLM") {
- #   0
- # } else if (Form == "ALM") {
- #   signif(max(summary(wle::mle.cp(Model, data = Observed))$cp))
- # } else {
- #   signif(max(summary(wle::mle.cp(Model))$cp))
- # }
+  #WLE  = if (Name == "ARIMA" | Name == "SMOOTH"| Name == "Values"|
+  #           Name == "EssemWet"| Name == "Logit"| Form == "GLM") {
+  #  0
+  #} else if (Form == "ALM") {
+  #  signif(max(summary(Mallows.Cp(Model, data = Observed))$cp))
+  #} else {
+  #  signif(max(summary(Mallows.Cp(Model))$cp))
+  #}
 #
- # RD37 = WLE
+  #RD37 = WLE
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
@@ -289,7 +289,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
     "GINI Coefficient" = RD40,
     "kappa statistic" = RD41,
     "Log Loss" = RD13,
-    #"Mallow's cp" = RD37,
+#    "Mallow's cp" = RD37,
     "Matthews Correlation Coefficient" = RD45,
     "Mean Log Loss" = RD14,
     "Mean Absolute Error" = RD15,

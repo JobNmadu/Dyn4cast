@@ -52,12 +52,16 @@ At present, the package exports the following functions:
 
 4. `MachineLearningMetrics` which collects more than 40 metrics that are useful in model selection. The beauty of this function is the simplicity with which these metrics are collected from difference packages and saves the user the need to load more than 10 libraries in order to get these metrics.
 
-5. `Mallows_CP` for determing the the Mallows CP. This function is a work in progress but contributors are welcome.
+5. `Mallows.CP` for determining the the Mallows CP. This function is a work in progress but contributors are welcome.
 
 ## Citation
-This package can be cited as:
 
-Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their Ensembles. R package version 11.11.00. https://github.com/JobNmadu/Dyn4cast.  
+The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
+
+```{r citation, comment = "", warning = FALSE}
+
+citation("Dyn4cast")
+```
 
 ## Example
 

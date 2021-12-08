@@ -69,16 +69,33 @@ At present, the package exports the following functions:
     packages and saves the user the need to load more than 10 libraries
     in order to get these metrics.
 
-5.  `Mallows_CP` for determing the the Mallows CP. This function is a
+5.  `Mallows.CP` for determining the the Mallows CP. This function is a
     work in progress but contributors are welcome.
 
 ## Citation
 
-This package can be cited as:
+The citation information for this package can be obtained easily when
+you run `citation("Dyn4cast")` in your `R` console.
 
-Job Nmadu (2021). Dyn4cast: Dynamic Forecast of five models and their
-Ensembles. R package version 11.11.00.
-<https://github.com/JobNmadu/Dyn4cast>.
+``` r
+citation("Dyn4cast")
+
+To cite package 'Dyn4cast' in publications use:
+
+  Job Nmadu (2021). Dyn4cast: Dynamic Forecast of Five Models and their
+  Ensembles. R package version 11.11.00.
+  https://github.com/JobNmadu/Dyn4cast
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
+    author = {Job Nmadu},
+    year = {2021},
+    note = {R package version 11.11.00},
+    url = {https://github.com/JobNmadu/Dyn4cast},
+  }
+```
 
 ## Example
 
@@ -89,9 +106,9 @@ library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 #> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.5     v dplyr   1.0.7
+#> v tibble  3.1.6     v dplyr   1.0.7
 #> v tidyr   1.1.4     v stringr 1.4.0
-#> v readr   2.0.2     v forcats 0.5.1
+#> v readr   2.1.1     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()

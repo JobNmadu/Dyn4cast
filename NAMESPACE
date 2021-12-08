@@ -2,7 +2,7 @@
 
 export(DynamicForecast)
 export(MachineLearningMetrics)
-export(Mallows_Cp)
+export(Mallows.Cp)
 export(Percent)
 export(constrained_forecast)
 export(inv_scaled_logit)

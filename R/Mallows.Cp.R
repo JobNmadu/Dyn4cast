@@ -10,15 +10,14 @@
 #' @param verbose if TRUE warnings are printed.
 #'
 #' @return
-#' \item{\code{Mallows Cp}}{The computed value of the model's Mallows Cp.}
+#' \item{\code{Mallows.Cp}}{The computed value of the model's Mallows Cp.}
 #'
 #'@importFrom stats is.empty.model model.matrix model.response terms
 #'
 #' @export
 #'
-Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
-                       y = FALSE, var.full = 0, contrasts = NULL,
-                       verbose  =FALSE) {
+Mallows.Cp <- function(formula, data=list(), model=TRUE, x=FALSE, y=FALSE, var.full=0, contrasts=NULL, verbose=FALSE) {
+
   ret.x <- x
   ret.y <- y
   result <- list()
@@ -43,9 +42,8 @@ Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
     stop("The model is empty")
   else
     xdata <- model.matrix(mt, mf, contrasts)
-  size <- nrow(xdata)
-  nvar <-  ncol(xdata)
-  if (is.null(size) | is.null(nvar)) stop("'x' must be a matrix")
+
+  if (is.null(size <- nrow(xdata)) | is.null(nvar <- ncol(xdata))) stop("'x' must be a matrix")
   if (length(ydata)!=size) stop("'y' and 'x' are not compatible")
 
   nrep <- 2^nvar-1
@@ -59,9 +57,7 @@ Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
     var.full <- 0
   }
 
-  dyn.load(paste0("Mallows_Cp", .Platform$dynlib.ext))
-
-  z <- .Fortran("Mallows_Cp",
+  z <- .Fortran("mallowscp",
                 as.double(ydata),
                 as.matrix(xdata),
                 as.integer(0),
@@ -74,7 +70,8 @@ Mallows_Cp <- function(formula, data = list(), model = TRUE, x = FALSE,
                 var=double(nrep),
                 resid=mat.or.vec(nrep,size),
                 info=integer(1),
-                PACKAGE = "Dyn4cast")
+                PACKAGE="Dyn4cast")
+
 
   result$cp <- z$cp
   result$coefficients <- z$param
@@ -113,13 +110,13 @@ summary.Mallows.Cp <- function (object, num.max=20, verbose=FALSE, ...) {
   cp <- object$cp
 
   if (num.max<1) {
-    if (verbose) cat("summary.Mallows.Cp: num.max can not less than 1, num.max=1 \n")
+    if (verbose) cat("summary Mallows Cp: num.max can not less than 1, num.max=1 \n")
     num.max <- 1
   }
 
-  if(is.null(nmodel == nrow(cp))) nmodel <- 1
-  num.max <- min(nmodel, num.max)
-  if (nmodel != 1) {
+  if(is.null(nmodel <- nrow(cp))) nmodel <- 1
+  num.max <- min(nmodel,num.max)
+  if (nmodel!=1) {
     nvar <- ncol(cp)-1
     nparam <- apply(cp[,(1:nvar)],1,sum)
     cp <- cp[cp[,(nvar+1)]<=(nparam+0.00001),]
@@ -134,7 +131,7 @@ summary.Mallows.Cp <- function (object, num.max=20, verbose=FALSE, ...) {
   ans$num.max <- num.max
   ans$call <- object$call
 
-  class(ans) <- "summary.Mallows.Cp"
+  class(ans) <- "summary Mallows Cp"
   return(ans)
 }
 
@@ -142,7 +139,6 @@ print.Mallows.Cp <- function (x, digits = max(3, getOption("digits") - 3),  num.
   res <- summary.Mallows.Cp(object=x, num.max=num.max, ...)
   print.summary.Mallows.Cp(res, digits=digits, ...)
 }
-
 
 print.summary.Mallows.Cp <- function (x, digits = max(3, getOption("digits") - 3), ...) {
   cat("\nCall:\n")
