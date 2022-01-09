@@ -3,7 +3,6 @@
 
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
-<!-- <img src="https://github.com/JobNmadu/Dyn4cast/raw/master/inst/sticker/degreport.png" width="150" height="150" align="right"/> -->
 <!-- badges -->
 
 [![R build
