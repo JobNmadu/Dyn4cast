@@ -1,17 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
+<!-- <img src="https://github.com/JobNmadu/Dyn4cast/raw/master/inst/sticker/degreport.png" width="150" height="150" align="right"/> -->
 <!-- badges -->
 
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/JobNmadu/Dyn4cast?branch=master&svg=true)](https://ci.appveyor.com/project/JobNmadu/Dyn4cast)
-[![Travis build
-status](https://app.travis-ci.com/github/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
-[![Codecov test
-coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast?branch=master)
-[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
+[![R build
+status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
+
+[![Build
+Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
 <!-- end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
