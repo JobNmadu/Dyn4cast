@@ -4,17 +4,11 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- badges -->
-
-[![R build
-status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-
-[![Build
-Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
-
-[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
-
+[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg?token=UE1J3JZK48)](https://app.codecov.io/gh/JobNmadu/Dyn4cast/)
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://github.com/JobNmadu/Dyn4cast/)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/JobNmadu/Dyn4cast/blob/master/LICENSE.md)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-
 <!-- end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
