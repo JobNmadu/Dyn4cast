@@ -9,6 +9,8 @@
 #'
 #' @export scaled_logit
 #'
+#' @return
+#'
 #' @examples
 #' library(splines)
 #' lower <- 1

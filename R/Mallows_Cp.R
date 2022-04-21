@@ -8,6 +8,7 @@
 #' @param x The matrix of the **RHS** variable of the estimated model
 #'
 #' @return
+#'
 #' @export Mallows_Cp
 #'
 #' @importFrom stats anova

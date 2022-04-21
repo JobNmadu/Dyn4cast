@@ -10,6 +10,8 @@
 #'
 #' @export Percent
 #'
+#' @return
+#'
 #' @examples
 #' Data <- c(1.2, 0.5, 0.103, 7, 0.1501)
 #' Percent(Data = Data, Type = "Frame")  # Value, Frame

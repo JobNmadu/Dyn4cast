@@ -9,6 +9,8 @@
 #'
 #' @export inv_scaled_logit
 #'
+#' @return
+#'
 #' @examples
 #' x <- 1:35
 #' lower <- 1

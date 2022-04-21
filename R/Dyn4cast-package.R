@@ -8,7 +8,7 @@
 NULL
 #'Dynamic Forecast of Five Models and their Ensembles
 #'
-#' This is a package to dynamically estimate and forecast a model.
+#' This is a package to dynamically estimate and forecast a model and some functions and wrappers.
 #'
 #' @format The package presently covers five models and their Ensembles:
 #' \describe{
@@ -20,5 +20,14 @@ NULL
 #'   \item{Ensembled with equal weight}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together}
 #'   \item{Ensembled based on weight}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend}
 #'   \item{Ensembled based on weight of fit}{Estimated Essemble model. The fit of each model is measured by the rmse}
+#'   \item{COVID19Nig}{Dataset}
+#'   \item{DynamicForecast}{Function}
+#'   \item{MachineLearningMetrics}{Function}
+#'   \item{Mallows_Cp}{Function}
+#'   \item{Percent}{Function}
+#'   \item{StatesAffected}{Function}
+#'   \item{constrained_forecast}{Function}
+#'   \item{inv_scaled_logit}{Function}
+#'   \item{scaled_logit}{Function}
 #' }
 #'

@@ -113,6 +113,8 @@
 #' @importFrom stats predict
 #' @importFrom utils globalVariables
 #'
+#' @return
+#'
 #' @examples
 #' library(splines)
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),

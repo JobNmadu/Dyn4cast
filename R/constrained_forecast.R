@@ -16,6 +16,8 @@
 #'
 #' @aliases StatesAffected
 #'
+#' @return
+#'
 #' @examples
 #' library(splines)
 #' library(forecast)

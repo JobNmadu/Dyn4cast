@@ -60,6 +60,8 @@
 #'
 #' @aliases COVID19Nig
 #'
+#' @return
+#'
 #' @examples
 #' library(Dyn4cast)
 #' COVID19Nig$Date <- as.Date(COVID19Nig$Date,
