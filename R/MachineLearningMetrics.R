@@ -241,7 +241,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   #  signif(max(summary(Mallows.Cp(Model))$cp))
   #}
 #
-  #RD37 = WLE
+  RD37 = Mallows_Cp(Model = Model, y = yvalue, x = Observed[, -1])
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
@@ -289,7 +289,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
     "GINI Coefficient" = RD40,
     "kappa statistic" = RD41,
     "Log Loss" = RD13,
-#    "Mallow's cp" = RD37,
+    "Mallow's cp" = RD37,
     "Matthews Correlation Coefficient" = RD45,
     "Mean Log Loss" = RD14,
     "Mean Absolute Error" = RD15,

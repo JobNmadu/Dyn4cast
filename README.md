@@ -57,12 +57,11 @@ At present, the package exports the following functions:
     numbers and is used as `knots` in estimating spline polynomials.
 
 2.  `constrained_forecast` which constrain forecast of one-sided integer
-    forecast to line between the lower and upper limits of the base
-    data. The function estimates the lower and upper 80% and 95%
-    forecasts of the estimated model. This function works with two other
-    fuctions, that is, `inv_scaled_ligit` and `scaled_logit` which are
-    adapted from Hyndman & Athanasopoulos (2021) and both of which are
-    adopted.
+    forecast to lie between the lower and upper limits of the base data.
+    The function estimates the lower and upper 80% and 95% forecasts of
+    the estimated model. This function works with two other fuctions,
+    that is, `inv_scaled_ligit` and `scaled_logit` which are adapted
+    from Hyndman & Athanasopoulos (2021) and both of which are adopted.
 
 3.  `Percent` which affix the % sign on a value or a vectors of values.
 
@@ -72,8 +71,7 @@ At present, the package exports the following functions:
     packages and saves the user the need to load more than 10 libraries
     in order to get these metrics.
 
-5.  `Mallows.CP` for determining the the Mallows CP. This function is a
-    work in progress but contributors are welcome.
+5.  `Mallows_CP` for determining the the Mallows CP.
 
 ## Citation
 
@@ -109,9 +107,9 @@ library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 #> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.6     v dplyr   1.0.7
-#> v tidyr   1.1.4     v stringr 1.4.0
-#> v readr   2.1.1     v forcats 0.5.1
+#> v tibble  3.1.6     v dplyr   1.0.8
+#> v tidyr   1.2.0     v stringr 1.4.0
+#> v readr   2.1.2     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
