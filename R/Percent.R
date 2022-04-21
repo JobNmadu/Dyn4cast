@@ -1,6 +1,6 @@
 #' Attach Per Cent Sign to Data
 #'
-#' This package is a wrapper for easy affixing of the per cent sign (%) to a value or a vector of values
+#' `Percent()` This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector of values
 #'
 #' @param Data The Data which the percent sign is to be affixed
 #' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector data

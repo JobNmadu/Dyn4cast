@@ -1,6 +1,8 @@
 
 #' Computation of Mallows_Cp
 #'
+#' `Mallows_Cp()` This function is one of the numerous metrics used to assess and compare linear-based models. The measure gives an approximate number of explanatory variables that should be in the model.
+#'
 #' @param Model The estimated **model** from which the Mallow's Cp would be computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model

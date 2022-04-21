@@ -1,6 +1,6 @@
 #' Collection of Machine Learning Model Metrics for Easy Reference
 #'
-#' This Package estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
+#' `MachineLearningMetrics()` This function estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
 #'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
