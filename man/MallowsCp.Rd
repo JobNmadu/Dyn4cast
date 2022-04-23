@@ -8,7 +8,7 @@
 MallowsCp(Model, y, x, Nlevels = NULL)
 }
 \arguments{
-\item{Model}{The estimated \strong{model} from which the Mallow's Cp would be computed}
+\item{Model}{The estimated \strong{model} from which the Mallows Cp would be computed}
 
 \item{y}{The vector of the \strong{LHS} variable of the estimated model}
 
@@ -18,8 +18,8 @@ MallowsCp(Model, y, x, Nlevels = NULL)
 }
 \value{
 A list with the following components
-\item{\code{Mallow's Cp}}{of the model.}
+\item{\code{MallowsCp}}{of the Model.}
 }
 \description{
-This function is one of the numerous metrics used to assess and compare linear-based models. The measure gives an approximate number of explanatory variables that should be in the model.
+This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model.
 }

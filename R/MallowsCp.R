@@ -1,8 +1,8 @@
 #' Computation of MallowsCp
 #'
-#' This function is one of the numerous metrics used to assess and compare linear-based models. The measure gives an approximate number of explanatory variables that should be in the model.
+#' This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model.
 #'
-#' @param Model The estimated **model** from which the Mallow's Cp would be computed
+#' @param Model The estimated **model** from which the Mallows Cp would be computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors `Nlevels` is required otherwise the computed Cp would be biased.
 #' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation
@@ -12,7 +12,7 @@
 #' @docType package
 #'
 #' @return A list with the following components
-#' \item{\code{Mallow's Cp}}{of the model.}
+#' \item{\code{MallowsCp}}{of the Model.}
 #'
 #' @importFrom stats anova
 #' @example
@@ -28,12 +28,12 @@ MallowsCp <- function(Model, y, x, Nlevels = NULL){
   RSSp <- AAAV$`Sum Sq`
   MSEp <- AAAV$`Mean Sq`
   size <- length(y)
-  if (is.null(ncol(x))) {
+  if (is.null(ncol(x))){
     nvars <- 1
-  }else{
-    nvars <- ncol(x)
+}else{
+  nvars <- ncol(x)
   }
-  Cp <- ((RSSp/MSEp)-size+2*(nvars+Nlevels+1))
-  results <- list("Mallow's Cp" = Cp)
+ Cp <- ((RSSp/MSEp)-size+2*(nvars+Nlevels+1))
+  results <- list("MallowsCp" = Cp)
   return(results)
-}
+  }
