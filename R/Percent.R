@@ -21,7 +21,7 @@
 #'
 #' @name Percent
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @description
 #' Affix the graphic percentage sign (%) on a vector of numbers

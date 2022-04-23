@@ -12,7 +12,7 @@
 #'
 #' @name MallowsCp
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @return A list with the following components:
 #' \item{\code{Mallow's Cp}}{of the model.}

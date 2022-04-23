@@ -10,7 +10,7 @@
 #'
 #' @return
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @name scaledlogit
 #'

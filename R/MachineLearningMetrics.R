@@ -114,7 +114,7 @@
 #'
 #' @name MachinelearningMetrics
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @examples
 #' library(splines)

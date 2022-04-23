@@ -16,7 +16,7 @@
 #'
 #' @name constrainedforecast
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @aliases StatesAffected
 #'

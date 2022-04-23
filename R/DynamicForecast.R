@@ -41,7 +41,7 @@
 #'
 #' @export DynamicForecast
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @aliases COVID19Nig
 #'

@@ -10,7 +10,7 @@
 #'
 #' @name invscaledlogit
 #'
-#' @docType{package}
+#' @docType package
 #'
 #' @return
 #'
