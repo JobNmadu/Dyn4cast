@@ -22,9 +22,6 @@
 #' data = StatesAffected)
 #' scaledlogit(x = fitted.values(Model), lower = lower,
 #'  upper = upper)
-#'
-#' @description
-#' This is the logit function to constrain integer models
 scaledlogit <- function(x, lower, upper) {
   log((x - lower) / (upper - x))
 }

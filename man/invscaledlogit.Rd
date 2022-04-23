@@ -18,9 +18,6 @@ invscaledlogit(x, lower, upper)
 
 }
 \description{
-This is the inverse logit function
-}
-\details{
 This function is used to estimate exponential lower (80\% and 95\%) and upper (80\% and 95\%) values from the outcome of the \code{scaledlogit} function. The exponentiation ensures that the forecast does not go beyond the upper and lower limits of the base data.
 }
 \examples{
@@ -28,5 +25,4 @@ x <- 1:35
 lower <- 1
 upper <- 35
 invscaledlogit(x = x, lower = lower, upper = upper)
-
 }

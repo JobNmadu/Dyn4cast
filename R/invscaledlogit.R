@@ -19,9 +19,6 @@
 #' lower <- 1
 #' upper <- 35
 #' invscaledlogit(x = x, lower = lower, upper = upper)
-#'
-#' @description
-#' This is the inverse logit function
 invscaledlogit <- function(x, lower, upper) {
   (upper - lower) * exp(x) / (1 + exp(x)) + lower
 }

@@ -22,9 +22,6 @@ Percent(Data, Type, digits = 2, format = "f", ...)
 
 }
 \description{
-Affix the graphic percentage sign (\%) on a vector of numbers
-}
-\details{
 This function is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector of values.
 }
 \examples{

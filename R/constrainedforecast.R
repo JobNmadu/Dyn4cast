@@ -37,9 +37,6 @@
 #'  upper = upper)
 #' ForecastModel <- forecast(FitModel, h = length(200))
 #' ForecastValues <- constrainedforecast(Model = ForecastModel, lower, upper)
-
-#' @description
-#' Obtain the constrained forecast of the model
 constrainedforecast <- function(Model, lower, upper) {
   F2 <- Model$upper
   F1 <- Model$lower

@@ -5,9 +5,6 @@
 \alias{DynamicForecast}
 \alias{COVID19Nig}
 \title{Dynamic Forecast of Five Models and their Ensembles}
-\usage{
-DynamicForecast(Data, BREAKS, MaximumDate, Trend, Type, ...)
-}
 \arguments{
 \item{Data}{A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available. The Response \strong{y} variable must be specified. If there are other variables in the data, then the date must be in column one.}
 
@@ -41,8 +38,6 @@ A list with the following components:
 }
 \description{
 The \code{DynamicForecast()} function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}
-
-To obtain the dynamic forecast of the models
 }
 \examples{
 library(Dyn4cast)

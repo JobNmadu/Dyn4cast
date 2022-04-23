@@ -96,9 +96,6 @@ utils::globalVariables(c("Spline without knots",
                          "Forecast", "Models"))
 
 lifecycle::badge('experimental')
-
-#' @description
-#' To obtain the dynamic forecast of the models
 DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)

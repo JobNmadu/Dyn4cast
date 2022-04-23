@@ -29,9 +29,6 @@ A list with the following components:
 \item{\code{upper95}}{The upper 95\% confindence band of the forecast..}
 }
 \description{
-Obtain the constrained forecast of the model
-}
-\details{
 This function estimates the lower and upper 80\% and 95\% forecasts of the Model. The final values are within the lower and upper limits of the base data. Used in conjunction with <scaled_logit> and <inv_scaled_logit> functions, they are adapted from Hyndman & Athanasopoulos (2021) and modified for independent use rather than be restricted to be used with a particular package.
 }
 \examples{

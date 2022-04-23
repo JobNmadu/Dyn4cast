@@ -18,9 +18,6 @@ scaledlogit(x, lower, upper)
 
 }
 \description{
-This is the logit function to constrain integer models
-}
-\details{
 This function is a wrapper for scaling the fitted (predicted) values of a one-sided (positive or negative only) integer response variable of supported models. The scaling involves some log transformation of the fitted (predicted) values.
 }
 \examples{
@@ -31,5 +28,4 @@ Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
 data = StatesAffected)
 scaledlogit(x = fitted.values(Model), lower = lower,
  upper = upper)
-
 }

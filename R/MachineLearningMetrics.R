@@ -124,9 +124,6 @@
 #' yvalue = StatesAffected$states,
 #'  Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0,
 #'  TTy = "Number")
-#'
-#'  @description
-#'  Computing the various machine learning metrics for model selection
 MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy) {
   Predy = 0
   Preds = 0

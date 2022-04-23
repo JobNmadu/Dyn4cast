@@ -15,7 +15,8 @@
 #' \item{\code{MallowsCp}}{of the Model.}
 #'
 #' @importFrom stats anova
-#' @example
+#'
+#' @examples
 #' ctl <- c(4.17,5.58,5.18,6.11,4.50,4.61,5.17,4.53,5.33,5.14)
 #' trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
 #' x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
@@ -30,10 +31,10 @@ MallowsCp <- function(Model, y, x, Nlevels = NULL){
   size <- length(y)
   if (is.null(ncol(x))){
     nvars <- 1
-}else{
+  }else{
   nvars <- ncol(x)
   }
  Cp <- ((RSSp/MSEp)-size+2*(nvars+Nlevels+1))
   results <- list("MallowsCp" = Cp)
   return(results)
-  }
+}

@@ -23,8 +23,6 @@
 #'
 #' @docType package
 #'
-#' @description
-#' Affix the graphic percentage sign (%) on a vector of numbers
 Percent <- function(Data, Type, digits = 2,
                     format = "f", ...) {
   # Create user-defined function
