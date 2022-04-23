@@ -3,7 +3,7 @@
 \docType{package}
 \name{MallowsCp}
 \alias{MallowsCp}
-\title{Computation of Mallows_Cp}
+\title{Computation of MallowsCp}
 \usage{
 MallowsCp(Model, y, x, Nlevels = NULL)
 }
@@ -17,12 +17,9 @@ MallowsCp(Model, y, x, Nlevels = NULL)
 \item{Nlevels}{Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation}
 }
 \value{
-A list with the following components:
-\item{\code{Mallow's Cp}{of the model.}
+A list with the following components
+\item{\code{Mallow's Cp}}{of the model.}
 }
 \description{
-Compute the Mallow's Cp of the model
-}
-\details{
 This function is one of the numerous metrics used to assess and compare linear-based models. The measure gives an approximate number of explanatory variables that should be in the model.
 }

@@ -1,5 +1,4 @@
-
-#' Computation of Mallows_Cp
+#' Computation of MallowsCp
 #'
 #' This function is one of the numerous metrics used to assess and compare linear-based models. The measure gives an approximate number of explanatory variables that should be in the model.
 #'
@@ -9,13 +8,11 @@
 #' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation
 #'
 #' @export MallowsCp
-#'
 #' @name MallowsCp
-#'
 #' @docType package
 #'
-#' @return A list with the following components:
-#' \item{\code{Mallow's Cp}{of the model.}
+#' @return A list with the following components
+#' \item{\code{Mallow's Cp}}{of the model.}
 #'
 #' @importFrom stats anova
 #' @example
@@ -25,9 +22,6 @@
 #' y <- c(ctl, trt)
 #' Model <- lm(y ~ x)
 #' MallowsCp(Model = Model, y = y, x = x, Nlevels = NULL)
-#'
-#' @description
-#' Compute the Mallow's Cp of the model
 MallowsCp <- function(Model, y, x, Nlevels = NULL){
   Anova <- anova(Model)
   AAAV <- Anova["Residuals", ]
@@ -39,8 +33,7 @@ MallowsCp <- function(Model, y, x, Nlevels = NULL){
   }else{
     nvars <- ncol(x)
   }
-  Cp <- RSSp / MSEp - size + 2 * (nvars + Nlevels + 1)
-
+  Cp <- ((RSSp/MSEp)-size+2*(nvars+Nlevels+1))
   results <- list("Mallow's Cp" = Cp)
   return(results)
 }
