@@ -1,6 +1,6 @@
 #' Attach Per Cent Sign to Data
 #'
-#' `Percent()` This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector of values
+#' This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector of values.
 #'
 #' @param Data The Data which the percent sign is to be affixed
 #' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector data
@@ -19,6 +19,12 @@
 #' Data <- 1.2
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #'
+#' @name Percent
+#'
+#' @docType{package}
+#'
+#' @description
+#' Affix the graphic percentage sign (%) on a vector of numbers
 Percent <- function(Data, Type, digits = 2,
                     format = "f", ...) {
   # Create user-defined function

@@ -1,6 +1,6 @@
 #' Collection of Machine Learning Model Metrics for Easy Reference
 #'
-#' `MachineLearningMetrics()` This function estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
+#' This function estimates over 40 various Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
 #'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
@@ -10,55 +10,6 @@
 #' @param Form Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)
 #' @param kutuf Cutoff for the Estimated values (defaults to 0.5 if not specified)
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)
-#'
-#' @return A list with the following components:
-#' \item{\code{Absolute Error}}{of the Model.}
-#' \item{\code{Absolute Percent Error}}{of the Model.}
-#' \item{\code{Accuracy}}{of the Model.}
-#' \item{\code{Adjusted R Square}}{of the Model.}
-#' \item{\code{Akaike’s Information Criterion AIC}}{of the Model.}
-#' \item{\code{Allen’s Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
-#' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
-#' \item{\code{Average Precision at k}}{of the Model.}
-#' \item{\code{Bias}}{of the Model.}
-#' \item{\code{Brier score}}{of the Model.}
-#' \item{\code{Classification Error}}{of the Model.}
-#' \item{\code{F1 Score}}{of the Model.}
-#' \item{\code{fScore}}{of the Model.}
-#' \item{\code{GINI Coefficient}}{of the Model.}
-#' \item{\code{kappa statistic}}{of the Model.}
-#' \item{\code{Log Loss}}{of the Model.}
-# #' \item{\code{Mallow’s cp}}{of the Model.}
-#' \item{\code{Matthews Correlation Coefficient}}{of the Model.}
-#' \item{\code{Mean Log Loss}}{of the Model.}
-#' \item{\code{Mean Absolute Error}}{of the Model.}
-#' \item{\code{Mean Absolute Percent Error}}{of the Model.}
-#' \item{\code{Mean Average Precision at k}}{of the Model.}
-#' \item{\code{Mean Absolute Scaled Error}}{of the Model.}
-#' \item{\code{Median Absolute Error}}{of the Model.}
-#' \item{\code{Mean Squared Error}}{of the Model.}
-#' \item{\code{Mean Squared Log Error}}{of the Model.}
-#' \item{\code{Model turning point error}}{of the Model.}
-#' \item{\code{Negative Predictive Value}}{of the Model.}
-#' \item{\code{Percent Bias}}{of the Model.}
-#' \item{\code{Positive Predictive Value}}{of the Model.}
-#' \item{\code{Precision}}{of the Model.}
-#' \item{\code{R Square}}{of the Model.}
-#' \item{\code{Relative Absolute Error}}{of the Model.}
-#' \item{\code{Recall}}{of the Model.}
-#' \item{\code{Root Mean Squared Error}}{of the Model.}
-#' \item{\code{Root Mean Squared Log Error}}{of the Model.}
-#' \item{\code{Root Relative Squared Error}}{of the Model.}
-#' \item{\code{Relative Squared Error}}{of the Model.}
-#' \item{\code{Schwarz’s Bayesian criterion BIC}}{of the Model.}
-#' \item{\code{Sensitivity}}{of the Model.}
-#' \item{\code{specificity}}{of the Model.}
-#' \item{\code{Squared Error}}{of the Model.}
-#' \item{\code{Squared Log Error}}{of the Model.}
-#' \item{\code{Symmetric Mean Absolute Percentage Error}}{of the Model.}
-#' \item{\code{Sum of Squared Errors}}{of the Model.}
-#' \item{\code{True negative rate}}{of the Model.}
-#' \item{\code{True positive rate}}{of the Model.}
 #'
 #' @export MachineLearningMetrics
 #'
@@ -107,13 +58,63 @@
 #' @importFrom ModelMetrics tpr
 #' @importFrom ModelMetrics ppv
 #' @importFrom ModelMetrics npv
-# #' @importFrom wle mle.cp
 #' @importFrom qpcR PRESS
 #' @importFrom dplyr mutate
 #' @importFrom stats predict
 #' @importFrom utils globalVariables
 #'
-#' @return
+#' @return A list with the following components:
+#' \item{\code{Absolute Error}}{of the Model.}
+#' \item{\code{Absolute Percent Error}}{of the Model.}
+#' \item{\code{Accuracy}}{of the Model.}
+#' \item{\code{Adjusted R Square}}{of the Model.}
+#' \item{\code{Akaike’s Information Criterion AIC}}{of the Model.}
+#' \item{\code{Allen’s Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
+#' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
+#' \item{\code{Average Precision at k}}{of the Model.}
+#' \item{\code{Bias}}{of the Model.}
+#' \item{\code{Brier score}}{of the Model.}
+#' \item{\code{Classification Error}}{of the Model.}
+#' \item{\code{F1 Score}}{of the Model.}
+#' \item{\code{fScore}}{of the Model.}
+#' \item{\code{GINI Coefficient}}{of the Model.}
+#' \item{\code{kappa statistic}}{of the Model.}
+#' \item{\code{Log Loss}}{of the Model.}
+#' \item{\code{Mallow’s cp}}{of the Model.}
+#' \item{\code{Matthews Correlation Coefficient}}{of the Model.}
+#' \item{\code{Mean Log Loss}}{of the Model.}
+#' \item{\code{Mean Absolute Error}}{of the Model.}
+#' \item{\code{Mean Absolute Percent Error}}{of the Model.}
+#' \item{\code{Mean Average Precision at k}}{of the Model.}
+#' \item{\code{Mean Absolute Scaled Error}}{of the Model.}
+#' \item{\code{Median Absolute Error}}{of the Model.}
+#' \item{\code{Mean Squared Error}}{of the Model.}
+#' \item{\code{Mean Squared Log Error}}{of the Model.}
+#' \item{\code{Model turning point error}}{of the Model.}
+#' \item{\code{Negative Predictive Value}}{of the Model.}
+#' \item{\code{Percent Bias}}{of the Model.}
+#' \item{\code{Positive Predictive Value}}{of the Model.}
+#' \item{\code{Precision}}{of the Model.}
+#' \item{\code{R Square}}{of the Model.}
+#' \item{\code{Relative Absolute Error}}{of the Model.}
+#' \item{\code{Recall}}{of the Model.}
+#' \item{\code{Root Mean Squared Error}}{of the Model.}
+#' \item{\code{Root Mean Squared Log Error}}{of the Model.}
+#' \item{\code{Root Relative Squared Error}}{of the Model.}
+#' \item{\code{Relative Squared Error}}{of the Model.}
+#' \item{\code{Schwarz’s Bayesian criterion BIC}}{of the Model.}
+#' \item{\code{Sensitivity}}{of the Model.}
+#' \item{\code{specificity}}{of the Model.}
+#' \item{\code{Squared Error}}{of the Model.}
+#' \item{\code{Squared Log Error}}{of the Model.}
+#' \item{\code{Symmetric Mean Absolute Percentage Error}}{of the Model.}
+#' \item{\code{Sum of Squared Errors}}{of the Model.}
+#' \item{\code{True negative rate}}{of the Model.}
+#' \item{\code{True positive rate}}{of the Model.}
+#'
+#' @name MachinelearningMetrics
+#'
+#' @docType{package}
 #'
 #' @examples
 #' library(splines)
@@ -123,7 +124,9 @@
 #' yvalue = StatesAffected$states,
 #'  Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0,
 #'  TTy = "Number")
-
+#'
+#'  @description
+#'  Computing the various machine learning metrics for model selection
 MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy) {
   Predy = 0
   Preds = 0
@@ -243,7 +246,8 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   #  signif(max(summary(Mallows.Cp(Model))$cp))
   #}
 #
-  RD37 = Mallows_Cp(Model = Model, y = yvalue, x = Observed[, -1])
+  RD37 = Dyn4cast::MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
+                             Nlevels = NULL)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",

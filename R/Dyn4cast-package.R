@@ -23,11 +23,11 @@ NULL
 #'   \item{COVID19Nig}{Dataset}
 #'   \item{DynamicForecast}{Function}
 #'   \item{MachineLearningMetrics}{Function}
-#'   \item{Mallows_Cp}{Function}
+#'   \item{MallowsCp}{Function}
 #'   \item{Percent}{Function}
 #'   \item{StatesAffected}{Function}
-#'   \item{constrained_forecast}{Function}
-#'   \item{inv_scaled_logit}{Function}
-#'   \item{scaled_logit}{Function}
+#'   \item{constrainedforecast}{Function}
+#'   \item{invscaledlogit}{Function}
+#'   \item{scaledlogit}{Function}
 #' }
 #'

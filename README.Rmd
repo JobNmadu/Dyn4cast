@@ -51,13 +51,13 @@ At present, the package exports the following functions:
 
 1. `DynamicForecast` which takes two required arguments: the `Data` of any recognized format but should be a **dataframe** containing two columns `Date` and `Case`. The Date is the _day/month/year_ the data is collected while Case is the variable for forecasting. The Date must be in the recognized format i.e. 'YYYY-MM-DD'. The other arguments parsed to the function are `MaximumDate`, which is the last date Data was collected and `BREAKS`, which is a vector of numbers and is used as `knots` in estimating spline polynomials.
 
-2. `constrained_forecast` which constrain forecast of one-sided integer forecast to lie between the lower and upper limits of the base data. The function estimates the lower and upper 80% and 95% forecasts of the estimated model. This function works with two other fuctions, that is, `inv_scaled_ligit` and `scaled_logit` which are adapted from Hyndman & Athanasopoulos (2021) and both of which are adopted.
+2. `constrainedforecast` which constrain forecast of one-sided integer forecast to lie between the lower and upper limits of the base data. The function estimates the lower and upper 80% and 95% forecasts of the estimated model. This function works with two other functions, that is, `invscaledligit` and `scaledlogit` which are adapted from Hyndman & Athanasopoulos (2021) and both of which are adopted.
 
 3. `Percent` which affix the % sign on a value or a vectors of values.
 
 4. `MachineLearningMetrics` which collects more than 40 metrics that are useful in model selection. The beauty of this function is the simplicity with which these metrics are collected from difference packages and saves the user the need to load more than 10 libraries in order to get these metrics.
 
-5. `Mallows_CP` for determining the the Mallows CP.
+5. `MallowsCP` for determining the the Mallows CP.
 
 ## Citation
 

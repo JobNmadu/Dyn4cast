@@ -4,11 +4,17 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- badges -->
-[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
-[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg?token=UE1J3JZK48)](https://app.codecov.io/gh/JobNmadu/Dyn4cast/)
-[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://github.com/JobNmadu/Dyn4cast/)
-[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/JobNmadu/Dyn4cast/blob/master/LICENSE.md)
+
+[![R build
+status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
+
+[![Build
+Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
+
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
 <!-- end -->
 
 The **Dyn4cast** package is designed to be a lightweight package, with
@@ -50,12 +56,12 @@ At present, the package exports the following functions:
     last date Data was collected and `BREAKS`, which is a vector of
     numbers and is used as `knots` in estimating spline polynomials.
 
-2.  `constrained_forecast` which constrain forecast of one-sided integer
+2.  `constrainedforecast` which constrain forecast of one-sided integer
     forecast to lie between the lower and upper limits of the base data.
     The function estimates the lower and upper 80% and 95% forecasts of
-    the estimated model. This function works with two other fuctions,
-    that is, `inv_scaled_ligit` and `scaled_logit` which are adapted
-    from Hyndman & Athanasopoulos (2021) and both of which are adopted.
+    the estimated model. This function works with two other functions,
+    that is, `invscaledligit` and `scaledlogit` which are adapted from
+    Hyndman & Athanasopoulos (2021) and both of which are adopted.
 
 3.  `Percent` which affix the % sign on a value or a vectors of values.
 
@@ -65,7 +71,7 @@ At present, the package exports the following functions:
     packages and saves the user the need to load more than 10 libraries
     in order to get these metrics.
 
-5.  `Mallows_CP` for determining the the Mallows CP.
+5.  `MallowsCP` for determining the the Mallows CP.
 
 ## Citation
 
@@ -77,7 +83,7 @@ citation("Dyn4cast")
 
 To cite package 'Dyn4cast' in publications use:
 
-  Job Nmadu (2021). Dyn4cast: Dynamic Forecast of Five Models and their
+  Job Nmadu (NA). Dyn4cast: Dynamic Forecast of Five Models and their
   Ensembles. R package version 11.11.00.
   https://github.com/JobNmadu/Dyn4cast
 
@@ -86,7 +92,6 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
     author = {Job Nmadu},
-    year = {2021},
     note = {R package version 11.11.00},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }

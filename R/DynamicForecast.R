@@ -12,23 +12,6 @@
 #' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
 #' @param ... Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.
 #'
-#' @return A list with the following components:
-#' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
-#' \item{\code{Spline with knots}}{The estimated spline model with the breaks (knots).}
-#' \item{\code{Smooth Spline}}{The smooth spline estimates.}
-#' \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
-#' \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
-#' \item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-#' \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
-#' \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed against the trend.}
-#' \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
-#' \item{\code{Unconstrained Forecast}}{The forecast if the response variable is continuous. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
-#' \item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
-#' \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
-#' \item{\code{Unconstrained forecast Plot}}{The combined plots of the unconstrained forecasts using ggplot. }
-#' \item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
-#' \item{\code{Date}}{This is the date range for the forecast.}
-#'
 #' @import tidyverse
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
@@ -58,9 +41,26 @@
 #'
 #' @export DynamicForecast
 #'
+#' @docType{package}
+#'
 #' @aliases COVID19Nig
 #'
-#' @return
+#' @return A list with the following components:
+#' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
+#' \item{\code{Spline with knots}}{The estimated spline model with the breaks (knots).}
+#' \item{\code{Smooth Spline}}{The smooth spline estimates.}
+#' \item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
+#' \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
+#' \item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
+#' \item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
+#' \item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed against the trend.}
+#' \item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
+#' \item{\code{Unconstrained Forecast}}{The forecast if the response variable is continuous. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
+#' \item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
+#' \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
+#' \item{\code{Unconstrained forecast Plot}}{The combined plots of the unconstrained forecasts using ggplot. }
+#' \item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
+#' \item{\code{Date}}{This is the date range for the forecast.}
 #'
 #' @examples
 #' library(Dyn4cast)
@@ -97,8 +97,9 @@ utils::globalVariables(c("Spline without knots",
 
 lifecycle::badge('experimental')
 
+#' @description
+#' To obtain the dynamic forecast of the models
 DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
-
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -272,35 +273,35 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   } else {
     lower = min(Data$Case)
     upper = max(Data$Case)
-    kkF  <- forecast::forecast(scaled_logit(x = Without.knots,
+    kkF  <- forecast::forecast(Dyn4cast::scaledlogit(x = Without.knots,
                                             lower = lower, upper = upper),
                                h = length(Dsf19))
-    kkc <- constrained_forecast(Model = kkF, lower = lower, upper = upper)
-    kk0F <- forecast::forecast(scaled_logit(x = With.knots, lower = lower,
+    kkc <- Dyn4cast::constrainedforecast(Model = kkF, lower = lower, upper = upper)
+    kk0F <- forecast::forecast(Dyn4cast::scaledlogit(x = With.knots, lower = lower,
                                             upper = upper), h = length(Dsf19))
-    kk0c <- constrained_forecast(Model = kk0F, lower = lower, upper = upper)
-    kk1F <- forecast::forecast(scaled_logit(x = Smooth, lower = lower,
+    kk0c <- Dyn4cast::constrainedforecast(Model = kk0F, lower = lower, upper = upper)
+    kk1F <- forecast::forecast(Dyn4cast::scaledlogit(x = Smooth, lower = lower,
                                             upper = upper), h = length(Dsf19))
-    kk1c <- constrained_forecast(Model = kk1F, lower = lower, upper = upper)
-    kk10F <- forecast::forecast(scaled_logit(x = Quadratic, lower = lower,
+    kk1c <- Dyn4cast::constrainedforecast(Model = kk1F, lower = lower, upper = upper)
+    kk10F <- forecast::forecast(Dyn4cast::scaledlogit(x = Quadratic, lower = lower,
                                              upper = upper),
                                 h = length(Dsf19))
-    kk10c <- constrained_forecast(Model = kk10F, lower = lower, upper = upper)
-    kk2F <- forecast::forecast(scaled_logit(x = ARIMA, lower = lower,
+    kk10c <- Dyn4cast::constrainedforecast(Model = kk10F, lower = lower, upper = upper)
+    kk2F <- forecast::forecast(Dyn4cast::scaledlogit(x = ARIMA, lower = lower,
                                             upper = upper), h = length(Dsf19))
-    kk2c <- constrained_forecast(Model = kk2F, lower = lower, upper = upper)
-    kk31F <- forecast::forecast(scaled_logit(x = kk3091, lower = lower,
+    kk2c <- Dyn4cast::constrainedforecast(Model = kk2F, lower = lower, upper = upper)
+    kk31F <- forecast::forecast(Dyn4cast::scaledlogit(x = kk3091, lower = lower,
                                              upper = upper),
                                 h = length(Dsf19))
-    kk31c <- constrained_forecast(Model = kk31F, lower = lower, upper = upper)
-    kk41F <- forecast::forecast(scaled_logit(x = fitted.values(kk4091),
+    kk31c <- Dyn4cast::constrainedforecast(Model = kk31F, lower = lower, upper = upper)
+    kk41F <- forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk4091),
                                              lower = lower, upper = upper),
                                 h = length(Dsf19))
-    kk41c <- constrained_forecast(Model = kk41F, lower = lower, upper = upper)
-    kk61F <- forecast::forecast(scaled_logit(x = fitted.values(kk6091),
+    kk41c <- Dyn4cast::constrainedforecast(Model = kk41F, lower = lower, upper = upper)
+    kk61F <- forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk6091),
                                              lower = lower, upper = upper),
                                 h = length(Dsf19))
-    kk61c <- constrained_forecast(Model = kk61F, lower = lower, upper = upper)
+    kk61c <- Dyn4cast::constrainedforecast(Model = kk61F, lower = lower, upper = upper)
     KK91c <- as.data.frame(cbind("Date" = Dsf19, "Day" = 1:length(Dsf19),
                                  "Linear" = LinearF[["mean"]],
                                  "Semilog" = SemilogF[["mean"]],
@@ -335,10 +336,10 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     KK91c$`Essembled based on weight 95%` <- kk41c$Upper95
     KK91c$`Essembled based on summed weight 80%` <- kk61c$Lower80
     KK91c$`Essembled based on summed weight 95%` <- kk61c$Upper95
-    kk51F <- forecast::forecast(scaled_logit(x = P_weight91,
+    kk51F <- forecast::forecast(Dyn4cast::scaledlogit(x = P_weight91,
                                              lower = lower, upper = upper),
                                 h = length(Dsf19))
-    kk51c <- constrained_forecast(Model = kk51F, lower = lower, upper = upper)
+    kk51c <- Dyn4cast::constrainedforecast(Model = kk51F, lower = lower, upper = upper)
     KK91c$`Essembled based on weight of fit 80%` <- kk51c$Lower80
     KK91c$`Essembled based on weight of fit 95%` <- kk51c$Upper95
     Forcasts91c <- colSums(KK91c[,-c(1,2)])
