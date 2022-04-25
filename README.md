@@ -73,6 +73,27 @@ At present, the package exports the following functions:
 
 5.  `MallowsCP` for determining the the Mallows CP.
 
+## Things the package can do
+
+The package is capable of computing, estimating, predicting and
+forecasting of the following models.  
+- Spline without knots  
+- Spline with knots  
+- Smooth Spline  
+- ARIMA  
+- Quadratic  
+- Ensembled with equal weight  
+- Ensembled based on weight  
+- Ensembled based on summed weight  
+- Ensembled based on weight of fit  
+- Unconstrained forecasts  
+- Constrained forecast  
+- Macchine Learning Metrics  
+- Mallow’s CP  
+- Per cent sign  
+- Scaled logit for constrained forecast  
+- Inverse scaled logit for constrained forecast
+
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -1139,24 +1160,6 @@ if they are not yet installed. the packages are listed below:
 ``` r
 install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))
 ```
-
-## Things the package can do
-
-The package is capable of computing, estimating, predicting and
-forecasting of the following models.  
-- Spline without knots  
-- Spline with knots  
-- Smooth Spline  
-- ARIMA  
-- Quadratic  
-- Ensembled with equal weight  
-- Ensembled based on weight  
-- Ensembled based on summed weight  
-- Ensembled based on weight of fit  
-- Unconstrained forecasts  
-- Constrained forecast - Macchine Learning Metrics - Mallow’s CP - Per
-cent sign - Scaled logit for constrained forecast - Inverse scaled logit
-for constrained forecast
 
 Note that a *warning* (not *error*) is thrown up while estimating the
 RMSE for the `Ensembled with equal weight` model. It was thoroughly

@@ -59,6 +59,25 @@ At present, the package exports the following functions:
 
 5. `MallowsCP` for determining the the Mallows CP.
 
+## Things the package can do
+The package is capable of computing, estimating, predicting and forecasting of the following models.  
+- Spline without knots  
+- Spline with knots  
+- Smooth Spline  
+- ARIMA  
+- Quadratic  
+- Ensembled with equal weight  
+- Ensembled based on weight  
+- Ensembled based on summed weight  
+- Ensembled based on weight of fit  
+- Unconstrained forecasts    
+- Constrained forecast  
+- Macchine Learning Metrics  
+- Mallow's CP  
+- Per cent sign  
+- Scaled logit for constrained forecast  
+- Inverse scaled logit for constrained forecast  
+
 ## Citation
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
@@ -115,25 +134,6 @@ Although not a dependency, the package derives functionally from a number of oth
 ```{r install-suggested, eval = FALSE}
 install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))
 ```
-
-## Things the package can do
-The package is capable of computing, estimating, predicting and forecasting of the following models.  
-- Spline without knots  
-- Spline with knots  
-- Smooth Spline  
-- ARIMA  
-- Quadratic  
-- Ensembled with equal weight  
-- Ensembled based on weight  
-- Ensembled based on summed weight  
-- Ensembled based on weight of fit  
-- Unconstrained forecasts  
-- Constrained forecast
-- Macchine Learning Metrics
-- Mallow's CP
-- Per cent sign
-- Scaled logit for constrained forecast
-- Inverse scaled logit for constrained forecast
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  
 
