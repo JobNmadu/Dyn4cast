@@ -45,6 +45,4 @@ MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
    MSEp <- RSSp/DFF
  }
  Cp <- RSSp/MSEp-size+2*(nvars+Nlevels+1)
-  results <- "MallowsCp" = Cp
-  return(results)
-}
+ }
