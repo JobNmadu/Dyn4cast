@@ -14,7 +14,7 @@ MallowsCp(Model, y, x, type, Nlevels = NULL)
 
 \item{x}{The matrix of the \strong{RHS} variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors \code{Nlevels} is required otherwise the computed Cp would be biased.}
 
-\item{type}{The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are \code{LM}, \code{ALM}, \code{GLM} or binary based models, \code{N-LM} for other non linear models, \code{ARDL}, \code{smooth.spline}, \code{ARIMA} and \code{plm}.}
+\item{type}{The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are \code{LM}, \code{ALM}, \code{GLM} or binary based models, \code{N-LM} (not linear for models not clearly defined as linear or non-linear especially some of the essemble models that are merely \strong{computed} not \strong{estimated}) or \code{nls} for other non linear models, \code{ARDL}, \code{smooth.spline}, \code{ARIMA} and \code{plm}.}
 
 \item{Nlevels}{Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation}
 }
