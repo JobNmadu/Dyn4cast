@@ -21,8 +21,8 @@
 #' x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 #' y <- c(ctl, trt)
 #' Model <- lm(y ~ x)
-#' MallowsCp(Model = Model, y = y, x = x, type = "LM", Nlevels = NULL)
-MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
+#' MallowsCp(Model = Model, y = y, x = x, type = "LM", Nlevels = 0)
+MallowsCp <- function(Model, y, x, type, Nlevels = 0){
   size <- length(y)
   if (is.null(ncol(x))){
     nvars <- 1
