@@ -241,7 +241,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   ptpe = ifelse(ptp > 0, 0, 1)
   RD34 = sum(ptpe)
   RD37 = Dyn4cast::MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
-                             Nlevels = NULL)
+                             type = Form, Nlevels = NULL)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",

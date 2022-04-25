@@ -1,12 +1,12 @@
 #' Computation of MallowsCp
 #'
-#' This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model.
+#' This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model. The function inherits `residuals` from the estimated model.
 #'
 #' @param Model The estimated **model** from which the Mallows Cp would be computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors `Nlevels` is required otherwise the computed Cp would be biased.
 #' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation
-#' @param type The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models include `linear`, `smooth.spline`, `ARIMA`, `ALM`, `plm` and `GLM` for binary based models
+#' @param type The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are `LM`, `ALM`, `GLM` or binary based models, `N-LM` for other non linear models, `ARDL`, `smooth.spline`, `ARIMA` and `plm`.
 #'
 #' @export MallowsCp
 #' @name MallowsCp
@@ -21,7 +21,7 @@
 #' x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 #' y <- c(ctl, trt)
 #' Model <- lm(y ~ x)
-#' MallowsCp(Model = Model, y = y, x = x, type, Nlevels = NULL)
+#' MallowsCp(Model = Model, y = y, x = x, type = "linear", Nlevels = NULL)
 MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
   size <- length(y)
   if (is.null(ncol(x))){
@@ -36,7 +36,7 @@ MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
  }else if (type == "smooth.spline"){
    RSSp <- sum(y - fitted.values(fit11))^2
    MSEp <- RSSp/DFF
- }else if (type == "ALM" | type == "ARIMA" | type == "plm"){
+ }else if (type == "ALM" | type == "ARIMA" | type == "plm" | type == "ARDL"){
    RSSp <- sum(Model[["residuals"]]^2)
    MSEp <- RSSp/DFF
  }else{

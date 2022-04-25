@@ -14,7 +14,7 @@ MallowsCp(Model, y, x, type, Nlevels = NULL)
 
 \item{x}{The matrix of the \strong{RHS} variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors \code{Nlevels} is required otherwise the computed Cp would be biased.}
 
-\item{type}{The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models include \code{linear}, \code{smooth.spline}, \code{ARIMA}, \code{ALM}, \code{plm} and \code{GLM} for binary based models}
+\item{type}{The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are \code{LM}, \code{ALM}, \code{GLM} or binary based models, \code{N-LM} for other non linear models, \code{ARDL}, \code{smooth.spline}, \code{ARIMA} and \code{plm}.}
 
 \item{Nlevels}{Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation}
 }
@@ -23,7 +23,7 @@ A list with the following components
 \item{\code{MallowsCp}}{of the Model.}
 }
 \description{
-This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model.
+This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model. The function inherits \code{residuals} from the estimated model.
 }
 \examples{
 ctl <- c(4.17,5.58,5.18,6.11,4.50,4.61,5.17,4.53,5.33,5.14)
@@ -31,5 +31,5 @@ trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
 x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 y <- c(ctl, trt)
 Model <- lm(y ~ x)
-MallowsCp(Model = Model, y = y, x = x, type, Nlevels = NULL)
+MallowsCp(Model = Model, y = y, x = x, type = "linear", Nlevels = NULL)
 }
