@@ -21,7 +21,7 @@
 #' x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 #' y <- c(ctl, trt)
 #' Model <- lm(y ~ x)
-#' MallowsCp(Model = Model, y = y, x = x, type = "linear", Nlevels = NULL)
+#' MallowsCp(Model = Model, y = y, x = x, type = "LM", Nlevels = NULL)
 MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
   size <- length(y)
   if (is.null(ncol(x))){
@@ -30,20 +30,21 @@ MallowsCp <- function(Model, y, x, type, Nlevels = NULL){
     nvars <- ncol(x)
   }
   DFF <- size - nvars + Nlevels - 1
- if(type == "linear"){
+ if(type == "LM" | type == "N-LM"){
    RSSp <- sum(Model[["residuals"]]^2)
    MSEp <- RSSp/DFF
  }else if (type == "smooth.spline"){
    RSSp <- sum(y - fitted.values(fit11))^2
    MSEp <- RSSp/DFF
- }else if (type == "ALM" | type == "ARIMA" | type == "plm" | type == "ARDL"){
+ }else if (type == "ALM" | type == "ARIMA" | type == "plm" | type == "ARDL" |
+           type == "GLM"){
    RSSp <- sum(Model[["residuals"]]^2)
    MSEp <- RSSp/DFF
  }else{
-   RSSp <- sum(Model[["residuals"]]^2)
+   RSSp <- sum(y - Model)^2
    MSEp <- RSSp/DFF
  }
-  Cp <- RSSp/MSEp-size+2*(nvars+Nlevels+1)
+ Cp <- RSSp/MSEp-size+2*(nvars+Nlevels+1)
   results <- list("MallowsCp" = Cp)
   return(results)
 }

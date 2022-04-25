@@ -206,7 +206,6 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   } else {
     signif(ModelMetrics::mae(actual = yvalue, predicted = Predy), 2)
   }
-
   RD16 = signif(Metrics::mape(yvalue, Predy), 2)
   RD17 = signif(ifelse(Name != "Values",
                        Metrics::mapk(actual = Observed, predicted = Model,

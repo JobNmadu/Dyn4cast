@@ -31,5 +31,5 @@ trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
 x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 y <- c(ctl, trt)
 Model <- lm(y ~ x)
-MallowsCp(Model = Model, y = y, x = x, type = "linear", Nlevels = NULL)
+MallowsCp(Model = Model, y = y, x = x, type = "LM", Nlevels = NULL)
 }
