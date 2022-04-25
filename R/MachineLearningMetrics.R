@@ -143,7 +143,7 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   Preds <- if (Form == "LM") {
     fitted.values(Model)
   } else if (Form == "ALM") {
-    0
+    Model[["fitted"]]
   } else if (Form == "N-LM") {
     0
   } else if (Form == "GLM" & Name != "Log") {
@@ -164,18 +164,27 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   RD02 <- signif(ifelse(Name == "ARIMA",  Model$bic,
                        ifelse(Name == "SMOOTH"| Name == "Values", 0,
                               stats::BIC(Model))), 2)
-  RD03 <- signif(ifelse(Name == "ARIMA" |
-                         Name == "SMOOTH"| Form == "GLM"| Form == "ALM"|
-                         Name == "Values"| Name == "Logit", 0,
-                        summary(Model)$r.squared), 2)
-  RD04 <- signif(ifelse(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
-                         Form == "ALM"| Name == "Values"| Name == "Logit", 0,
-                       summary(Model)$adj.r.squared), 2)
+  RD03 <- if(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
+                    Name == "Values"| Name == "Logit"){
+    0
+  } else if (Name == "ALM"){
+    signif(summary(Model[["r.squared"]]), 2)
+  } else {
+    signif(summary(Model)$r.squared, 2)
+  }
+  RD04 <- if(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
+             Name == "Values"| Name == "Logit"){
+    0
+  } else if (Name == "ALM"){
+    signif(summary(Model[["adj.r.squared"]]), 2)
+  } else {
+    signif(summary(Model)$adj.r.squared, 2)
+  }
   RD05 = signif(Metrics::accuracy(yvalue, Preds), 2)
   RD06 = signif(sum(Metrics::ae(yvalue, Preds)), 2)
   RD07 = signif(sum(Metrics::ape(yvalue, Predy)), 2)
   RD08 = signif(Metrics::apk(actual = yvalue, predicted = Preds, k = K), 2)
-  RD09 = signif(ifelse(Form == "LM"| Form == "ALM" |Form == "ARDL" |
+  RD09 = signif(ifelse(Form == "LM"| Form == "ARDL" |
                         TTy == "Number" | Name == "nil" & ppk == 1, 0,
                       ModelMetrics::auc(yvalue, Preds)), 2)
   RD10 = signif(Metrics::bias(yvalue, Preds), 2)
@@ -231,18 +240,6 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   ptp  = diff(yvalue, lag = 1) / diff(Predy, lag = 1)
   ptpe = ifelse(ptp > 0, 0, 1)
   RD34 = sum(ptpe)
-  #RD35 = randtests::turning.point.test(Observed)
-  #if (ppk != 2) RD36 = randtests::turning.point.test(Predy) else RD36 = randtests::turning.point.test(Preds)
-
-  #WLE  = if (Name == "ARIMA" | Name == "SMOOTH"| Name == "Values"|
-  #           Name == "EssemWet"| Name == "Logit"| Form == "GLM") {
-  #  0
-  #} else if (Form == "ALM") {
-  #  signif(max(summary(Mallows.Cp(Model, data = Observed))$cp))
-  #} else {
-  #  signif(max(summary(Mallows.Cp(Model))$cp))
-  #}
-#
   RD37 = Dyn4cast::MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
                              Nlevels = NULL)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",

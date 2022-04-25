@@ -35,6 +35,7 @@
 #' @importFrom forecast forecast
 #' @importFrom utils globalVariables
 #' @importFrom zoo yearmon
+#' @importFrom zoo as.Date
 #' @importFrom lifecycle badge
 #'
 #' @name DynamicForecast
@@ -98,25 +99,25 @@ utils::globalVariables(c("Spline without knots",
 lifecycle::badge('experimental')
 DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   Data$Day <- ss <- seq(1:length(Data$Case))
-  fit01  <- lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
-  fit10   <- lm(Case ~ splines::bs(Day, knots = BREAKS),
+  fit01  <- stats::lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
+  fit10   <- stats::lm(Case ~ splines::bs(Day, knots = BREAKS),
                 data = Data)
   fit11  <- stats::smooth.spline(Data$Day, Data$Case)
   fita1  <- forecast::auto.arima(Data$Case)
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
-  Linear <-  lm(Case ~      Day, data = Data)
-  Semilog <- lm(Case ~      log(Day), data = Data)
-  Growth <-  lm(log(Case+1) ~ Day, data = Data)
+  Linear <-  stats::lm(Case ~      Day, data = Data)
+  Semilog <- stats::lm(Case ~      log(Day), data = Data)
+  Growth <-  stats::lm(log(Case+1) ~ Day, data = Data)
 
   MaxDayDat <- 0
   if (is.null(MaximumDate)){
     Dss19 <- seq(Data$Day[1], by = 1, length.out = length(Data$Day))
     Dss191 <- seq(max(Dss19)+1, by = 1, length.out = length(Data$Day))
-    DayDat0 <- as.Date(Dss19[length(Dss19)], origin = ...)
-    DayDat1 <- as.Date(Dss191[length(Dss191)], origin = ...)
-    MaxDayDat <- as.Date(DayDat0)
+    DayDat0 <- zoo::as.Date(Dss19[length(Dss19)], origin = ...)
+    DayDat1 <- zoo::as.Date(Dss191[length(Dss191)], origin = ...)
+    MaxDayDat <- zoo::as.Date(DayDat0)
   }else{
-    MaximumDate <- as.Date(MaximumDate)
+    MaximumDate <- zoo::as.Date(MaximumDate)
   }
 
   if (MaximumDate == MaxDayDat){
@@ -126,20 +127,20 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   }
 
  if (Trend == "Day") {
-    Dsf19 <- seq(as.Date(MaximumDate + lubridate::days(1)),
+    Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::days(1)),
                  by = "day", length.out = length(Data$Case))
     Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
     Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   } else if (Trend == "Month") {
-    Dsf19 <- seq(as.Date(MaximumDate + lubridate::month(1)),
+    Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::month(1)),
         by = "month", length.out = length(Data$Case))
     Dsf19day01 <- zoo::as.yearmon(Dsf19[1], "%b %y")
     Dsf19daylast <- zoo::as.yearmon(Dsf19[length(Dsf19)], "%b %y")
   } else {
-    Dsf19 <- seq(as.Date(MaximumDate + lubridate::years(1)),
+    Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::years(1)),
         by = "year", length.out = length(Data$Case))
-    Dsf19day01 <- format(as.Date(Dsf19[1]), "%Y")
-    Dsf19daylast <- format(as.Date(Dsf19[length(Dsf19)]), "%Y")
+    Dsf19day01 <- format(zoo::as.Date(Dsf19[1]), "%Y")
+    Dsf19daylast <- format(zoo::as.Date(Dsf19[length(Dsf19)]), "%Y")
   }
 
   Title <- paste(Dsf19day01, "-", Dsf19daylast,
@@ -166,11 +167,11 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
                Smooth + Quadratic +
                ARIMA)/5
   kk3191 <- forecast::forecast(kk3091, h = length(Dsf19))
-  kk4091 <- lm(Data$Day~Without.knots * With.knots * Smooth * Quadratic *
+  kk4091 <- stats::lm(Data$Day~Without.knots * With.knots * Smooth * Quadratic *
                  ARIMA)
   kk4191 <- forecast::forecast(fitted.values(kk4091), h = length(Dsf19))
-  kk6091 <- lm(Data$Day~Without.knots + With.knots + Smooth + Quadratic +
-                 ARIMA)
+  kk6091 <- stats::lm(Data$Day~Without.knots + With.knots + Smooth +
+                        Quadratic + ARIMA)
   kk6191 <- forecast::forecast(fitted.values(kk6091), h = length(Dsf19))
 
   KK91 <- as.data.frame(cbind("Date" = Dsf19,"Day" = ss,
@@ -201,7 +202,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
               "Upper ARIMA" = ModelMetrics::rmse(Data$Case, ARIMA))
 
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
-  KK91$Date <- as.Date(KK91$Date, origin = "1970-01-01")
+  KK91$Date <- zoo::as.Date(KK91$Date, origin = "1970-01-01")
   KK91$`Ensembled with equal weight` <- kk3191[["mean"]]
   KK91$`Ensembled based on weight` <- kk4191[["mean"]]
   KK91$`Ensembled based on summed weight` <- kk6191[["mean"]]
@@ -253,7 +254,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   KK191 <- KK91 %>%
     tidyr::pivot_longer(-c(Date, Day), names_to = "Models",
                         values_to = "Forecast")
-  KK191$Date <- as.Date(KK191$Date)
+  KK191$Date <- zoo::as.Date(KK191$Date)
   KK0091 <- ggplot2::ggplot(KK191) +
     aes(x = Date, y = Forecast, colour = Models, group = Models) +
     geom_line(size = 1L) +
@@ -313,7 +314,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     KK91c$`Polynomial 95%`    = kk10c$Upper95
     KK91c$`ARIMA 80%`         = kk2c$Lower80
     KK91c$`ARIMA 95%`         = kk2c$Upper95
-    KK91c$Date <- as.Date(KK91c$Date, origin = "1970-01-01")
+    KK91c$Date <- zoo::as.Date(KK91c$Date, origin = "1970-01-01")
     DDfc <- c("Linear", "Semilog", "Growth", "Without knots 80%",
               "Without knots 95%", "Smooth Spline 80%",
               "Smooth Spline 95%", "With knots 80%", "With knots 95%",
@@ -346,7 +347,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     KK191c <- KK91c %>%
       tidyr::pivot_longer(-c(Date, Day), names_to = "Models",
                           values_to = "Forecast")
-    KK191c$Date <- as.Date(KK191c$Date)
+    KK191c$Date <- zoo::as.Date(KK191c$Date)
     KK0091c <- ggplot2::ggplot(KK191c) +
       aes(x = Date, y = Forecast, colour = Models, group = Models) +
       geom_line(size = 1L) +

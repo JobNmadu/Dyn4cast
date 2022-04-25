@@ -5,7 +5,7 @@
 \alias{MallowsCp}
 \title{Computation of MallowsCp}
 \usage{
-MallowsCp(Model, y, x, Nlevels = NULL)
+MallowsCp(Model, y, x, type, Nlevels = NULL)
 }
 \arguments{
 \item{Model}{The estimated \strong{model} from which the Mallows Cp would be computed}
@@ -13,6 +13,8 @@ MallowsCp(Model, y, x, Nlevels = NULL)
 \item{y}{The vector of the \strong{LHS} variable of the estimated model}
 
 \item{x}{The matrix of the \strong{RHS} variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors \code{Nlevels} is required otherwise the computed Cp would be biased.}
+
+\item{type}{The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models include \code{linear}, \code{smooth.spline}, \code{ARIMA}, \code{ALM}, \code{plm} and \code{GLM} for binary based models}
 
 \item{Nlevels}{Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation}
 }
@@ -29,5 +31,5 @@ trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
 x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 y <- c(ctl, trt)
 Model <- lm(y ~ x)
-MallowsCp(Model = Model, y = y, x = x, Nlevels = NULL)
+MallowsCp(Model = Model, y = y, x = x, type, Nlevels = NULL)
 }
