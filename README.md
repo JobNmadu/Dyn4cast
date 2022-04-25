@@ -83,7 +83,7 @@ citation("Dyn4cast")
 
 To cite package 'Dyn4cast' in publications use:
 
-  Job Nmadu (NA). Dyn4cast: Dynamic Forecast of Five Models and their
+  Job Nmadu (2022). Dyn4cast: Dynamic Forecast of Five Models and their
   Ensembles. R package version 11.11.00.
   https://github.com/JobNmadu/Dyn4cast
 
@@ -92,6 +92,7 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
     author = {Job Nmadu},
+    year = {2022},
     note = {R package version 11.11.00},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
@@ -127,7 +128,7 @@ Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02
 summary(Days_28$`Ensembled based on summed weight`)
 #> 
 #> Call:
-#> lm(formula = Data$Day ~ Without.knots + With.knots + Smooth + 
+#> stats::lm(formula = Data$Day ~ Without.knots + With.knots + Smooth + 
 #>     Quadratic + ARIMA)
 #> 
 #> Residuals:
@@ -602,7 +603,7 @@ Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02
 summary(Days_14$`Ensembled based on weight`)
 #> 
 #> Call:
-#> lm(formula = Data$Day ~ Without.knots * With.knots * Smooth * 
+#> stats::lm(formula = Data$Day ~ Without.knots * With.knots * Smooth * 
 #>     Quadratic * ARIMA)
 #> 
 #> Residuals:
@@ -1141,8 +1142,8 @@ install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magr
 
 ## Things the package can do
 
-The package is capable of estimation, prediction and forecasting of the
-following models.  
+The package is capable of computing, estimating, predicting and
+forecasting of the following models.  
 - Spline without knots  
 - Spline with knots  
 - Smooth Spline  
@@ -1151,7 +1152,11 @@ following models.
 - Ensembled with equal weight  
 - Ensembled based on weight  
 - Ensembled based on summed weight  
-- Ensembled based on weight of fit
+- Ensembled based on weight of fit  
+- Unconstrained forecasts  
+- Constrained forecast - Macchine Learning Metrics - Mallow’s CP - Per
+cent sign - Scaled logit for constrained forecast - Inverse scaled logit
+for constrained forecast
 
 Note that a *warning* (not *error*) is thrown up while estimating the
 RMSE for the `Ensembled with equal weight` model. It was thoroughly
