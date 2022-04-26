@@ -10,6 +10,7 @@
 #'
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
+#' @param Lenght The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.
 #' @param ... Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.
 #'
 #' @import tidyverse
@@ -75,13 +76,13 @@
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 #' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#' Trend = "Day", Type = "Integer", origin = ORIGIN)
+#' Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 #'
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
 #' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#' Trend = "Day", Type = "Integer", origin = ORIGIN)
+#' Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 #'
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
@@ -97,7 +98,8 @@ utils::globalVariables(c("Spline without knots",
                          "Forecast", "Models"))
 
 lifecycle::badge('experimental')
-DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
+DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
+                            Length = 0, ...) {
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- stats::lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- stats::lm(Case ~ splines::bs(Day, knots = BREAKS),
@@ -153,26 +155,30 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
   Linear1  <- fitted.values(Linear)
   Semilog1 <- fitted.values(Semilog)
   Growth1  <- fitted.values(Growth)
-
-  kk91   <- forecast::forecast(Without.knots,  h = length(Dsf19))
-  kk091  <- forecast::forecast(With.knots,  h = length(Dsf19))
-  kk191  <- forecast::forecast(Smooth,  h = length(Dsf19))
-  kk1091 <- forecast::forecast(Quadratic, h = length(Dsf19))
-  kk291  <- forecast::forecast(fita1, h = length(Dsf19))
-  LinearF  <- forecast::forecast(Linear1, h = length(Dsf19))
-  SemilogF <- forecast::forecast(Semilog1, h = length(Dsf19))
-  GrowthF  <- forecast::forecast(Growth1, h = length(Dsf19))
+  if (Length != 0){
+    H = Length
+  }else{
+    H = length(Dsf19)
+  }
+  kk91   <- forecast::forecast(Without.knots,  h = H)
+  kk091  <- forecast::forecast(With.knots,  h = H)
+  kk191  <- forecast::forecast(Smooth,  h = H)
+  kk1091 <- forecast::forecast(Quadratic, h = H)
+  kk291  <- forecast::forecast(fita1, h = H)
+  LinearF  <- forecast::forecast(Linear1, h = H)
+  SemilogF <- forecast::forecast(Semilog1, h = H)
+  GrowthF  <- forecast::forecast(Growth1, h = H)
 
   kk3091 <- (Without.knots + With.knots +
                Smooth + Quadratic +
                ARIMA)/5
-  kk3191 <- forecast::forecast(kk3091, h = length(Dsf19))
-  kk4091 <- stats::lm(Data$Day~Without.knots * With.knots * Smooth * Quadratic *
-                 ARIMA)
-  kk4191 <- forecast::forecast(fitted.values(kk4091), h = length(Dsf19))
+  kk3191 <- forecast::forecast(kk3091, h = H)
+  kk4091 <- stats::lm(Data$Day~Without.knots * With.knots * Smooth *
+                        Quadratic * ARIMA)
+  kk4191 <- forecast::forecast(fitted.values(kk4091), h = H)
   kk6091 <- stats::lm(Data$Day~Without.knots + With.knots + Smooth +
                         Quadratic + ARIMA)
-  kk6191 <- forecast::forecast(fitted.values(kk6091), h = length(Dsf19))
+  kk6191 <- forecast::forecast(fitted.values(kk6091), h = H)
 
   KK91 <- as.data.frame(cbind("Date" = Dsf19,"Day" = ss,
                               "Linear" = LinearF[["mean"]],
@@ -212,7 +218,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     (Quadratic * RMSE_weight91$Polynomial) +
     (ARIMA * RMSE_weight91$`Lower ARIMA`)
 
-  kk5191 <- forecast::forecast(P_weight91, h = length(Dsf19))
+  kk5191 <- forecast::forecast(P_weight91, h = H)
   KK91$`Ensembled based on weight of fit` <- kk5191[["mean"]]
   RMSE91$`Ensembled with equal weight` <-
     ModelMetrics::rmse(Data$Case, kk3091)
@@ -220,7 +226,8 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     ModelMetrics::rmse(Data$Case, fitted.values(kk4091))
   RMSE91$`Ensembled based on summed weight` <-
     ModelMetrics::rmse(Data$Case, fitted.values(kk6091))
-  RMSE91$`Ensembled based on weight of fit` <- ModelMetrics::rmse(Data$Day, P_weight91)
+  RMSE91$`Ensembled based on weight of fit` <- ModelMetrics::rmse(Data$Day,
+                                                                  P_weight91)
   DDf91 <- c("Linear", "Semilog", "Growth", "Without knots", "Smooth Spline",
              "With knots", "Quadratic Polynomial",
              "Lower ARIMA", "Upper ARIMA",
@@ -273,33 +280,45 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     upper = max(Data$Case)
     kkF  <- forecast::forecast(Dyn4cast::scaledlogit(x = Without.knots,
                                             lower = lower, upper = upper),
-                               h = length(Dsf19))
-    kkc <- Dyn4cast::constrainedforecast(Model = kkF, lower = lower, upper = upper)
-    kk0F <- forecast::forecast(Dyn4cast::scaledlogit(x = With.knots, lower = lower,
-                                            upper = upper), h = length(Dsf19))
-    kk0c <- Dyn4cast::constrainedforecast(Model = kk0F, lower = lower, upper = upper)
-    kk1F <- forecast::forecast(Dyn4cast::scaledlogit(x = Smooth, lower = lower,
-                                            upper = upper), h = length(Dsf19))
-    kk1c <- Dyn4cast::constrainedforecast(Model = kk1F, lower = lower, upper = upper)
-    kk10F <- forecast::forecast(Dyn4cast::scaledlogit(x = Quadratic, lower = lower,
-                                             upper = upper),
-                                h = length(Dsf19))
-    kk10c <- Dyn4cast::constrainedforecast(Model = kk10F, lower = lower, upper = upper)
+                               h = H)
+    kkc <- Dyn4cast::constrainedforecast(Model = kkF, lower = lower,
+                                         upper = upper)
+    kk0F <- forecast::forecast(Dyn4cast::scaledlogit(x = With.knots,
+                                                     lower = lower,
+                                            upper = upper), h = H)
+    kk0c <- Dyn4cast::constrainedforecast(Model = kk0F, lower = lower,
+                                          upper = upper)
+    kk1F <- forecast::forecast(Dyn4cast::scaledlogit(x = Smooth,
+                                                     lower = lower,
+                                            upper = upper), h = H)
+    kk1c <- Dyn4cast::constrainedforecast(Model = kk1F, lower = lower,
+                                          upper = upper)
+    kk10F <- forecast::forecast(Dyn4cast::scaledlogit(x = Quadratic,
+                                                      lower = lower,
+                                                      upper = upper), h = H)
+    kk10c <- Dyn4cast::constrainedforecast(Model = kk10F, lower = lower,
+                                           upper = upper)
     kk2F <- forecast::forecast(Dyn4cast::scaledlogit(x = ARIMA, lower = lower,
-                                            upper = upper), h = length(Dsf19))
-    kk2c <- Dyn4cast::constrainedforecast(Model = kk2F, lower = lower, upper = upper)
-    kk31F <- forecast::forecast(Dyn4cast::scaledlogit(x = kk3091, lower = lower,
-                                             upper = upper),
-                                h = length(Dsf19))
-    kk31c <- Dyn4cast::constrainedforecast(Model = kk31F, lower = lower, upper = upper)
-    kk41F <- forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk4091),
+                                            upper = upper), h = H)
+    kk2c <- Dyn4cast::constrainedforecast(Model = kk2F, lower = lower,
+                                          upper = upper)
+    kk31F <- forecast::forecast(Dyn4cast::scaledlogit(x = kk3091,
+                                                      lower = lower,
+                                             upper = upper), h = H)
+    kk31c <- Dyn4cast::constrainedforecast(Model = kk31F, lower = lower,
+                                           upper = upper)
+    kk41F <-
+      forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk4091),
                                              lower = lower, upper = upper),
-                                h = length(Dsf19))
-    kk41c <- Dyn4cast::constrainedforecast(Model = kk41F, lower = lower, upper = upper)
-    kk61F <- forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk6091),
+                                h = H)
+    kk41c <- Dyn4cast::constrainedforecast(Model = kk41F, lower = lower,
+                                           upper = upper)
+    kk61F <-
+      forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk6091),
                                              lower = lower, upper = upper),
-                                h = length(Dsf19))
-    kk61c <- Dyn4cast::constrainedforecast(Model = kk61F, lower = lower, upper = upper)
+                                h = H)
+    kk61c <- Dyn4cast::constrainedforecast(Model = kk61F, lower = lower,
+                                           upper = upper)
     KK91c <- as.data.frame(cbind("Date" = Dsf19, "Day" = 1:length(Dsf19),
                                  "Linear" = LinearF[["mean"]],
                                  "Semilog" = SemilogF[["mean"]],
@@ -336,8 +355,9 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type, ...) {
     KK91c$`Essembled based on summed weight 95%` <- kk61c$Upper95
     kk51F <- forecast::forecast(Dyn4cast::scaledlogit(x = P_weight91,
                                              lower = lower, upper = upper),
-                                h = length(Dsf19))
-    kk51c <- Dyn4cast::constrainedforecast(Model = kk51F, lower = lower, upper = upper)
+                                h = H)
+    kk51c <- Dyn4cast::constrainedforecast(Model = kk51F, lower = lower,
+                                           upper = upper)
     KK91c$`Essembled based on weight of fit 80%` <- kk51c$Lower80
     KK91c$`Essembled based on weight of fit 95%` <- kk51c$Upper95
     Forcasts91c <- colSums(KK91c[,-c(1,2)])

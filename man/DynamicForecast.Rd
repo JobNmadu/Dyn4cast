@@ -16,6 +16,8 @@
 
 \item{Type}{The type of response variable. There are two options \strong{Continuous and Integer}. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.}
 
+\item{Lenght}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
+
 \item{...}{Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.}
 }
 \value{
@@ -51,12 +53,12 @@ lastdayfo21 <- Dss[length(Dss)] # The maximum length
 Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
-Trend = "Day", Type = "Integer", origin = ORIGIN)
+Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 
 lastdayfo21 <- Dss[length(Dss)]
 Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
 DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
-Trend = "Day", Type = "Integer", origin = ORIGIN)
+Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 
 }
