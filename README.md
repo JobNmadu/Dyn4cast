@@ -145,7 +145,7 @@ lastdayfo21 <- Dss[length(Dss)]
 
 BREAKS = c(70, 131, 173, 228, 274)
 KK_28 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
+Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 summary(Days_28$`Ensembled based on summed weight`)
 #> 
 #> Call:
@@ -619,7 +619,7 @@ Days_28$`Constrained forecast Plot`
 
 ``` r
 KK_14 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
-Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Type = "Integer")
+Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 
 summary(Days_14$`Ensembled based on weight`)
 #> 
