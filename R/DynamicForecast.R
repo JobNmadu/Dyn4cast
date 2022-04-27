@@ -63,7 +63,7 @@
 #'
 #' @examples
 #' library(Dyn4cast)
-#' COVID19Nig$Date <- as.Date(COVID19Nig$Date, format = '%m/%d/%Y') #The date is formatted to R format
+#' COVID19Nig$Date <- zoo::as.Date(COVID19Nig$Date, format = '%m/%d/%Y') #The date is formatted to R format
 #' LEN <- length(COVID19Nig$Case)
 #' Dss <- seq(COVID19Nig$Date[1], by = "day", length.out = LEN) #data length for forecast
 #' ORIGIN = "2020-02-29"
