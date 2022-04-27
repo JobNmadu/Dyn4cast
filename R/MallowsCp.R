@@ -5,7 +5,7 @@
 #' @param Model The estimated **model** from which the Mallows Cp would be computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors `Nlevels` is required otherwise the computed Cp would be biased.
-#' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation
+#' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation or the number of additional variables created if the model is **polynomial**, like `Quadratic`, `Cubic` or `Spline` equations as long as the additional variables are not in the `x` data frame.
 #' @param type The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are `LM`, `ALM`, `GLM` or binary based models, `N-LM` (not linear for models not clearly defined as linear or non-linear especially some of the essemble models that are merely **computed** not **estimated**) or `nls` for other non linear models, `ARDL`, `smooth.spline`, `ARIMA` and `plm`.
 #'
 #' @export MallowsCp

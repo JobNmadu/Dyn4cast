@@ -6,7 +6,7 @@
 #' @param yvalue The Response variable of the estimated Model
 #' @param Model The Estimated Model (*Model* = a + bx)
 #' @param K The number of variables in the estimated Model to consider
-#' @param Name Name of the Models that need to be specified (ARIMA, Values, SMOOTH, Logit, Ensembles based on weight - EssemWet, QUADRATIC polynomial)
+#' @param Name Name of the Models that need to be specified (ARIMA, Values, SMOOTH, Logit, Ensembles based on weight - EssemWet, QUADRATIC polynomial, SPLINE polynomial)
 #' @param Form Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)
 #' @param kutuf Cutoff for the Estimated values (defaults to 0.5 if not specified)
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)
@@ -239,8 +239,16 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   ptp  = diff(yvalue, lag = 1) / diff(Predy, lag = 1)
   ptpe = ifelse(ptp > 0, 0, 1)
   RD34 = sum(ptpe)
+
+  if(Name == "QUADRATIC"){
+    Nlevels = 1
+  }else if(Name == "SPLINE"){
+    Nlevels = BREAKS + 3
+  } else {
+    Nlevels = 0
+  }
   RD37 = Dyn4cast::MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
-                             type = Form, Nlevels = NULL)
+                             type = Form, Nlevels = Nlevels)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
