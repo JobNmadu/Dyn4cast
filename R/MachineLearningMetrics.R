@@ -6,7 +6,7 @@
 #' @param yvalue The Response variable of the estimated Model
 #' @param Model The Estimated Model (*Model* = a + bx)
 #' @param K The number of variables in the estimated Model to consider
-#' @param Name The Name of the Models that need to be specified. They are ARIMA, Values if the model computes the fitted value without estimation like Essembles, SMOOTH, Logit, Ensembles based on weight - EssemWet, QUADRATIC polynomial, SPLINE polynomial.
+#' @param Name The Name of the Models that need to be specified. They are ARIMA, Values if the model computes the fitted value without estimation like Essembles, SMOOTH (smooth.spline), Logit, Ensembles based on weight - EssemWet, QUADRATIC polynomial, SPLINE polynomial.
 #' @param Form Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)
 #' @param kutuf Cutoff for the Estimated values (defaults to 0.5 if not specified)
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)
@@ -118,12 +118,8 @@
 #'
 #' @examples
 #' library(splines)
-#' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-#' data = StatesAffected)
-#' MachineLearningMetrics(Observed = StatesAffected,
-#' yvalue = StatesAffected$states,
-#'  Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0,
-#'  TTy = "Number")
+#' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = StatesAffected)
+#' MachineLearningMetrics(Observed = StatesAffected, yvalue = StatesAffected$states, Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
 MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy) {
   Predy = 0
   Preds = 0
@@ -239,7 +235,6 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   ptp  = diff(yvalue, lag = 1) / diff(Predy, lag = 1)
   ptpe = ifelse(ptp > 0, 0, 1)
   RD34 = sum(ptpe)
-
   if(Name == "QUADRATIC"){
     Nlevels = 1
   }else if(Name == "SPLINE"){
@@ -247,8 +242,13 @@ MachineLearningMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf
   } else {
     Nlevels = 0
   }
+  if(Name != "SPLINE"){
+    Type = Form
+  }else{
+    Type = "SPLINE"
+  }
   RD37 = Dyn4cast::MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
-                             type = Form, Nlevels = Nlevels)
+                             type = Type, Nlevels = Nlevels)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
                  signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
