@@ -9,20 +9,14 @@
 #' @param ... Additional arguments that may be passed to the function
 #'
 #' @export Percent
-#'
+#' @name Percent
 #' @return
 #'
 #' @examples
 #' Data <- c(1.2, 0.5, 0.103, 7, 0.1501)
 #' Percent(Data = Data, Type = "Frame")  # Value, Frame
-#'
 #' Data <- 1.2
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
-#'
-#' @name Percent
-#'
-#' @docType package
-#'
 Percent <- function(Data, Type, digits = 2,
                     format = "f", ...) {
   # Create user-defined function

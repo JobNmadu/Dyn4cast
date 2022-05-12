@@ -7,19 +7,15 @@
 #' @param upper Integer or variable representing the upper limit for the scaling (0 or inf)
 #'
 #' @export scaledlogit
-#'
 #' @return
-#'
-#' @docType package
-#'
 #' @name scaledlogit
 #'
 #' @examples
+#' library(Dyn4cast)
 #' library(splines)
 #' lower <- 1
 #' upper <- 37
-#' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)),
-#' data = StatesAffected)
+#' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
 #' scaledlogit(x = fitted.values(Model), lower = lower,
 #'  upper = upper)
 scaledlogit <- function(x, lower, upper) {

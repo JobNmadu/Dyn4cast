@@ -7,11 +7,7 @@
 #' @param upper Upper limits of the forecast values
 #'
 #' @export invscaledlogit
-#'
 #' @name invscaledlogit
-#'
-#' @docType package
-#'
 #' @return
 #'
 #' @examples

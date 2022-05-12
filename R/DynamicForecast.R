@@ -1,6 +1,7 @@
 #' Dynamic Forecast of Five Models and their Ensembles
 #'
-#' The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_
+#' The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_.
+#'
 #' @param Data A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available. The Response **y** variable must be specified. If there are other variables in the data, then the date must be in column one.
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation of the spline models.
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.
@@ -36,11 +37,7 @@
 #' @importFrom lifecycle badge
 #'
 #' @name DynamicForecast
-#'
 #' @export DynamicForecast
-#'
-#' @docType package
-#'
 #' @aliases COVID19Nig
 #'
 #' @return A list with the following components:
@@ -93,7 +90,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
   Data$Day <- ss <- seq(1:length(Data$Case))
   fit01  <- stats::lm(Case ~ splines::bs(Day, knots = NULL), data = Data)
   fit10   <- stats::lm(Case ~ splines::bs(Day, knots = BREAKS),
-                data = Data)
+                       data = Data)
   fit11  <- stats::smooth.spline(Data$Day, Data$Case)
   fita1  <- forecast::auto.arima(Data$Case)
   fitpi1 <- stats::lm(Case ~ Day + I(Day^2), data = Data)
@@ -118,19 +115,19 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
     MaximumDate <- MaximumDate
   }
 
- if (Trend == "Day") {
+  if (Trend == "Day") {
     Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::days(1)),
                  by = "day", length.out = length(Data$Case))
     Dsf19day01 <- format(Dsf19[1], format = "%b %d, %y")
     Dsf19daylast <- format(Dsf19[length(Dsf19)], format = "%b %d, %y")
   } else if (Trend == "Month") {
     Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::month(1)),
-        by = "month", length.out = length(Data$Case))
+                 by = "month", length.out = length(Data$Case))
     Dsf19day01 <- zoo::as.yearmon(Dsf19[1], "%b %y")
     Dsf19daylast <- zoo::as.yearmon(Dsf19[length(Dsf19)], "%b %y")
   } else {
     Dsf19 <- seq(zoo::as.Date(MaximumDate + lubridate::years(1)),
-        by = "year", length.out = length(Data$Case))
+                 by = "year", length.out = length(Data$Case))
     Dsf19day01 <- format(zoo::as.Date(Dsf19[1]), "%Y")
     Dsf19daylast <- format(zoo::as.Date(Dsf19[length(Dsf19)]), "%Y")
   }
@@ -190,7 +187,7 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
     "Growth" = ModelMetrics::rmse(Data$Case, Growth1)))
 
   RMSE91 <- c("Without knots" = ModelMetrics::rmse(Data$Case,
-                                              Without.knots),
+                                                   Without.knots),
               "Smooth Spline" = ModelMetrics::rmse(Data$Case, With.knots),
               "With knots" = ModelMetrics::rmse(Data$Case, Smooth),
               "Polynomial" = ModelMetrics::rmse(Data$Case, Quadratic),
@@ -268,46 +265,46 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
   } else {
     lower = min(Data$Case)
     upper = max(Data$Case)
-    kkF  <- forecast::forecast(Dyn4cast::scaledlogit(x = Without.knots,
-                                            lower = lower, upper = upper),
-                               h = H)
-    kkc <- Dyn4cast::constrainedforecast(Model = kkF, lower = lower,
+    kkF  <- forecast::forecast( scaledlogit(x = Without.knots,
+                                                     lower = lower,
+                                                     upper = upper), h = H)
+    kkc <-  constrainedforecast(Model = kkF, lower = lower,
                                          upper = upper)
-    kk0F <- forecast::forecast(Dyn4cast::scaledlogit(x = With.knots,
+    kk0F <- forecast::forecast( scaledlogit(x = With.knots,
                                                      lower = lower,
-                                            upper = upper), h = H)
-    kk0c <- Dyn4cast::constrainedforecast(Model = kk0F, lower = lower,
+                                                     upper = upper), h = H)
+    kk0c <-  constrainedforecast(Model = kk0F, lower = lower,
                                           upper = upper)
-    kk1F <- forecast::forecast(Dyn4cast::scaledlogit(x = Smooth,
+    kk1F <- forecast::forecast( scaledlogit(x = Smooth,
                                                      lower = lower,
-                                            upper = upper), h = H)
-    kk1c <- Dyn4cast::constrainedforecast(Model = kk1F, lower = lower,
+                                                     upper = upper), h = H)
+    kk1c <-  constrainedforecast(Model = kk1F, lower = lower,
                                           upper = upper)
-    kk10F <- forecast::forecast(Dyn4cast::scaledlogit(x = Quadratic,
+    kk10F <- forecast::forecast( scaledlogit(x = Quadratic,
                                                       lower = lower,
                                                       upper = upper), h = H)
-    kk10c <- Dyn4cast::constrainedforecast(Model = kk10F, lower = lower,
+    kk10c <-  constrainedforecast(Model = kk10F, lower = lower,
                                            upper = upper)
-    kk2F <- forecast::forecast(Dyn4cast::scaledlogit(x = ARIMA, lower = lower,
-                                            upper = upper), h = H)
-    kk2c <- Dyn4cast::constrainedforecast(Model = kk2F, lower = lower,
+    kk2F <- forecast::forecast( scaledlogit(x = ARIMA, lower = lower,
+                                                     upper = upper), h = H)
+    kk2c <-  constrainedforecast(Model = kk2F, lower = lower,
                                           upper = upper)
-    kk31F <- forecast::forecast(Dyn4cast::scaledlogit(x = kk3091,
+    kk31F <- forecast::forecast( scaledlogit(x = kk3091,
                                                       lower = lower,
-                                             upper = upper), h = H)
-    kk31c <- Dyn4cast::constrainedforecast(Model = kk31F, lower = lower,
+                                                      upper = upper), h = H)
+    kk31c <-  constrainedforecast(Model = kk31F, lower = lower,
                                            upper = upper)
     kk41F <-
-      forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk4091),
-                                             lower = lower, upper = upper),
-                                h = H)
-    kk41c <- Dyn4cast::constrainedforecast(Model = kk41F, lower = lower,
+      forecast::forecast( scaledlogit(x = fitted.values(kk4091),
+                                               lower = lower, upper = upper),
+                         h = H)
+    kk41c <-  constrainedforecast(Model = kk41F, lower = lower,
                                            upper = upper)
     kk61F <-
-      forecast::forecast(Dyn4cast::scaledlogit(x = fitted.values(kk6091),
-                                             lower = lower, upper = upper),
-                                h = H)
-    kk61c <- Dyn4cast::constrainedforecast(Model = kk61F, lower = lower,
+      forecast::forecast( scaledlogit(x = fitted.values(kk6091),
+                                               lower = lower, upper = upper),
+                         h = H)
+    kk61c <-  constrainedforecast(Model = kk61F, lower = lower,
                                            upper = upper)
     KK91c <- as.data.frame(cbind("Date" = Dsf19, "Day" = 1:length(Dsf19),
                                  "Linear" = LinearF[["mean"]],
@@ -343,10 +340,10 @@ DynamicForecast <- function(Data, BREAKS, MaximumDate, Trend, Type,
     KK91c$`Essembled based on weight 95%` <- kk41c$Upper95
     KK91c$`Essembled based on summed weight 80%` <- kk61c$Lower80
     KK91c$`Essembled based on summed weight 95%` <- kk61c$Upper95
-    kk51F <- forecast::forecast(Dyn4cast::scaledlogit(x = P_weight91,
-                                             lower = lower, upper = upper),
-                                h = H)
-    kk51c <- Dyn4cast::constrainedforecast(Model = kk51F, lower = lower,
+    kk51F <- forecast::forecast( scaledlogit(x = P_weight91,
+                                                      lower = lower,
+                                                      upper = upper), h = H)
+    kk51c <-  constrainedforecast(Model = kk51F, lower = lower,
                                            upper = upper)
     KK91c$`Essembled based on weight of fit 80%` <- kk51c$Lower80
     KK91c$`Essembled based on weight of fit 95%` <- kk51c$Upper95

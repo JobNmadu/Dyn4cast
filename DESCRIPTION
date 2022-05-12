@@ -8,7 +8,7 @@ Authors@R:
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
 Maintainer: The package maintainer Job Nmadu <job.nmadu@gmail.com>
-Description: Estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The package is so far stable but can only take in daily datasets for now. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal number days (time, trend) forecast_.
+Description: Estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The package is so far stable and takes `daily, monthly and yearly datasets for now`. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal sample size (time, trend) forecast_.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
