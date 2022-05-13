@@ -100,24 +100,21 @@ The citation information for this package can be obtained easily when
 you run `citation("Dyn4cast")` in your `R` console.
 
 ``` r
+
 citation("Dyn4cast")
+```
 
-To cite package 'Dyn4cast' in publications use:
+To cite package ‘Dyn4cast’ in publications use:
 
-  Job Nmadu (2022). Dyn4cast: Dynamic Forecast of Five Models and their
-  Ensembles. R package version 11.11.00.
-  https://github.com/JobNmadu/Dyn4cast
+Job Nmadu (2022). Dyn4cast: Dynamic Forecast of Five Models and their
+Ensembles. R package version 11.11.00.
+<https://github.com/JobNmadu/Dyn4cast>
 
 A BibTeX entry for LaTeX users is
 
-  @Manual{,
-    title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
-    author = {Job Nmadu},
-    year = {2022},
-    note = {R package version 11.11.00},
-    url = {https://github.com/JobNmadu/Dyn4cast},
-  }
-```
+@Manual{, title = {Dyn4cast: Dynamic Forecast of Five Models and their
+Ensembles}, author = {Job Nmadu}, year = {2022}, note = {R package
+version 11.11.00}, url = {<https://github.com/JobNmadu/Dyn4cast>}, }
 
 ## Example
 
@@ -127,8 +124,8 @@ This is a basic example which shows you how to solve a common problem:
 library(Dyn4cast)
 #> Loading required package: tidyverse
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-#> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.6     v dplyr   1.0.8
+#> v ggplot2 3.3.6     v purrr   0.3.4
+#> v tibble  3.1.7     v dplyr   1.0.9
 #> v tidyr   1.2.0     v stringr 1.4.0
 #> v readr   2.1.2     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
@@ -137,14 +134,14 @@ library(Dyn4cast)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-load("data/COVID19Nig.rda")
-COVID19Nig$Date <- as.Date(COVID19Nig$Date, format = '%m/%d/%Y')
+load("data/COVID19.rda")
+COVID19$Date <- as.Date(COVID19$Date, format = '%m/%d/%Y')
 
-Dss <- seq(COVID19Nig$Date[1], by = "day", length.out = length(COVID19Nig$Case))
+Dss <- seq(COVID19$Date[1], by = "day", length.out = length(COVID19$Case))
 lastdayfo21 <- Dss[length(Dss)]
 
 BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ]
+KK_28 <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 summary(Days_28$`Ensembled based on summed weight`)
 #> 
@@ -618,7 +615,8 @@ Days_28$`Constrained forecast Plot`
 <img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
-KK_14 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
+
+KK_14 <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 
 summary(Days_14$`Ensembled based on weight`)

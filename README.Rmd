@@ -85,14 +85,32 @@ The citation information for this package can be obtained easily when you run `c
 ```{r citation, comment = "", warning = FALSE, eval=FALSE}
 
 citation("Dyn4cast")
+
 ```
+
+To cite package 'Dyn4cast' in publications use:
+
+  Job Nmadu (2022). Dyn4cast: Dynamic Forecast of Five Models and their
+  Ensembles. R package version 11.11.00. 
+  https://github.com/JobNmadu/Dyn4cast
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
+    author = {Job Nmadu},
+    year = {2022},
+    note = {R package version 11.11.00},
+    url = {https://github.com/JobNmadu/Dyn4cast},
+  }
+
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example, eval = TRUE, warning = FALSE}
-
+library(Dyn4cast)
 load("data/COVID19.rda")
 COVID19$Date <- as.Date(COVID19$Date, format = '%m/%d/%Y')
 
