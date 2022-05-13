@@ -7,7 +7,6 @@
 #' @param upper Integer or variable representing the upper limit for the scaling (0 or inf)
 #'
 #' @export scaledlogit
-#' @return
 #' @name scaledlogit
 #'
 #' @examples

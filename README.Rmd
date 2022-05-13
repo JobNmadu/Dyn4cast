@@ -82,7 +82,7 @@ The package is capable of computing, estimating, predicting and forecasting of t
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
 
-```{r citation, comment = "", warning = FALSE}
+```{r citation, comment = "", warning = FALSE, eval=FALSE}
 
 citation("Dyn4cast")
 ```
@@ -93,15 +93,14 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example, eval = TRUE, warning = FALSE}
 
-library(Dyn4cast)
-load("data/COVID19Nig.rda")
-COVID19Nig$Date <- as.Date(COVID19Nig$Date, format = '%m/%d/%Y')
+load("data/COVID19.rda")
+COVID19$Date <- as.Date(COVID19$Date, format = '%m/%d/%Y')
 
-Dss <- seq(COVID19Nig$Date[1], by = "day", length.out = length(COVID19Nig$Case))
+Dss <- seq(COVID19$Date[1], by = "day", length.out = length(COVID19$Case))
 lastdayfo21 <- Dss[length(Dss)]
 
 BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ]
+KK_28 <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 summary(Days_28$`Ensembled based on summed weight`)
 
@@ -113,7 +112,7 @@ knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
 Days_28$`Unconstrained forecast Plot`
 Days_28$`Constrained forecast Plot`
 
-KK_14 <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
+KK_14 <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
 
 summary(Days_14$`Ensembled based on weight`)

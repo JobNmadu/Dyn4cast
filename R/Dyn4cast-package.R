@@ -6,28 +6,27 @@
 ## usethis namespace: start
 ## usethis namespace: end
 NULL
-#'Dynamic Forecast of Five Models and their Ensembles
+#' @aliases Dyn4cast-package
+#' @details
 #'
-#' This is a package to dynamically estimate and forecast a model and some functions and wrappers.
+#' @section Website:
+#' - The website for the package is at <https://jobnmadu.rbind.io/>
 #'
-#' @format The package presently covers five models and their Ensembles:
-#' \describe{
-#'   \item{Spline without knots}{The estimated spline model without the breaks (knots)}
-#'   \item{Spline with knots}{The estimated spline model without the breaks (knots)}
-#'   \item{Smooth Spline}{The smooth spline estimates}
-#'   \item{ARIMA}{Estimated Auto Regressive Integrated Moving Average model}
-#'   \item{Quadratic}{The estimated quadratic polynomial model}
-#'   \item{Ensembled with equal weight}{Estimated Essemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together}
-#'   \item{Ensembled based on weight}{Estimated Essemble model based on weight of each model. To do this, the fitted values of each model is multiplied and regressed agaisnt the trend}
-#'   \item{Ensembled based on weight of fit}{Estimated Essemble model. The fit of each model is measured by the rmse}
-#'   \item{COVID19Nig}{Dataset}
-#'   \item{DynamicForecast}{Function}
-#'   \item{MachineLearningMetrics}{Function}
-#'   \item{MallowsCp}{Function}
-#'   \item{Percent}{Function}
-#'   \item{StatesAffected}{Function}
-#'   \item{constrainedforecast}{Function}
-#'   \item{invscaledlogit}{Function}
-#'   \item{scaledlogit}{Function}
-#' }
-#'
+#'#' @section Package options:
+#' The following models and functions are covered in this package
+#' + DynamicForecast which estimates the following models:
+#' - `Spline without knots`
+#' - `Spline with knots`
+#' - `smooth.spline`
+#' - `ARIMA`
+#' - `Quadratic polynomial`
+#' - `Ensembled with equal weight of the models ensembled`
+#' - `Ensembled based on weight of each model ensembled`
+#' - `Ensembled based on weight of fit of each model ensembled`
+#' + `MLMetrics` which estimates over 40 machine learning selection metrics
+#' + `MallowsCp`
+#' + `Percent`
+#' + `constrainedforecast`
+#' + `invscaledlogit`
+#' + `scaledlogit`
+

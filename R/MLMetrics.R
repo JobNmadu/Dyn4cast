@@ -117,7 +117,8 @@
 #' @examples
 #' library(splines)
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-#' MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
+#' MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2,
+#'  Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
 MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   Predy = 0
   Preds = 0
@@ -133,7 +134,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   }else{
     fitted.values(Model)
   }
-  
+
   if(Form == "LM"){
     Preds = fitted.values(Model)
   }else if(Form == "ALM"){
@@ -148,10 +149,10 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   }else{
     Preds = stats::predict(Model, type = "response")
   }
-  
+
   ppk <- if(sum(Preds) == 0) 1 else 2
   kutuf <- if (kutuf != 0) kutuf else .5
-  
+
   RD01 <- signif(ifelse(Name == "ARIMA",  Model$aic,
                         ifelse(Name == "SMOOTH"| Name == "Values", 0,
                                stats::AIC(Model))), 2)
@@ -233,7 +234,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   ptp  = diff(yvalue, lag = 1) / diff(Predy, lag = 1)
   ptpe = ifelse(ptp > 0, 0, 1)
   RD34 = sum(ptpe)
-  
+
   if(Name == "QUADRATIC"){
     Nlevels = 1
   }else if(Name == "SPLINE"){
@@ -241,13 +242,13 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   }else{
     Nlevels = 0
   }
-  
+
   if(Name != "SPLINE"){
     Type = Form
   }else{
     Type = "SPLINE"
   }
-  
+
   RD37 = MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
                              type = Type, Nlevels = Nlevels)
   RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",

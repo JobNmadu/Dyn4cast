@@ -38,7 +38,6 @@
 #'
 #' @name DynamicForecast
 #' @export DynamicForecast
-#' @aliases COVID19Nig
 #'
 #' @return A list with the following components:
 #' \item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
@@ -57,21 +56,27 @@
 #' \item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
 #' \item{\code{Date}}{This is the date range for the forecast.}
 #'
+#' @aliases COVID19
+#'
 #' @examples
-#' library(Dyn4cast)
-#' COVID19Nig$Date <- zoo::as.Date(COVID19Nig$Date, format = '%m/%d/%Y') #The date is formatted to R format
-#' LEN <- length(COVID19Nig$Case)
-#' Dss <- seq(COVID19Nig$Date[1], by = "day", length.out = LEN) #data length for forecast
+#' COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
+#'  #The date is formatted to R format
+#' LEN <- length(COVID19$Case)
+#' Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
+#'  #data length for forecast
 #' ORIGIN = "2020-02-29"
 #' lastdayfo21 <- Dss[length(Dss)] # The maximum length
-#' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 28, ] # desired length of forecast
+#' Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
+#' # desired length of forecast
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+#' DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+#'  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 #'
 #' lastdayfo21 <- Dss[length(Dss)]
-#' Data <- COVID19Nig[COVID19Nig$Date <= lastdayfo21 - 14, ]
+#' Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
-#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+#' DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+#'  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 utils::globalVariables(c("Spline without knots",
                          "Spline with knots",

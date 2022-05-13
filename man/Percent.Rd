@@ -17,9 +17,6 @@ Percent(Data, Type, digits = 2, format = "f", ...)
 
 \item{...}{Additional arguments that may be passed to the function}
 }
-\value{
-
-}
 \description{
 This function is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector of values.
 }

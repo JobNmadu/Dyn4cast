@@ -8,7 +8,6 @@
 #'
 #' @export invscaledlogit
 #' @name invscaledlogit
-#' @return
 #'
 #' @examples
 #' x <- 1:35

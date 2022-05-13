@@ -13,9 +13,6 @@ scaledlogit(x, lower, upper)
 
 \item{upper}{Integer or variable representing the upper limit for the scaling (0 or inf)}
 }
-\value{
-
-}
 \description{
 This function is a wrapper for scaling the fitted (predicted) values of a one-sided (positive or negative only) integer response variable of supported models. The scaling involves some log transformation of the fitted (predicted) values.
 }

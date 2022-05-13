@@ -79,5 +79,6 @@ This function estimates over 40 Metrics for assessing the quality of Machine Lea
 \examples{
 library(splines)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2, Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
+MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2,
+ Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
 }
