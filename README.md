@@ -73,6 +73,9 @@ At present, the package exports the following functions:
 
 5.  `MallowsCP` for determining the the Mallows CP.
 
+6.  `Linearsystems` for linear regression model with some
+    transformation.
+
 ## Things the package can do
 
 The package is capable of computing, estimating, predicting and
@@ -92,7 +95,8 @@ forecasting of the following models.
 - Mallow’s CP  
 - Per cent sign  
 - Scaled logit for constrained forecast  
-- Inverse scaled logit for constrained forecast
+- Inverse scaled logit for constrained forecast  
+- Linear regressions and transformations
 
 ## Citation
 
@@ -102,23 +106,28 @@ you run `citation("Dyn4cast")` in your `R` console.
 ``` r
 
 citation("Dyn4cast")
-```
 
-To cite package ‘Dyn4cast’ in publications use:
+To cite package 'Dyn4cast' in publications use:
 
-Job Nmadu (2022). Dyn4cast: Dynamic Forecast of Five Models and their
-Ensembles. R package version 11.11.00.
-<https://github.com/JobNmadu/Dyn4cast>
+  Job Nmadu (2020). Dyn4cast: Dynamic Forecast of Five Models and their
+  Ensembles. R package version 11.11.00.
+  https://github.com/JobNmadu/Dyn4cast
 
 A BibTeX entry for LaTeX users is
 
-@Manual{, title = {Dyn4cast: Dynamic Forecast of Five Models and their
-Ensembles}, author = {Job Nmadu}, year = {2022}, note = {R package
-version 11.11.00}, url = {<https://github.com/JobNmadu/Dyn4cast>}, }
+  @Manual{,
+    title = {Dyn4cast: Dynamic Forecast of Five Models and their Ensembles},
+    author = {Job Nmadu},
+    year = {2020},
+    note = {R package version 11.11.00},
+    url = {https://github.com/JobNmadu/Dyn4cast},
+  }
+```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example of the `DynamicForecast` function, which shows
+you how to solve a common problem:
 
 ``` r
 library(Dyn4cast)

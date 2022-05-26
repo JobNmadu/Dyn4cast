@@ -2,7 +2,7 @@
 % Please edit documentation in R/scaledlogit.R
 \name{scaledlogit}
 \alias{scaledlogit}
-\title{Scale Parameter for Integer Modelling and Forecast}
+\title{Scale Parameter for Integer Modeling and Forecast}
 \usage{
 scaledlogit(x, lower, upper)
 }

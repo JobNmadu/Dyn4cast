@@ -1,4 +1,4 @@
-#' Scale Parameter for Integer Modelling and Forecast
+#' Scale Parameter for Integer Modeling and Forecast
 #'
 #' This function is a wrapper for scaling the fitted (predicted) values of a one-sided (positive or negative only) integer response variable of supported models. The scaling involves some log transformation of the fitted (predicted) values.
 #'

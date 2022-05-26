@@ -4,11 +4,11 @@
 \name{Dyn4cast-package}
 \alias{Dyn4cast}
 \alias{Dyn4cast-package}
-\title{Dyn4cast: Dynamic Forecast of Five Models and their Ensembles}
+\title{Dyn4cast: Dynamic Modeling and machine Learning Environment}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial, and ARIMA. The package is so far stable and takes `daily, monthly and yearly datasets for now`. The robust output include the models' estimates, time-varying forecasts and plots based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal sample size (time, trend) forecast_.
+Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The ecosystem of this package is analysis of economic data for national development. package is so far stable and has high reliability and efficiency as well as time-saving.
 }
 \seealso{
 Useful links:

@@ -1,6 +1,6 @@
 Package: Dyn4cast
 Date: 2020-11-11
-Title: Dynamic Forecast of Five Models and their Ensembles
+Title: Dynamic Modeling and machine Learning Environment
 Version: 11.11.00
 Authors@R: 
     person(given = "Job",
@@ -9,7 +9,7 @@ Authors@R:
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
 Maintainer: The package maintainer Job Nmadu <job.nmadu@gmail.com>
-Description: Estimates, predict and forecast five models and their Ensembles. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The package is so far stable and takes `daily, monthly and yearly datasets for now`. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced _equal sample size (time, trend) forecast_.
+Description: Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The ecosystem of this package is analysis of economic data for national development. package is so far stable and has high reliability and efficiency as well as time-saving.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -34,13 +34,16 @@ Imports:
     ModelMetrics,
     broom,
     qpcR,
-    dplyr
+    dplyr,
+    fBasics,
+    huxtable,
+    kableExtra,
+    knitr
 Depends: 
     tidyverse,
     R (>= 2.10)
 Suggests: 
     testthat (>= 3.0.0),
-    knitr,
     rmarkdown,
     covr,
     spelling

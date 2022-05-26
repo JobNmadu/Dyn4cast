@@ -14,7 +14,7 @@ NULL
 #'
 #'#' @section Package options:
 #' The following models and functions are covered in this package
-#' + DynamicForecast which estimates the following models:
+#' + `DynamicForecast` which estimates the following models:
 #' - `Spline without knots`
 #' - `Spline with knots`
 #' - `smooth.spline`
@@ -29,4 +29,12 @@ NULL
 #' + `constrainedforecast`
 #' + `invscaledlogit`
 #' + `scaledlogit`
+#' + `Linearsystems` which estimates the following models:
+#' - `Linear`
+#' - `Semilog`
+#' - `Growth`
+#' - `Double log`
+#' - `Quadratic`
+#' - `Inverse y`
+#' - `Square root y`
 

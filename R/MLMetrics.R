@@ -249,7 +249,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   }
   RD16 = signif(Metrics::mape(yvalue, Predy), 2)
   RD17 = signif(ifelse(Name != "Values",
-                       Metrics::mapk(actual = Observed, predicted = Model,
+                       Metrics::mapk(actual = yvalue, predicted = Predy,
                                      k = K), 0), 2)
   RD18 = signif(Metrics::mase(yvalue, Preds), 2)
   RD19 = signif(Metrics::mdae(yvalue, Predy), 2)

@@ -38,7 +38,7 @@ A list with the following components:
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}.
+The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}. The function takes \verb{daily, monthly and yearly datasets for now}.
 }
 \examples{
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
