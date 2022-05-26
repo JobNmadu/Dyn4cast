@@ -53,7 +53,7 @@
 #' \item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
 #' \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
 #' \item{\code{Unconstrained forecast Plot}}{The combined plots of the unconstrained forecasts using ggplot. }
-#' \item{\code{Constrained forecast Plot}}{The combined plots of the contrained forecasts using ggplot. }
+#' \item{\code{Constrained forecast Plot}}{The combined plots of the constrained forecasts using ggplot. }
 #' \item{\code{Date}}{This is the date range for the forecast.}
 #'
 #' @aliases COVID19
