@@ -24,7 +24,7 @@ A list with the following components:
 \item{\code{Summary of character variables}}{of the dataset.}
 }
 \description{
-The linear model still remains a reference point towards advanced modeling of some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and \strong{Artificial Intelligence} in spite of some of her weaknesses. The major task in modelling is to compare various models before a selection is made for one or for advanced modelling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate seven different linear models and provide their coefficients in a Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a \emph{one line} code.
+The linear model still remains a reference point towards advanced modeling of some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and \strong{Artificial Intelligence} in spite of some of her weaknesses. The major task in modeling is to compare various models before a selection is made for one or for advanced modeling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate seven different linear models and provide their coefficients in a formatted Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a \emph{one line} code.
 }
 \examples{
 y = linearsystems$MKTcost
