@@ -91,7 +91,7 @@ forecasting of the following models.
 - Ensembled based on weight of fit  
 - Unconstrained forecasts  
 - Constrained forecast  
-- Macchine Learning Metrics  
+- Machine Learning Metrics  
 - Mallow’s CP  
 - Per cent sign  
 - Scaled logit for constrained forecast  
