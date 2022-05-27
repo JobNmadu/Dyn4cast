@@ -10,7 +10,7 @@
 #' \item{\code{Semilog}}{The full estimates of the Semilog Model. Here the independent variable(s) is/are log-transformed.}
 #' \item{\code{Growth}}{The full estimates of the Growth Model. Here the dependent variable(s) is/are log-transformed.}
 #' \item{\code{Double Log}}{The full estimates of the Semilog Model. Here the both the dependent and independent variables are log-transformed.}
-#' \item{\code{Quardratic}}{The full estimates of the Quadratic Model. Here the square of the independent variable(s) is/are included as independent variables.}
+#' \item{\code{Quardratic}}{The full estimates of the Quadratic Model. Here the square of _numeric_ independent variable(s) is/are included as independent variables.}
 #' \item{\code{Inverse y}}{The full estimates of the Inverse Model. Here the dependent variable is inverse-transformed (1/y).}
 #' \item{\code{Square root y}}{The full estimates of the Square root Model. Here the dependent variable is square root-transformed (y^1/2).}
 #' \item{\code{Model Table}}{Formatted Table of the coefficient estimates of all the models}
