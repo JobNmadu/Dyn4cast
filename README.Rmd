@@ -74,7 +74,7 @@ The package is capable of computing, estimating, predicting and forecasting of t
 - Ensembled based on weight of fit  
 - Unconstrained forecasts    
 - Constrained forecast  
-- Macchine Learning Metrics  
+- Machine Learning Metrics  
 - Mallow's CP  
 - Per cent sign  
 - Scaled logit for constrained forecast  
