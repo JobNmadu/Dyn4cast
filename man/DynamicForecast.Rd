@@ -17,7 +17,7 @@
 
 \item{Lenght}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
 
-\item{...}{Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.}
+\item{...}{Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYYY-MM-DD") of the data may be specified in order to properly date the forecast.}
 }
 \value{
 A list with the following components:

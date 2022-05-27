@@ -8,7 +8,7 @@
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
 #' @param Lenght The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.
-#' @param ... Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYY-MM-DD") of the data may be specified in order to properly date the forecast.
+#' @param ... Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYYY-MM-DD") of the data may be specified in order to properly date the forecast.
 #'
 #' @import tidyverse
 #' @importFrom stats lm
