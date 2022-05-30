@@ -40,7 +40,7 @@
 #' y = linearsystems$MKTcost
 #' x <- select(linearsystems, -MKTcost)
 #' Linearsystems(y = y, x = x)
-utils::globalVariables("Prediction")
+utils::globalVariables(c("Prediction", "Observed"))
 Linearsystems <- function(y, x) {
 
   Data <- cbind(y, x)
