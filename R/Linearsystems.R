@@ -134,8 +134,6 @@ Linearsystems <- function(y, x) {
                                            "Square root y" = Sqrts))
   XYZ1 <- knitr::kable(SelectionCriteria, "html")
 
-  ID <- paste("O", 1:length(Data$y), sep = "")
-  ID <- seq(1:length(Data$y))
   ModelTable <- huxtable::huxreg("Linear" = Linear, "Semilog" = Semilog,
                    "Growth" = Growth, "Double Log" = Loglog,
                    "Quardratic" = Quard, "Inverse y" = Inverse,
@@ -144,7 +142,7 @@ Linearsystems <- function(y, x) {
                                                      '*' = 0.1),
                    statistics = NULL)
 
-  PredictTable <- as.data.frame(cbind("ID" = ID, "Observed" = y,
+  PredictTable <- as.data.frame(cbind("Observed" = y,
                                       "Linear" = Linear1,
                                        "Semilog" = Semilog1,
                                       "Growth" = Growth1,
@@ -154,11 +152,11 @@ Linearsystems <- function(y, x) {
                                        "Square root y" = Sqrt1))
 
   PredictTable <- PredictTable %>%
-    tidyr::pivot_longer(-ID, names_to = "Models", values_to = "Prediction")
+    tidyr::pivot_longer(-Observed, names_to = "Models", values_to = "Prediction")
 
   #PredictTable$Prediction <- log(PredictTable$Prediction)
   PredictPlot <- ggplot2::ggplot(PredictTable) +
-    aes(x = ID, y = Prediction, fill = Models, colour = Models) +
+    aes(x = Observed, y = Prediction, fill = Models, colour = Models) +
     ggplot2::geom_line(size = 0.5) +
     ggplot2::scale_fill_hue() +
     ggplot2::scale_color_hue() +
