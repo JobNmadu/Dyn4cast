@@ -20,7 +20,6 @@
 #'
 #' @export Linearsystems
 #'
-#' @importFrom fBasics basicStats
 #' @importFrom huxtable huxreg
 #' @importFrom kableExtra kable_styling
 #' @importFrom knitr kable
@@ -46,17 +45,13 @@ Linearsystems <- function(y, x) {
   Data <- cbind(y, x)
   Names <- names(Data)
 
-  KKN <- Data %>%
-    dplyr::select_if(is.numeric) %>%
-    fBasics::basicStats()
+  KNN <- Data %>% dplyr::select_if(is.numeric)
+
+  KNN1 <- quicksummary(x = KNN, Type = 1)
 
   KKC <- Data %>%
     dplyr::select_if(is.character) %>%
     summary()
-
-  Ggk1 <- KKN[-c(1,2,9,13),]
-  KKN1 <- kableExtra::kable_styling(knitr::kable(Ggk1, digits = 2), "striped",
-                                    position = "center", font_size = 12)
 
   xnum <- x %>%
     dplyr::select_if(is.numeric)
@@ -173,7 +168,7 @@ Linearsystems <- function(y, x) {
     "Square root y" = Sqrt,
     "Model Table" = ModelTable,
     "Prediction plots" = PredictPlot,
-    "Summary of numeric variables" = KKN1,
+    "Summary of numeric variables" = KNN1,
     "Summary of character variables" = KKC,
     "Machine Learning Metrics" =  XYZ1)
   return(results)

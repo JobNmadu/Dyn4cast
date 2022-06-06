@@ -32,10 +32,10 @@ Imports:
     broom,
     qpcR,
     dplyr,
-    fBasics,
     huxtable,
     kableExtra,
-    knitr
+    knitr,
+    timeDate
 Depends: 
     tidyverse,
     R (>= 2.10)

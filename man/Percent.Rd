@@ -2,6 +2,7 @@
 % Please edit documentation in R/Percent.R
 \name{Percent}
 \alias{Percent}
+\alias{sample}
 \title{Attach Per Cent Sign to Data}
 \usage{
 Percent(Data, Type, digits = 2, format = "f", ...)
@@ -18,11 +19,12 @@ Percent(Data, Type, digits = 2, format = "f", ...)
 \item{...}{Additional arguments that may be passed to the function}
 }
 \description{
-This function is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector of values.
+This function is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector or a data frame of values.
 }
 \examples{
 Data <- c(1.2, 0.5, 0.103, 7, 0.1501)
 Percent(Data = Data, Type = "Frame")  # Value, Frame
 Data <- 1.2
 Percent(Data = Data, Type = "Value")  # Value, Frame
+Percent(Data = sample, Type = "Frame")  # Value, Frame
 }

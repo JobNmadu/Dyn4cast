@@ -37,4 +37,5 @@ NULL
 #' - `Quadratic`
 #' - `Inverse y`
 #' - `Square root y`
+#' + `quicksummary`
 
