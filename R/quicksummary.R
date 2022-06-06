@@ -1,5 +1,7 @@
 #' Quick Formatted Summary of Machine Learning Data
 #'
+#' There is increasing need to make user-friendly and production ready Tables for machine learning data. This function is a simplified quick summary and the output is a formatted table. This is very handle for those who do not have the time to write codes for user-friendly summaries.
+#'
 #' @param x The data to be summarised. Only numeric data is allowed.
 #' @param Type The type of data to be summarised. There are two options here 1 or 2, 1 = `Continuous` and 2 = `Likert-type`
 #' @param Cut The cut-off point for Likert-type data
