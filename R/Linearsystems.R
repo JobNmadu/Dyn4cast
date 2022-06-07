@@ -163,7 +163,7 @@ Linearsystems <- function(y, x) {
     "Semilog" = Semilog,
     "Growth" = Growth,
     "Double Log" = Loglog,
-    "Quardratic" = Quard,
+    "Quadratic" = Quard,
     "Inverse y" = Inverse,
     "Square root y" = Sqrt,
     "Model Table" = ModelTable,

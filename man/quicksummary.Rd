@@ -25,7 +25,7 @@ The function returns a formatted Table of the Quick summary
 \item{\code{ANS}}{The formatted Table of the summary}
 }
 \description{
-Quick Formatted Summary of Machine Learning Data
+There is increasing need to make user-friendly and production ready Tables for machine learning data. This function is a simplified quick summary and the output is a formatted table. This is very handle for those who do not have the time to write codes for user-friendly summaries.
 }
 \examples{
 # Likert-type data

@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The ecosystem of this package is analysis of economic data for national development. The package is so far stable and has high reliability and efficiency as well as time-saving.
+Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The package also have capabilities to provide tools and metrics that are useful in machine learning and modeling. For example, there is quick summary, percent sign, Mallow's Cp tools and others. The ecosystem of this package is analysis of economic data for national development. The package is so far stable and has high reliability and efficiency as well as time-saving.
 }
 \seealso{
 Useful links:

@@ -2,11 +2,14 @@
 #'
 #' This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector or a data frame of values.
 #'
-#' @param Data The Data which the percent sign is to be affixed
-#' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector data
+#' @param Data The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
+#' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
 #' @param digits Number of decimal points for the output
 #' @param format The format of the output which is internal and the default is a character factor
 #' @param ... Additional arguments that may be passed to the function
+#'
+#' @return This function returns the result as
+#' \item{\code{percent}}{ values with the percentage sign (%) affixed.}
 #'
 #' @export Percent
 #' @name Percent
@@ -20,21 +23,24 @@
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #' Percent(Data = sample, Type = "Frame")  # Value, Frame
 Percent <- function(Data, Type, digits = 2, format = "f", ...){
-  Data1 <- as.data.frame(Data)
   if (Type == "Value") {
-    Data1 <- paste0(formatC(Data/(1)), "%")
+    percent <- Data
+    Rate <- (percent/percent)*100
+    percent <- paste0(formatC(percent/(1)), "%")
   } else {
-    if(is.null(dim(Data))){
-      Data1 <- paste0(formatC((Data/sum(Data))*100, format = format, digits = digits,
-                              ...), "%")
+    percent <- Data
+    if(is.null(dim(percent))){
+      Rate <- percent/sum(percent)*100
+      percent <- paste0(formatC((percent/sum(percent))*100, format = format,
+                                digits = digits, ...), "%")
     }else{
       Data <- signif(sweep(Data, 2, colSums(Data), FUN = "/")*100, 2)
-      Data <- as.data.frame(as.matrix(Data))
-      HI <- nrow(Data)
-      GI <- ncol(Data)
+      percent <- Rate <- as.data.frame(as.matrix(Data))
+      HI <- nrow(percent)
+      GI <- ncol(percent)
       for (i in 1:HI){
         for (j in 1:GI){
-          Data1[i, j] <- print(paste0(Data1[i, j], "%"))
+          percent[i, j] <- print(paste0(percent[i, j], "%"))
         }
       }
       #Data1 <- as.data.frame(lapply(Data0, as.numeric, digits = 2))
@@ -43,6 +49,8 @@ Percent <- function(Data, Type, digits = 2, format = "f", ...){
       #paste0(formatC(Data1, digits = digits), "%", format = "f")
     }
   }
-  return(Data1)
+  result <- list(percent = percent,
+                 Rate = Rate)
+  return(result)
 }
 

@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "job.nmadu@gmail.com",
            comment = c(ORCID = "0000-0002-1320-8957"))
-Description: Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The ecosystem of this package is analysis of economic data for national development. The package is so far stable and has high reliability and efficiency as well as time-saving.
+Description: Estimates, predict and forecast dynamic models as well as Machine Learning metrics which assists in model selection for further analysis. The package also have capabilities to provide tools and metrics that are useful in machine learning and modeling. For example, there is quick summary, percent sign, Mallow's Cp tools and others. The ecosystem of this package is analysis of economic data for national development. The package is so far stable and has high reliability and efficiency as well as time-saving.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

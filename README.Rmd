@@ -53,7 +53,7 @@ At present, the package exports the following functions:
 
 2. `constrainedforecast` which constrain forecast of one-sided integer forecast to lie between the lower and upper limits of the base data. The function estimates the lower and upper 80% and 95% forecasts of the estimated model. This function works with two other functions, that is, `invscaledligit` and `scaledlogit` which are adapted from Hyndman & Athanasopoulos (2021) and both of which are adopted.
 
-3. `Percent` which affix the % sign on a value or a vectors of values.
+3. `Percent` which affix the % sign on a value or a vector or data frame of values.
 
 4. `MachineLearningMetrics` which collects more than 40 metrics that are useful in model selection. The beauty of this function is the simplicity with which these metrics are collected from difference packages and saves the user the need to load more than 10 libraries in order to get these metrics.
 
@@ -61,25 +61,74 @@ At present, the package exports the following functions:
 
 6. `Linearsystems` for linear regression model with some transformation.
 
-## Things the package can do
-The package is capable of computing, estimating, predicting and forecasting of the following models.  
-- Spline without knots  
-- Spline with knots  
-- Smooth Spline  
-- ARIMA  
-- Quadratic  
-- Ensembled with equal weight  
-- Ensembled based on weight  
-- Ensembled based on summed weight  
-- Ensembled based on weight of fit  
-- Unconstrained forecasts    
-- Constrained forecast  
-- Machine Learning Metrics  
-- Mallow's CP  
-- Per cent sign  
-- Scaled logit for constrained forecast  
-- Inverse scaled logit for constrained forecast  
-- Linear regressions and transformations
+7. `quicksummary` which outputs a formatted table of useful summary statistics of machine learning data.  
+
+## Things the package can do  
+
+The package is capable of 
+
+* computing, estimating, predicting and forecasting of the following models.
+
+    + Spline without knots  
+    
+    + Spline with knots  
+    
+    + Smooth Spline  
+    
+    + ARIMA  
+    
+    + Quadratic  
+    
+    + Ensembled with equal weight  
+    
+    + Ensembled based on weight  
+    
+    + Ensembled based on summed weight  
+    
+    + Ensembled based on weight of fit  
+
+* Unconstrained forecasts    
+
+* Constrained forecast  
+
+* Machine Learning Metrics  
+
+* Mallow's CP  
+
+* Per cent sign
+
+     + Rate  
+     
+     + percent  
+
+* Scaled logit for constrained forecast  
+
+* Inverse scaled logit for constrained forecast  
+
+* Linear regression and transformations which consists of
+
+    + Linear model
+    
+    + Semilog model
+    
+    + Growth model
+    
+    + Double Log model
+    
+    + Quadratic model
+    
+    + Inverse of y model
+    
+    + Square root of y model
+    
+    + formatted Model Table
+    
+    + Prediction plots
+    
+    + Summary of numeric variables
+    
+    + Summary of character variables
+    
 
 ## Citation
 
@@ -91,48 +140,9 @@ citation("Dyn4cast")
 
 ```
 
-## Example
-
-This is a basic example of the `DynamicForecast` function, which shows you how to solve a common problem:
-
-```{r example, eval = TRUE, warning = FALSE}
-library(Dyn4cast)
-load("data/COVID19.rda")
-COVID19$Date <- as.Date(COVID19$Date, format = '%m/%d/%Y')
-
-Dss <- seq(COVID19$Date[1], by = "day", length.out = length(COVID19$Case))
-lastdayfo21 <- Dss[length(Dss)]
-
-BREAKS = c(70, 131, 173, 228, 274)
-KK_28 <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
-Days_28 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
-summary(Days_28$`Ensembled based on summed weight`)
-
-knitr::kable(as.data.frame(Days_28$`Unconstrained Forecast`),
-             row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_28$`Constrained Forecast`),
-             row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_28$RMSE), row.names = FALSE, "html")
-Days_28$`Unconstrained forecast Plot`
-Days_28$`Constrained forecast Plot`
-
-KK_14 <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
-Days_14 <- DynamicForecast(Data = KK_28, BREAKS = BREAKS, MaximumDate = "2021-02-10", Trend = "Day", Length = 0, Type = "Integer")
-
-summary(Days_14$`Ensembled based on weight`)
-
-knitr::kable(as.data.frame(Days_14$`Unconstrained Forecast`),
-             row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_14$`Constrained Forecast`),
-             row.names = FALSE, "html")
-knitr::kable(as.data.frame(Days_14$RMSE), row.names = FALSE, "html")
-Days_14$`Unconstrained forecast Plot`
-Days_14$`Constrained forecast Plot`
-```
-
 ## Suggested packages
 
-Although not a dependency, the package derives functionally from a number of other packages ans so may require you to install such packages if they are not yet installed. the packages are listed below:
+Although not a dependency, the package derives functionally from a number of other packages and so may require you to install such packages if they are not yet installed. The packages are listed below:
 
 ```{r install-suggested, eval = FALSE}
 install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))

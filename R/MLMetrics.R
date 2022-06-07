@@ -65,97 +65,51 @@
 #'
 #' @return A list with the following components:
 #' \item{\code{Absolute Error}}{of the Model.}
-#'
 #' \item{\code{Absolute Percent Error}}{of the Model.}
-#'
 #' \item{\code{Accuracy}}{of the Model.}
-#'
 #' \item{\code{Adjusted R Square}}{of the Model.}
-#'
 #' \item{\code{Akaike's Information Criterion AIC}}{of the Model.}
-#'
 #' \item{\code{Allen's Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
-#'
 #' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
-#'
 #' \item{\code{Average Precision at k}}{of the Model.}
-#'
 #' \item{\code{Bias}}{of the Model.}
-#'
 #' \item{\code{Brier score}}{of the Model.}
-#'
 #' \item{\code{Classification Error}}{of the Model.}
-#'
 #' \item{\code{F1 Score}}{of the Model.}
-#'
 #' \item{\code{fScore}}{of the Model.}
-#'
 #' \item{\code{GINI Coefficient}}{of the Model.}
-#'
 #' \item{\code{kappa statistic}}{of the Model.}
-#'
 #' \item{\code{Log Loss}}{of the Model.}
-#'
 #' \item{\code{Mallow's cp}}{of the Model.}
-#'
 #' \item{\code{Matthews Correlation Coefficient}}{of the Model.}
-#'
 #' \item{\code{Mean Log Loss}}{of the Model.}
-#'
 #' \item{\code{Mean Absolute Error}}{of the Model.}
-#'
 #' \item{\code{Mean Absolute Percent Error}}{of the Model.}
-#'
 #' \item{\code{Mean Average Precision at k}}{of the Model.}
-#'
 #' \item{\code{Mean Absolute Scaled Error}}{of the Model.}
-#'
 #' \item{\code{Median Absolute Error}}{of the Model.}
-#'
 #' \item{\code{Mean Squared Error}}{of the Model.}
-#'
 #' \item{\code{Mean Squared Log Error}}{of the Model.}
-#'
 #' \item{\code{Model turning point error}}{of the Model.}
-#'
 #' \item{\code{Negative Predictive Value}}{of the Model.}
-#'
 #' \item{\code{Percent Bias}}{of the Model.}
-#'
 #' \item{\code{Positive Predictive Value}}{of the Model.}
-#'
 #' \item{\code{Precision}}{of the Model.}
-#'
 #' \item{\code{R Square}}{of the Model.}
-#'
 #' \item{\code{Relative Absolute Error}}{of the Model.}
-#'
 #' \item{\code{Recall}}{of the Model.}
-#'
 #' \item{\code{Root Mean Squared Error}}{of the Model.}
-#'
 #' \item{\code{Root Mean Squared Log Error}}{of the Model.}
-#'
 #' \item{\code{Root Relative Squared Error}}{of the Model.}
-#'
 #' \item{\code{Relative Squared Error}}{of the Model.}
-#'
 #' \item{\code{Schwarz's Bayesian criterion BIC}}{of the Model.}
-#'
 #' \item{\code{Sensitivity}}{of the Model.}
-#'
 #' \item{\code{specificity}}{of the Model.}
-#'
 #' \item{\code{Squared Error}}{of the Model.}
-#'
 #' \item{\code{Squared Log Error}}{of the Model.}
-#'
 #' \item{\code{Symmetric Mean Absolute Percentage Error}}{of the Model.}
-#'
 #' \item{\code{Sum of Squared Errors}}{of the Model.}
-#'
 #' \item{\code{True negative rate}}{of the Model.}
-#'
 #' \item{\code{True positive rate}}{of the Model.}
 #'
 #' @name MLMetrics
