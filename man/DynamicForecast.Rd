@@ -5,7 +5,7 @@
 \alias{COVID19}
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the dataset e.g. 2020-12-31. Quarterly data is not available. The Response \strong{y} variable must be specified. If there are other variables in the data, then the date must be in column one.}
+\item{Data}{A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now. The Response \strong{y} variable must be specified. If there are other variables in the data, then the date must be in column one.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models.}
 
@@ -38,7 +38,7 @@ A list with the following components:
 \item{\code{Date}}{This is the date range for the forecast.}
 }
 \description{
-The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this package is the use of the newly introduced \emph{equal number days (time, trend) forecast}. The function takes \verb{daily, monthly and yearly datasets for now}.
+The function estimates and predict models using time series data set and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this function is the use of the newly introduced \emph{equal number of trend (days, months, years) to estimate forecast from the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')

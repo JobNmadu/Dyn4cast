@@ -38,4 +38,5 @@ NULL
 #' - `Inverse y`
 #' - `Square root y`
 #' + `quicksummary`
+#' + `formattedcut`
 

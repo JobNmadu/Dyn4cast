@@ -63,6 +63,8 @@ At present, the package exports the following functions:
 
 7. `quicksummary` which outputs a formatted table of useful summary statistics of machine learning data.  
 
+8. `formattedcut` is a wrapper for providing publication ready frequency tables for continuous variable.  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -128,7 +130,8 @@ The package is capable of
     + Summary of numeric variables
     
     + Summary of character variables
-    
+
+* Convert a continuous vector to a data frame     
 
 ## Citation
 

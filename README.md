@@ -80,6 +80,9 @@ At present, the package exports the following functions:
 7.  `quicksummary` which outputs a formatted table of useful summary
     statistics of machine learning data.
 
+8.  `formattedcut` is a wrapper for providing publication ready
+    frequency tables for continuous variable.
+
 ## Things the package can do
 
 The package is capable of
@@ -147,6 +150,8 @@ The package is capable of
 
     -   Summary of character variables
 
+-   Convert a continuous vector to a data frame
+
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -158,16 +163,15 @@ citation("Dyn4cast")
 
 To cite package 'Dyn4cast' in publications use:
 
-  Job Nmadu (2022). Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment. R package version 11.11.1.9000.
-  https://github.com/JobNmadu/Dyn4cast
+  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.1.9000,
+  <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    year = {2022},
     note = {R package version 11.11.1.9000},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }

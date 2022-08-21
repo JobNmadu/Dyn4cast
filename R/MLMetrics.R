@@ -68,8 +68,8 @@
 #' \item{\code{Absolute Percent Error}}{of the Model.}
 #' \item{\code{Accuracy}}{of the Model.}
 #' \item{\code{Adjusted R Square}}{of the Model.}
-#' \item{\code{Akaike's Information Criterion AIC}}{of the Model.}
-#' \item{\code{Allen's Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
+#' \item{\code{"Akaike's" Information Criterion AIC}}{of the Model.}
+#' \item{\code{"Allen's" Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
 #' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
 #' \item{\code{Average Precision at k}}{of the Model.}
 #' \item{\code{Bias}}{of the Model.}
@@ -80,7 +80,7 @@
 #' \item{\code{GINI Coefficient}}{of the Model.}
 #' \item{\code{kappa statistic}}{of the Model.}
 #' \item{\code{Log Loss}}{of the Model.}
-#' \item{\code{Mallow's cp}}{of the Model.}
+#' \item{\code{"Mallow's" cp}}{of the Model.}
 #' \item{\code{Matthews Correlation Coefficient}}{of the Model.}
 #' \item{\code{Mean Log Loss}}{of the Model.}
 #' \item{\code{Mean Absolute Error}}{of the Model.}
@@ -102,7 +102,7 @@
 #' \item{\code{Root Mean Squared Log Error}}{of the Model.}
 #' \item{\code{Root Relative Squared Error}}{of the Model.}
 #' \item{\code{Relative Squared Error}}{of the Model.}
-#' \item{\code{Schwarz's Bayesian criterion BIC}}{of the Model.}
+#' \item{\code{"Schwarz's" Bayesian criterion BIC}}{of the Model.}
 #' \item{\code{Sensitivity}}{of the Model.}
 #' \item{\code{specificity}}{of the Model.}
 #' \item{\code{Squared Error}}{of the Model.}

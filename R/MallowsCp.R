@@ -1,12 +1,12 @@
 #' Computation of MallowsCp
 #'
-#' This function is one of the numerous metrics used to assess and compare linear based models. The measure gives an approximate number of explanatory variables that should be in the model. The function inherits `residuals` from the estimated model.
+#' Mallow's Cp is one of the very useful metrics and selection criteria for machine learning algorithms (models). It is used to estimate the closest number to the number of predictors and the intercept (approximate number of explanatory variables) of linear and non-linear based models. The function inherits `residuals` from the estimated model. The uniqueness of this function compared to other procedures for computing Mallow's Cp is that it does not require nested models for computation and it is not limited to `lm` based models only.
 #'
 #' @param Model The estimated **model** from which the Mallows Cp would be computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors `Nlevels` is required otherwise the computed Cp would be biased.
 #' @param Nlevels Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation or the number of additional variables created if the model involves interaction terms.
-#' @param type The type of model for which Cp would be computed broadly divided in to linear and non-linear. If type is non-linear, specify the name of the model. Supported models are `LM`, `ALM`, `GLM` for binary based models, `N-LM` (not linear for models not clearly defined as linear or non-linear especially some of the essemble models that are merely **computed** not **estimated**) or `nls` for other non linear models, `ARDL`, `SMOOTH` for **smooth.spline**, `SPLINE` for bs spline models, `ARIMA` and `plm`.
+#' @param type The type of model (`LM`, `ALM`, `GLM`,`N-LM`, `nls`, `ARDL`, `SMOOTH`, `SPLINE`, `ARIMA`, `plm`) for which Cp would be computed broadly divided in to linear (`LM`, `ALM`, `GLM`, `ARDL`, `SMOOTH`, `SPLINE`, `ARIMA`, `plm`) and non-linear (`GLM`,`N-LM`, `nls`). The type of model must be speciied as indicated. Supported models are `LM`, `ALM`, `GLM` (for binary based models), `N-LM` (not linear for models not clearly defined as linear or non-linear especially some of the essemble models that are merely **computed** not **estimated**) or `nls` for other non linear models, `ARDL`, `SMOOTH` for **smooth.spline**, `SPLINE` for bs spline models, `ARIMA` and `plm`.
 #'
 #' @export MallowsCp
 #' @name MallowsCp
@@ -30,7 +30,7 @@ MallowsCp <- function(Model, y, x, type, Nlevels = 0){
   }else{
     nvars <- ncol(x)
   }
-  
+
   if(type == "QUADRATIC"){
     Nlevels = 1
   }else if(type == "SPLINE"){
@@ -38,7 +38,7 @@ MallowsCp <- function(Model, y, x, type, Nlevels = 0){
   }else{
     Nlevels = 0
   }
-  
+
   DFF <- size - nvars + Nlevels - 1
   if(type == "LM"){
     RSSp <- sum(Model[["residuals"]]^2)
