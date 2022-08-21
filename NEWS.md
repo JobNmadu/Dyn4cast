@@ -1,5 +1,5 @@
 
-# Dyn4cast 11.11.10.9000 2022-08-20
+# Dyn4cast 11.11.10-alpha 2022-08-20
 
 A new function `formattedcut` added and is working perfectly. The addition of this function is providing more clarity to the package. Quite a number of editorial fixes were undertaken and the codes are working superbly.
 
