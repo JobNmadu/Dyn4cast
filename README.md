@@ -9,7 +9,7 @@
 status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
 
 [![Build
-Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
 
