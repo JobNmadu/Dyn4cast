@@ -18,7 +18,7 @@ The function returns a \verb{data frame} with three or four columns i.e \verb{Lo
 \item{\code{Cut}}{The \verb{data frame}}
 }
 \description{
-Often, when a continuous data is converted to factors using the \verb{base R} cut function, the resultant \verb{Class Interval} colunm provide data with scientific notation which normally appears confusing to interpret, especially to casual data scientist. This function provide a more user-friendly output and is provide in a formatted manner. It is a easy to implement function.
+Often, when a continuous data is converted to factors using the \verb{base R} cut function, the resultant \verb{Class Interval} column provide data with scientific notation which normally appears confusing to interpret, especially to casual data scientist. This function provide a more user-friendly output and is provided in a formatted manner. It is a easy to implement function.
 }
 \examples{
 DD <- rnorm(100000)

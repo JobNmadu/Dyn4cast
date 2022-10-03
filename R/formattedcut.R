@@ -1,21 +1,21 @@
 
 #' Convert continuous vector variable to formatted factors
-#' 
-#' Often, when a continuous data is converted to factors using the `base R` cut function, the resultant `Class Interval` colunm provide data with scientific notation which normally appears confusing to interpret, especially to casual data scientist. This function provide a more user-friendly output and is provide in a formatted manner. It is a easy to implement function.
-#' 
-#' @param data A vector of the data to be converted to factors if not cut already or the vector of a cut data 
+#'
+#' Often, when a continuous data is converted to factors using the `base R` cut function, the resultant `Class Interval` column provide data with scientific notation which normally appears confusing to interpret, especially to casual data scientist. This function provide a more user-friendly output and is provided in a formatted manner. It is a easy to implement function.
+#'
+#' @param data A vector of the data to be converted to factors if not cut already or the vector of a cut data
 #' @param breaks Number of classes to break the data into
-#' @param cut `Logical` to indicate if the `cut` function has already being applied to the data, defaults to `FALSE`. 
+#' @param cut `Logical` to indicate if the `cut` function has already being applied to the data, defaults to `FALSE`.
 #'
 #' @return The function returns a `data frame` with three or four columns i.e `Lower class`, `Upper class`, `Class interval` and `Frequency` (if the cut is `FALSE`).
 #' \item{\code{Cut}}{The `data frame`}
-#' 
+#'
 #' @export formattedcut
 #'
 #' @examples
 #' DD <- rnorm(100000)
 #' formattedcut(DD, 12, FALSE)
-#' 
+#'
 #' DD1 <- cut(DD, 12)
 #' DDK <- formattedcut(DD1, 12, TRUE)
 #' DDK
