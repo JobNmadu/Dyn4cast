@@ -26,3 +26,8 @@ sample <- readxl::read_excel("sample.xlsx")
 saveRDS(sample, "inst/sample.RDS")
 
 usethis::use_data(sample, overwrite = TRUE)
+
+Transform <- readxl::read_excel("transform.xlsx")
+saveRDS(Transform, "inst/Transform.RDS")
+
+usethis::use_data(Transform, overwrite = TRUE)

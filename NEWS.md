@@ -1,4 +1,8 @@
 
+# Dyn4cast 11.11.10-beta 2023-03-12
+
+A new function `data_transform` added and is working perfectly. The addition of this function only makes the package more versatile for `Machine Learning` operations and estimations.
+
 # Dyn4cast 11.11.10-alpha 2022-08-20
 
 A new function `formattedcut` added and is working perfectly. The addition of this function is providing more clarity to the package. Quite a number of editorial fixes were undertaken and the codes are working superbly.

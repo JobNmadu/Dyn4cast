@@ -9,11 +9,11 @@
 status](https://github.com/JobNmadu/Dyn4cast/workflows/R-CMD-check/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions)
 
 [![Build
-Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://app.travis-ci.com/github/JobNmadu/Dyn4cast)
+Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
 
-[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 <!-- end -->
 
@@ -83,74 +83,79 @@ At present, the package exports the following functions:
 8.  `formattedcut` is a wrapper for providing publication ready
     frequency tables for continuous variable.
 
+9.  `data_transform` is a wrapper for standardizing `data.frame` to make
+    the values comparable for estimation and/or visualization.
+
 ## Things the package can do
 
 The package is capable of
 
--   computing, estimating, predicting and forecasting of the following
-    models.
+- computing, estimating, predicting and forecasting of the following
+  models.
 
-    -   Spline without knots
+  - Spline without knots
 
-    -   Spline with knots
+  - Spline with knots
 
-    -   Smooth Spline
+  - Smooth Spline
 
-    -   ARIMA
+  - ARIMA
 
-    -   Quadratic
+  - Quadratic
 
-    -   Ensembled with equal weight
+  - Ensembled with equal weight
 
-    -   Ensembled based on weight
+  - Ensembled based on weight
 
-    -   Ensembled based on summed weight
+  - Ensembled based on summed weight
 
-    -   Ensembled based on weight of fit
+  - Ensembled based on weight of fit
 
--   Unconstrained forecasts
+- Unconstrained forecasts
 
--   Constrained forecast
+- Constrained forecast
 
--   Machine Learning Metrics
+- Machine Learning Metrics
 
--   Mallow’s CP
+- Mallow’s CP
 
--   Per cent sign
+- Per cent sign
 
-    -   Rate
+  - Rate
 
-    -   percent
+  - percent
 
--   Scaled logit for constrained forecast
+- Scaled logit for constrained forecast
 
--   Inverse scaled logit for constrained forecast
+- Inverse scaled logit for constrained forecast
 
--   Linear regression and transformations which consists of
+- Linear regression and transformations which consists of
 
-    -   Linear model
+  - Linear model
 
-    -   Semilog model
+  - Semilog model
 
-    -   Growth model
+  - Growth model
 
-    -   Double Log model
+  - Double Log model
 
-    -   Quadratic model
+  - Quadratic model
 
-    -   Inverse of y model
+  - Inverse of y model
 
-    -   Square root of y model
+  - Square root of y model
 
-    -   formatted Model Table
+  - formatted Model Table
 
-    -   Prediction plots
+  - Prediction plots
 
-    -   Summary of numeric variables
+  - Summary of numeric variables
 
-    -   Summary of character variables
+  - Summary of character variables
 
--   Convert a continuous vector to a data frame
+- Convert a continuous vector to a data frame
+
+- Convert a raw data frame to a uniform data frame
 
 ## Citation
 
@@ -164,7 +169,7 @@ citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.1.9000,
+  Environment_. R package version 11.11.10.9000,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -172,7 +177,7 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    note = {R package version 11.11.1.9000},
+    note = {R package version 11.11.10.9000},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```

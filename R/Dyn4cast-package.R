@@ -39,4 +39,5 @@ NULL
 #' - `Square root y`
 #' + `quicksummary`
 #' + `formattedcut`
+#' + `data_transform`
 

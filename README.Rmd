@@ -65,6 +65,8 @@ At present, the package exports the following functions:
 
 8. `formattedcut` is a wrapper for providing publication ready frequency tables for continuous variable.  
 
+8. `data_transform` is a wrapper for standardizing `data.frame` to make the values comparable for estimation and/or visualization.  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -132,6 +134,8 @@ The package is capable of
     + Summary of character variables
 
 * Convert a continuous vector to a data frame     
+
+* Convert a raw data frame to a uniform data frame  
 
 ## Citation
 
