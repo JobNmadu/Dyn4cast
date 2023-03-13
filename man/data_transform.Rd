@@ -3,7 +3,7 @@
 \name{data_transform}
 \alias{data_transform}
 \alias{Transform}
-\title{Standardize \code{data.frame} for comparable machine learning prediction and visualization}
+\title{Standardize \code{data.frame} for comparable \strong{Machine Learning} prediction and visualization}
 \usage{
 data_transform(data, method, MARGIN = 2)
 }
@@ -19,7 +19,7 @@ This function returns the output of the data transformation process as
 \item{\code{tata_transformed}}{ A new \code{data.frame} containing the transformed values}
 }
 \description{
-Often economic and other \strong{Machine Learning} data are of different units or sizes making either estimation, interpretation or visualization difficult. The solution to this issues can be handled if the data can be transformed into data without unit or data of similar magnitude. This is what \code{data_transform} is set to do. It is simple to use and straight forward.
+Often economic and other \strong{Machine Learning} data are of different units or sizes making either estimation, interpretation or visualization difficult. The solution to these issues can be handled if the data can be transformed into \emph{unitless} or data of similar magnitude. This is what \code{data_transform} is set to do. It is simple and straight forward to use.
 }
 \examples{
 
