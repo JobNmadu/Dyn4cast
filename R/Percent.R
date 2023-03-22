@@ -40,7 +40,7 @@ Percent <- function(Data, Type, digits = 2, format = "f", ...){
       GI <- ncol(percent)
       for (i in 1:HI){
         for (j in 1:GI){
-          percent[i, j] <- print(paste0(percent[i, j], "%"))
+          percent[i, j] <- paste0(percent[i, j], "%")
         }
       }
       #Data1 <- as.data.frame(lapply(Data0, as.numeric, digits = 2))
