@@ -1,7 +1,7 @@
 
 # Dyn4cast 11.11.10-kappa 2023-04-02
 
-Final formatting of data frames in the linearsystems package was removed. Now, the estimates can display in the console.
+Final formatting of data frames in the `Linearsystems` package was removed. Now, the estimates can display in the `console`.
 
 # Dyn4cast 11.11.10-beta 2023-03-12
 
