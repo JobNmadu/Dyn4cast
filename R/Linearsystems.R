@@ -127,7 +127,7 @@ Linearsystems <- function(y, x) {
                                            "Quadratic" = Quards,
                                            "Inverse y" = Inverses,
                                            "Square root y" = Sqrts))
-  XYZ1 <- knitr::kable(SelectionCriteria, "html")
+  XYZ1 <- SelectionCriteria
 
   m_list <- list("Linear" = Linear, "Semilog" = Semilog,
                    "Growth" = Growth, "Double Log" = Loglog,
