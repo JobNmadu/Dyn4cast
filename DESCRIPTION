@@ -32,7 +32,7 @@ Imports:
     broom,
     qpcR,
     dplyr,
-    huxtable,
+    modelsummary,
     kableExtra,
     knitr,
     timeDate

@@ -20,7 +20,7 @@
 #'
 #' @export Linearsystems
 #'
-#' @importFrom huxtable huxreg
+#' @importFrom modelsummary modelsummary
 #' @importFrom kableExtra kable_styling
 #' @importFrom knitr kable
 #' @importFrom dplyr select_if
@@ -129,13 +129,12 @@ Linearsystems <- function(y, x) {
                                            "Square root y" = Sqrts))
   XYZ1 <- knitr::kable(SelectionCriteria, "html")
 
-  ModelTable <- huxtable::huxreg("Linear" = Linear, "Semilog" = Semilog,
+  m_list <- list("Linear" = Linear, "Semilog" = Semilog,
                    "Growth" = Growth, "Double Log" = Loglog,
                    "Quardratic" = Quard, "Inverse y" = Inverse,
-                   "Square root y" = Sqrt, stars = c(`****` = 0.001,
-                                                     `***` = 0.01, `**` = 0.05,
-                                                     '*' = 0.1),
-                   statistics = NULL)
+                   "Square root y" = Sqrt)
+
+  ModelTable <- modelsummary::modelsummary(m_list, fmt = 2, stars = TRUE)
 
   PredictTable <- as.data.frame(cbind("Observed" = y,
                                       "Linear" = Linear1,
