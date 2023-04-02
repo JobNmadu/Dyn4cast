@@ -1,4 +1,8 @@
 
+# Dyn4cast 11.11.10-kappa 2023-04-02
+
+Final formatting of data frames in the linearsystems package was removed. Now, the estimates can display in the console.
+
 # Dyn4cast 11.11.10-beta 2023-03-12
 
 A new function `data_transform` added and is working perfectly. The addition of this function only makes the package more versatile for `Machine Learning` operations and estimations.
