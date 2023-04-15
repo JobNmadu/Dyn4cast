@@ -5,7 +5,7 @@
 \alias{sample}
 \title{Attach Per Cent Sign to Data}
 \usage{
-Percent(Data, Type, digits = 2, format = "f", ...)
+Percent(Data, Type, digits = NULL, format = "f", ...)
 }
 \arguments{
 \item{Data}{The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.}

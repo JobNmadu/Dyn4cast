@@ -22,7 +22,7 @@
 #' Data <- 1.2
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #' Percent(Data = sample, Type = "Frame")  # Value, Frame
-Percent <- function(Data, Type, digits = 2, format = "f", ...){
+Percent <- function(Data, Type, digits = NULL, format = "f", ...){
   if (Type == "Value") {
     percent <- Data
     Rate <- (percent/percent)*100
