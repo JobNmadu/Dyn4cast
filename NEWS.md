@@ -1,6 +1,8 @@
 
 # Dyn4cast 11.11.10-kappa 2023-04-02
 
+The internal argument `digits` is remooved due to observed exageration of the final rates
+
 Final formatting of data frames in the `Linearsystems` package was removed. Now, the estimates can display in the `console`.
 
 # Dyn4cast 11.11.10-beta 2023-03-12
