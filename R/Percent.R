@@ -4,7 +4,6 @@
 #'
 #' @param Data The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
 #' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
-#' @param digits Number of decimal points for the output
 #' @param format The format of the output which is internal and the default is a character factor
 #' @param ... Additional arguments that may be passed to the function
 #'
@@ -22,7 +21,7 @@
 #' Data <- 1.2
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #' Percent(Data = sample, Type = "Frame")  # Value, Frame
-Percent <- function(Data, Type, digits = NULL, format = "f", ...){
+Percent <- function(Data, Type, format = "f", ...){
   if (Type == "Value") {
     percent <- Data
     Rate <- (percent/percent)*100

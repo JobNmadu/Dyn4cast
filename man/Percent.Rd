@@ -5,14 +5,12 @@
 \alias{sample}
 \title{Attach Per Cent Sign to Data}
 \usage{
-Percent(Data, Type, digits = NULL, format = "f", ...)
+Percent(Data, Type, format = "f", ...)
 }
 \arguments{
 \item{Data}{The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.}
 
 \item{Type}{The type of data. The default arguments are \emph{Value} for single numeric data of \emph{Frame} for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.}
-
-\item{digits}{Number of decimal points for the output}
 
 \item{format}{The format of the output which is internal and the default is a character factor}
 
