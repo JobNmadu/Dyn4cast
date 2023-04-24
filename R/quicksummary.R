@@ -97,6 +97,5 @@ quicksummary <- function (x, Type, Cut, Up, Down, ci = 0.95){
   } else {
     ans = ans
   }
-  ANS <- knitr::kable(ans, row.names = TRUE, "html")
-  kableExtra::kable_styling(ANS, "striped", position = "center")
+  ans
 }

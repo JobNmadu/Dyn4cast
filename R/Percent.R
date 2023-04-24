@@ -22,6 +22,7 @@
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #' Percent(Data = sample, Type = "Frame")  # Value, Frame
 Percent <- function(Data, Type, format = "f", ...){
+  options(scipen = 999, digits = 2)
   if (Type == "Value") {
     percent <- Data
     Rate <- (percent/percent)*100
@@ -31,9 +32,9 @@ Percent <- function(Data, Type, format = "f", ...){
     if(is.null(dim(percent))){
       Rate <- percent/sum(percent)*100
       percent <- paste0(formatC((percent/sum(percent))*100, format = format,
-                                digits = digits, ...), "%")
+                                ...), "%")
     }else{
-      Data <- signif(sweep(Data, 2, colSums(Data), FUN = "/")*100, 2)
+      Data <- sweep(Data, 2, colSums(Data), FUN = "/")*100
       percent <- Rate <- as.data.frame(as.matrix(Data))
       HI <- nrow(percent)
       GI <- ncol(percent)
