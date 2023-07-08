@@ -67,6 +67,10 @@ At present, the package exports the following functions:
 
 8. `data_transform` is a wrapper for standardizing `data.frame` to make the values comparable for estimation and/or visualization.  
 
+8. `estimate_plot` is a function for plotting estimated coefficients of a model in their order of significance.  
+
+8. `corplot` is for plotting the correlation matrix.  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -109,9 +113,11 @@ The package is capable of
 
 * Inverse scaled logit for constrained forecast  
 
-* Linear regression and transformations which consists of
+* Linear regression and functional forms which consists of
 
     + Linear model
+    
+    + Linear model with interactions
     
     + Semilog model
     
@@ -119,15 +125,33 @@ The package is capable of
     
     + Double Log model
     
+    + Mixed-power model  
+    
+    + Translog model  
+    
     + Quadratic model
+    
+    + Cubic model  
     
     + Inverse of y model
     
-    + Square root of y model
+    + Inverse of x model  
+    
+    + Inverse of y & x  model  
+    
+    + Square root of model
+    
+    + Cubic root of model
     
     + formatted Model Table
     
-    + Prediction plots
+    + Prediction plots  
+    
+    + Fitted plots  
+    
+    + Naive effects plots
+    
+    + Coefficients importance plot
     
     + Summary of numeric variables
     

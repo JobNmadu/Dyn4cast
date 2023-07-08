@@ -51,7 +51,7 @@ At present, the package exports the following functions:
     any recognized format but should be a **dataframe** containing two
     columns `Date` and `Case`. The Date is the *day/month/year* the data
     is collected while Case is the variable for forecasting. The Date
-    must be in the recognized format, i.e., **YYYY-MM-DD**. The other
+    must be in the recognized format i.e. ‘YYYY-MM-DD’. The other
     arguments parsed to the function are `MaximumDate`, which is the
     last date Data was collected and `BREAKS`, which is a vector of
     numbers and is used as `knots` in estimating spline polynomials.
@@ -85,6 +85,11 @@ At present, the package exports the following functions:
 
 9.  `data_transform` is a wrapper for standardizing `data.frame` to make
     the values comparable for estimation and/or visualization.
+
+10. `estimate_plot` is a function for plotting estimated coefficients of
+    a model in their order of significance.
+
+11. `corplot` is for plotting the correlation matrix.
 
 ## Things the package can do
 
@@ -129,9 +134,11 @@ The package is capable of
 
 - Inverse scaled logit for constrained forecast
 
-- Linear regression and transformations which consists of
+- Linear regression and functional forms which consists of
 
   - Linear model
+
+  - Linear model with interactions
 
   - Semilog model
 
@@ -139,15 +146,33 @@ The package is capable of
 
   - Double Log model
 
+  - Mixed-power model
+
+  - Translog model
+
   - Quadratic model
+
+  - Cubic model
 
   - Inverse of y model
 
-  - Square root of y model
+  - Inverse of x model
+
+  - Inverse of y & x model
+
+  - Square root of model
+
+  - Cubic root of model
 
   - formatted Model Table
 
   - Prediction plots
+
+  - Fitted plots
+
+  - Naive effects plots
+
+  - Coefficients importance plot
 
   - Summary of numeric variables
 
