@@ -1,6 +1,6 @@
 Package: Dyn4cast
 Title: Dynamic Modeling and Machine Learning Environment
-Version: 11.11.10.9000
+Version: 11.11.23.9000
 Authors@R: 
     person(given = "Job",
            family = "Nmadu",
@@ -23,8 +23,6 @@ Imports:
     ggplot2,
     magrittr,
     formattable,
-    xlsx,
-    readxl,
     utils,
     lifecycle,
     zoo,
@@ -33,9 +31,12 @@ Imports:
     qpcR,
     dplyr,
     modelsummary,
-    kableExtra,
-    knitr,
-    timeDate
+    timeDate,
+    caret,
+    corrplot,
+    ggtext,
+    marginaleffects,
+    tibble
 Depends: 
     tidyverse,
     R (>= 2.10)
@@ -44,6 +45,10 @@ Suggests:
     rmarkdown,
     covr,
     qpdf,
+    xlsx,
+    readxl,
+    kableExtra,
+    knitr,
     spelling
 Config/testthat/edition: 3
 URL: https://github.com/JobNmadu/Dyn4cast

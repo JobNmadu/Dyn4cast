@@ -17,6 +17,11 @@ saveRDS(linearsystems, "inst/linearsystems.RDS")
 
 usethis::use_data(linearsystems, overwrite = TRUE)
 
+sampling <- readxl::read_excel("sampling.xlsx")
+saveRDS(sampling, "inst/sampling.RDS")
+
+usethis::use_data(sampling, overwrite = TRUE)
+
 Quicksummary <- readxl::read_excel("quicksummary.xlsx")
 saveRDS(Quicksummary, "inst/Quicksummary.RDS")
 
