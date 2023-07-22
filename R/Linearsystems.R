@@ -4,7 +4,7 @@
 #'
 #' @param y Vector of the dependent variable. This must be numeric.
 #' @param x Data frame of the explanatory variables.
-#' @param mod The group of linear models to be estimate. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models
+#' @param mod The group of linear models to be estimated. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models
 #' @param limit Number of variables to be included in the coefficients plots
 #' @param Test test data to be used to predict y. If not supplied, the fitted y is used hence may be identical with the fitted value. It is important to be cautious if the data is to be divided between train and test subsets in order to train and test the model. If the sample size is not sufficient to have enough data for the test, errors are thrown up.
 #'

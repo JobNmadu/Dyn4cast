@@ -10,7 +10,7 @@
 
 \item{x}{Data frame of the explanatory variables.}
 
-\item{mod}{The group of linear models to be estimate. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models}
+\item{mod}{The group of linear models to be estimated. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models}
 
 \item{limit}{Number of variables to be included in the coefficients plots}
 
