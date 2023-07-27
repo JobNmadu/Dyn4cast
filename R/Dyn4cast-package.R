@@ -30,13 +30,30 @@ NULL
 #' + `invscaledlogit`
 #' + `scaledlogit`
 #' + `Linearsystems` which estimates the following models:
-#' - `Linear`
-#' - `Semilog`
-#' - `Growth`
-#' - `Double log`
-#' - `Quadratic`
-#' - `Inverse y`
-#' - `Square root y`
+#' - `Linear model`
+#' - `Linear model with interactions`
+#' - `Semilog model`
+#' - `Growth model`
+#' - `Double Log model`
+#' - `Mixed-power model`
+#' - `Translog model`
+#' - `Quadratic model`
+#' - `Cubic model`
+#' - `Inverse of y model`
+#' - `Inverse of x model`
+#' - `Inverse of y & x model`
+#' - `Square root of model`
+#' - `Cubic root of model`
+#' - `formatted Model Table`
+#' - `Prediction plots`
+#' - `Fitted plots`
+#' - `Naive effects plots`
+#' - `Summary of numeric variables`
+#' - `Summary of character variables`
+#' + `Convert a continuous vector to a data frame`
+#' + `Convert a raw data frame to a uniform data frame`
+#' + `Plot of correlation matrix`
+#' + `Plot of the order of significance of estimated coefficients`
 #' + `quicksummary`
 #' + `formattedcut`
 #' + `data_transform`

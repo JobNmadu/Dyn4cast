@@ -172,8 +172,6 @@ The package is capable of
 
   - Naive effects plots
 
-  - Coefficients importance plot
-
   - Summary of numeric variables
 
   - Summary of character variables
@@ -181,6 +179,10 @@ The package is capable of
 - Convert a continuous vector to a data frame
 
 - Convert a raw data frame to a uniform data frame
+
+- Plot of correlation matrix
+
+- Plot of the order of significance of estimates coefficients
 
 ## Citation
 
