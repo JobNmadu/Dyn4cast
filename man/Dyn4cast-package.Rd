@@ -14,6 +14,7 @@ Estimates, predict and forecast dynamic models as well as Machine Learning metri
 Useful links:
 \itemize{
   \item \url{https://github.com/JobNmadu/Dyn4cast}
+  \item \url{https://jobnmadu.github.io/Dyn4cast/}
   \item Report bugs at \url{https://github.com/JobNmadu/Dyn4cast/issues}
 }
 
