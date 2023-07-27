@@ -1,0 +1,10 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  Dyn4cast: Dyn4cast.html
+last_built: 2023-07-27T21:19Z
+urls:
+  reference: https://jobnmadu.github.io/Dyn4cast/reference
+  article: https://jobnmadu.github.io/Dyn4cast/articles
+
