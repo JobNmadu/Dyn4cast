@@ -3,11 +3,9 @@
 
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
-<!-- badges -->
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 [![Build
 Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
