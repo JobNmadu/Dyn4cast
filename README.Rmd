@@ -139,9 +139,9 @@ The package is capable of
     
     + Inverse of y & x  model  
     
-    + Square root of model
+    + Square root model
     
-    + Cubic root of model
+    + Cubic root model
     
     + formatted Model Table
     
