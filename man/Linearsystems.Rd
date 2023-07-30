@@ -61,25 +61,20 @@ A list with the following components:
 \item{\code{Summary of character variables}}{of the dataset.}
 }
 \description{
-The linear model still remains a reference point towards advanced modeling of some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and \strong{Artificial Intelligence} in spite of some of her weaknesses. The major task in \strong{modeling} is to compare various models before a selection is made for one or for advanced modeling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate seven different linear models and provide their coefficients in a formatted Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a \emph{one line} code.
+The linear model still remains a reference point towards advanced modeling of some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and \strong{Artificial Intelligence} in spite of some of her weaknesses. The major task in \strong{modeling} is to compare various models before a selection is made for one or for advanced modeling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate 14 different linear models and provide their coefficients in a formatted Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a \emph{one line} code.
 }
 \examples{
-
 # Without test data (not run)
-
 y = linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 6, 15)
-
 # Without test data (not run)
-
 x = sampling[, -1]
 y = sampling$qOutput
 limit = 20
 mod <-3
 Test <- NA
 Linearsystems(y, x, 3, 15)
-
 x = sampling[, -1]
 y = sampling$qOutput
 Data <- cbind(y, x)
