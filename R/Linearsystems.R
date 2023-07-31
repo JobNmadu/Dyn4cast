@@ -41,7 +41,7 @@
 #' \item{\code{Significant plot of Cubic root}}{Plots of order of importance and significance of estimates coefficients of the model.}
 #' \item{\code{Model Table}}{Formatted Tables of the coefficient estimates of all the models}
 #' \item{\code{Machine Learning Metrics}}{Metrics (47) for assessing model performance and metrics for diagnostic analysis of the error in estimation.}
-#' \item{\code{Marginal effecrs Tables}}{Tables of marginal effects of each model. Because of computational limitations, if you choose to estimate all the 14 models, the Tables are produced separately for the major transformations. They can easily be compiled into one.}
+#' \item{\code{Table of Marginal effects}}{Tables of marginal effects of each model. Because of computational limitations, if you choose to estimate all the 14 models, the Tables are produced separately for the major transformations. They can easily be compiled into one.}
 #' \item{\code{Fitted plots long format}}{Plots of the fitted estimates from each of the model.}
 #' \item{\code{Fitted plots wide format}}{Plots of the fitted estimates from each of the model.}
 #' \item{\code{Prediction plots long format}}{Plots of the predicted estimates from each of the model.}
@@ -565,7 +565,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Significant plot of Inverse y & x" = v_reciD,
       "Model Table" = ModelTable,
       "Machine Learning Metrics" =  evaluation,
-      "Marginal effecrs Table" = e_table,
+      "Table of Marginal effects" = e_table,
       "Fitted plots long format" = fitted_long,
       "Fitted plots wide format" = fitted_wide,
       "Prediction plots long format" = Predicted_long,
@@ -708,7 +708,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Significant plot of Cubic root" = v_cubic,
       "Model Table" = ModelTable,
       "Machine Learning Metrics" =  evaluation,
-      "Marginal effecrs Table" = e_table,
+      "Table of Marginal effects" = e_table,
       "Fitted plots long format" = fitted_long,
       "Fitted plots wide format" = fitted_wide,
       "Prediction plots long format" = Predicted_long,
@@ -851,7 +851,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Significant plot of Cubic model" = v_cube,
       "Model Table" = ModelTable,
       "Machine Learning Metrics" =  evaluation,
-      "Marginal effecrs Table" = e_table,
+      "Table of Marginal effects" = e_table,
       "Fitted plots long format" = fitted_long,
       "Fitted plots wide format" = fitted_wide,
       "Prediction plots long format" = Predicted_long,
@@ -1023,7 +1023,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Significant plot of Translog model" = v_translog,
       "Model Table" = ModelTable,
       "Machine Learning Metrics" =  evaluation,
-      "Marginal effecrs Table" = e_table,
+      "Table of Marginal effects" = e_table,
       "Fitted plots long format" = fitted_long,
       "Fitted plots wide format" = fitted_wide,
       "Prediction plots long format" = Predicted_long,
@@ -1157,7 +1157,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Significant plot of Linear with interaction" = v_LinearI,
       "Model Table" = ModelTable,
       "Machine Learning Metrics" =  evaluation,
-      "Marginal effecrs Table" = e_table,
+      "Table of Marginal effects" = e_table,
       "Fitted plots long format" = fitted_long,
       "Fitted plots wide format" = fitted_wide,
       "Prediction plots long format" = Predicted_long,
