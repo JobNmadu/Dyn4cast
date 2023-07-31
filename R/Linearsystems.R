@@ -96,6 +96,8 @@
 #' x <- train[, -1]
 #' mod <- 4
 #' Linearsystems(y, x, 4, 15, Test)
+#'
+#' @usage Linearsystems(y, x, mod, limit, Test = NA)
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
 

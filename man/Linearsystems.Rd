@@ -5,6 +5,9 @@
 \alias{linearsystems}
 \alias{sampling}
 \title{Linear Model and various Transformations for Efficiency}
+\usage{
+Linearsystems(y, x, mod, limit, Test = NA)
+}
 \arguments{
 \item{y}{Vector of the dependent variable. This must be numeric.}
 
@@ -85,4 +88,5 @@ y <- train$y
 x <- train[, -1]
 mod <- 4
 Linearsystems(y, x, 4, 15, Test)
+
 }
