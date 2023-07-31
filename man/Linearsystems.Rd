@@ -22,7 +22,7 @@ Linearsystems(y, x, mod, limit, Test = NA)
 \value{
 A list with the following components:
 \item{\code{Visual means of the numeric variable}}{Plot of the means of the \emph{numeric} variables.}
-\item{\code{Correlation plot}}{Plot of the Correlation Matrix of the \emph{numeric} variables. To recover the plot, please use this canonical form \code{objectnale$e_corplot$plot()}.}
+\item{\code{Correlation plot}}{Plot of the Correlation Matrix of the \emph{numeric} variables. To recover the plot, please use this canonical form \verb{object$Correlation plot$plot()}.}
 \item{\code{Linear}}{The full estimates of the Linear Model.}
 \item{\code{Linear with interaction}}{The full estimates of the Linear Model with full interaction among the \emph{numeric} variables.}
 \item{\code{Semilog}}{The full estimates of the Semilog Model. Here the independent variable(s) is/are log-transformed.}

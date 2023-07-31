@@ -10,7 +10,7 @@
 #'
 #' @return A list with the following components:
 #' \item{\code{Visual means of the numeric variable}}{Plot of the means of the _numeric_ variables.}
-#' \item{\code{Correlation plot}}{Plot of the Correlation Matrix of the _numeric_ variables. To recover the plot, please use this canonical form `objectnale$e_corplot$plot()`.}
+#' \item{\code{Correlation plot}}{Plot of the Correlation Matrix of the _numeric_ variables. To recover the plot, please use this canonical form `object$Correlation plot$plot()`.}
 #' \item{\code{Linear}}{The full estimates of the Linear Model.}
 #' \item{\code{Linear with interaction}}{The full estimates of the Linear Model with full interaction among the _numeric_ variables.}
 #' \item{\code{Semilog}}{The full estimates of the Semilog Model. Here the independent variable(s) is/are log-transformed.}
