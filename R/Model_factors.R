@@ -1,4 +1,4 @@
-#' Latent Variables Recovery from Factor Loadings
+#' Latent Factors Recovery from Variables Loadings
 #'
 #' @description
 #' This function retrieves the latent factors and their variable loadings which can be used as `R` objects to perform other analysis.

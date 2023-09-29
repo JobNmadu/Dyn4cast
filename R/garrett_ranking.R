@@ -45,7 +45,7 @@ garrett_ranking <- function(data, num_rank,
   pR <- nrow(Data)
   pC <- ncol(Data)
   garrett <- as.data.frame(matrix(pC, num_rank))
-  z_m <- as.data.frame(matrix(pC, num_rank))
+  z_m <- as.data.frame(matrix(pC, 5))
   GV <- as.data.frame(matrix(num_rank, 3))
   cuty = mean(1:num_rank)
 
