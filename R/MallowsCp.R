@@ -1,5 +1,6 @@
 #' Computation of MallowsCp
 #'
+#' @description
 #' Mallow's Cp is one of the very useful metrics and selection criteria for machine learning algorithms (models). It is used to estimate the closest number to the number of predictors and the intercept (approximate number of explanatory variables) of linear and non-linear based models. The function inherits `residuals` from the estimated model. The uniqueness of this function compared to other procedures for computing Mallow's Cp is that it does not require nested models for computation and it is not limited to `lm` based models only.
 #'
 #' @param Model The estimated **model** from which the Mallows Cp would be computed

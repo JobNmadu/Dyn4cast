@@ -2,7 +2,7 @@
 % Please edit documentation in R/estimate_plot.R
 \name{estimate_plot}
 \alias{estimate_plot}
-\title{Plot of order of significance of estimated regression coefficients}
+\title{Plot of Order of Significance of Estimated Regression Coefficients}
 \usage{
 estimate_plot(Model, limit)
 }
@@ -16,5 +16,5 @@ The function returns a plot of the order of importance of the estimated coeffici
 \item{\code{estimate_plot}}{The plot of the order of importance of estimated coefficients}
 }
 \description{
-Plot of order of significance of estimated regression coefficients
+This function provides graphic displays of the order of significance estimated coefficients of models. This would assists in accessing models so as to decide which can be used for further analysis, prediction and policy consideration.
 }

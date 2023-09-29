@@ -1,5 +1,6 @@
 #' Standardize `data.frame` for comparable **Machine Learning** prediction and visualization
 #'
+#' @description
 #' Often economic and other **Machine Learning** data are of different units or sizes making either estimation, interpretation or visualization difficult. The solution to these issues can be handled if the data can be transformed into _unitless_ or data of similar magnitude. This is what `data_transform` is set to do. It is simple and straight forward to use.
 #'
 #' @param data A `data.frame` with numeric data for transformation. All columns in the data are transformed

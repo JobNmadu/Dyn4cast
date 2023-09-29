@@ -36,3 +36,13 @@ Transform <- readxl::read_excel("transform.xlsx")
 saveRDS(Transform, "inst/Transform.RDS")
 
 usethis::use_data(Transform, overwrite = TRUE)
+
+garrett_table <- readxl::read_excel("garrett table.xlsx")
+saveRDS(garrett_table, "inst/garrett_table.RDS")
+
+usethis::use_data(garrett_table, overwrite = TRUE)
+
+garrett_data <- readxl::read_excel("garrett.xlsx")
+saveRDS(garrett_data, "inst/garrett_data.RDS")
+
+usethis::use_data(garrett_data, overwrite = TRUE)

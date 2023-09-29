@@ -1,5 +1,6 @@
 #' Collection of Machine Learning Model Metrics for Easy Reference
 #'
+#' @description
 #' This function estimates over 40 Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
 #'
 #' @param Observed The Observed data in a data frame format

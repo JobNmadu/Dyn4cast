@@ -1,10 +1,20 @@
+# Dyn4cast 11.11.24-beta 2023-09-29
+
+Huge improvements and new additions to the package. A lot of editorial corrections observed in the codes have been carried out. Two new functions, `Model_factors` and `garrett_ranking` are successfully tested and now operational. The two functions provides for gaining deeper insights into the meaning behind Likert-type variables collected from respondents. Garrett ranking provides the ranks of the observations of the variables based on the level of seriousness attached to it by the respondents. On the other hand, Model factors determines and retrieve the latent factors inherent in such data which now becomes continuous data. The factors or data frame retrieved from the variables can be used in other analysis like regression and machine learning. 
+
+The two functions are path of factor analysis, essentially, exploratory factor analysis (EFA), used to unravel the underlying structure of the observed variables. The analysis also helps to reduce the complex structure by determining a smaller number of latent factors that sufficiently represent the variation in the observed variables. With EFA, no prior knowledge or hypothesis about the number or nature of the factors is assumed. These are great tools to help tell the story behind your data. The data used for `Model_factors` is prepared using `fa.parallel` and `fa` functions in the `psych` package.
+
+# Dyn4cast 11.11.24-alpha 2023-09-25
+
+The **Data** argument for `DynamicForecast` function has been modified. Rather than the previous argument were a data frame, containing the two required  vectors, was supplied, now data argument is in three vectors `date, series, x`. The `x` argument is new but optional and would now allow additional data apart from the two mandatory ones to be added to the model. The `origin` argument which was previously embedded in `...` has now being defaulted to **1970-01-01**. Two objects have been added to the results, i.e., `table of estimates` and the `plots of the fitted values`. The function, which was the first in the package has now be promoted to `stable`.
+
 # Dyn4cast 11.11.23
 
 The new version is coming with a huge improvement. The number of functional forms of the linear regression has increased from seven to 14 based on the Taylor Series expansion of the Box-Cox transformations. In addition, two new plots are added to the suite i.e. fitted and effects plots. Also, Tables of marginal effects are now produced for fast inference from the estimated coefficients. This new version also comes with 47 metrics for assessing model performance and carry out model diagnostics. This new version also comes with the capability of making prediction about each of the functional forms.
 
 There are two new functions coming along with this new version. `corplot` for plotting the correlation matrix of the variables included in the model. `estimate_plot` is for plotting the estimated coefficients in their order of significance in the estimated model. In addition to a new plot, `visual means` it has become lots easier to understand the nature of the distribution of the variables, digest and make inference about the model.
 
-Even with this huge improvements, the principle of one line of code is maintained. It is easy and can been implemented with less headaches once the data has been cleaned. The structure is `Linearsystems(y, x, mod, limit, Test)`. The argument `Test` is optional, if omitted, the prediction is made with `NULL` data.
+Even with this huge improvements, the principle of one line of code is maintained. It is easy and can be implemented with less headaches once the data has been cleaned. The structure is `Linearsystems(y, x, mod, limit, Test)`. The argument `Test` is optional, if omitted, the prediction is made with `NULL` data.
 
 As always, comments, questions and suggestions are welcome.
 

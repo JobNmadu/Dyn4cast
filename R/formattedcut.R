@@ -1,6 +1,6 @@
-
 #' Convert continuous vector variable to formatted factors
 #'
+#' @description
 #' Often, when a continuous data is converted to factors using the `base R` cut function, the resultant `Class Interval` column provide data with scientific notation which normally appears confusing to interpret, especially to casual data scientist. This function provide a more user-friendly output and is provided in a formatted manner. It is a easy to implement function.
 #'
 #' @param data A vector of the data to be converted to factors if not cut already or the vector of a cut data

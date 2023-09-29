@@ -1,5 +1,6 @@
 #' Quick Formatted Summary of Machine Learning Data
 #'
+#' @description
 #' There is increasing need to make user-friendly and production ready Tables for machine learning data. This function is a simplified quick summary and the output is a formatted table. This is very handy for those who do not have the time to write codes for user-friendly summaries.
 #'
 #' @param x The data to be summarised. Only numeric data is allowed.

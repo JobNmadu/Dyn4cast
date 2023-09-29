@@ -1,5 +1,6 @@
 #' Attach Per Cent Sign to Data
 #'
+#' @description
 #' This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector or a data frame of values.
 #'
 #' @param Data The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.

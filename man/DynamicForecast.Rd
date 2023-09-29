@@ -5,7 +5,11 @@
 \alias{COVID19}
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \arguments{
-\item{Data}{A two column (Date, Variables) dataset for the estimation. The date must be in format recognized by R i.e. 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the maximum month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the maximum year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now. The Response \strong{y} variable must be specified. If there are other variables in the data, then the date must be in column one.}
+\item{date}{A vector containing the dates for which the data is collected. Must be the same length with \code{series}. The date must be in 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now.}
+
+\item{series}{A vector containing data for estimation and forecasting. Must be the same length with \code{date}.}
+
+\item{x}{vector of optional dataset that is to be added to the model for forecasting. The modeling and forecasting is still done if not provided. Must be the same length with \code{series}.}
 
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models.}
 
@@ -17,7 +21,7 @@
 
 \item{Lenght}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
 
-\item{...}{Additional arguments that may be passed to the function if the maximum date is NULL which is advisable. For example, the date of origin (origin = "YYYY-MM-DD") of the data may be specified in order to properly date the forecast.}
+\item{...}{Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the \code{series}. In the same way, \code{origin (origin = "YYYY-MM-DD")} to be used to position the date of the data is set to \strong{1970-01-01} if it is not supplied as argument in order to properly date the forecasts.}
 }
 \value{
 A list with the following components:
@@ -36,9 +40,11 @@ A list with the following components:
 \item{\code{Unconstrained forecast Plot}}{The combined plots of the unconstrained forecasts using ggplot. }
 \item{\code{Constrained forecast Plot}}{The combined plots of the constrained forecasts using ggplot. }
 \item{\code{Date}}{This is the date range for the forecast.}
+\item{\code{Fitted plot}}{This is the plot of the fitted models.}
+\item{\code{Estimated coefficients}}{This is the estimated coefficients of the various models in the forecast.}
 }
 \description{
-The function estimates and predict models using time series data set and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this function is the use of the newly introduced \emph{equal number of trend (days, months, years) to estimate forecast from the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
+The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this function is the use of the newly introduced \emph{equal number of trend (days, months, years) to estimate forecast from the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
@@ -51,12 +57,14 @@ lastdayfo21 <- Dss[length(Dss)] # The maximum length
 Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 # desired length of forecast
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-DynamicForecast(Data = Data, BREAKS = BREAKS, MaximumDate = "2021-02-10",
+DynamicForecast(date = Data$Date, series = Data$Case,
+BREAKS = BREAKS, MaximumDate = "2021-02-10",
  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 
 lastdayfo21 <- Dss[length(Dss)]
 Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
-DynamicForecast(Data = Data, BREAKS = BREAKS , MaximumDate = "2021-02-10",
+DynamicForecast(date = Data$Date, series = Data$Case,
+BREAKS = BREAKS , MaximumDate = "2021-02-10",
  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
 }

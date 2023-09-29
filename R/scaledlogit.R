@@ -1,5 +1,6 @@
 #' Scale Parameter for Integer Modeling and Forecast
 #'
+#' @description
 #' This function is a wrapper for scaling the fitted (predicted) values of a one-sided (positive or negative only) integer response variable of supported models. The scaling involves some log transformation of the fitted (predicted) values.
 #'
 #' @param x The parameter to be scaled, which is the fitted values from supported models. The scaled parameter is used mainly for constrained forecasting of a response variable >> positive {0 - inf} or << negative {-inf - 0}). The scaling involves log transformation of the parameter

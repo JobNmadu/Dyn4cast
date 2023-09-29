@@ -1,5 +1,6 @@
 #' Linear Model and various Transformations for Efficiency
 #'
+#' @description
 #' The linear model still remains a reference point towards advanced modeling of some datasets as foundation for **Machine Learning**, **Data Science** and **Artificial Intelligence** in spite of some of her weaknesses. The major task in **modeling** is to compare various models before a selection is made for one or for advanced modeling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate 14 different linear models and provide their coefficients in a formatted Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a _one line_ code.
 #'
 #' @param y Vector of the dependent variable. This must be numeric.
@@ -65,7 +66,6 @@
 #' @importFrom ggplot2 geom_vline
 #' @importFrom ggplot2 geom_jitter
 #' @importFrom ggplot2 element_blank
-#' @importFrom ggtext element_markdown
 #' @importFrom marginaleffects avg_slopes
 #' @importFrom tibble rownames_to_column
 #'
@@ -162,7 +162,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       y = "Values") +
     ggplot2::theme_minimal() +
     ggplot2::theme(panel.grid = ggplot2::element_blank(),
-                   plot.subtitle = ggtext::element_markdown())
+                   plot.subtitle = mmmd())
 
   y <- Data$y
   Linear <- lm(y ~ ., data = Data)
@@ -1435,4 +1435,26 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       "Summary of character variables" = KKC)
   }
   return(results)
+}
+
+mmmd <- function (family = NULL, face = NULL, size = NULL, colour = NULL,
+                  fill = NULL, box.colour = NULL, linetype = NULL, linewidth = NULL,
+                  hjust = NULL, vjust = NULL, halign = NULL, valign = NULL,
+                  angle = NULL, lineheight = NULL, margin = NULL, padding = NULL,
+                  r = NULL, color = NULL, box.color = NULL, align_widths = NULL,
+                  align_heights = NULL, rotate_margins = NULL, debug = FALSE,
+                  inherit.blank = FALSE)
+{
+  if (!is.null(color))
+    colour <- color
+  if (!is.null(box.color))
+    box.colour <- box.color
+  structure(list(family = family, face = face, size = size,
+                 colour = colour, fill = fill, box.colour = box.colour,
+                 linetype = linetype, linewidth = linewidth, hjust = hjust,
+                 vjust = vjust, halign = halign, valign = valign, angle = angle,
+                 lineheight = lineheight, margin = margin, padding = padding,
+                 r = r, align_widths = align_widths, align_heights = align_heights,
+                 rotate_margins = rotate_margins, debug = debug, inherit.blank = inherit.blank),
+            class = c("element_markdown", "element_text", "element"))
 }

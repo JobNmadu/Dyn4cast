@@ -4,7 +4,7 @@ test_that("DynamicForecast works", {
   DDD$Date <- as.Date(DDD$Date)
   BREAKS = c(70, 131, 173, 228, 274)
 
-  test_model <- DynamicForecast(Data = DDD,
+  test_model <- DynamicForecast(date = DDD$Date, series = DDD$Case,
                                 BREAKS = BREAKS,
                                 MaximumDate = "2021-02-08", Trend = "Day", Length = 0,
                                 Type = "Integer", origin = "2020-02-29")
