@@ -90,6 +90,11 @@ At present, the package exports the following functions:
 
 11. `corplot` is for plotting the correlation matrix.
 
+12. `garrett_ranking` is for ranking Likert-type data.
+
+13. `Model_factors` is for determining and retrieving latent factors
+    from Likert-type data for estimation and Machine Learning.
+
 ## Things the package can do
 
 The package is capable of
@@ -183,6 +188,10 @@ The package is capable of
 
 - Plot of the order of significance of estimates coefficients
 
+- Rank Likert-type data using Garrett ranking technique
+
+- Determine and retrieve the latent factors in Likert-type variables
+
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -194,8 +203,8 @@ citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2023). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.23,
-  <https://github.com/JobNmadu/Dyn4cast>.
+  Environment_. https://github.com/JobNmadu/Dyn4cast,
+  https://jobnmadu.github.io/Dyn4cast/.
 
 A BibTeX entry for LaTeX users is
 
@@ -203,8 +212,8 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2023},
-    note = {R package version 11.11.23},
-    url = {https://github.com/JobNmadu/Dyn4cast},
+    note = {https://github.com/JobNmadu/Dyn4cast,
+https://jobnmadu.github.io/Dyn4cast/},
   }
 ```
 

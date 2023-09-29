@@ -71,6 +71,10 @@ At present, the package exports the following functions:
 
 8. `corplot` is for plotting the correlation matrix.  
 
+8. `garrett_ranking` is for ranking Likert-type data.  
+
+8. `Model_factors` is for determining and retrieving latent factors from Likert-type data for estimation and Machine Learning.  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -163,6 +167,9 @@ The package is capable of
 
 * Plot of the order of significance of estimates coefficients
 
+* Rank Likert-type data using Garrett ranking technique  
+
+* Determine and retrieve the latent factors in Likert-type variables  
 
 ## Citation
 
