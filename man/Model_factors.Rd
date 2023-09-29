@@ -10,8 +10,14 @@
 }
 \value{
 A list with the following components:
-\item{\code{Load_numeric}}{Table of latent factors and the variables loadings.}
-\item{\code{Load_char}}{Table of latent factors and their variables.}
+\item{\code{Latent_frame}}{\code{data.frame} of latent factors based on the variables loadings.}
+\item{\code{Latent_1}}{\code{data.frame} of variables in Latent factor 1 with their loadings.}
+\item{\code{Latent_2}}{\code{data.frame} of variables in Latent factor 2 with their loadings.}
+\item{\code{Latent_3}}{\code{data.frame} of variables in Latent factor 3 with their loadings.}
+\item{\code{Latent_4}}{\code{data.frame} of variables in Latent factor 3 with their loadings.}
+\item{\code{Latent_5}}{\code{data.frame} of variables in Latent factor 5 with their loadings.}
+\item{\code{Latent_6}}{\code{data.frame} of variables in Latent factor 6 with their loadings.}
+\item{\code{Latent_7}}{\code{data.frame} of variables in Latent factor 7 with their loadings.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which can be used as \code{R} objects to perform other analysis.

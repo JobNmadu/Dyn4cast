@@ -7,8 +7,14 @@
 #' @param DATA A `data.frame`, the raw data used to carry out the parallel analysis to obtain `data` object.
 #'
 #' @return A list with the following components:
-#' \item{\code{Load_numeric}}{Table of latent factors and the variables loadings.}
-#' \item{\code{Load_char}}{Table of latent factors and their variables.}
+#' \item{\code{Latent_frame}}{`data.frame` of latent factors based on the variables loadings.}
+#' \item{\code{Latent_1}}{`data.frame` of variables in Latent factor 1 with their loadings.}
+#' \item{\code{Latent_2}}{`data.frame` of variables in Latent factor 2 with their loadings.}
+#' \item{\code{Latent_3}}{`data.frame` of variables in Latent factor 3 with their loadings.}
+#' \item{\code{Latent_4}}{`data.frame` of variables in Latent factor 3 with their loadings.}
+#' \item{\code{Latent_5}}{`data.frame` of variables in Latent factor 5 with their loadings.}
+#' \item{\code{Latent_6}}{`data.frame` of variables in Latent factor 6 with their loadings.}
+#' \item{\code{Latent_7}}{`data.frame` of variables in Latent factor 7 with their loadings.}
 #'
 #' @name Model_factors
 #'
