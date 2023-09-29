@@ -32,8 +32,6 @@ names(Data) <- GGx
 lll <- fa.parallel(Data, fm = 'minres', fa = 'fa')
 dat <- fa(Data, nfactors = lll[["nfact"]], rotate = "varimax",fm="minres")
 
-DD <- Model_factors(data = dat, DATA = Data)
+Model_factors(data = dat, DATA = Data)
 
-factorM <- DD$Load_numeric
-factorC <- DD$Load_char
 }
