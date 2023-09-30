@@ -60,7 +60,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>The data for the Garrett Ranking.</p></dd>
+<dd><p>The data for the Garrett Ranking, must be a <code>data.frame</code>.</p></dd>
 
 
 <dt>num_rank</dt>
@@ -93,27 +93,13 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ranking</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Serious constraint"</span>, <span class="st">"Constraint"</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">garrett_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">garrett_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ranking</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Serious constraint"</span>, <span class="st">"Constraint"</span>,</span></span>
 <span class="r-in"><span><span class="st">"Not certain it is a constraint"</span>, <span class="st">"Not a constraint"</span>,</span></span>
 <span class="r-in"><span><span class="st">"Not a serious constraint"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ranking is supplied</span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span>, <span class="va">ranking</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...8`</span>
@@ -121,21 +107,21 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1   NA     NA    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2   NA     NA    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3          S3   NA     NA    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4          S4   NA     NA    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5          S5   NA     NA    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     6          S6   NA     NA    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7          S7   NA     NA    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8          S8   NA     NA    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     9          S9   NA     NA    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10         S10   NA     NA   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11   NA     NA   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12         S12   NA     NA   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13   NA     NA   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14         S14   NA     NA   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   15         S15   NA     NA   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 4</span></span>
@@ -200,21 +186,6 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ranking not supplied</span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...8`</span>
@@ -222,21 +193,21 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1   NA     NA    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2   NA     NA    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3          S3   NA     NA    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4          S4   NA     NA    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5          S5   NA     NA    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     6          S6   NA     NA    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7          S7   NA     NA    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8          S8   NA     NA    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     9          S9   NA     NA    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10         S10   NA     NA   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11   NA     NA   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12         S12   NA     NA   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13   NA     NA   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14         S14   NA     NA   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   15         S15   NA     NA   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 4</span></span>
@@ -285,21 +256,6 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># you can rank subset of the data</span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">8</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...11`</span>
@@ -307,21 +263,21 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1   NA     NA    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2   NA     NA    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3          S3   NA     NA    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4          S4   NA     NA    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5          S5   NA     NA    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     6          S6   NA     NA    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7          S7   NA     NA    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8          S8   NA     NA    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     9          S9   NA     NA    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10         S10   NA     NA   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11   NA     NA   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12         S12   NA     NA   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13   NA     NA   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14         S14   NA     NA   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   15         S15   NA     NA   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Below    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Below    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Below   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Below   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Below   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Below   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 4</span></span>
@@ -372,21 +328,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">4</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>argument is not numeric or logical: returning NA</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...7`</span>
@@ -394,21 +335,21 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1   NA     NA    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2   NA     NA    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3          S3   NA     NA    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4          S4   NA     NA    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5          S5   NA     NA    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     6          S6   NA     NA    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7          S7   NA     NA    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8          S8   NA     NA    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     9          S9   NA     NA    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10         S10   NA     NA   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11   NA     NA   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12         S12   NA     NA   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13   NA     NA   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14         S14   NA     NA   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   15         S15   NA     NA   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
