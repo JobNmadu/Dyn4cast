@@ -2,7 +2,7 @@
 % Please edit documentation in R/Model_factors.R
 \name{Model_factors}
 \alias{Model_factors}
-\title{Latent Variables Recovery from Factor Loadings}
+\title{Latent Factors Recovery from Variables Loadings}
 \arguments{
 \item{data}{An \verb{R object} obtained from exploratory factor analysis (EFA) using the \code{fa} function in \code{psych} package.}
 

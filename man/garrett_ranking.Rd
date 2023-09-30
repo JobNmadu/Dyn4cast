@@ -9,7 +9,7 @@
 garrett_ranking(data, num_rank, ranking = NULL, m_rank = c(2:15))
 }
 \arguments{
-\item{data}{The data for the Garrett Ranking.}
+\item{data}{The data for the Garrett Ranking, must be a \code{data.frame}.}
 
 \item{num_rank}{A vector representing the number of ranks applied to the data. If the data is a five-point Likert-type data, then number of ranks is 5.}
 
@@ -27,6 +27,7 @@ A list with the following components:
 There are three main types of ranking: Standard competition, Ordinal and Fractional. Garrett's Ranking Technique is the application of fractional ranking in which the data points are ordered and given an ordinal number/rank. The ordering and ranking provide additional information which may not be available from frequency distribution. Again, the ordering is based on the level of seriousness or severity of the data point from the view point of the respondent. Ranking enables ease of comparison and makes grouping more meaningful. It is used in social science, psychology and other survey types of research. This functions performs Garrett Ranking of up to 15 ranks.
 }
 \examples{
+garrett_data <- data.frame(garrett_data)
 ranking <- c("Serious constraint", "Constraint",
 "Not certain it is a constraint", "Not a constraint",
 "Not a serious constraint")
