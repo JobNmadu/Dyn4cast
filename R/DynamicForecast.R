@@ -105,19 +105,19 @@ DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, Maximum
 
   if (NN == 100){
 
-    Data <- cbind(Date = date, series, Series)
+    Data <- data.frame(cbind(Date = date, series, Series))
 
-    fit01  <- stats::lm(series ~ splines::bs(Series, knots = NULL))
+    fit01   <- stats::lm(series ~ splines::bs(Series, knots = NULL))
     fit10   <- stats::lm(series ~ splines::bs(Series, knots = BREAKS))
-    fit11  <- stats::smooth.spline(Series, series)
-    fita1  <- forecast::auto.arima(series)
-    fitpi1 <- stats::lm(series ~ Series + I(Series^2))
-    Linear <-  stats::lm(series ~      Series)
+    fit11   <- stats::smooth.spline(Series, series)
+    fita1   <- forecast::auto.arima(series)
+    fitpi1  <- stats::lm(series ~ Series + I(Series^2))
+    Linear  <-  stats::lm(series ~      Series)
     Semilog <- stats::lm(series ~      log(Series))
-    Growth <-  stats::lm(log(series+1) ~ Series)
+    Growth  <-  stats::lm(log(series+1) ~ Series)
     }else{
 
-      Data <- cbind(series, x)
+      Data <- data.frame(cbind(series, x))
       fit01   <- stats::lm(series ~ . + splines::bs(Series, knots = NULL), data = Data)
       fit10   <- stats::lm(series ~ . + splines::bs(Series, knots = BREAKS) , data = Data)
       fit11   <- stats::smooth.spline(Series, series)
@@ -125,11 +125,11 @@ DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, Maximum
       fitpi1  <- stats::lm(series ~ . + I(Series^2), data = Data)
       Semilog <- stats::lm(series ~      . + log(Series), data = Data)
 
-      Data <- cbind(series, Series, x)
+      Data   <- data.frame(cbind(series, Series, x))
       Linear <-  stats::lm(series ~      ., data = Data)
       Growth <-  stats::lm(log(series+1) ~ ., data = Data)
 
-      Data <- cbind(Date = date, series, Series, x)
+      Data   <- data.frame(cbind(Date = date, series, Series, x))
     }
 
   Estimates <- modelsummary::modelsummary(list(`Linear without knots` = fit01,
