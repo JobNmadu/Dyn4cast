@@ -4,6 +4,10 @@
 \alias{DynamicForecast}
 \alias{COVID19}
 \title{Dynamic Forecast of Five Models and their Ensembles}
+\usage{
+DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
+ ORIGIN = origin, Length = 0, ...)
+}
 \arguments{
 \item{date}{A vector containing the dates for which the data is collected. Must be the same length with \code{series}. The date must be in 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now.}
 
@@ -19,9 +23,11 @@
 
 \item{Type}{The type of response variable. There are two options \strong{Continuous and Integer}. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.}
 
-\item{Lenght}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
+\item{Length}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
 
-\item{...}{Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the \code{series}. In the same way, \code{origin (origin = "YYYY-MM-DD")} to be used to position the date of the data is set to \strong{1970-01-01} if it is not supplied as argument in order to properly date the forecasts.}
+\item{ORIGIN}{if different from \strong{1970-01-01} must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of the data in order to properly \code{date} the forecasts.}
+
+\item{...}{Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the \code{series}.}
 }
 \value{
 A list with the following components:
@@ -59,12 +65,12 @@ Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 DynamicForecast(date = Data$Date, series = Data$Case,
 BREAKS = BREAKS, MaximumDate = "2021-02-10",
- Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+ Trend = "Day", Length = 0, Type = "Integer")
 
 lastdayfo21 <- Dss[length(Dss)]
 Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
 DynamicForecast(date = Data$Date, series = Data$Case,
 BREAKS = BREAKS , MaximumDate = "2021-02-10",
- Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+ Trend = "Day", Length = 0, Type = "Integer")
 }

@@ -10,8 +10,13 @@
 #' @param MaximumDate The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.
 #' @param Trend The type of trend. There are three options **Day, Month and Year**.
 #' @param Type The type of response variable. There are two options **Continuous and Integer**. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.
-#' @param Lenght The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.
-#' @param ... Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the `series`. In the same way, `origin (origin = "YYYY-MM-DD")` to be used to position the date of the data is set to **1970-01-01** if it is not supplied as argument in order to properly date the forecasts.
+#' @param Length The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.
+#' @param ORIGIN if different from **1970-01-01** must be in the format `"YYYY-MM-DD"`. This is used to position the date of the data in order to properly `date` the forecasts.
+#' @param ... Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the `series`.
+#'
+#' @usage
+#' DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
+#'  ORIGIN = origin, Length = 0, ...)
 #'
 #' @import tidyverse
 #' @importFrom stats lm
@@ -74,16 +79,16 @@
 #' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 #' DynamicForecast(date = Data$Date, series = Data$Case,
 #' BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#'  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+#'  Trend = "Day", Length = 0, Type = "Integer")
 #'
 #' lastdayfo21 <- Dss[length(Dss)]
 #' Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 #' BREAKS = c(70, 131, 173, 228, 274)
 #' DynamicForecast(date = Data$Date, series = Data$Case,
 #' BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#'  Trend = "Day", Length = 0, Type = "Integer", origin = ORIGIN)
+#'  Trend = "Day", Length = 0, Type = "Integer")
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
-utils::globalVariables(c("Spline without knots",
+utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
                          "Smooth Spline",
                          "ARIMA",
@@ -95,13 +100,13 @@ utils::globalVariables(c("Spline without knots",
                          "Forecast", "Models", "Fitted values"))
 
 lifecycle::badge("stable")
-DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, MaximumDate, Trend,
-                            Type, Length = 0, ...) {
+DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0, ORIGIN = origin, Length = 0, ...) {
 
-  origin <- ifelse(origin == 0, "1970-01-01", origin)
-  date <- zoo::as.Date(date, origin = origin)
+  ORIGIN <- ifelse(ORIGIN == 0, origin, ORIGIN)
+  date   <- zoo::as.Date(date, origin = ORIGIN)
   Series <- ss <- seq(1:length(series))
   NN <- ifelse(length(x) != 0, 99, 100)
+  BREAKS <- ifelse(length(BREAKS) < 5, 0, BREAKS)
 
   if (NN == 100){
 
@@ -117,7 +122,7 @@ DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, Maximum
     Growth  <-  stats::lm(log(series+1) ~ Series)
     }else{
 
-      Data <- data.frame(cbind(series, x))
+      Data    <- data.frame(cbind(series, x))
       fit01   <- stats::lm(series ~ . + splines::bs(Series, knots = NULL), data = Data)
       fit10   <- stats::lm(series ~ . + splines::bs(Series, knots = BREAKS) , data = Data)
       fit11   <- stats::smooth.spline(Series, series)
@@ -141,10 +146,10 @@ DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, Maximum
                     Growth = Growth), stars = TRUE)
   MaxDayDat <- 0
   if (is.null(MaximumDate)){
-    Dss19 <- seq(Data$Series[1], by = 1, length.out = length(Series))
-    Dss191 <- seq(max(Dss19)+1, by = 1, length.out = length(Series))
-    DayDat0 <- zoo::as.Date(Dss19[length(Dss19)], origin = origin)
-    DayDat1 <- zoo::as.Date(Dss191[length(Dss191)], origin = origin)
+    Dss19     <- seq(Data$Series[1], by = 1, length.out = length(Series))
+    Dss191    <- seq(max(Dss19)+1, by = 1, length.out = length(Series))
+    DayDat0   <- zoo::as.Date(Dss19[length(Dss19)], origin = ORIGIN)
+    DayDat1   <- zoo::as.Date(Dss191[length(Dss191)], origin = ORIGIN)
     MaxDayDat <- zoo::as.Date(DayDat0)
   }else{
     MaximumDate <- zoo::as.Date(MaximumDate)
@@ -192,7 +197,7 @@ DynamicForecast <- function(date, series, x = 0, BREAKS = 0, origin = 0, Maximum
                   Grwoth = Growth1))
   Fitted <- tidyr::pivot_longer(Fitted, -date, names_to = "Models",
                         values_to = "Fitted values")
-  Fitted$date <- zoo::as.Date(Fitted$date, origin = origin)
+  Fitted$date <- zoo::as.Date(Fitted$date, origin = ORIGIN)
 
   Fit_plot <- ggplot2::ggplot(Fitted) +
     ggplot2::aes(x = date, y = `Fitted values`, colour = Models) +
@@ -262,7 +267,7 @@ if (Length != 0){
               "Upper ARIMA" = ModelMetrics::rmse(series, ARIMA))
 
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
-  KK91$Date <- zoo::as.Date(KK91$Date, origin = origin)
+  KK91$Date <- zoo::as.Date(KK91$Date, origin = ORIGIN)
   KK91$`Ensembled with equal weight` <- kk3191[["mean"]]
   KK91$`Ensembled based on weight` <- kk4191[["mean"]]
   KK91$`Ensembled based on summed weight` <- kk6191[["mean"]]
@@ -385,7 +390,7 @@ if (Length != 0){
     KK91c$`Polynomial 95%`    = kk10c$Upper95
     KK91c$`ARIMA 80%`         = kk2c$Lower80
     KK91c$`ARIMA 95%`         = kk2c$Upper95
-    KK91c$Date <- zoo::as.Date(KK91c$Date, origin = origin)
+    KK91c$Date <- zoo::as.Date(KK91c$Date, origin = ORIGIN)
     DDfc <- c("Linear", "Semilog", "Growth", "Without knots 80%",
               "Without knots 95%", "Smooth Spline 80%",
               "Smooth Spline 95%", "With knots 80%", "With knots 95%",
