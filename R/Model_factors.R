@@ -74,8 +74,8 @@ Model_factors <- function(data, DATA) {
 
   Factor_m[Factor_m == "      "] = NA
 
-  if (ncol(Factors3) < 2 | ncol(Factors3) > 7) {
-    stop("Factors must be uqual or above 2 and less than or equal 7 to proceed")
+  if (ncol(Factors3) < 2 | ncol(Factors3) > 9) {
+    stop("Factors must be uqual or above 2 and less than or equal 9 to proceed")
   } else {
     for (i in 2 : ncol(Factors3)) {
       if (i == 9) {
