@@ -18,6 +18,8 @@ A list with the following components:
 \item{\code{Latent_5}}{\code{data.frame} of variables in Latent factor 5 with their loadings.}
 \item{\code{Latent_6}}{\code{data.frame} of variables in Latent factor 6 with their loadings.}
 \item{\code{Latent_7}}{\code{data.frame} of variables in Latent factor 7 with their loadings.}
+\item{\code{Latent_8}}{\code{data.frame} of variables in Latent factor 8 with their loadings.}
+\item{\code{Latent_9}}{\code{data.frame} of variables in Latent factor 9 with their loadings.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which can be used as \code{R} objects to perform other analysis.

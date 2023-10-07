@@ -15,6 +15,8 @@
 #' \item{\code{Latent_5}}{`data.frame` of variables in Latent factor 5 with their loadings.}
 #' \item{\code{Latent_6}}{`data.frame` of variables in Latent factor 6 with their loadings.}
 #' \item{\code{Latent_7}}{`data.frame` of variables in Latent factor 7 with their loadings.}
+#' \item{\code{Latent_8}}{`data.frame` of variables in Latent factor 8 with their loadings.}
+#' \item{\code{Latent_9}}{`data.frame` of variables in Latent factor 9 with their loadings.}
 #'
 #' @name Model_factors
 #'
