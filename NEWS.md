@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.24-kappa 2023-10-22
+
+`timeDate` dependency in `quicksummary` is removed.
+
 # Dyn4cast 11.11.24-beta 2023-09-29
 
 Huge improvements and new additions to the package. A lot of editorial corrections observed in the codes have been carried out. Two new functions, `Model_factors` and `garrett_ranking` are successfully tested and now operational. The two functions provides for gaining deeper insights into the meaning behind Likert-type variables collected from respondents. Garrett ranking provides the ranks of the observations of the variables based on the level of seriousness attached to it by the respondents. On the other hand, Model factors determines and retrieve the latent factors inherent in such data which now becomes continuous data. The factors or data frame retrieved from the variables can be used in other analysis like regression and machine learning. 

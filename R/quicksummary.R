@@ -15,8 +15,6 @@
 #'
 #' @export quicksummary
 #'
-#' @importFrom timeDate skewness
-#' @importFrom timeDate kurtosis
 #' @importFrom stats var
 #' @importFrom stats quantile
 #' @importFrom stats qt
@@ -64,16 +62,22 @@ quicksummary <- function (x, Type, Cut, Up, Down, ci = 0.95){
     X.length = length(X)
     X = X[!is.na(X)]
     X.na = X.length - length(X)
+    sod <- X-mean(X)
+    SD <- sd(X)
+    n <- length(X)
+    NNS <- n/((n-1)*(n-2))
+    skewness <- NNS*sum((sod/SD)^3)
+    kurtosis <- ((sum(sod^4)/n)/SD^4)-3
+
     if (Type == 1){
       z = c(mean(X), sqrt(stats::var(X)),
             sqrt(stats::var(X)/length(X)), min(X), median(X), max(X),
             as.numeric(stats::quantile(X, prob = 0.25, na.rm = TRUE)),
             as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
-            timeDate::skewness(X), timeDate::kurtosis(X), X.length)
+            skewness, kurtosis, X.length)
       znames = c("Mean", "SD", "SE Mean", "Min", "Median", "Max", "Q1",
                  "Q3",  "Skewness", "Kurtosis", "Nobs")
-    }
-    else {
+    } else {
       z = c(mean(X), sqrt(var(X)), sqrt(var(X)/length(X)),
             X.length)
       znames = c("Mean", "SD", "SE Mean", "Nobs")
