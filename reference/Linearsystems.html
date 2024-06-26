@@ -212,160 +212,28 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Without test data (not run)</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="va">linearsystems</span><span class="op">$</span><span class="va">MKTcost</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">linearsystems</span>, <span class="op">-</span><span class="va">MKTcost</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">Linearsystems</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">6</span>, <span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> `x` must be a `tinytable` object, a data frame, or an atomic vector.</span>
+<span class="r-in"><span><span class="co"># y = linearsystems$MKTcost</span></span></span>
+<span class="r-in"><span><span class="co"># x &lt;- select(linearsystems, -MKTcost)</span></span></span>
+<span class="r-in"><span><span class="co"># Linearsystems(y, x, 6, 15) # NaNs produced if run</span></span></span>
 <span class="r-in"><span><span class="co"># Without test data (not run)</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span></span>
-<span class="r-in"><span><span class="va">limit</span> <span class="op">=</span> <span class="fl">20</span></span></span>
-<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span><span class="fl">3</span></span></span>
-<span class="r-in"><span><span class="va">Test</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
-<span class="r-in"><span><span class="fu">Linearsystems</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">3</span>, <span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> `x` must be a `tinytable` object, a data frame, or an atomic vector.</span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span></span>
-<span class="r-in"><span><span class="va">Data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">sampling</span> <span class="op">&lt;-</span> <span class="fu"><a href="Percent.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span>, <span class="fl">0.8</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span><span class="op">)</span> <span class="co"># 80% of data is sampled for training the model</span></span></span>
-<span class="r-in"><span><span class="va">train</span> <span class="op">&lt;-</span> <span class="va">Data</span><span class="op">[</span><span class="va">sampling</span>, <span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">Test</span>  <span class="op">&lt;-</span> <span class="va">Data</span><span class="op">[</span><span class="op">-</span><span class="va">sampling</span>, <span class="op">]</span> <span class="co"># 20% of data is reserved for testing (predicting) the model</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">train</span><span class="op">$</span><span class="va">y</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">train</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fl">4</span></span></span>
-<span class="r-in"><span><span class="fu">Linearsystems</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">4</span>, <span class="fl">15</span>, <span class="va">Test</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>predicted should be a list of vectors. Converting to a list.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>row names were found from a short variable and have been discarded</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> `x` must be a `tinytable` object, a data frame, or an atomic vector.</span>
+<span class="r-in"><span><span class="co"># x = sampling[, -1]</span></span></span>
+<span class="r-in"><span><span class="co"># y = sampling$qOutput</span></span></span>
+<span class="r-in"><span><span class="co"># limit = 20</span></span></span>
+<span class="r-in"><span><span class="co"># mod &lt;-3</span></span></span>
+<span class="r-in"><span><span class="co"># Test &lt;- NA</span></span></span>
+<span class="r-in"><span><span class="co"># Linearsystems(y, x, 3, 15) # NaNs produced if run</span></span></span>
+<span class="r-in"><span><span class="co"># x = sampling[, -1]</span></span></span>
+<span class="r-in"><span><span class="co"># y = sampling$qOutput</span></span></span>
+<span class="r-in"><span><span class="co"># Data &lt;- cbind(y, x)</span></span></span>
+<span class="r-in"><span><span class="co"># sampling &lt;- sample(1:nrow(Data), 0.8*nrow(Data)) # 80% of data is sampled for training the model</span></span></span>
+<span class="r-in"><span><span class="co"># train &lt;- Data[sampling, ]</span></span></span>
+<span class="r-in"><span><span class="co"># Test  &lt;- Data[-sampling, ] # 20% of data is reserved for testing (predicting) the model</span></span></span>
+<span class="r-in"><span><span class="co"># y &lt;- train$y</span></span></span>
+<span class="r-in"><span><span class="co"># x &lt;- train[, -1]</span></span></span>
+<span class="r-in"><span><span class="co"># mod &lt;- 4</span></span></span>
+<span class="r-in"><span><span class="co"># Linearsystems(y, x, 4, 15, Test) # NaNs produced if run</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
