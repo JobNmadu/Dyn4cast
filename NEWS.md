@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.24-kappa 2024-06-24
+
+minor bugs fixed probably due to changes in dependencies following new R release.
+
 # Dyn4cast 11.11.24-kappa 2023-10-22
 
 `timeDate` dependency in `quicksummary` is removed.

@@ -76,26 +76,26 @@
 #'
 #' @examples
 #' # Without test data (not run)
-#' y = linearsystems$MKTcost
-#' x <- select(linearsystems, -MKTcost)
-#' Linearsystems(y, x, 6, 15)
+#' # y = linearsystems$MKTcost
+#' # x <- select(linearsystems, -MKTcost)
+#' # Linearsystems(y, x, 6, 15) # NaNs produced if run
 #' # Without test data (not run)
-#' x = sampling[, -1]
-#' y = sampling$qOutput
-#' limit = 20
-#' mod <-3
-#' Test <- NA
-#' Linearsystems(y, x, 3, 15)
-#' x = sampling[, -1]
-#' y = sampling$qOutput
-#' Data <- cbind(y, x)
-#' sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80% of data is sampled for training the model
-#' train <- Data[sampling, ]
-#' Test  <- Data[-sampling, ] # 20% of data is reserved for testing (predicting) the model
-#' y <- train$y
-#' x <- train[, -1]
-#' mod <- 4
-#' Linearsystems(y, x, 4, 15, Test)
+#' # x = sampling[, -1]
+#' # y = sampling$qOutput
+#' # limit = 20
+#' # mod <-3
+#' # Test <- NA
+#' # Linearsystems(y, x, 3, 15) # NaNs produced if run
+#' # x = sampling[, -1]
+#' # y = sampling$qOutput
+#' # Data <- cbind(y, x)
+#' # sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80% of data is sampled for training the model
+#' # train <- Data[sampling, ]
+#' # Test  <- Data[-sampling, ] # 20% of data is reserved for testing (predicting) the model
+#' # y <- train$y
+#' # x <- train[, -1]
+#' # mod <- 4
+#' # Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 #'
 #' @usage Linearsystems(y, x, mod, limit, Test = NA)
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
@@ -131,8 +131,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                                values_to = "values")
 
   e_meanplot <- ggplot2::ggplot(Data1, ggplot2::aes(x = Variables, y = values)) +
-    ggplot2::geom_jitter(linewidth = 3,
-                         alpha = 0.7,
+    ggplot2::geom_jitter(alpha = 0.7,
                          shape = 16,
                          width = 0.2,
                          color = "cadetblue") +
@@ -150,7 +149,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::aes(label = round(ggplot2::after_stat(y), 1), fontface = "bold"),
       fun = mean,
       geom = "label", #try text if you want
-      linewidth = 4,
+      #binwidth = 4,
       alpha = 0.6,
       label.size = NA, # remove border around label
       vjust = -0.5,

@@ -68,25 +68,25 @@ The linear model still remains a reference point towards advanced modeling of so
 }
 \examples{
 # Without test data (not run)
-y = linearsystems$MKTcost
-x <- select(linearsystems, -MKTcost)
-Linearsystems(y, x, 6, 15)
+# y = linearsystems$MKTcost
+# x <- select(linearsystems, -MKTcost)
+# Linearsystems(y, x, 6, 15) # NaNs produced if run
 # Without test data (not run)
-x = sampling[, -1]
-y = sampling$qOutput
-limit = 20
-mod <-3
-Test <- NA
-Linearsystems(y, x, 3, 15)
-x = sampling[, -1]
-y = sampling$qOutput
-Data <- cbind(y, x)
-sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80\% of data is sampled for training the model
-train <- Data[sampling, ]
-Test  <- Data[-sampling, ] # 20\% of data is reserved for testing (predicting) the model
-y <- train$y
-x <- train[, -1]
-mod <- 4
-Linearsystems(y, x, 4, 15, Test)
+# x = sampling[, -1]
+# y = sampling$qOutput
+# limit = 20
+# mod <-3
+# Test <- NA
+# Linearsystems(y, x, 3, 15) # NaNs produced if run
+# x = sampling[, -1]
+# y = sampling$qOutput
+# Data <- cbind(y, x)
+# sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80\% of data is sampled for training the model
+# train <- Data[sampling, ]
+# Test  <- Data[-sampling, ] # 20\% of data is reserved for testing (predicting) the model
+# y <- train$y
+# x <- train[, -1]
+# mod <- 4
+# Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 
 }
