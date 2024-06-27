@@ -25,6 +25,8 @@ knitr::opts_chunk$set(
 
 `r badgecreatr::badge_lifecycle(lifecycle = "stable")`
 
+`r badgecreatr::badge_projectstatus("active")`
+
 <!-- end -->
 
 The __Dyn4cast__ package is designed to be a lightweight package, with the 
