@@ -115,102 +115,103 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">GGx</span></span></span>
 <span class="r-in"><span><span class="va">lll</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.parallel.html" class="external-link">fa.parallel</a></span><span class="op">(</span><span class="va">Data</span>, fm <span class="op">=</span> <span class="st">'minres'</span>, fa <span class="op">=</span> <span class="st">'fa'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Model_factors-1.png" alt="" width="700" height="433"></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Parallel analysis suggests that the number of factors =  4  and the number of components =  NA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parallel analysis suggests that the number of factors =  5  and the number of components =  NA </span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.html" class="external-link">fa</a></span><span class="op">(</span><span class="va">Data</span>, nfactors <span class="op">=</span> <span class="va">lll</span><span class="op">[[</span><span class="st">"nfact"</span><span class="op">]</span><span class="op">]</span>, rotate <span class="op">=</span> <span class="st">"varimax"</span>,fm<span class="op">=</span><span class="st">"minres"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">Model_factors</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, DATA <span class="op">=</span> <span class="va">Data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loadings:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     MR1    MR2    MR4    MR3   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x11  0.556                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x12  0.610                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x13  0.546                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x20  0.624                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x21  0.563                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x24  0.586                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x25  0.692                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x26  0.631                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x01        -0.616              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x02        -0.684  0.644       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x10        -0.616              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x23         0.514              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x28         0.633              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x03                0.597       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x08                0.591  0.531</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x04                       0.724</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x05                       0.801</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x06                       0.692</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x07  0.404                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x09                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x14                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x15  0.479                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x16                0.403       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x17                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x18  0.406                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x19  0.447                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x22                0.466       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x27                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x29         0.436              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     MR1    MR2    MR3    MR5    MR4   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x11  0.513                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x12  0.611                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x13  0.559                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x20  0.556                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x24  0.617                       0.527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x25  0.718                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x26  0.595                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x01         0.625                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x02         0.783                0.541</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x10         0.631                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x28        -0.610                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x04                0.740              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x05                0.792              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x06                0.720              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x08                0.594         0.452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x17                       0.667       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x18                       0.527       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x19                       0.592       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x03                              0.523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x07                       0.417       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x09                       0.403       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x14                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x15  0.480                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x16                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x21  0.492                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x22                              0.481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x23        -0.440                0.499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x27                              0.465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x29                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  MR1   MR2   MR4   MR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> SS loadings    4.577 3.071 2.724 2.617</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Proportion Var 0.158 0.106 0.094 0.090</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cumulative Var 0.158 0.264 0.358 0.448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  MR1   MR2   MR3   MR5   MR4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SS loadings    3.854 2.895 2.786 2.441 2.203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Proportion Var 0.133 0.100 0.096 0.084 0.076</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cumulative Var 0.133 0.233 0.329 0.413 0.489</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_frame</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 103 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      MR1    MR2   MR3   MR4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  24.7 -<span style="color: #BB0000;">4.10</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  26.7 -<span style="color: #BB0000;">4.10</span>   2.94  6.42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  24.3 -<span style="color: #BB0000;">0.939</span>  2.94  6.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  24.7 -<span style="color: #BB0000;">4.10</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  26.2 -<span style="color: #BB0000;">3.49</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  26.2 -<span style="color: #BB0000;">4.10</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  27.2 -<span style="color: #BB0000;">4.10</span>   2.22  7.82</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  26.2 -<span style="color: #BB0000;">3.49</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  26.2 -<span style="color: #BB0000;">3.49</span>   2.94  9.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  27.2 -<span style="color: #BB0000;">4.10</span>   2.22  7.82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 103 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      MR1   MR2   MR3   MR4   MR5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  16.7  6.28  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  18.6  6.28  2.99  9.76 10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  16.3  3.23  2.99 11.5   9.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  16.7  6.28  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  18.1  5.65  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  18.1  6.28  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  19.1  6.28  2.25 11.2   9.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  18.1  5.65  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  18.1  5.65  2.99 11.2  10.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  19.1  6.28  2.25 11.2   9.22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 93 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    MR1 loading</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  x11   0.556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  x12   0.610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  x13   0.546</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  x20   0.624</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  x21   0.563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  x24   0.586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  x25   0.692</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  x26   0.631</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  x07   0.404</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 x15   0.479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 x18   0.406</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 x19   0.447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   MR1 loading</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x11   0.513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x12   0.611</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x13   0.559</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x20   0.556</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 x25   0.718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 x26   0.595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8 x15   0.480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9 x21   0.492</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   MR2 loading</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x01  -0.616</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x10  -0.616</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x23   0.514</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 x28   0.633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 x29   0.436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x01   0.625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x10   0.631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x28  -0.610</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   MR3 loading</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x04   0.724</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x05   0.801</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x06   0.692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x04   0.740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x05   0.792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x06   0.720</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   MR4 loading</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x02   0.644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x03   0.597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x08   0.591</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x16   0.403</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 x22   0.466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x24   0.527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x02   0.541</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x08   0.452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x03   0.523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 x22   0.481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 x23   0.499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 x27   0.465</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   MR5 loading</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 x17   0.667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 x18   0.527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 x19   0.592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 x07   0.417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 x09   0.403</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Latent_6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
