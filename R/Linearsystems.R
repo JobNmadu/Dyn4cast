@@ -76,7 +76,7 @@
 #'
 #' @examples
 #' # Without test data (not run)
-#' # y = linearsystems$MKTcost
+#' # y = linearsystems$MKTcost # to run all the exercises, uncomment.
 #' # x <- select(linearsystems, -MKTcost)
 #' # Linearsystems(y, x, 6, 15) # NaNs produced if run
 #' # Without test data (not run)
