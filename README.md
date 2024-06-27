@@ -7,8 +7,7 @@
 
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
 
-[![Build
-Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
+<!--[![Build Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)-->
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
@@ -202,18 +201,19 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (2023). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. https://github.com/JobNmadu/Dyn4cast,
-  https://jobnmadu.github.io/Dyn4cast/.
+  Nmadu J (2024). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.23, commit
+  6e48792be042c3eeb48658bc8aba34bd1b00afab,
+  <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    year = {2023},
-    note = {https://github.com/JobNmadu/Dyn4cast,
-https://jobnmadu.github.io/Dyn4cast/},
+    year = {2024},
+    note = {R package version 11.11.23, commit 6e48792be042c3eeb48658bc8aba34bd1b00afab},
+    url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
 
