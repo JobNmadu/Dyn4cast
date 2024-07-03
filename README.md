@@ -53,7 +53,7 @@ At present, the package exports the following functions:
     any recognized format but should be a **dataframe** containing two
     columns `Date` and `Case`. The Date is the *day/month/year* the data
     is collected while Case is the variable for forecasting. The Date
-    must be in the recognized format i.e. ‘YYYY-MM-DD’. The other
+    must be in the recognized format i.e. 'YYYY-MM-DD'. The other
     arguments parsed to the function are `MaximumDate`, which is the
     last date Data was collected and `BREAKS`, which is a vector of
     numbers and is used as `knots` in estimating spline polynomials.
