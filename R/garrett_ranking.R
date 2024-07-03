@@ -41,7 +41,7 @@ garrett_ranking <- function(data, num_rank,
   right <- intersect(m_rank, num_rank)
   ranking <- ranking
   garrett_table <- garrett_table
-  Data <- data
+  Data <- data.frame(data)
   GGn <- names(Data)
   pR <- nrow(Data)
   pC <- ncol(Data)
