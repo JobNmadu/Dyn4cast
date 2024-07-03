@@ -60,7 +60,7 @@
 #' @importFrom ModelMetrics tpr
 #' @importFrom ModelMetrics ppv
 #' @importFrom ModelMetrics npv
-#' @importFrom qpcR PRESS
+# #' @importFrom qpcR PRESS
 #' @importFrom dplyr mutate
 #' @importFrom stats predict
 #'
@@ -70,7 +70,7 @@
 #' \item{\code{Accuracy}}{of the Model.}
 #' \item{\code{Adjusted R Square}}{of the Model.}
 #' \item{\code{`Akaike's` Information Criterion AIC}}{of the Model.}
-#' \item{\code{`Allen's` Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
+# #' \item{\code{`Allen's` Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
 #' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
 #' \item{\code{Average Precision at k}}{of the Model.}
 #' \item{\code{Bias}}{of the Model.}
@@ -252,8 +252,8 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
 
   RD37 = MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
                              type = Type, Nlevels = Nlevels)
-  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
-                 signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
+#  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
+#                 signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
                        ModelMetrics::brier(yvalue, Preds),
                        ModelMetrics::brier(Model)), 0)
@@ -288,7 +288,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
     "Accuracy" = RD05,
     "Adjusted R Square" = RD04,
     "Akaike's Information Criterion AIC" = RD01,
-    "Allen's Prediction Sum-Of-Squares (PRESS, P-Square)" = RD38,
+#    "Allen's Prediction Sum-Of-Squares (PRESS, P-Square)" = RD38,
     "Area under the ROC curve (AUC)" = RD09,
     "Average Precision at k" = RD08,
     "Bias" = RD10,

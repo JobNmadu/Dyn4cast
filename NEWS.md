@@ -1,3 +1,9 @@
+# Dyn4cast 11.11.24-kappa 2024-07-02
+
+PRESS suspended in `MlMetrics`
+
+minor bugs discovered in the garret ranking function modules fixed.
+
 # Dyn4cast 11.11.24-kappa 2024-06-24
 
 minor bugs fixed probably due to changes in dependencies following new R release.

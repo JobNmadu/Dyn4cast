@@ -30,7 +30,6 @@ A list with the following components:
 \item{\code{Accuracy}}{of the Model.}
 \item{\code{Adjusted R Square}}{of the Model.}
 \item{\code{`Akaike's` Information Criterion AIC}}{of the Model.}
-\item{\code{`Allen's` Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
 \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
 \item{\code{Average Precision at k}}{of the Model.}
 \item{\code{Bias}}{of the Model.}

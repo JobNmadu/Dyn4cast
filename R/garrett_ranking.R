@@ -361,11 +361,13 @@ garrett_ranking <- function(data, num_rank,
 
   garrett$V16 <- rowSums(garrett)
   garrett_d <- dplyr::bind_cols(GGn, garrett, `Total Garrett Score`)
-  garrett_m <- dplyr::bind_cols(GGn, z_m)
-  names(garrett_m) <- c("Description", "Mean")
-  garrett_m$Remark <- ifelse(garrett_m$Mean > cuty, "Above",
-                             ifelse(garrett_m$Mean == cuty, "Equal", "Below"))
-  garrett_m <- garrett_m[order(-garrett_m$Mean), ] %>%
+
+  row.names(z_m) <- GGn
+  z_m <- rownames_to_column(z_m, var = "Description")
+  names(z_m) <- c("Description", "Mean")
+  z_m$Remark <- ifelse(z_m$Mean > cuty, "Above",
+                       ifelse(z_m$Mean == cuty, "Equal", "Below"))
+  z_m <- z_m[order(-z_m$Mean), ] %>%
     mutate(Rank = dplyr::row_number()) %>%
     rownames_to_column(., var = "S/No")
 
@@ -374,7 +376,7 @@ garrett_ranking <- function(data, num_rank,
   garrett_d <- garrett_d[order(-garrett_d$`Mean score`), ] %>%
     mutate(Rank = dplyr::row_number()) %>%
     rownames_to_column(., var = "S/No")
-  results <- list(`Data mean table` = garrett_m, `Garrett value` = garrett_p,
+  results <- list(`Data mean table` = z_m, `Garrett value` = garrett_p,
                   `Garrett ranked data` = garrett_d)
   return(results)
 }
