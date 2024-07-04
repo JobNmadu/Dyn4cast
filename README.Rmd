@@ -15,18 +15,17 @@ knitr::opts_chunk$set(
 
 # Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
 
-<!-- badges: start -->
+<!-- badges: start
+`r badgecreatr::badge_travis(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
+ -->
 
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
-
-<!--`r badgecreatr::badge_travis(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`-->
 
 `r badgecreatr::badge_codecov(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
 
 `r badgecreatr::badge_lifecycle(lifecycle = "stable")`
 
 `r badgecreatr::badge_projectstatus("active")`
-
 <!-- end -->
 
 The __Dyn4cast__ package is designed to be a lightweight package, with the 
