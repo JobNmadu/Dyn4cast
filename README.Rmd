@@ -28,21 +28,20 @@ knitr::opts_chunk$set(
 
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
 
-`r badgecreatr::badge_projectstatus("active")`
-
-`r badgecreatr::badge_codecov(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
-
-`r badgecreatr::badge_lifecycle(lifecycle = "stable")`
-
-<!--
-
-`r badgecreatr::badge_travis(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
-
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+<!--
+
+`r badgecreatr::badge_travis(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
+`r badgecreatr::badge_projectstatus("active")`
+
+`r badgecreatr::badge_codecov(ghaccount = "JobNmadu", ghrepo = "Dyn4cast", branch = "master")`
+
+`r badgecreatr::badge_lifecycle(lifecycle = "stable")`
 
 <!-- end -->
 
