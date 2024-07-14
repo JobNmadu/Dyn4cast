@@ -1,81 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/articles/Dyn4cast.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/Dyn4cast-package.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/DynamicForecast.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/Linearsystems.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/MLMetrics.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/MallowsCp.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/Model_factors.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/Percent.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/constrainedforecast.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/corplot.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/data_transform.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/estimate_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/formattedcut.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/garrett_ranking.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/invscaledlogit.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/quicksummary.html</loc>
-  </url>
-  <url>
-    <loc>https://jobnmadu.github.io/Dyn4cast/reference/scaledlogit.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/404.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/LICENSE-text.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/LICENSE.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/articles/Dyn4cast.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/articles/index.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/authors.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/index.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/news/index.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/Dyn4cast-package.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/DynamicForecast.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/Linearsystems.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/MLMetrics.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/MallowsCp.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/Model_factors.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/Percent.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/constrainedforecast.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/corplot.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/data_transform.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/estimate_plot.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/formattedcut.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/garrett_ranking.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/index.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/invscaledlogit.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/quicksummary.html</loc></url>
+<url><loc>https://jobnmadu.github.io/Dyn4cast/reference/scaledlogit.html</loc></url>
 </urlset>
+
