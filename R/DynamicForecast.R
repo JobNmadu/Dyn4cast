@@ -67,26 +67,26 @@
 #' @aliases COVID19
 #'
 #' @examples
-#' COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
-#'  #The date is formatted to R format
-#' LEN <- length(COVID19$Case)
-#' Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
-#'  #data length for forecast
-#' ORIGIN = "2020-02-29"
-#' lastdayfo21 <- Dss[length(Dss)] # The maximum length
-#' Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
-#' # desired length of forecast
-#' BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' DynamicForecast(date = Data$Date, series = Data$Case,
-#' BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#'  Trend = "Day", Length = 0, Type = "Integer")
-#'
-#' lastdayfo21 <- Dss[length(Dss)]
-#' Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
-#' BREAKS = c(70, 131, 173, 228, 274)
-#' DynamicForecast(date = Data$Date, series = Data$Case,
-#' BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#'  Trend = "Day", Length = 0, Type = "Integer")
+#' # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
+#' #  #The date is formatted to R format
+#' # LEN <- length(COVID19$Case)
+#' # Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
+#' #  #data length for forecast
+#' # ORIGIN = "2020-02-29"
+#' # lastdayfo21 <- Dss[length(Dss)] # The maximum length # uncomment to run
+#' # Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
+#' # # desired length of forecast
+#' # BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
+#' # DynamicForecast(date = Data$Date, series = Data$Case,
+#' # BREAKS = BREAKS, MaximumDate = "2021-02-10",
+#' #  Trend = "Day", Length = 0, Type = "Integer")
+#' #
+#' # lastdayfo21 <- Dss[length(Dss)]
+#' # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
+#' # BREAKS = c(70, 131, 173, 228, 274)
+#' # DynamicForecast(date = Data$Date, series = Data$Case,
+#' # BREAKS = BREAKS , MaximumDate = "2021-02-10",
+#' #  Trend = "Day", Length = 0, Type = "Integer")
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
