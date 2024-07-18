@@ -66,7 +66,7 @@
 #'
 #' @aliases COVID19
 #'
-#' @examples
+#' @examples. # uncomment to run
 #' # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
 #' #  #The date is formatted to R format
 #' # LEN <- length(COVID19$Case)
