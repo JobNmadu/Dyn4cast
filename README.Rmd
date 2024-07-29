@@ -93,6 +93,8 @@ At present, the package exports the following functions:
 
 8. `Model_factors` is for determining and retrieving latent factors from Likert-type data for estimation and Machine Learning.  
 
+8. `treatment_model` is for propensity matching treatments effects and other metrics in the Machine Learning Environment.  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -189,6 +191,32 @@ The package is capable of
 
 * Determine and retrieve the latent factors in Likert-type variables  
 
+* _Treatment model_ which is for propensity matching and treatment effects. It has the capacity to provide:
+
+    + Estimated treatment effects model  
+    
+    + Data frame of the estimated various treatment effects
+    
+    + Vector of estimated propensity scores from the model
+    
+    + Vector of fitted values from the model
+    
+    + Residuals of the estimated model
+    
+    + Plot of the propensity scores from the model faceted into Treated and control populations
+    
+    + Plot of the average treatment effect for the **entire** population
+    
+    + Plot of the average treatment effect for the **treated** population
+
+    + Plot of the average treatment effect for the **controlled** population
+
+    + Plot of the average Treatment effect for the **evenly** population
+
+    + Plot of the average Treatment effect for the **overlap** population
+
+    + Estimated weights for each of the treatment effects
+
 ## Citation
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
@@ -213,11 +241,14 @@ Note that a *warning* (not _error_) is thrown up while estimating the RMSE for t
 The package is still very much in progress as such feedback, particularly at this developmental stage, would be greatly welcome and appreciated. Please fork your feedback at GitHub.
 
 ## Bibliography
+
 Mahoney, M. (2021). [Model averaging methods: how and why to build ensemble models.](https://www.mm218.dev/posts/2021/01/model-averaging/)  
 
 Hyndman, R. J. (2020). Quantile forecasting with ensembles and combinations in _Business Forecasting: The Emerging Role of Artificial Intelligence and Machine Learning_, eds. Gilliland, Tashman & Sglavo. John Wiley & Sons.
 
 Hyndman, R.J., & Athanasopoulos, G. (2021). _Forecasting: principles and practice_, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3. Accessed on July 30, 2021.
+
+Lucy D'Agostino McGowan (2019). Understanding propensity score weighting. [Available at ](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 
 ## Code of Conduct  
 

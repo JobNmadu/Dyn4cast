@@ -1,6 +1,6 @@
 Package: Dyn4cast
 Title: Dynamic Modeling and Machine Learning Environment
-Version: 11.11.23
+Version: 11.11.24
 Authors@R: 
     person(given = "Job",
            family = "Nmadu",

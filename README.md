@@ -105,6 +105,9 @@ At present, the package exports the following functions:
 13. `Model_factors` is for determining and retrieving latent factors
     from Likert-type data for estimation and Machine Learning.
 
+14. `treatment_model` is for propensity matching treatments effects and
+    other metrics in the Machine Learning Environment.
+
 ## Things the package can do
 
 The package is capable of
@@ -202,6 +205,35 @@ The package is capable of
 
 - Determine and retrieve the latent factors in Likert-type variables
 
+- *Treatment model* which is for propensity matching and treatment
+  effects. It has the capacity to provide:
+
+  - Estimated treatment effects model
+
+  - Data frame of the estimated various treatment effects
+
+  - Vector of estimated propensity scores from the model
+
+  - Vector of fitted values from the model
+
+  - Residuals of the estimated model
+
+  - Plot of the propensity scores from the model faceted into Treated
+    and control populations
+
+  - Plot of the average treatment effect for the **entire** population
+
+  - Plot of the average treatment effect for the **treated** population
+
+  - Plot of the average treatment effect for the **controlled**
+    population
+
+  - Plot of the average Treatment effect for the **evenly** population
+
+  - Plot of the average Treatment effect for the **overlap** population
+
+  - Estimated weights for each of the treatment effects
+
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -212,9 +244,9 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.23,
-  https://jobnmadu.github.io/Dyn4cast/,
+  Nmadu J (2024). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.23, commit
+  f077a6b0297d26bd2e6794d37f1247c87c28bcc4,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -222,7 +254,8 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    note = {R package version 11.11.23, https://jobnmadu.github.io/Dyn4cast/},
+    year = {2024},
+    note = {R package version 11.11.23, commit f077a6b0297d26bd2e6794d37f1247c87c28bcc4},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
@@ -263,6 +296,10 @@ John Wiley & Sons.
 Hyndman, R.J., & Athanasopoulos, G. (2021). *Forecasting: principles and
 practice*, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3.
 Accessed on July 30, 2021.
+
+Lucy D’Agostino McGowan (2019). Understanding propensity score
+weighting. [Available
+at](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 
 ## Code of Conduct
 

@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.24 2024-07-28
+
+treatment_model introduced for propensity score matching and treatment effects
+
 # Dyn4cast 11.11.24-kappa 2024-07-02
 
 PRESS suspended in `MlMetrics`
