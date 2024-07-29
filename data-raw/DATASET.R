@@ -46,3 +46,8 @@ garrett_data <- readr::read_csv("garrett.csv")
 saveRDS(garrett_data, "inst/garrett_data.RDS")
 
 usethis::use_data(garrett_data, overwrite = TRUE)
+
+treatments <- readr::read_csv("treatments.csv")
+saveRDS(treatments, "inst/treatments.RDS")
+
+usethis::use_data(treatments, overwrite = TRUE)
