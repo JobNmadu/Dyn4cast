@@ -1,12 +1,17 @@
 #' Enhanced Estimation of Treatment Effects of Binary Data from Randomized Experiments
 #'
 #' @description
-#' Observational study involves the evaluation of outcomes of participants not randomly assigned treatments or exposures. To be able to assess the effects of the outcome, the participants are matched using propensity scores (PSM). This then enables the determination of the effects of the treatments on those treated against those who were not treated. Most of the earlier functions available for this analysis only enables the determination of the average treatments effects on the treated (ATT) while the other treatment effects are optional. This is where this functions is unique because five different average treatment effects are estimated simultaneously, in spite of the **one line code arguments**. The five treatment effects are:
-#' i. Average treatment effect  for the entire (ATE)  population
-#' ii. Average treatment effect  for the treated (ATT)  population
-#' iii. Average treatment effect  for the controlled (ATC)  population
-#' iv. Average treatment effect  for the evenly matched (ATM)  population
-#' v. Average treatment effect  for the overlap (ATO) population.
+#' Observational study involves the evaluation of outcomes of participants not randomly assigned treatments or exposures. To be able to assess the effects of the outcome, the participants are matched using propensity scores (PSM). This then enables the determination of the effects of the treatments on those treated against those who were not treated. Most of the earlier functions available for this analysis only enables the determination of the average treatments effects on the treated (ATT) while the other treatment effects are optional. This is where this functions is unique because five different average treatment effects are estimated simultaneously, in spite of the **one line code arguments**. The five treatment effects are:  
+#'
+#' i. Average treatment effect  for the entire (ATE)  population  
+#'
+#' ii. Average treatment effect  for the treated (ATT)  population  
+#'
+#' iii. Average treatment effect  for the controlled (ATC)  population  
+#'
+#' iv. Average treatment effect  for the evenly matched (ATM)  population  
+#'
+#' v. Average treatment effect  for the overlap (ATO) population.  
 #'
 #' There excellent materials dealing with each of the treatment effects, please [see](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 #'
