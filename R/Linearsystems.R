@@ -68,6 +68,7 @@
 #' @importFrom ggplot2 element_blank
 #' @importFrom marginaleffects avg_slopes
 #' @importFrom tibble rownames_to_column
+#' @importFrom utils globalVariables
 #'
 #' @name Linearsystems
 #'
@@ -98,6 +99,7 @@
 #' # Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 #'
 #' @usage Linearsystems(y, x, mod, limit, Test = NA)
+#' @keywords internal
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
 

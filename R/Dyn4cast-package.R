@@ -57,4 +57,14 @@ NULL
 #' + `quicksummary`
 #' + `formattedcut`
 #' + `data_transform`
-
+#' + `Treatment model`
+#' - `Estimated treatment effects model`
+#' - `Data frame of the estimated various treatment effects`
+#' - `Vector of estimated propensity scores from the model`
+#' - `Vector of fitted values from the model`
+#' - `Residuals of the estimated model`
+#' - `Plot of the propensity scores from the model faceted into Treated and control populations`
+#' - `Plot of the average treatment effect for the **entire** population`
+#' - `Plot of the average treatment effect for the **treated** population`
+#' - `Plot of the average treatment effect for the **controlled** population`
+#' - `Plot of the average Treatment effect for the **evenly** population`

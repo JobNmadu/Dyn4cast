@@ -41,6 +41,7 @@
 #' @importFrom zoo yearmon
 #' @importFrom zoo as.Date
 #' @importFrom lifecycle badge
+#' @importFrom utils globalVariables
 #'
 #' @name DynamicForecast
 #' @export DynamicForecast
@@ -87,7 +88,7 @@
 #' # DynamicForecast(date = Data$Date, series = Data$Case,
 #' # BREAKS = BREAKS , MaximumDate = "2021-02-10",
 #' #  Trend = "Day", Length = 0, Type = "Integer")
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+#' @keywords internal
 utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
                          "Smooth Spline",

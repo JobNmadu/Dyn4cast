@@ -34,6 +34,7 @@
 #' garrett_ranking(garrett_data, 8)
 #'
 #' garrett_ranking(garrett_data, 4)
+
 garrett_ranking <- function(data, num_rank,
                             ranking = NULL,
                             m_rank = c(2:15)) {

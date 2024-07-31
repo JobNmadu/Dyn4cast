@@ -90,3 +90,4 @@ The linear model still remains a reference point towards advanced modeling of so
 # Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 
 }
+\keyword{internal}

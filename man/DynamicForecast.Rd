@@ -74,3 +74,4 @@ The function estimates and predict models using time series dataset and provide 
 # BREAKS = BREAKS , MaximumDate = "2021-02-10",
 #  Trend = "Day", Length = 0, Type = "Integer")
 }
+\keyword{internal}

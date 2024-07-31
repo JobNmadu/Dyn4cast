@@ -23,6 +23,7 @@
 #' @importFrom stats setNames
 #' @importFrom purrr map
 #' @importFrom purrr map2
+#' @importFrom utils globalVariables
 #'
 #' @export Model_factors
 #'
@@ -38,8 +39,9 @@
 #'
 #' Model_factors(data = dat, DATA = Data)
 #'
+#' @keywords internal
 utils::globalVariables(c("Variable", "Latent", "Loading", "is_null", "list_c",
-                         "rep_along", "stop_input_type"))
+                         "rep_along", "stop_input_type", "."))
 
 Model_factors <- function(data, DATA) {
   llp <- printLoadings(data$loadings)
