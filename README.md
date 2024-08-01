@@ -11,7 +11,12 @@
 
 <!-- badges: start -->
 
+[![](https://img.shields.io/badge/Made%20With-R-9cf)](https://github.com/JobNmadu/Dyn4cast)
+
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
+
+[![GitHub release (latest by
+date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
@@ -28,12 +33,24 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 &#10;[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 &#10;<!-- end -->
 
-The **Dyn4cast** package is designed to be a lightweight package, with
-the aim of simplifying the estimation, prediction and forecast of
-time-varying dataset, especially where the data is continuously
-collected on routine and regular basis. The package takes away the
-efforts of loading the libraries of more than 10 packages which have
-been used to develop the functions for forecasting the data.
+The **Dyn4cast** package is designed to be a lightweight package. The
+philosophy behind it was the need to quickly provide quick updates and
+visualization of Nigerian *COVID-19* cases during the pandemic in 2020,
+hence had only one function, **DynamicForecast**. The aim was to
+simplify the estimation, prediction and forecast of time-varying
+*COVID-19* dataset, based on daily update of incidences. There was need
+to have a function which is able to handle continuous data collection,
+estimation and forecast. That was what led to the name of the package.
+From that single function, the number of functions have grown to more
+than 10 because there were need to have supporting functions to make the
+forecasting easy. However, the package has pride itself of the *line
+line technology* by providing various **machine learning functions**
+that have the functionality of revealing the facts behind your data. The
+functions are working optimally and effects are continuously being made
+to improve on them and ensuring that dependencies are reduced to the
+barest minimum. The unique selling point of this package is that it
+takes away the need to load multiple libraries to perform the various
+machine learning tasks.
 
 ## Installation
 
@@ -50,6 +67,13 @@ installed from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("JobNmadu/Dyn4cast")
+```
+
+The development version can also be installed through
+[r-universe](https://jobnmadu.r-universe.dev/Dyn4cast). Use the form:
+
+``` r
+install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ## Basic usage
@@ -245,8 +269,8 @@ citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2024). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.23, commit
-  f077a6b0297d26bd2e6794d37f1247c87c28bcc4,
+  Environment_. R package version 11.11.24, commit
+  39779ee9907be3bb00edeba239a176fe1e73f6c7,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -255,7 +279,7 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2024},
-    note = {R package version 11.11.23, commit f077a6b0297d26bd2e6794d37f1247c87c28bcc4},
+    note = {R package version 11.11.24, commit 39779ee9907be3bb00edeba239a176fe1e73f6c7},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
@@ -298,8 +322,8 @@ practice*, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3.
 Accessed on July 30, 2021.
 
 Lucy D’Agostino McGowan (2019). Understanding propensity score
-weighting. [Available
-at](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
+weighting. [Available at
+https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 
 ## Code of Conduct
 
