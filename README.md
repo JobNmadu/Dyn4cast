@@ -34,7 +34,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 &#10;<!-- end -->
 
 The **Dyn4cast** package is designed to be a lightweight package. The
-philosophy behind it was the need to quickly provide quick updates and
+philosophy behind it was the need to provide quick updates and
 visualization of Nigerian *COVID-19* cases during the pandemic in 2020,
 hence had only one function, **DynamicForecast**. The aim was to
 simplify the estimation, prediction and forecast of time-varying
@@ -46,7 +46,7 @@ than 10 because there were need to have supporting functions to make the
 forecasting easy. However, the package has pride itself of the *line
 line technology* by providing various **machine learning functions**
 that have the functionality of revealing the facts behind your data. The
-functions are working optimally and effects are continuously being made
+functions are working optimally and efforts are continuously being made
 to improve on them and ensuring that dependencies are reduced to the
 barest minimum. The unique selling point of this package is that it
 takes away the need to load multiple libraries to perform the various
@@ -270,7 +270,7 @@ To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2024). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.24, commit
-  39779ee9907be3bb00edeba239a176fe1e73f6c7,
+  086482df79ac4b6f02b0768bc6d05bec39b9d4fb,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -279,7 +279,7 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2024},
-    note = {R package version 11.11.24, commit 39779ee9907be3bb00edeba239a176fe1e73f6c7},
+    note = {R package version 11.11.24, commit 086482df79ac4b6f02b0768bc6d05bec39b9d4fb},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
