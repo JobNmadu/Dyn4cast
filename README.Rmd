@@ -257,7 +257,7 @@ Hyndman, R. J. (2020). Quantile forecasting with ensembles and combinations in _
 
 Hyndman, R.J., & Athanasopoulos, G. (2021). _Forecasting: principles and practice_, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3. Accessed on July 30, 2021.
 
-Lucy D'Agostino McGowan (2019). Understanding propensity score weighting. [Available at https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
+Lucy D'Agostino McGowan (2019). Understanding propensity score weighting. Available at: [https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 
 ## Code of Conduct  
 

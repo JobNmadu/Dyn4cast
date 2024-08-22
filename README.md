@@ -322,8 +322,8 @@ practice*, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3.
 Accessed on July 30, 2021.
 
 Lucy D’Agostino McGowan (2019). Understanding propensity score
-weighting. [Available at
-https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
+weighting. Available at:
+<https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/>
 
 ## Code of Conduct
 
