@@ -18,14 +18,14 @@
 #' \item{\code{Latent_8}}{`data.frame` of variables in Latent factor 8 with their loadings.}
 #' \item{\code{Latent_9}}{`data.frame` of variables in Latent factor 9 with their loadings.}
 #'
-#' @name Model_factors
+#' @name model_factors
 #'
 #' @importFrom stats setNames
 #' @importFrom purrr map
 #' @importFrom purrr map2
 #' @importFrom utils globalVariables
 #'
-#' @export Model_factors
+#' @export model_factors
 #'
 #' @examples
 #' library(psych)
@@ -37,13 +37,13 @@
 #' lll <- fa.parallel(Data, fm = 'minres', fa = 'fa')
 #' dat <- fa(Data, nfactors = lll[["nfact"]], rotate = "varimax",fm="minres")
 #'
-#' Model_factors(data = dat, DATA = Data)
+#' model_factors(data = dat, DATA = Data)
 #'
 #' @keywords internal
 utils::globalVariables(c("Variable", "Latent", "Loading", "is_null", "list_c",
                          "rep_along", "stop_input_type", "."))
 
-Model_factors <- function(data, DATA) {
+model_factors <- function(data, DATA) {
   llp <- printLoadings(data$loadings)
   Factor_m <- Factors <- as.data.frame(llp)
 
