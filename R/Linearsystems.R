@@ -99,7 +99,7 @@
 #' # Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 #'
 #' @usage Linearsystems(y, x, mod, limit, Test = NA)
-#' @keywords internal
+# #' @keywords internal
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
 

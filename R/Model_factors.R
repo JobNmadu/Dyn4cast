@@ -39,7 +39,7 @@
 #'
 #' model_factors(data = dat, DATA = Data)
 #'
-#' @keywords internal
+# #' @keywords internal
 utils::globalVariables(c("Variable", "Latent", "Loading", "is_null", "list_c",
                          "rep_along", "stop_input_type", "."))
 

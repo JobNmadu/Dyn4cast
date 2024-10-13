@@ -37,4 +37,3 @@ dat <- fa(Data, nfactors = lll[["nfact"]], rotate = "varimax",fm="minres")
 model_factors(data = dat, DATA = Data)
 
 }
-\keyword{internal}

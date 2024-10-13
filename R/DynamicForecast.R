@@ -88,7 +88,7 @@
 #' # DynamicForecast(date = Data$Date, series = Data$Case,
 #' # BREAKS = BREAKS , MaximumDate = "2021-02-10",
 #' #  Trend = "Day", Length = 0, Type = "Integer")
-#' @keywords internal
+# #' @keywords internal
 utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
                          "Smooth Spline",
