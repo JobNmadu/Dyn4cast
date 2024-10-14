@@ -1,3 +1,9 @@
+# Dyn4cast 11.11.26-alpha 2024-10-14
+
+roxygen 2 misleading internal keyword demobilised to index all the help pages.
+
+modelsummary's datasummary_df insistence on tinytable object for some summary data addressed, The datasummary_df was demobilised.
+
 # Dyn4cast 11.11.24 2024-07-28
 
 treatment_model introduced for propensity score matching and treatment effects
