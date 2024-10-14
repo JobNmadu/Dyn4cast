@@ -76,17 +76,18 @@
 #' @aliases sampling
 #'
 #' @examples
-#' # Without test data (not run)
+#' ## Without test data (not run)
 #' # y = linearsystems$MKTcost # to run all the exercises, uncomment.
 #' # x <- select(linearsystems, -MKTcost)
 #' # Linearsystems(y, x, 6, 15) # NaNs produced if run
-#' # Without test data (not run)
+#' ## Without test data (not run)
 #' # x = sampling[, -1]
 #' # y = sampling$qOutput
 #' # limit = 20
 #' # mod <-3
 #' # Test <- NA
 #' # Linearsystems(y, x, 3, 15) # NaNs produced if run
+#' # # with test data
 #' # x = sampling[, -1]
 #' # y = sampling$qOutput
 #' # Data <- cbind(y, x)
@@ -545,13 +546,13 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                    = Linears,
+    evaluation <- data.frame(cbind(Linear         = Linears,
                         `Reciprocal in X`         = reciX,
                         `Reciprocal in Y`         = reciY,
-                        `Double reciprocal`       = reciD)
-    evaluation <- data.frame(evaluation)
+                        `Double reciprocal`       = reciD))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     results <- list(
       "Visual means of the numeric variable" = e_meanplot,
@@ -691,12 +692,12 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                    = Linears,
+    evaluation <- data.frame(cbind(Linear         = Linears,
                         `Square root`             = squares,
-                        `Cubic root`              = cubics)
-    evaluation <- data.frame(evaluation)
+                        `Cubic root`              = cubics))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     results <- list(
       "Visual means of the numeric variable" = e_meanplot,
@@ -834,12 +835,12 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                    = Linears,
+    evaluation <- data.frame(cbind(Linear         = Linears,
                         Quadratic                 = quadratics,
-                        Cubic                     = cubes)
-    evaluation <- data.frame(evaluation)
+                        Cubic                     = cubes))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     results <- list(
       "Visual means of the numeric variable" = e_meanplot,
@@ -997,15 +998,15 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                    = Linears,
+    evaluation <- data.frame(cbind(Linear         = Linears,
                         `Cobb Douglas`            = loglogs,
                         Linlog                    = linlogs,
                         Loglin                    = loglins,
                         `Mixed-power`             = perlogs,
-                        Translog                  = translogs)
-    evaluation <- data.frame(evaluation)
+                        Translog                  = translogs))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     results <- list(
       "Visual means of the numeric variable" = e_meanplot,
@@ -1143,11 +1144,11 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                   = Linears,
-                        `Linear with interaction` = LinearIs)
-    evaluation <- data.frame(evaluation)
+    evaluation <- data.frame(cbind(Linear         = Linears,
+                        `Linear with interaction` = LinearIs))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     results <- list(
       "Visual means of the numeric variable" = e_meanplot,
@@ -1340,7 +1341,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       ggplot2::theme_minimal() +
       ggplot2::facet_wrap(ggplot2::vars(Model))
 
-    evaluation <- cbind(Linear                    = Linears,
+    evaluation <- data.frame(cbind(Linear         = Linears,
                         `Cobb Douglas`            = loglogs,
                         Linlog                    = linlogs,
                         Loglin                    = loglins,
@@ -1353,10 +1354,10 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                         Cubic                     = cubes,
                         `Mixed-power`             = perlogs,
                         Translog                  = translogs,
-                        `Linear with interaction` = LinearIs)
-    evaluation <- data.frame(evaluation)
+                        `Linear with interaction` = LinearIs))
+    #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
-    evaluation <- modelsummary::datasummary_df(evaluation)
+    #evaluation <- modelsummary::datasummary_df(evaluation)
 
     e_list <- list(Linear                      = e_Linear,
                    `Linear with interaction` = e_LinearI)
