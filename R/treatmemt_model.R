@@ -13,7 +13,7 @@
 #'
 #' 5. Average treatment effect  for the overlap (ATO) population.
 #'
-#' There excellent materials dealing with each of the treatment effects, please [see](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
+#' There are excellent materials dealing with each of the treatment effects, please see [Understanding propensity score weightin](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 #'
 #' @param Treatment Vector of binary data (0 = control population, 1 = treated population) LHS for the treatment effects estimation
 #' @param x_data Data frame of explanatory variables for the RHS of the estimation
