@@ -105,6 +105,9 @@
 <li><p><code>garrett_ranking</code> is for ranking Likert-type data.</p></li>
 <li><p><code>Model_factors</code> is for determining and retrieving latent factors from Likert-type data for estimation and Machine Learning.</p></li>
 <li><p><code>treatment_model</code> is for propensity matching treatments effects and other metrics in the Machine Learning Environment.</p></li>
+<li><p><code>mdpi</code> is for computation of multidimensional poverty indicators and indices</p></li>
+<li><p><code>plot_mdpi</code> is to plot the indices</p></li>
+<li><p><code>gender</code> is to convert age and sex to gender</p></li>
 </ol>
 </div>
 <div class="section level2">
@@ -187,6 +190,19 @@
 <li><p>Estimated weights for each of the treatment effects</p></li>
 </ul>
 </li>
+<li>
+<p><em>mdpi</em> computes MDPI on various dimensions to give:</p>
+<ul>
+<li><p>Deprivation scores</p></li>
+<li><p>Incidence of poverty</p></li>
+<li><p>Adjusted incidence of poverty</p></li>
+<li><p>Contribution in % of each of the dimensions to MDPI</p></li>
+<li><p>Multidimensional poverty index (MDPI)</p></li>
+<li><p>Average deprivation among the deprived</p></li>
+</ul>
+</li>
+<li><p><em>plot_mdpi</em> produces the plots of all the indices</p></li>
+<li><p><em>gender</em> converts age and sex to gender</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -197,9 +213,9 @@
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"Dyn4cast"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>To cite package <span class="st">'Dyn4cast'</span> <span class="cf">in</span> publications use<span class="sc">:</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  Nmadu <span class="fu">J</span> (<span class="dv">2024</span>). _Dyn4cast<span class="sc">:</span> Dynamic Modeling and Machine Learning</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  Nmadu <span class="fu">J</span> (<span class="dv">2025</span>). _Dyn4cast<span class="sc">:</span> Dynamic Modeling and Machine Learning</span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  Environment_. R package version <span class="dv">11</span>.<span class="fl">11.24</span>, commit</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="dv">68</span>dcb48ed8448692f4e25d5840387bee859a2add,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="dv">59</span>c2e80b28e6261be1621467d21813883d818265,</span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>JobNmadu<span class="sc">/</span>Dyn4cast<span class="sc">&gt;</span>.</span>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
@@ -207,15 +223,15 @@
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  <span class="sc">@</span>Manual{,</span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    title <span class="ot">=</span> {Dyn4cast<span class="sc">:</span> Dynamic Modeling and Machine Learning Environment},</span>
 <span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    author <span class="ot">=</span> {Job Nmadu},</span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2024</span>},</span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>    note <span class="ot">=</span> {R package version <span class="dv">11</span>.<span class="fl">11.24</span>, commit <span class="dv">68</span>dcb48ed8448692f4e25d5840387bee859a2add},</span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2025</span>},</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>    note <span class="ot">=</span> {R package version <span class="dv">11</span>.<span class="fl">11.24</span>, commit <span class="dv">59</span>c2e80b28e6261be1621467d21813883d818265},</span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>JobNmadu<span class="sc">/</span>Dyn4cast},</span>
 <span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="suggested-packages">Suggested packages<a class="anchor" aria-label="anchor" href="#suggested-packages"></a>
 </h2>
-<p>Although not a dependency, the package derives functionally from a number of other packages and so may require you to install such packages if they are not yet installed. The packages are listed below:</p>
+<p>Although not a dependency, the package derives functionally from a number of other packages and so may require you to install such packages if they are not yet installed. Some of the packages are listed below:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"forecast"</span>, <span class="st">"lubridate"</span>, <span class="st">"Metrics"</span>, <span class="st">"tidyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"magrittr"</span>, <span class="st">"formattable"</span>, <span class="st">"xlsx"</span>, <span class="st">"readxl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Note that a <em>warning</em> (not <em>error</em>) is thrown up while estimating the RMSE for the <code>Ensembled with equal weight</code> model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your <em>chunk option</em> to <code>warning = FALSE</code> you will not notice the warning.</p>
