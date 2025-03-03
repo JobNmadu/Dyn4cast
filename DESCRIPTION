@@ -34,10 +34,12 @@ Imports:
     corrplot,
     marginaleffects,
     tibble,
-    purrr
+    purrr,
+    tidyselect,
+    MetBrewer
 Depends: 
     tidyverse,
-    R (>= 2.10)
+    R (>= 3.5)
 Suggests: 
     testthat (>= 3.0.0),
     rmarkdown,

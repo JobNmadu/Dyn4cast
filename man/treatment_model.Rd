@@ -8,7 +8,7 @@
 treatment_model(Treatment, x_data)
 }
 \arguments{
-\item{Treatment}{Vector of binary data (0, 1) LHS for the treatment effects estimation}
+\item{Treatment}{Vector of binary data (0 = control population, 1 = treated population) LHS for the treatment effects estimation}
 
 \item{x_data}{Data frame of explanatory variables for the RHS of the estimation}
 }
@@ -37,7 +37,7 @@ Observational study involves the evaluation of outcomes of participants not rand
 \item Average treatment effect  for the overlap (ATO) population.
 }
 
-There excellent materials dealing with each of the treatment effects, please \href{https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/}{see}
+There are excellent materials dealing with each of the treatment effects, please see \href{https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/}{Understanding propensity score weighting}
 }
 \examples{
 Treatment = treatments$treatment
