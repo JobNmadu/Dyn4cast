@@ -132,6 +132,13 @@ At present, the package exports the following functions:
 14. `treatment_model` is for propensity matching treatments effects and
     other metrics in the Machine Learning Environment.
 
+15. `mdpi` is for computation of multidimensional poverty indicators and
+    indices
+
+16. `plot_mdpi` is to plot the indices
+
+17. `gender` is to convert age and sex to gender
+
 ## Things the package can do
 
 The package is capable of
@@ -258,6 +265,24 @@ The package is capable of
 
   - Estimated weights for each of the treatment effects
 
+- *mdpi* computes MDPI on various dimensions to give:
+
+  - Deprivation scores
+
+  - Incidence of poverty
+
+  - Adjusted incidence of poverty
+
+  - Contribution in % of each of the dimensions to MDPI
+
+  - Multidimensional poverty index (MDPI)
+
+  - Average deprivation among the deprived
+
+- *plot_mdpi* produces the plots of all the indices
+
+- *gender* converts age and sex to gender
+
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -268,9 +293,9 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (2024). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Nmadu J (2025). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.24, commit
-  68dcb48ed8448692f4e25d5840387bee859a2add,
+  59c2e80b28e6261be1621467d21813883d818265,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -278,8 +303,8 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    year = {2024},
-    note = {R package version 11.11.24, commit 68dcb48ed8448692f4e25d5840387bee859a2add},
+    year = {2025},
+    note = {R package version 11.11.24, commit 59c2e80b28e6261be1621467d21813883d818265},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
@@ -288,7 +313,7 @@ A BibTeX entry for LaTeX users is
 
 Although not a dependency, the package derives functionally from a
 number of other packages and so may require you to install such packages
-if they are not yet installed. The packages are listed below:
+if they are not yet installed. Some of the packages are listed below:
 
 ``` r
 install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "ggplot2", "magrittr", "formattable", "xlsx", "readxl"))
