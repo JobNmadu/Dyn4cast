@@ -7,7 +7,8 @@
 plot_mdpi(data, kala, factor = NULL)
 }
 \arguments{
-\item{data}{\verb{Data frame} of Multidimensional Poverty measures from \code{mdpi}}
+\item{data}{\verb{Data frame} of Multidimensional Poverty measures which is an
+object from \code{mdpi}}
 
 \item{kala}{color palette with at least 15 colors but must be equal or higher
 than the number of options in the factor argument}
