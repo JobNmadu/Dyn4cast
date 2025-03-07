@@ -48,7 +48,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
     ggplot2::aes(x = stats::reorder(Dimension,
                                     `Multidimensional poverty measure`),
         y = `Multidimensional poverty measure`, fill = Dimension) +
-    ggplot2::geom_bar(stat = "summary", fun = "sum") +
+    ggplot2::geom_bar(stat = "summary", fun = "mean") +
     ggplot2::scale_fill_manual(values = kala) +
     ggplot2::labs(x = "Dimensions") +
     ggplot2::coord_flip() +
