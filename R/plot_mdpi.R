@@ -18,6 +18,9 @@
 #' \item{\code{combined dimensions}}{plot.}
 #' \item{\code{national}}{plot.}
 #' \item{\code{combined dimensions of national}}{plot.}
+#'
+#' @importFrom stats reorder
+#'
 #' @export
 #'
 #' @examples
@@ -40,35 +43,41 @@ plot_mdpi <- function(data, kala, factor = NULL) {
     State <- NULL
   data <- tidyr::pivot_longer(data, -c(1, 2), names_to = "State",
                               values_to = "Multidimensional poverty measure")
-  L7 <- data %>%
+  D7 <- data %>%
     dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
     dplyr::filter(Dimension %in% c("Education", "Employment.and.Income",
                                    "Health", "Living.standard",
                                    "Social.security")) %>%
     dplyr::filter(State %in% "National") %>%
-    ggplot() +
+    dplyr::filter(`Multidimensional poverty measure` > 0)
+
+  L7 <- ggplot(D7) +
     ggplot2::aes(x = stats::reorder(Dimension,
                                     `Multidimensional poverty measure`),
                  y = `Multidimensional poverty measure`, fill = Dimension) +
-    ggplot2::geom_bar(stat = "summary", fun = "mean") +
-    ggplot2::scale_fill_manual(values = kala) +
-    ggplot2::labs(x = "Dimensions") +
-    ggplot2::coord_flip() +
+    ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
+    scale_fill_manual(values = kala) +
+    labs(y = "Multidimensional poverty measure", x = "Dimensions") +
     ggplot2::theme_minimal() +
+    guides(color = ggplot2::guide_none())+
+    theme_minimal() +
     ggplot2::theme(legend.position = "none") +
+    ggplot2::coord_flip() +
     facet_wrap(vars(Analysis), scales = "free")
 
-  L9 <- data %>%
+  D9 <- data %>%
     dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
     dplyr::filter(Dimension %in% "Combined") %>%
     dplyr::filter((State %in% "National")) %>%
-    ggplot() +
+    dplyr::filter(`Multidimensional poverty measure` > 0)
+
+  L9 <- ggplot(D9) +
     ggplot2::aes(x = Analysis, y = `Multidimensional poverty measure`,
                  fill = Analysis) +
-    ggplot2::geom_col(position = "dodge") +
-    ggplot2::scale_fill_manual(values = kala) +
-    ggplot2::theme_minimal()+
-    ggplot2::theme(legend.position = "none")+
+    ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
+    scale_fill_manual(values = kala) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(legend.position = "none") +
     facet_wrap(vars(Analysis), scales = "free")
   if(!is.null(factor)){
     D1 <- data %>%
@@ -79,18 +88,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L1 <- ggplot(data = D1, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes( fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5), size = 4) +
+    L1 <- ggplot(D1) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Multidimensional poverty index",
-           fill = factor) +
+      ggplot2::labs(y = "Multidimensional poverty index",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
     D2 <- data %>%
       dplyr::filter(Analysis %in% "Deprivation Score") %>%
@@ -100,18 +110,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L2 <- ggplot(data = D2, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes(fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5), size = 4) +
+    L2 <- ggplot(D2) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Deprivation Score",
-           fill = factor) +
+      ggplot2::labs(y = "Deprivation Score",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
     D3 <- data %>%
       dplyr::filter(Analysis %in% "Adjusted incidence of poverty") %>%
@@ -121,20 +132,21 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L3 <- ggplot(data = D3, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes(fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5), size = 4) +
+    L3 <- ggplot(D3) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Adjusted incidence of poverty",
-           fill = factor) +
+      ggplot2::labs(y = "Adjusted incidence of poverty",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
-    D4 <- data %>%
+   D4 <- data %>%
       dplyr::filter(Analysis %in% "Intensity of poverty") %>%
       dplyr::filter(Dimension %in% c("Education",
                                      "Employment.and.Income", "Health",
@@ -142,19 +154,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L4 <- ggplot(data = D4, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes(fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5),
-                         size = 3) +
+    L4 <- ggplot(D4) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Intensity of poverty",
-           fill = factor) +
+      ggplot2::labs(y = "Intensity of poverty",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
     D5 <-data %>%
       dplyr::filter(Analysis %in% "Average deprivation among the deprived") %>%
@@ -164,19 +176,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L5 <- ggplot(data = D5, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes(fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5),
-                         size = 3) +
+    L5 <- ggplot(D5) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Average deprivation among the deprived",
-           fill = factor) +
+      ggplot2::labs(y = "Average deprivation among the deprived",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
     D6 <- data %>%
       dplyr::filter(Analysis %in% "Contribution") %>%
@@ -186,19 +198,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-
-    L6 <- ggplot(data = D6, aes(x = Dimension,
-                                y = `Multidimensional poverty measure`)) +
-      ggplot2::geom_col(aes(fill = State)) +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5), size = 4) +
+    L6 <- ggplot(D6) +
+      ggplot2::aes(x = stats::reorder(State,
+                                      `Multidimensional poverty measure`),
+                   y = `Multidimensional poverty measure`,
+                   fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Contribution of each Dimension",
-           fill = factor) +
+      ggplot2::labs(y = "Contribution of each Dimension",
+                    x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
-      guides(color = ggplot2::guide_none())
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
+      facet_wrap(vars(Dimension), scales = "free")
 
     D8 <-  data %>%
       dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
@@ -206,19 +218,19 @@ plot_mdpi <- function(data, kala, factor = NULL) {
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
-    L8 <- ggplot(data = D8) +
-      aes(x = Analysis,
-          y = `Multidimensional poverty measure`, fill = State) +
-      ggplot2::geom_col() +
-      ggplot2::geom_text(aes(label =
-                               round(`Multidimensional poverty measure`, 3)),
-                         position = ggplot2::position_stack(vjust = 0.5),
-                         size = 3) +
+    L8 <- ggplot(D8) +
+      ggplot2::aes(x = reorder(State,
+                               `Multidimensional poverty measure`),
+          y = round(`Multidimensional poverty measure`, 3),
+          fill = State) +
+      ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Multidimensional poverty measure") +
+      labs(y = "Multidimensional poverty measure", x = "Factor options") +
       ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "bottom") +
       guides(color = ggplot2::guide_none())+
+      theme_minimal() +
+      ggplot2::theme(legend.position = "none") +
+      ggplot2::coord_flip() +
       facet_wrap(vars(Analysis), scales = "free")
     return(list(`Multidimensional poverty index` = L1,
              `Deprivation Score` = L2,

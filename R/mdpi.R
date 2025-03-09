@@ -43,7 +43,7 @@
 #' @param id_add1 a vector of the fifth dimension in the computation given
 #'  as **Employment and Income**. Can be re-defined but never `NULL`.
 #' @param plots plots of the various measures. For this to be possible, the
-#' number of options in the `Factor` argument must be less than 26. The default
+#' number of options in the `Factor` argument must be less than 41. The default
 #'  is `NULL`. To produce, any character string will overwrite the default.
 #'
 #' @returns A list with the following components:
@@ -416,10 +416,10 @@ mdpi <- function(data, dm, Bar = 0.4,
                      kay2 = kaY2s)
     cat("The computation is progressing...7", "\n")
     models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2)
-    if (!is.null(plots) & length(unique(Factor)) > 25) {
+    if (!is.null(plots) & length(unique(Factor)) > 40) {
       cat("Palette have 25 colors, plots not possible...", "\n")
-      }else if (!is.null(plots) & length(unique(Factor)) < 26){
-        kala <- MetBrewer::met.brewer("Renoir", 25, type = "continuous",
+      }else if (!is.null(plots) & length(unique(Factor)) < 41){
+        kala <- MetBrewer::met.brewer("Renoir", 40, type = "continuous",
                                     direction = -1)
         plots <- plot_mdpi(models2, kala, factor = Factor)
         cat("Proceeding after plots produced...", "\n")

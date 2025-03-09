@@ -33,7 +33,7 @@ up to a \emph{maximum of four}.}
 in the \emph{data}.}
 
 \item{plots}{plots of the various measures. For this to be possible, the
-number of options in the \code{Factor} argument must be less than 26. The default
+number of options in the \code{Factor} argument must be less than 41. The default
 is \code{NULL}. To produce, any character string will overwrite the default.}
 
 \item{id}{a vector of the first three dimensions used in the computation
