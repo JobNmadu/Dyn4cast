@@ -68,9 +68,9 @@ multidimensional poverty sequentially in a dynamic way. Sequentially
 the function computes \emph{Incidence of poverty (H)},
 \emph{Adjusted incidence of poverty (H * (q/n))}, \emph{Deprivation Score} of each
 dimension in the computation, \emph{Intensity of poverty (A)},
-\emph{Multidimensional poverty index (MDPI = H x A)}, the \emph{Contribution} in
+\emph{Multidimensional poverty index (MDPI = H * A)}, the \emph{Contribution} in
 \% of each of the dimensions to MDPI, and
-\emph{Average deprivation among the deprived (A × D)}. Dynamically, it
+\emph{Average deprivation among the deprived (A * D)}. Dynamically, it
 computes the various indices for between three and nine \code{dimensions (D)}.
 The first five dimensions included in the computations are \emph{Health},
 \emph{Education}, \emph{Living standard}, \emph{Social security} and,
@@ -85,7 +85,9 @@ interests or the need for the computation. The computations are in
 line with various procedures already outlined in literature starting
 with the work of Alkire et. al, (2015) but has been expanded from
 three dimensions to nine. Each dimension is given \verb{equal weight} in
-the computation. See also Chan & Wong (2024)
+the computation but all indicators are weighted in line with
+existing guidelines in Alkire & Foster (2011) and Alkire & Santos
+(2010). See also Alkire & Santos (2014) and Chan & Wong (2024).
 }
 \examples{
 # Not run, uncomment to run
@@ -109,9 +111,21 @@ the computation. See also Chan & Wong (2024)
 
 }
 \references{
+Alkire, S. & Foster, J. (2011). Counting and Multidimensional Poverty
+Measurement. Journal of Public Economics 95(7-8): 476–87.
+https://doi.org/10.1016/j.jpubeco.2010.11.006.
+
 Alkire, S., Foster, J. E., Seth, S., Santos, M. E., Roche, J., & Ballon, P.
 (2015). Multidimensional poverty measurement and analysis. Oxford University
 Press.
+
+Alkire, S. & Santos, M. E. (2010).  Acute Multidimensional Poverty: A New
+Index for Developing Countries. Oxford Poverty and Human Development
+Initiative (OPHI) Working Paper No. 38.
+
+Alkire, S. & Santos, M. E. (2014). Measuring Acute Poverty in the Developing
+World: Robustness and Scope of the Multidimensional Poverty Index. World
+Development 59:251-274. https://doi.org/10.1016/j.worlddev.2014.01.026.
 
 Siu Ming Chan & Hung Wong (2024): Measurement and determinants of
 multidimensional poverty: the case of Hong Kong, Journal of Asian Public

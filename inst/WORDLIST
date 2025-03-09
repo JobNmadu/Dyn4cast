@@ -27,6 +27,7 @@ Loadings
 MDPI
 Mahoney
 MallowsCp
+OPHI
 ORCID
 OTexts
 PSM
@@ -42,11 +43,14 @@ codecov
 datasummary
 demobilised
 df
+doi
 essemble
 et
 fpp
 ggplot
+https
 inv
+jpubeco
 lifecycle
 lm
 loadings
@@ -57,3 +61,4 @@ roxygen
 summarised
 tinytable
 unitless
+worlddev
