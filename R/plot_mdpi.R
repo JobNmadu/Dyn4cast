@@ -7,6 +7,8 @@
 #' @param factor the optional grouping factor used in the computation measures.
 #' If not supplied only the national plots will be produced irrespective of
 #' whether the factor was used in the computation.
+#' @param dma number of `Dimensions` involved in the computation of
+#' Multidimensional Poverty measures.
 #'
 #' @returns A list of the following plots:
 #' \item{\code{Multidimensional poverty index}}{plot.}
@@ -36,18 +38,18 @@
 #' # dp <- mdpi(data, dm, Factor = "Region")
 #' # library(MetBrewer)
 #' # kala <- met.brewer("OKeeffe1", 15, type = "continuous")
-#' # plot_mdpi(dp$MDPI, kala, "Region")
-plot_mdpi <- function(data, kala, factor = NULL) {
+#' # dma <- 3
+#' # plot_mdpi(dp$MDPI, kala, dma, "Region")
+plot_mdpi <- function(data, kala, dma, factor = NULL) {
   factor <- factor
   Analysis <-  Dimension <-  `Multidimensional poverty measure` <-
     State <- NULL
+  idk <- data[6:(dma + 6 - 1), 2]
   data <- tidyr::pivot_longer(data, -c(1, 2), names_to = "State",
                               values_to = "Multidimensional poverty measure")
   D7 <- data %>%
     dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
-    dplyr::filter(Dimension %in% c("Education", "Employment.and.Income",
-                                   "Health", "Living.standard",
-                                   "Social.security")) %>%
+    dplyr::filter(Dimension %in% idk) %>%
     dplyr::filter(State %in% "National") %>%
     dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -82,9 +84,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
   if(!is.null(factor)){
     D1 <- data %>%
       dplyr::filter(Analysis %in% "Multidimensional poverty index") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -104,9 +104,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
 
     D2 <- data %>%
       dplyr::filter(Analysis %in% "Deprivation Score") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -126,9 +124,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
 
     D3 <- data %>%
       dplyr::filter(Analysis %in% "Adjusted incidence of poverty") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -148,9 +144,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
 
    D4 <- data %>%
       dplyr::filter(Analysis %in% "Intensity of poverty") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -170,9 +164,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
 
     D5 <-data %>%
       dplyr::filter(Analysis %in% "Average deprivation among the deprived") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 
@@ -192,9 +184,7 @@ plot_mdpi <- function(data, kala, factor = NULL) {
 
     D6 <- data %>%
       dplyr::filter(Analysis %in% "Contribution") %>%
-      dplyr::filter(Dimension %in% c("Education",
-                                     "Employment.and.Income", "Health",
-                                     "Living.standard", "Social.security")) %>%
+      dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
       dplyr::filter(`Multidimensional poverty measure` > 0)
 

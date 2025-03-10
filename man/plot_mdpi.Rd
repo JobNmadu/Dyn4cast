@@ -4,7 +4,7 @@
 \alias{plot_mdpi}
 \title{Plots of Multidimensional Poverty Measures}
 \usage{
-plot_mdpi(data, kala, factor = NULL)
+plot_mdpi(data, kala, dma, factor = NULL)
 }
 \arguments{
 \item{data}{\verb{Data frame} of Multidimensional Poverty measures which is an
@@ -12,6 +12,9 @@ object from \code{mdpi}}
 
 \item{kala}{color palette with at least 15 colors but must be equal or higher
 than the number of options in the factor argument}
+
+\item{dma}{number of \code{Dimensions} involved in the computation of
+Multidimensional Poverty measures.}
 
 \item{factor}{the optional grouping factor used in the computation measures.
 If not supplied only the national plots will be produced irrespective of
@@ -45,5 +48,6 @@ Plots of Multidimensional Poverty Measures
 # dp <- mdpi(data, dm, Factor = "Region")
 # library(MetBrewer)
 # kala <- met.brewer("OKeeffe1", 15, type = "continuous")
-# plot_mdpi(dp$MDPI, kala, "Region")
+# dma <- 3
+# plot_mdpi(dp$MDPI, kala, dma, "Region")
 }

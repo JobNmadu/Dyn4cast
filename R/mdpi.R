@@ -431,11 +431,11 @@ mdpi <- function(data, dm, Bar = 0.4,
     cat("The computation is progressing...7", "\n")
     models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2)
     if (!is.null(plots) & length(unique(Factor)) > 40) {
-      cat("Palette have 25 colors, plots not possible...", "\n")
+      cat("Palette have 40 colors, plots not possible...", "\n")
       }else if (!is.null(plots) & length(unique(Factor)) < 41){
         kala <- MetBrewer::met.brewer("Renoir", 40, type = "continuous",
                                     direction = -1)
-        plots <- plot_mdpi(models2, kala, factor = Factor)
+        plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
         cat("Proceeding after plots produced...", "\n")
         }else{
           cat("Proceeding without plots...", "\n")
