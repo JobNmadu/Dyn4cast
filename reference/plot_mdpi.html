@@ -39,7 +39,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_mdpi</span><span class="op">(</span><span class="va">data</span>, <span class="va">kala</span>, factor <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_mdpi</span><span class="op">(</span><span class="va">data</span>, <span class="va">kala</span>, <span class="va">dma</span>, factor <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -54,6 +54,11 @@ object from <code>mdpi</code></p></dd>
 <dt id="arg-kala">kala<a class="anchor" aria-label="anchor" href="#arg-kala"></a></dt>
 <dd><p>color palette with at least 15 colors but must be equal or higher
 than the number of options in the factor argument</p></dd>
+
+
+<dt id="arg-dma">dma<a class="anchor" aria-label="anchor" href="#arg-dma"></a></dt>
+<dd><p>number of <code>Dimensions</code> involved in the computation of
+Multidimensional Poverty measures.</p></dd>
 
 
 <dt id="arg-factor">factor<a class="anchor" aria-label="anchor" href="#arg-factor"></a></dt>
@@ -108,7 +113,8 @@ whether the factor was used in the computation.</p></dd>
 <span class="r-in"><span><span class="co"># dp &lt;- mdpi(data, dm, Factor = "Region")</span></span></span>
 <span class="r-in"><span><span class="co"># library(MetBrewer)</span></span></span>
 <span class="r-in"><span><span class="co"># kala &lt;- met.brewer("OKeeffe1", 15, type = "continuous")</span></span></span>
-<span class="r-in"><span><span class="co"># plot_mdpi(dp$MDPI, kala, "Region")</span></span></span>
+<span class="r-in"><span><span class="co"># dma &lt;- 3</span></span></span>
+<span class="r-in"><span><span class="co"># plot_mdpi(dp$MDPI, kala, dma, "Region")</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
