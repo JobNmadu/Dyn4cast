@@ -65,8 +65,8 @@ computation.}
 \description{
 This function computes the indices and all associated measures of
 multidimensional poverty sequentially in a dynamic way. Sequentially
-the function computes \emph{Incidence of poverty (H)},
-\emph{Adjusted incidence of poverty (H * (q/n))}, \emph{Deprivation Score} of each
+the function computes \emph{Incidence of poverty (H = q / n)},
+\emph{Adjusted incidence of poverty (H / (q / D))}, \emph{Deprivation Score} of each
 dimension in the computation, \emph{Intensity of poverty (A)},
 \emph{Multidimensional poverty index (MDPI = H * A)}, the \emph{Contribution} in
 \% of each of the dimensions to MDPI, and

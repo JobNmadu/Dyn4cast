@@ -4,8 +4,8 @@
 #'@description
 #' This function computes the indices and all associated measures of
 #'  multidimensional poverty sequentially in a dynamic way. Sequentially
-#'   the function computes _Incidence of poverty (H)_,
-#'  _Adjusted incidence of poverty (H * (q/n))_, _Deprivation Score_ of each
+#'   the function computes _Incidence of poverty (H = q / n)_,
+#'  _Adjusted incidence of poverty (H / (q / D))_, _Deprivation Score_ of each
 #'   dimension in the computation, _Intensity of poverty (A)_,
 #'    _Multidimensional poverty index (MDPI = H * A)_, the _Contribution_ in
 #'    % of each of the dimensions to MDPI, and
@@ -477,7 +477,7 @@ kkkk <- function(q, nq, n, kay, id1, id2, ddm, Order, Analysis) {
                      id2 = kay[, 2] / kaye[3, 2])
   Contribution <- data.frame(Dimension = id1,
                              id2 = MPI0[, 2] / MPI0[1, 2] * 100)
-  ahcr <- data.frame(Dimension = id1, id2 = iop0[, 2] * kaye[4, 2])
+  ahcr <- data.frame(Dimension = id1, id2 = iop0[, 2] / ddm)
   names(kay) <- names(iop0) <- names(adad) <- names(MPI0) <-
     names(Contribution) <- names(ahcr) <- c("Dimension", id2)
   kay1 <- dplyr::bind_rows(kaye, ahcr, kay, iop0, MPI0, Contribution,
@@ -514,7 +514,7 @@ mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
     MPI   <- ddfd/model$n
     cont  <- MPI * MPIc * 100
     adad1 <- iop * ddm
-    ahcr1 <- iop * model$IOP
+    ahcr1 <- iop / ddm
     adad1 <- data.frame(t(adad1))
     adad1 <- tibble::rownames_to_column(adad1, var = "Dimension")
     ahcr1 <- data.frame(t(ahcr1))
