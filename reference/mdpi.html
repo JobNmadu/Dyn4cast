@@ -139,18 +139,20 @@ computed</p></dd>
 
 
 <dt id="arg-bar">Bar<a class="anchor" aria-label="anchor" href="#arg-bar"></a></dt>
-<dd><p>a vector of cut-of used to divide the population into those in
-the poverty category and those that are not. Defaults to 0.4 if not supplied.</p></dd>
+<dd><p>an optional vector of cut-of used to divide the population into
+those in the poverty category and those that are not. Defaults to 0.4 if not
+supplied.</p></dd>
 
 
 <dt id="arg-id-addn">id_addn<a class="anchor" aria-label="anchor" href="#arg-id-addn"></a></dt>
-<dd><p>a vector of additional dimensions to be used for the computation
-up to a <em>maximum of four</em>.</p></dd>
+<dd><p>an optional vector of additional dimensions to be used for the
+computation up to a <em>maximum of four</em>.</p></dd>
 
 
 <dt id="arg-factor">Factor<a class="anchor" aria-label="anchor" href="#arg-factor"></a></dt>
-<dd><p>a grouping factor for the computation which must be a variable
-in the <em>data</em>.</p></dd>
+<dd><p>an optional grouping factor for the computation which must be a
+variable in the <em>data</em>. If not supplied, only the national MDPI will be
+computed.</p></dd>
 
 
 <dt id="arg-plots">plots<a class="anchor" aria-label="anchor" href="#arg-plots"></a></dt>
@@ -161,7 +163,8 @@ is <code>NULL</code>. To produce, any character string will overwrite the defaul
 
 <dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
 <dd><p>a vector of the first three dimensions used in the computation
-given as <strong>Health</strong>, <strong>Education</strong> and <strong>Living standard</strong>.</p></dd>
+given as <strong>Health</strong>, <strong>Education</strong> and <strong>Living standard</strong>. Can be redefined
+but must match the indicators and cannot be <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-id-add">id_add<a class="anchor" aria-label="anchor" href="#arg-id-add"></a></dt>
@@ -237,6 +240,7 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-in"><span><span class="co">#                   "Access.to.an.improve.sanatation", "Electricity",</span></span></span>
 <span class="r-in"><span><span class="co">#                   "Housing.Materials", "Asset.ownership"))</span></span></span>
 <span class="r-in"><span><span class="co"># mdpi(data, dm, plots = "t", Factor = "Region")</span></span></span>
+<span class="r-in"><span><span class="co"># mdpi(data, dm, plots = "t")</span></span></span>
 <span class="r-in"><span><span class="co">#</span></span></span>
 <span class="r-in"><span><span class="co"># library(mpitbR)</span></span></span>
 <span class="r-in"><span><span class="co"># data &lt;- subset(syn_cdta)</span></span></span>
@@ -245,6 +249,7 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-in"><span><span class="co">#            d2 = c("d_satt","d_educ"),</span></span></span>
 <span class="r-in"><span><span class="co">#            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))</span></span></span>
 <span class="r-in"><span><span class="co"># mdpi(data, dm, plots = "t", Factor = "region")</span></span></span>
+<span class="r-in"><span><span class="co"># mdpi(data, dm, plots = "t")</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
