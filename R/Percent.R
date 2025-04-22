@@ -1,11 +1,18 @@
 #' Attach Per Cent Sign to Data
 #'
 #' @description
-#' This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector or a data frame of values.
+#' This function is a wrapper for easy affixing of the per cent sign (%) to a
+#' value or a vector or a data frame of values.
 #'
-#' @param Data The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
-#' @param Type The type of data. The default arguments are *Value* for single numeric data of *Frame* for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
-#' @param format The format of the output which is internal and the default is a character factor
+#' @param Data The Data which the percent sign is to be affixed. The data must
+#'  be in the raw form because for frame argument, the per cent value of each
+#'  cell is calculated before the sign is affixed.
+#' @param Type The type of data. The default arguments are *Value* for single
+#' numeric data of *Frame* for a numeric vector or data frame data. In the case
+#'  of vector or data frame, the per cent value of each cell is calculated
+#'  before the per cent sign is affixed.
+#' @param format The format of the output which is internal and the default is
+#'  a character factor
 #' @param ... Additional arguments that may be passed to the function
 #'
 #' @return This function returns the result as

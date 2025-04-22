@@ -4,25 +4,38 @@
 \alias{model_factors}
 \title{Latent Factors Recovery from Variables Loadings}
 \arguments{
-\item{data}{An \verb{R object} obtained from exploratory factor analysis (EFA) using the \code{fa} function in \code{psych} package.}
+\item{data}{An \verb{R object} obtained from exploratory factor analysis (EFA)
+using the \code{fa} function in \code{psych} package.}
 
-\item{DATA}{A \code{data.frame}, the raw data used to carry out the parallel analysis to obtain \code{data} object.}
+\item{DATA}{A \code{data.frame}, the raw data used to carry out the parallel
+analysis to obtain \code{data} object.}
 }
 \value{
 A list with the following components:
-\item{\code{Latent_frame}}{\code{data.frame} of latent factors based on the variables loadings.}
-\item{\code{Latent_1}}{\code{data.frame} of variables in Latent factor 1 with their loadings.}
-\item{\code{Latent_2}}{\code{data.frame} of variables in Latent factor 2 with their loadings.}
-\item{\code{Latent_3}}{\code{data.frame} of variables in Latent factor 3 with their loadings.}
-\item{\code{Latent_4}}{\code{data.frame} of variables in Latent factor 3 with their loadings.}
-\item{\code{Latent_5}}{\code{data.frame} of variables in Latent factor 5 with their loadings.}
-\item{\code{Latent_6}}{\code{data.frame} of variables in Latent factor 6 with their loadings.}
-\item{\code{Latent_7}}{\code{data.frame} of variables in Latent factor 7 with their loadings.}
-\item{\code{Latent_8}}{\code{data.frame} of variables in Latent factor 8 with their loadings.}
-\item{\code{Latent_9}}{\code{data.frame} of variables in Latent factor 9 with their loadings.}
+\item{\code{Latent_frame}}{\code{data.frame} of latent factors based on the
+variables loadings.}
+\item{\code{Latent_1}}{\code{data.frame} of variables in Latent factor 1 with
+their loadings.}
+\item{\code{Latent_2}}{\code{data.frame} of variables in Latent factor 2 with
+their loadings.}
+\item{\code{Latent_3}}{\code{data.frame} of variables in Latent factor 3 with
+their loadings.}
+\item{\code{Latent_4}}{\code{data.frame} of variables in Latent factor 3 with
+their loadings.}
+\item{\code{Latent_5}}{\code{data.frame} of variables in Latent factor 5 with
+their loadings.}
+\item{\code{Latent_6}}{\code{data.frame} of variables in Latent factor 6 with
+their loadings.}
+\item{\code{Latent_7}}{\code{data.frame} of variables in Latent factor 7 with
+their loadings.}
+\item{\code{Latent_8}}{\code{data.frame} of variables in Latent factor 8 with
+their loadings.}
+\item{\code{Latent_9}}{\code{data.frame} of variables in Latent factor 9 with
+their loadings.}
 }
 \description{
-This function retrieves the latent factors and their variable loadings which can be used as \code{R} objects to perform other analysis.
+This function retrieves the latent factors and their variable loadings which
+can be used as \code{R} objects to perform other analysis.
 }
 \examples{
 library(psych)

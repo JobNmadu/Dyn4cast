@@ -15,7 +15,10 @@ MLMetrics(Observed, yvalue, Model, K, Name, Form, kutuf, TTy)
 
 \item{K}{The number of variables in the estimated Model to consider}
 
-\item{Name}{The Name of the Models that need to be specified. They are ARIMA, Values if the model computes the fitted value without estimation like Essembles, SMOOTH (smooth.spline), Logit, Ensembles based on weight - EssemWet, QUADRATIC polynomial, SPLINE polynomial.}
+\item{Name}{The Name of the Models that need to be specified. They are ARIMA,
+Values if the model computes the fitted value without estimation like
+Essembles, SMOOTH (smooth.spline), Logit, Ensembles based on weight -
+EssemWet, QUADRATIC polynomial, SPLINE polynomial.}
 
 \item{Form}{Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)}
 
@@ -73,7 +76,9 @@ A list with the following components:
 \item{\code{True positive rate}}{of the Model.}
 }
 \description{
-This function estimates over 40 Metrics for assessing the quality of Machine Learning Models. The purpose is to provide a wrapper which brings all the metrics on the table and makes it easier to use them to select a model.
+This function estimates over 40 Metrics for assessing the quality of Machine
+Learning Models. The purpose is to provide a wrapper which brings all the
+metrics on the table and makes it easier to use them to select a model.
 }
 \examples{
 library(splines)

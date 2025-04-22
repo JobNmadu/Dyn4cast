@@ -32,14 +32,17 @@
 #' Note that the variables to be used for the computation must be coded `(0,1)`.
 #' @param dm list of vectors of _indicators_ making up each _dimension_ to be
 #'  computed
-#' @param Bar a vector of cut-of used to divide the population into those in
-#'  the poverty category and those that are not. Defaults to 0.4 if not supplied.
-#' @param id_addn a vector of additional dimensions to be used for the computation
-#'  up to a _maximum of four_.
-#' @param Factor a grouping factor for the computation which must be a variable
-#'  in the *data*.
+#' @param Bar an optional vector of cut-of used to divide the population into
+#' those in the poverty category and those that are not. Defaults to 0.4 if not
+#'  supplied.
+#' @param id_addn an optional vector of additional dimensions to be used for the
+#'  computation up to a _maximum of four_.
+#' @param Factor an optional grouping factor for the computation which must be a
+#'  variable in the *data*. If not supplied, only the national MDPI will be
+#'   computed.
 #' @param id a vector of the first three dimensions used in the computation
-#'  given as **Health**, **Education** and **Living standard**.
+#'  given as **Health**, **Education** and **Living standard**. Can be redefined
+#'   but must match the indicators and cannot be `NULL`.
 #' @param id_add a vector of the fourth dimension in the computation given
 #' as **Social security**. Can be re-defined but never `NULL`.
 #' @param id_add1 a vector of the fifth dimension in the computation given
@@ -80,6 +83,7 @@
 #' #                   "Access.to.an.improve.sanatation", "Electricity",
 #' #                   "Housing.Materials", "Asset.ownership"))
 #' # mdpi(data, dm, plots = "t", Factor = "Region")
+#' # mdpi(data, dm, plots = "t")
 #' #
 #' # library(mpitbR)
 #' # data <- subset(syn_cdta)
@@ -88,6 +92,7 @@
 #' #            d2 = c("d_satt","d_educ"),
 #' #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
 #' # mdpi(data, dm, plots = "t", Factor = "region")
+#' # mdpi(data, dm, plots = "t")
 #'
 #' @references
 #' Alkire, S. & Foster, J. (2011). Counting and Multidimensional Poverty

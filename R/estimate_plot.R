@@ -1,13 +1,19 @@
 #' Plot of Order of Significance of Estimated Regression Coefficients
 #'
 #' @description
-#' This function provides graphic displays of the order of significance estimated coefficients of models. This would assists in accessing models so as to decide which can be used for further analysis, prediction and policy consideration.
+#' This function provides graphic displays of the order of significance
+#' estimated coefficients of models. This would assists in accessing models so
+#'  as to decide which can be used for further analysis, prediction and policy
+#'  consideration.
 #'
-#' @param Model Estimated model for which the estimated coefficients would be plotted
+#' @param Model Estimated model for which the estimated coefficients would be
+#'  plotted
 #' @param limit Number of variables to be included in the coefficients plots
 #'
-#' @return The function returns a plot of the order of importance of the estimated coefficients
-#' \item{\code{estimate_plot}}{The plot of the order of importance of estimated coefficients}
+#' @return The function returns a plot of the order of importance of the
+#' estimated coefficients
+#' \item{\code{estimate_plot}}{The plot of the order of importance of estimated
+#'  coefficients}
 #'
 #' @export estimate_plot
 #'

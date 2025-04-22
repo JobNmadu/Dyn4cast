@@ -3,23 +3,34 @@
 \name{data_transform}
 \alias{data_transform}
 \alias{Transform}
-\title{Standardize \code{data.frame} for comparable \strong{Machine Learning} prediction and visualization}
+\title{Standardize \code{data.frame} for comparable \strong{Machine Learning} prediction
+and visualization}
 \usage{
 data_transform(data, method, MARGIN = 2)
 }
 \arguments{
-\item{data}{A \code{data.frame} with numeric data for transformation. All columns in the data are transformed}
+\item{data}{A \code{data.frame} with numeric data for transformation. All columns
+in the data are transformed}
 
-\item{method}{The type of transformation. There three options. \code{1} is for \code{log} transformation, \code{2} is for \code{min-max} transformation and \code{3} is for \code{mean-SD} transformation.}
+\item{method}{The type of transformation. There three options. \code{1} is for
+\code{log} transformation, \code{2} is for \code{min-max} transformation and \code{3} is
+for \code{mean-SD} transformation.}
 
-\item{MARGIN}{Option to either transform the data \code{2 == column-wise} or \code{1 == row-wise}. Defaults to \code{column-wise} transformation if no option is indicated.}
+\item{MARGIN}{Option to either transform the data \code{2 == column-wise} or
+\code{1 == row-wise}. Defaults to \code{column-wise} transformation if no option is
+indicated.}
 }
 \value{
 This function returns the output of the data transformation process as
-\item{\code{tata_transformed}}{ A new \code{data.frame} containing the transformed values}
+\item{\code{tata_transformed}}{ A new \code{data.frame} containing the
+transformed values}
 }
 \description{
-Often economic and other \strong{Machine Learning} data are of different units or sizes making either estimation, interpretation or visualization difficult. The solution to these issues can be handled if the data can be transformed into \emph{unitless} or data of similar magnitude. This is what \code{data_transform} is set to do. It is simple and straight forward to use.
+Often economic and other \strong{Machine Learning} data are of different units
+or sizes making either estimation, interpretation or visualization difficult.
+The solution to these issues can be handled if the data can be transformed
+into \emph{unitless} or data of similar magnitude. This is what \code{data_transform}
+is set to do. It is simple and straight forward to use.
 }
 \examples{
 

@@ -8,11 +8,17 @@
 Percent(Data, Type, format = "f", ...)
 }
 \arguments{
-\item{Data}{The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.}
+\item{Data}{The Data which the percent sign is to be affixed. The data must
+be in the raw form because for frame argument, the per cent value of each
+cell is calculated before the sign is affixed.}
 
-\item{Type}{The type of data. The default arguments are \emph{Value} for single numeric data of \emph{Frame} for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.}
+\item{Type}{The type of data. The default arguments are \emph{Value} for single
+numeric data of \emph{Frame} for a numeric vector or data frame data. In the case
+of vector or data frame, the per cent value of each cell is calculated
+before the per cent sign is affixed.}
 
-\item{format}{The format of the output which is internal and the default is a character factor}
+\item{format}{The format of the output which is internal and the default is
+a character factor}
 
 \item{...}{Additional arguments that may be passed to the function}
 }
@@ -21,7 +27,8 @@ This function returns the result as
 \item{\code{percent}}{ values with the percentage sign (\%) affixed.}
 }
 \description{
-This function is a wrapper for easy affixing of the per cent sign (\%) to a value or a vector or a data frame of values.
+This function is a wrapper for easy affixing of the per cent sign (\%) to a
+value or a vector or a data frame of values.
 }
 \examples{
 Data <- c(1.2, 0.5, 0.103, 7, 0.1501)

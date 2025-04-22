@@ -1,11 +1,22 @@
 #' Garrett Ranking of Categorical Data
 #'
 #' @description
-#' There are three main types of ranking: Standard competition, Ordinal and Fractional. Garrett's Ranking Technique is the application of fractional ranking in which the data points are ordered and given an ordinal number/rank. The ordering and ranking provide additional information which may not be available from frequency distribution. Again, the ordering is based on the level of seriousness or severity of the data point from the view point of the respondent. Ranking enables ease of comparison and makes grouping more meaningful. It is used in social science, psychology and other survey types of research. This functions performs Garrett Ranking of up to 15 ranks.
+#' There are three main types of ranking: Standard competition, Ordinal and
+#' Fractional. Garrett's Ranking Technique is the application of fractional
+#' ranking in which the data points are ordered and given an ordinal number/rank.
+#'  The ordering and ranking provide additional information which may not be
+#'  available from frequency distribution. Again, the ordering is based on the
+#'  level of seriousness or severity of the data point from the view point of
+#'  the respondent. Ranking enables ease of comparison and makes grouping more
+#'   meaningful. It is used in social science, psychology and other survey types
+#'    of research. This functions performs Garrett Ranking of up to 15 ranks.
 #'
 #' @param data The data for the Garrett Ranking, must be a `data.frame`.
-#' @param num_rank A vector representing the number of ranks applied to the data. If the data is a five-point Likert-type data, then number of ranks is 5.
-#' @param ranking A vector of list representing the ranks applied to the data. If not available, positional ranks are applied.
+#' @param num_rank A vector representing the number of ranks applied to the
+#' data. If the data is a five-point Likert-type data, then number of ranks is
+#'  5.
+#' @param ranking A vector of list representing the ranks applied to the data.
+#' If not available, positional ranks are applied.
 #' @param m_rank The scope of the ranking methods which is between 2 and 15.
 #'
 #' @aliases garrett_table
@@ -13,7 +24,8 @@
 #'
 #' @return A list with the following components:
 #' \item{\code{Data mean table}}{Table of data ranked using simple average.}
-#' \item{\code{Garrett ranked data}}{Table of data ranked using Garrett mean score.}
+#' \item{\code{Garrett ranked data}}{Table of data ranked using Garrett
+#' mean score.}
 #' \item{\code{Garrett value}}{Table of ranking Garrett values}
 #'
 #' @export garrett_ranking
@@ -57,7 +69,8 @@ garrett_ranking <- function(data, num_rank,
       stop("Number of ranks must be an integer between 2 and 15")
     } else {
       num_rank < num_rank
-      ranking <- paste0(1:num_rank, c("st", "nd", "rd", rep("th", num_rank-3))," Rank")
+      ranking <- paste0(1:num_rank, c("st", "nd", "rd", rep("th", num_rank-3)),
+                        " Rank")
     }
   } else {
     ranking <- ranking
@@ -348,7 +361,8 @@ garrett_ranking <- function(data, num_rank,
                          by = c("Number" = "Garrett index")) %>%
     kk(.) %>%
     dplyr::select(., c(4, 5, 1, 3))
-  names(garrett_p) <- c("Number", "Garrett point", "Garrett index", "Garrett value")
+  names(garrett_p) <- c("Number", "Garrett point", "Garrett index",
+                        "Garrett value")
   #modelsummary::datasummary_df(garrett_p, "GV.docx")
 
 

@@ -63,7 +63,8 @@ NULL
 #' - `Vector of estimated propensity scores from the model`
 #' - `Vector of fitted values from the model`
 #' - `Residuals of the estimated model`
-#' - `Plot of the propensity scores from the model faceted into Treated and control populations`
+#' - `Plot of the propensity scores from the model faceted into Treated and
+#' control populations`
 #' - `Plot of the average treatment effect for the **entire** population`
 #' - `Plot of the average treatment effect for the **treated** population`
 #' - `Plot of the average treatment effect for the **controlled** population`

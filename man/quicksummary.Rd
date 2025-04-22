@@ -10,13 +10,16 @@ quicksummary(x, Type, Cut, Up, Down, ci = 0.95)
 \arguments{
 \item{x}{The data to be summarised. Only numeric data is allowed.}
 
-\item{Type}{The type of data to be summarised. There are two options here 1 or 2, 1 = \code{Continuous} and 2 = \code{Likert-type}}
+\item{Type}{The type of data to be summarised. There are two options here 1
+or 2, 1 = \code{Continuous} and 2 = \code{Likert-type}}
 
 \item{Cut}{The cut-off point for Likert-type data}
 
-\item{Up}{The top Likert-type scale, for example, \code{Agree}, \code{Constraints} etc which would appear in the remark column.}
+\item{Up}{The top Likert-type scale, for example, \code{Agree}, \code{Constraints} etc
+which would appear in the remark column.}
 
-\item{Down}{The lower Likert-type scale, for example, \code{Disagree}, \verb{Not a Constraint} etc which would appear in the remark column.}
+\item{Down}{The lower Likert-type scale, for example, \code{Disagree},
+\verb{Not a Constraint} etc which would appear in the remark column.}
 
 \item{ci}{Confidence interval which is defaults to 0.95.}
 }
@@ -25,7 +28,10 @@ The function returns a formatted Table of the Quick summary
 \item{\code{ANS}}{The formatted Table of the summary}
 }
 \description{
-There is increasing need to make user-friendly and production ready Tables for machine learning data. This function is a simplified quick summary and the output is a formatted table. This is very handy for those who do not have the time to write codes for user-friendly summaries.
+There is increasing need to make user-friendly and production ready Tables
+for machine learning data. This function is a simplified quick summary and
+the output is a formatted table. This is very handy for those who do not
+have the time to write codes for user-friendly summaries.
 }
 \examples{
 # Likert-type data

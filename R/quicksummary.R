@@ -1,13 +1,19 @@
 #' Quick Formatted Summary of Machine Learning Data
 #'
 #' @description
-#' There is increasing need to make user-friendly and production ready Tables for machine learning data. This function is a simplified quick summary and the output is a formatted table. This is very handy for those who do not have the time to write codes for user-friendly summaries.
+#' There is increasing need to make user-friendly and production ready Tables
+#'  for machine learning data. This function is a simplified quick summary and
+#'  the output is a formatted table. This is very handy for those who do not
+#'  have the time to write codes for user-friendly summaries.
 #'
 #' @param x The data to be summarised. Only numeric data is allowed.
-#' @param Type The type of data to be summarised. There are two options here 1 or 2, 1 = `Continuous` and 2 = `Likert-type`
+#' @param Type The type of data to be summarised. There are two options here 1
+#' or 2, 1 = `Continuous` and 2 = `Likert-type`
 #' @param Cut The cut-off point for Likert-type data
-#' @param Up The top Likert-type scale, for example, `Agree`, `Constraints` etc which would appear in the remark column.
-#' @param Down The lower Likert-type scale, for example, `Disagree`, `Not a Constraint` etc which would appear in the remark column.
+#' @param Up The top Likert-type scale, for example, `Agree`, `Constraints` etc
+#'  which would appear in the remark column.
+#' @param Down The lower Likert-type scale, for example, `Disagree`,
+#' `Not a Constraint` etc which would appear in the remark column.
 #' @param ci Confidence interval which is defaults to 0.95.
 #'
 #' @return The function returns a formatted Table of the Quick summary

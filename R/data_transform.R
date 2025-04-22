@@ -1,16 +1,27 @@
-#' Standardize `data.frame` for comparable **Machine Learning** prediction and visualization
+#' Standardize `data.frame` for comparable **Machine Learning** prediction
+#' and visualization
 #'
 #' @description
-#' Often economic and other **Machine Learning** data are of different units or sizes making either estimation, interpretation or visualization difficult. The solution to these issues can be handled if the data can be transformed into _unitless_ or data of similar magnitude. This is what `data_transform` is set to do. It is simple and straight forward to use.
+#' Often economic and other **Machine Learning** data are of different units
+#' or sizes making either estimation, interpretation or visualization difficult.
+#'  The solution to these issues can be handled if the data can be transformed
+#'  into _unitless_ or data of similar magnitude. This is what `data_transform`
+#'   is set to do. It is simple and straight forward to use.
 #'
-#' @param data A `data.frame` with numeric data for transformation. All columns in the data are transformed
-#' @param method The type of transformation. There three options. `1` is for `log` transformation, `2` is for `min-max` transformation and `3` is for `mean-SD` transformation.
-#' @param MARGIN Option to either transform the data `2 == column-wise` or `1 == row-wise`. Defaults to `column-wise` transformation if no option is indicated.
+#' @param data A `data.frame` with numeric data for transformation. All columns
+#'  in the data are transformed
+#' @param method The type of transformation. There three options. `1` is for
+#'  `log` transformation, `2` is for `min-max` transformation and `3` is
+#'  for `mean-SD` transformation.
+#' @param MARGIN Option to either transform the data `2 == column-wise` or
+#' `1 == row-wise`. Defaults to `column-wise` transformation if no option is
+#' indicated.
 #'
 #' @importFrom stats sd
 #'
 #' @return This function returns the output of the data transformation process as
-#' \item{\code{tata_transformed}}{ A new `data.frame` containing the transformed values}
+#' \item{\code{tata_transformed}}{ A new `data.frame` containing the
+#' transformed values}
 #'
 #' @export data_transform
 #'
@@ -80,7 +91,8 @@ data_transform <- function(data, method, MARGIN = 2){
 
   if(method == 1){
 
-    data_transformed <-  apply(data, MARGIN = MARGIN, FUN = function(x) (x-min(x))/(max(x)-min(x)))
+    data_transformed <-  apply(data, MARGIN = MARGIN, FUN = function(x)
+      (x-min(x))/(max(x)-min(x)))
 
     return (data_transformed)
 
@@ -95,7 +107,8 @@ data_transform <- function(data, method, MARGIN = 2){
 
   else{
 
-    data_transformed <- apply(data, MARGIN = MARGIN, FUN = function(x) (x-mean(x))/sd(x))
+    data_transformed <- apply(data, MARGIN = MARGIN, FUN = function(x)
+      (x-mean(x))/sd(x))
 
     return (data_transformed)
 

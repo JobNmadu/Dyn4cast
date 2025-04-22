@@ -9,48 +9,92 @@ DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
  ORIGIN = origin, Length = 0, ...)
 }
 \arguments{
-\item{date}{A vector containing the dates for which the data is collected. Must be the same length with \code{series}. The date must be in 'YYYY-MM-DD'. If the data is monthly series, the recognized date format is the last day of the month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now.}
+\item{date}{A vector containing the dates for which the data is collected.
+Must be the same length with \code{series}. The date must be in 'YYYY-MM-DD'.
+If the data is monthly series, the recognized date format is the last day of
+the month of the dataset e.g. 2021-02-28. If the data is a yearly series,
+the recognized date format is the last day of the year of the data set e.g.
+2020-12-31. There is no format for Quarterly data for now.}
 
-\item{series}{A vector containing data for estimation and forecasting. Must be the same length with \code{date}.}
+\item{series}{A vector containing data for estimation and forecasting.
+Must be the same length with \code{date}.}
 
-\item{x}{vector of optional dataset that is to be added to the model for forecasting. The modeling and forecasting is still done if not provided. Must be the same length with \code{series}.}
+\item{x}{vector of optional dataset that is to be added to the model for
+forecasting. The modeling and forecasting is still done if not provided.
+Must be the same length with \code{series}.}
 
-\item{BREAKS}{A vector of numbers indicating points of breaks for estimation of the spline models.}
+\item{BREAKS}{A vector of numbers indicating points of breaks for estimation
+of the spline models.}
 
-\item{MaximumDate}{The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.}
+\item{MaximumDate}{The date indicating the maximum date (last date) in the
+data frame, meaning that forecasting starts the next date following it.
+The date must be a recognized date format. Note that for forecasting, the
+date origin is set to 1970-01-01.}
 
 \item{Trend}{The type of trend. There are three options \strong{Day, Month and Year}.}
 
-\item{Type}{The type of response variable. There are two options \strong{Continuous and Integer}. For integer variable, the forecasts are constrained between the minimum and maximum value of the response variable.}
+\item{Type}{The type of response variable. There are two options
+\strong{Continuous and Integer}. For integer variable, the forecasts are
+constrained between the minimum and maximum value of the response variable.}
 
-\item{Length}{The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.}
+\item{Length}{The length for which the forecast would be made. If not given,
+would default to the length of the dataset i.e. sample size.}
 
-\item{ORIGIN}{if different from \strong{1970-01-01} must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of the data in order to properly \code{date} the forecasts.}
+\item{ORIGIN}{if different from \strong{1970-01-01} must be in the format
+\code{"YYYY-MM-DD"}. This is used to position the date of the data in order to
+properly \code{date} the forecasts.}
 
-\item{...}{Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the \code{series}.}
+\item{...}{Additional arguments that may be passed to the function. If the
+maximum date is NULL which is is the default, it is set to the last date of
+the \code{series}.}
 }
 \value{
 A list with the following components:
-\item{\code{Spline without knots}}{The estimated spline model without the breaks (knots).}
-\item{\code{Spline with knots}}{The estimated spline model with the breaks (knots).}
+\item{\code{Spline without knots}}{The estimated spline model without the
+breaks (knots).}
+\item{\code{Spline with knots}}{The estimated spline model with the breaks
+(knots).}
 \item{\code{Smooth Spline}}{The smooth spline estimates.}
-\item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average model.}
+\item{\code{ARIMA}}{Estimated Auto Regressive Integrated Moving Average
+model.}
 \item{\code{Quadratic}}{The estimated quadratic polynomial model.}
-\item{\code{Ensembled with equal weight}}{Estimated Ensemble model with equal weight given to each of the models. To get this, the fitted values of each of the models is divided by the number of models and summed together.}
-\item{\code{Ensembled based on weight}}{Estimated Ensemble model based on weight of each model. To do this, the fitted values of each model served as independent variable and regressed against the trend with interaction among the variables.}
-\item{\code{Ensembled based on summed weight}}{Estimated Ensemble model based on summed weight of each model. To do this, the fitted values of each model served as independent variable and is regressed against the trend.}
-\item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model. The fit of each model is measured by the rmse.}
-\item{\code{Unconstrained Forecast}}{The forecast if the response variable is continuous. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
-\item{\code{Constrained Forecast}}{The forecast if the response variable is integer. The number of forecasts is equivalent to the length of the dataset (equal days forecast).}
+\item{\code{Ensembled with equal weight}}{Estimated Ensemble model with
+equal weight given to each of the models. To get this, the fitted values of
+each of the models is divided by the number of models and summed together.}
+\item{\code{Ensembled based on weight}}{Estimated Ensemble model based on
+weight of each model. To do this, the fitted values of each model served as
+independent variable and regressed against the trend with interaction among
+the variables.}
+\item{\code{Ensembled based on summed weight}}{Estimated Ensemble model
+based on summed weight of each model. To do this, the fitted values of each
+model served as independent variable and is regressed against the trend.}
+\item{\code{Ensembled based on weight of fit}}{Estimated Ensemble model.
+The fit of each model is measured by the rmse.}
+\item{\code{Unconstrained Forecast}}{The forecast if the response variable
+is continuous. The number of forecasts is equivalent to the length of the
+dataset (equal days forecast).}
+\item{\code{Constrained Forecast}}{The forecast if the response variable is
+integer. The number of forecasts is equivalent to the length of the dataset
+(equal days forecast).}
 \item{\code{RMSE}}{Root Mean Square Error (rmse) for each forecast.}
-\item{\code{Unconstrained forecast Plot}}{The combined plots of the unconstrained forecasts using ggplot. }
-\item{\code{Constrained forecast Plot}}{The combined plots of the constrained forecasts using ggplot. }
+\item{\code{Unconstrained forecast Plot}}{The combined plots of the
+unconstrained forecasts using ggplot. }
+\item{\code{Constrained forecast Plot}}{The combined plots of the
+constrained forecasts using ggplot. }
 \item{\code{Date}}{This is the date range for the forecast.}
 \item{\code{Fitted plot}}{This is the plot of the fitted models.}
-\item{\code{Estimated coefficients}}{This is the estimated coefficients of the various models in the forecast.}
+\item{\code{Estimated coefficients}}{This is the estimated coefficients of
+the various models in the forecast.}
 }
 \description{
-The function estimates and predict models using time series dataset and provide subset forecasts within the length of trend. The recognized models are lm, smooth spline, polynomial splines with or without knots, quadratic polynomial,  and ARIMA. The robust output include the models' estimates, time-varying forecasts and plots  based on themes from ggplot. The main attraction of this function is the use of the newly introduced \emph{equal number of trend (days, months, years) to estimate forecast from the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
+The function estimates and predict models using time series dataset and
+provide subset forecasts within the length of trend. The recognized models
+are lm, smooth spline, polynomial splines with or without knots, quadratic
+polynomial,  and ARIMA. The robust output include the models' estimates,
+time-varying forecasts and plots  based on themes from ggplot. The main
+attraction of this function is the use of the newly introduced
+\emph{equal number of trend (days, months, years) to estimate forecast from the model}.
+The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
 # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')

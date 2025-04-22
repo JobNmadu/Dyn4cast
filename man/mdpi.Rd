@@ -23,21 +23,24 @@ Note that the variables to be used for the computation must be coded \verb{(0,1)
 \item{dm}{list of vectors of \emph{indicators} making up each \emph{dimension} to be
 computed}
 
-\item{Bar}{a vector of cut-of used to divide the population into those in
-the poverty category and those that are not. Defaults to 0.4 if not supplied.}
+\item{Bar}{an optional vector of cut-of used to divide the population into
+those in the poverty category and those that are not. Defaults to 0.4 if not
+supplied.}
 
-\item{id_addn}{a vector of additional dimensions to be used for the computation
-up to a \emph{maximum of four}.}
+\item{id_addn}{an optional vector of additional dimensions to be used for the
+computation up to a \emph{maximum of four}.}
 
-\item{Factor}{a grouping factor for the computation which must be a variable
-in the \emph{data}.}
+\item{Factor}{an optional grouping factor for the computation which must be a
+variable in the \emph{data}. If not supplied, only the national MDPI will be
+computed.}
 
 \item{plots}{plots of the various measures. For this to be possible, the
 number of options in the \code{Factor} argument must be less than 41. The default
 is \code{NULL}. To produce, any character string will overwrite the default.}
 
 \item{id}{a vector of the first three dimensions used in the computation
-given as \strong{Health}, \strong{Education} and \strong{Living standard}.}
+given as \strong{Health}, \strong{Education} and \strong{Living standard}. Can be redefined
+but must match the indicators and cannot be \code{NULL}.}
 
 \item{id_add}{a vector of the fourth dimension in the computation given
 as \strong{Social security}. Can be re-defined but never \code{NULL}.}
@@ -100,6 +103,7 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 #                   "Access.to.an.improve.sanatation", "Electricity",
 #                   "Housing.Materials", "Asset.ownership"))
 # mdpi(data, dm, plots = "t", Factor = "Region")
+# mdpi(data, dm, plots = "t")
 #
 # library(mpitbR)
 # data <- subset(syn_cdta)
@@ -108,6 +112,7 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 #            d2 = c("d_satt","d_educ"),
 #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
 # mdpi(data, dm, plots = "t", Factor = "region")
+# mdpi(data, dm, plots = "t")
 
 }
 \references{

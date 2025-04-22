@@ -1,7 +1,8 @@
 #' Custom plot of correlation matrix
 #'
 #' @description
-#' This is a custom plot for correlation matrix in which the coefficients are displayed along with graphics showing the magnitude of each coefficient.
+#' This is a custom plot for correlation matrix in which the coefficients are
+#' displayed along with graphics showing the magnitude of each coefficient.
 #'
 #' @param r Correlation matrix of the data for the plot
 #'

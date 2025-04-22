@@ -13,58 +13,118 @@ Linearsystems(y, x, mod, limit, Test = NA)
 
 \item{x}{Data frame of the explanatory variables.}
 
-\item{mod}{The group of linear models to be estimated. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models}
+\item{mod}{The group of linear models to be estimated. It takes value from 0
+to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear
+systems, 2 = power models, 3 = polynomial models, 4 = root models,
+5 = inverse models, 6 = all the 14 models}
 
 \item{limit}{Number of variables to be included in the coefficients plots}
 
-\item{Test}{test data to be used to predict y. If not supplied, the fitted y is used hence may be identical with the fitted value. It is important to be cautious if the data is to be divided between train and test subsets in order to train and test the model. If the sample size is not sufficient to have enough data for the test, errors are thrown up.}
+\item{Test}{test data to be used to predict y. If not supplied, the fitted y
+is used hence may be identical with the fitted value. It is important to be
+cautious if the data is to be divided between train and test subsets in
+order to train and test the model. If the sample size is not sufficient to
+have enough data for the test, errors are thrown up.}
 }
 \value{
 A list with the following components:
-\item{\code{Visual means of the numeric variable}}{Plot of the means of the \emph{numeric} variables.}
-\item{\code{Correlation plot}}{Plot of the Correlation Matrix of the \emph{numeric} variables. To recover the plot, please use this canonical form \emph{object$\verb{Correlation plot}$plot()}.}
+\item{\code{Visual means of the numeric variable}}{Plot of the means of the
+\emph{numeric} variables.}
+\item{\code{Correlation plot}}{Plot of the Correlation Matrix of the
+\emph{numeric} variables. To recover the plot, please use this canonical form
+\emph{object$\verb{Correlation plot}$plot()}.}
 \item{\code{Linear}}{The full estimates of the Linear Model.}
-\item{\code{Linear with interaction}}{The full estimates of the Linear Model with full interaction among the \emph{numeric} variables.}
-\item{\code{Semilog}}{The full estimates of the Semilog Model. Here the independent variable(s) is/are log-transformed.}
-\item{\code{Growth}}{The full estimates of the Growth Model. Here the dependent variable is log-transformed.}
-\item{\code{Double Log}}{The full estimates of the double-log Model. Here the both the dependent and independent variables are log-transformed.}
-\item{\code{Mixed-power model}}{The full estimates of the Mixed-power Model. This is a combination of linear and double log models. It has significant gains over the two models separately.}
-\item{\code{Translog model}}{The full estimates of the double-log Model with full interaction of the \emph{numeric} variables.}
-\item{\code{Quadratic}}{The full estimates of the Quadratic Model. Here the square of \emph{numeric} independent variable(s) is/are included as independent variables.}
-\item{\code{Cubic model}}{The full estimates of the Cubic Model. Here the third-power (x^3) of \emph{numeric} independent variable(s) is/are included as independent variables.}
-\item{\code{Inverse y}}{The full estimates of the Inverse Model. Here the dependent variable is inverse-transformed (1/y).}
-\item{\code{Inverse x}}{The full estimates of the Inverse Model. Here the independent variable is inverse-transformed (1/x).}
-\item{\code{Inverse y & x}}{The full estimates of the Inverse Model. Here the dependent and independent variables are inverse-transformed 1/y & 1/x).}
-\item{\code{Square root}}{The full estimates of the Square root Model. Here the independent variable is square root-transformed (x^0.5).}
-\item{\code{Cubic root}}{The full estimates of the cubic root Model. Here the independent variable is cubic root-transformed (x^1/3).}
-\item{\code{Significant plot of Linear}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Linear with interaction}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Semilog}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Growth}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Double Log}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Mixed-power model}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Translog model}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Quadratic}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Cubic model}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Inverse y}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Inverse x}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Inverse y & x}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Square root}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Significant plot of Cubic root}}{Plots of order of importance and significance of estimates coefficients of the model.}
-\item{\code{Model Table}}{Formatted Tables of the coefficient estimates of all the models}
-\item{\code{Machine Learning Metrics}}{Metrics (47) for assessing model performance and metrics for diagnostic analysis of the error in estimation.}
-\item{\code{Table of Marginal effects}}{Tables of marginal effects of each model. Because of computational limitations, if you choose to estimate all the 14 models, the Tables are produced separately for the major transformations. They can easily be compiled into one.}
-\item{\code{Fitted plots long format}}{Plots of the fitted estimates from each of the model.}
-\item{\code{Fitted plots wide format}}{Plots of the fitted estimates from each of the model.}
-\item{\code{Prediction plots long format}}{Plots of the predicted estimates from each of the model.}
-\item{\code{Prediction plots wide format}}{Plots of the predicted estimates from each of the model.}
-\item{\code{Naive effects plots long format}}{Plots of the \code{lm} effects. May be identical with plots of marginal effects if performed.}
-\item{\code{Naive effects plots wide format}}{Plots of the \code{lm} effects. May be identical with plots of marginal effects if performed.}
+\item{\code{Linear with interaction}}{The full estimates of the Linear Model
+with full interaction among the \emph{numeric} variables.}
+\item{\code{Semilog}}{The full estimates of the Semilog Model. Here the
+independent variable(s) is/are log-transformed.}
+\item{\code{Growth}}{The full estimates of the Growth Model. Here the
+dependent variable is log-transformed.}
+\item{\code{Double Log}}{The full estimates of the double-log Model. Here
+the both the dependent and independent variables are log-transformed.}
+\item{\code{Mixed-power model}}{The full estimates of the Mixed-power Model.
+This is a combination of linear and double log models. It has significant
+gains over the two models separately.}
+\item{\code{Translog model}}{The full estimates of the double-log Model with
+full interaction of the \emph{numeric} variables.}
+\item{\code{Quadratic}}{The full estimates of the Quadratic Model.
+Here the square of \emph{numeric} independent variable(s) is/are included as
+independent variables.}
+\item{\code{Cubic model}}{The full estimates of the Cubic Model. Here the
+third-power (x^3) of \emph{numeric} independent variable(s) is/are included as
+independent variables.}
+\item{\code{Inverse y}}{The full estimates of the Inverse Model. Here the
+dependent variable is inverse-transformed (1/y).}
+\item{\code{Inverse x}}{The full estimates of the Inverse Model. Here the
+independent variable is inverse-transformed (1/x).}
+\item{\code{Inverse y & x}}{The full estimates of the Inverse Model. Here
+the dependent and independent variables are inverse-transformed 1/y & 1/x).}
+\item{\code{Square root}}{The full estimates of the Square root Model. Here
+the independent variable is square root-transformed (x^0.5).}
+\item{\code{Cubic root}}{The full estimates of the cubic root Model. Here
+the independent variable is cubic root-transformed (x^1/3).}
+\item{\code{Significant plot of Linear}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Linear with interaction}}{Plots of order of
+importance and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Semilog}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Growth}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Double Log}}{Plots of order of importance
+and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Mixed-power model}}{Plots of order of
+importance and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Translog model}}{Plots of order of
+importance and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Quadratic}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Cubic model}}{Plots of order of importance
+and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Inverse y}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Inverse x}}{Plots of order of importance and
+significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Inverse y & x}}{Plots of order of importance
+and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Square root}}{Plots of order of importance
+and significance of estimates coefficients of the model.}
+\item{\code{Significant plot of Cubic root}}{Plots of order of importance
+and significance of estimates coefficients of the model.}
+\item{\code{Model Table}}{Formatted Tables of the coefficient estimates of
+all the models}
+\item{\code{Machine Learning Metrics}}{Metrics (47) for assessing model
+performance and metrics for diagnostic analysis of the error in estimation.}
+\item{\code{Table of Marginal effects}}{Tables of marginal effects of each
+model. Because of computational limitations, if you choose to estimate all
+the 14 models, the Tables are produced separately for the major
+transformations. They can easily be compiled into one.}
+\item{\code{Fitted plots long format}}{Plots of the fitted estimates from
+each of the model.}
+\item{\code{Fitted plots wide format}}{Plots of the fitted estimates from
+each of the model.}
+\item{\code{Prediction plots long format}}{Plots of the predicted estimates
+from each of the model.}
+\item{\code{Prediction plots wide format}}{Plots of the predicted estimates
+from each of the model.}
+\item{\code{Naive effects plots long format}}{Plots of the \code{lm} effects.
+May be identical with plots of marginal effects if performed.}
+\item{\code{Naive effects plots wide format}}{Plots of the \code{lm} effects.
+May be identical with plots of marginal effects if performed.}
 \item{\code{Summary of numeric variables}}{of the dataset.}
 \item{\code{Summary of character variables}}{of the dataset.}
 }
 \description{
-The linear model still remains a reference point towards advanced modeling of some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and \strong{Artificial Intelligence} in spite of some of her weaknesses. The major task in \strong{modeling} is to compare various models before a selection is made for one or for advanced modeling. Often, some trial and error methods are used to decide which model to select. This is where this function is unique. It helps to estimate 14 different linear models and provide their coefficients in a formatted Table for quick comparison so that time and energy are saved. The interesting thing about this function is the simplicity, and it is a \emph{one line} code.
+The linear model still remains a reference point towards advanced modeling of
+some datasets as foundation for \strong{Machine Learning}, \strong{Data Science} and
+\strong{Artificial Intelligence} in spite of some of her weaknesses. The major
+task in \strong{modeling} is to compare various models before a selection is
+made for one or for advanced modeling. Often, some trial and error methods
+are used to decide which model to select. This is where this function is
+unique. It helps to estimate 14 different linear models and provide
+their coefficients in a formatted Table for quick comparison so that
+time and energy are saved. The interesting thing about this function is
+the simplicity, and it is a \emph{one line} code.
 }
 \examples{
 ## Without test data (not run)
@@ -82,9 +142,11 @@ The linear model still remains a reference point towards advanced modeling of so
 # x = sampling[, -1]
 # y = sampling$qOutput
 # Data <- cbind(y, x)
-# sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80\% of data is sampled for training the model
+# sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80\% of data is sampled
+# for training the model
 # train <- Data[sampling, ]
-# Test  <- Data[-sampling, ] # 20\% of data is reserved for testing (predicting) the model
+# Test  <- Data[-sampling, ]
+# 20\% of data is reserved for testing (predicting) the model
 # y <- train$y
 # x <- train[, -1]
 # mod <- 4

@@ -14,5 +14,6 @@ The function returns a custom plot of the correlation matrix
 \item{\code{corplot}}{The custom plot of the correlation matrix}
 }
 \description{
-This is a custom plot for correlation matrix in which the coefficients are displayed along with graphics showing the magnitude of each coefficient.
+This is a custom plot for correlation matrix in which the coefficients are
+displayed along with graphics showing the magnitude of each coefficient.
 }

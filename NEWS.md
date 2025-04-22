@@ -1,3 +1,9 @@
+# Dyn4cast 11.11.26-kappa 2025-04-22
+
+More efficient estimation procedure and better logic in selecting the option to estimate. Some options will not output because of complexity.
+
+Some editing on the various functions to make them more readable.
+
 # Dyn4cast 11.11.26-beta 2025-03-03
 
 Huge improvements and new additions to the package. A lot of editorial corrections observed in the codes have been carried out. Tree new functions, `mdpi`, `plot_mdpi` and `gender` are successfully tested and now operational. The functions provides for awesome resources for simple, precise and empirical policy making processes and procedures.

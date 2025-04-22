@@ -1,22 +1,35 @@
 #' Latent Factors Recovery from Variables Loadings
 #'
 #' @description
-#' This function retrieves the latent factors and their variable loadings which can be used as `R` objects to perform other analysis.
+#' This function retrieves the latent factors and their variable loadings which
+#'  can be used as `R` objects to perform other analysis.
 #'
-#' @param data An `R object` obtained from exploratory factor analysis (EFA) using the `fa` function in `psych` package.
-#' @param DATA A `data.frame`, the raw data used to carry out the parallel analysis to obtain `data` object.
+#' @param data An `R object` obtained from exploratory factor analysis (EFA)
+#' using the `fa` function in `psych` package.
+#' @param DATA A `data.frame`, the raw data used to carry out the parallel
+#' analysis to obtain `data` object.
 #'
 #' @return A list with the following components:
-#' \item{\code{Latent_frame}}{`data.frame` of latent factors based on the variables loadings.}
-#' \item{\code{Latent_1}}{`data.frame` of variables in Latent factor 1 with their loadings.}
-#' \item{\code{Latent_2}}{`data.frame` of variables in Latent factor 2 with their loadings.}
-#' \item{\code{Latent_3}}{`data.frame` of variables in Latent factor 3 with their loadings.}
-#' \item{\code{Latent_4}}{`data.frame` of variables in Latent factor 3 with their loadings.}
-#' \item{\code{Latent_5}}{`data.frame` of variables in Latent factor 5 with their loadings.}
-#' \item{\code{Latent_6}}{`data.frame` of variables in Latent factor 6 with their loadings.}
-#' \item{\code{Latent_7}}{`data.frame` of variables in Latent factor 7 with their loadings.}
-#' \item{\code{Latent_8}}{`data.frame` of variables in Latent factor 8 with their loadings.}
-#' \item{\code{Latent_9}}{`data.frame` of variables in Latent factor 9 with their loadings.}
+#' \item{\code{Latent_frame}}{`data.frame` of latent factors based on the
+#' variables loadings.}
+#' \item{\code{Latent_1}}{`data.frame` of variables in Latent factor 1 with
+#'  their loadings.}
+#' \item{\code{Latent_2}}{`data.frame` of variables in Latent factor 2 with
+#' their loadings.}
+#' \item{\code{Latent_3}}{`data.frame` of variables in Latent factor 3 with
+#' their loadings.}
+#' \item{\code{Latent_4}}{`data.frame` of variables in Latent factor 3 with
+#' their loadings.}
+#' \item{\code{Latent_5}}{`data.frame` of variables in Latent factor 5 with
+#' their loadings.}
+#' \item{\code{Latent_6}}{`data.frame` of variables in Latent factor 6 with
+#' their loadings.}
+#' \item{\code{Latent_7}}{`data.frame` of variables in Latent factor 7 with
+#' their loadings.}
+#' \item{\code{Latent_8}}{`data.frame` of variables in Latent factor 8 with
+#' their loadings.}
+#' \item{\code{Latent_9}}{`data.frame` of variables in Latent factor 9 with
+#' their loadings.}
 #'
 #' @name model_factors
 #'
@@ -93,9 +106,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR9))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
@@ -107,9 +122,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR2), kk(Factors3$MR9))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4)),
@@ -120,9 +137,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR3), kk(Factors3$MR9))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi4 <- unique(c(intersect(kk(Factors3$MR4), kk(Factors3$MR5)),
@@ -132,9 +151,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR4), kk(Factors3$MR9))))
         MR44 <- kk(Factors3$MR4)
         MR444 <- MR44[!MR44 %in% MRi4]
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14[Mk14$MR4 %in% MR444, ]
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi5 <- unique(c(intersect(kk(Factors3$MR5), kk(Factors3$MR6)),
@@ -143,9 +164,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR5), kk(Factors3$MR9))))
         MR55 <- kk(Factors3$MR5)
         MR555 <- MR55[!MR33 %in% MRi5]
-        Mk15 <- data.frame(MR5 = kk(Factors3$MR5), loading = as.numeric(kk(Factor_m$MR5)))
+        Mk15 <- data.frame(MR5 = kk(Factors3$MR5),
+                           loading = as.numeric(kk(Factor_m$MR5)))
         Mk555 <- Mk15[Mk15$MR5 %in% MR555, ]
-        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi6 <- unique(c(intersect(kk(Factors3$MR6), kk(Factors3$MR7)),
@@ -153,32 +176,40 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR6), kk(Factors3$MR9))))
         MR66 <- kk(Factors3$MR6)
         MR666 <- MR66[!MR66 %in% MRi6]
-        Mk16 <- data.frame(MR6 = kk(Factors3$MR6), loading = as.numeric(kk(Factor_m$MR6)))
+        Mk16 <- data.frame(MR6 = kk(Factors3$MR6),
+                           loading = as.numeric(kk(Factor_m$MR6)))
         Mk666 <- Mk16[Mk16$MR6 %in% MR666, ]
-        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "", collapse = " + ") %>%
+        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi7 <- unique(c(intersect(kk(Factors3$MR7), kk(Factors3$MR8)),
                          intersect(kk(Factors3$MR7), kk(Factors3$MR9))))
         MR77 <- kk(Factors3$MR7)
         MR777 <- MR77[!MR77 %in% MRi7]
-        Mk17 <- data.frame(MR7 = kk(Factors3$MR7), loading = as.numeric(kk(Factor_m$MR7)))
+        Mk17 <- data.frame(MR7 = kk(Factors3$MR7),
+                           loading = as.numeric(kk(Factor_m$MR7)))
         Mk777 <- Mk17[Mk17$MR7 %in% MR777, ]
-        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "", collapse = " + ") %>%
+        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi8 <- unique(intersect(kk(Factors3$MR8), kk(Factors3$MR9)))
         MR88 <- kk(Factors3$MR8)
         MR888 <- MR88[!MR88 %in% MRi8]
-        Mk18 <- data.frame(MR8 = kk(Factors3$MR8), loading = as.numeric(kk(Factor_m$MR8)))
+        Mk18 <- data.frame(MR8 = kk(Factors3$MR8),
+                           loading = as.numeric(kk(Factor_m$MR8)))
         Mk888 <- Mk18[Mk18$MR8 %in% MR888, ]
-        MR8 <- paste(Mk888$MR8, " * ", Mk888$loading, sep = "", collapse = " + ") %>%
+        MR8 <- paste(Mk888$MR8, " * ", Mk888$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR999 <- kk(Factors3$MR9)
-        Mk19 <- data.frame(MR9 = kk(Factors3$MR9), loading = as.numeric(kk(Factor_m$MR9)))
+        Mk19 <- data.frame(MR9 = kk(Factors3$MR9),
+                           loading = as.numeric(kk(Factor_m$MR9)))
         Mk999 <- Mk19
-        MR9 <- paste(Mk999$MR9, " * ", Mk999$loading, sep = "", collapse = " + ") %>%
+        MR9 <- paste(Mk999$MR9, " * ", Mk999$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
          expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6, MR7, MR8, MR9),
@@ -195,9 +226,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR8))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
@@ -208,9 +241,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR2), kk(Factors3$MR8))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4)),
@@ -220,9 +255,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR3), kk(Factors3$MR8))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi4 <- unique(c(intersect(kk(Factors3$MR4), kk(Factors3$MR5)),
@@ -231,9 +268,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR4), kk(Factors3$MR8))))
         MR44 <- kk(Factors3$MR4)
         MR444 <- MR44[!MR44 %in% MRi4]
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14[Mk14$MR4 %in% MR444, ]
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi5 <- unique(c(intersect(kk(Factors3$MR5), kk(Factors3$MR6)),
@@ -241,32 +280,40 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR5), kk(Factors3$MR8))))
         MR55 <- kk(Factors3$MR5)
         MR555 <- MR55[!MR33 %in% MRi5]
-        Mk15 <- data.frame(MR5 = kk(Factors3$MR5), loading = as.numeric(kk(Factor_m$MR5)))
+        Mk15 <- data.frame(MR5 = kk(Factors3$MR5),
+                           loading = as.numeric(kk(Factor_m$MR5)))
         Mk555 <- Mk15[Mk15$MR5 %in% MR555, ]
-        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi6 <- unique(c(intersect(kk(Factors3$MR6), kk(Factors3$MR7)),
                          intersect(kk(Factors3$MR6), kk(Factors3$MR8))))
         MR66 <- kk(Factors3$MR6)
         MR666 <- MR66[!MR66 %in% MRi6]
-        Mk16 <- data.frame(MR6 = kk(Factors3$MR6), loading = as.numeric(kk(Factor_m$MR6)))
+        Mk16 <- data.frame(MR6 = kk(Factors3$MR6),
+                           loading = as.numeric(kk(Factor_m$MR6)))
         Mk666 <- Mk16[Mk16$MR6 %in% MR666, ]
-        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "", collapse = " + ") %>%
+        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi7 <- unique(intersect(kk(Factors3$MR7), kk(Factors3$MR8)))
         MR77 <- kk(Factors3$MR7)
         MR777 <- MR77[!MR77 %in% MRi7]
-        Mk17 <- data.frame(MR7 = kk(Factors3$MR7), loading = as.numeric(kk(Factor_m$MR7)))
+        Mk17 <- data.frame(MR7 = kk(Factors3$MR7),
+                           loading = as.numeric(kk(Factor_m$MR7)))
         Mk777 <- Mk17[Mk17$MR7 %in% MR777, ]
-        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "", collapse = " + ") %>%
+        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR888 <- kk(Factors3$MR8)
-        Mk18 <- data.frame(MR8 = kk(Factors3$MR8), loading = as.numeric(kk(Factor_m$MR8)))
+        Mk18 <- data.frame(MR8 = kk(Factors3$MR8),
+                           loading = as.numeric(kk(Factor_m$MR8)))
         Mk888 <- Mk18
-        MR8 <- paste(Mk888$MR8, " * ", Mk888$loading, sep = "", collapse = " + ") %>%
+        MR8 <- paste(Mk888$MR8, " * ", Mk888$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
         expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6, MR7, MR8),
                                nm = c("MR1", "MR2", "MR3", "MR4", "MR5",
@@ -281,9 +328,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR7))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
@@ -293,9 +342,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR2), kk(Factors3$MR7))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4)),
@@ -304,9 +355,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR3), kk(Factors3$MR7))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi4 <- unique(c(intersect(kk(Factors3$MR4), kk(Factors3$MR5)),
@@ -314,35 +367,44 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR4), kk(Factors3$MR7))))
         MR44 <- kk(Factors3$MR4)
         MR444 <- MR44[!MR44 %in% MRi4]
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14[Mk14$MR4 %in% MR444, ]
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi5 <- unique(c(intersect(kk(Factors3$MR5), kk(Factors3$MR6)),
                          intersect(kk(Factors3$MR5), kk(Factors3$MR7))))
         MR55 <- kk(Factors3$MR5)
         MR555 <- MR55[!MR33 %in% MRi5]
-        Mk15 <- data.frame(MR5 = kk(Factors3$MR5), loading = as.numeric(kk(Factor_m$MR5)))
+        Mk15 <- data.frame(MR5 = kk(Factors3$MR5),
+                           loading = as.numeric(kk(Factor_m$MR5)))
         Mk555 <- Mk15[Mk15$MR5 %in% MR555, ]
-        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi6 <- unique(intersect(kk(Factors3$MR6), kk(Factors3$MR7)))
         MR66 <- kk(Factors3$MR6)
         MR666 <- MR66[!MR66 %in% MRi6]
-        Mk16 <- data.frame(MR6 = kk(Factors3$MR6), loading = as.numeric(kk(Factor_m$MR6)))
+        Mk16 <- data.frame(MR6 = kk(Factors3$MR6),
+                           loading = as.numeric(kk(Factor_m$MR6)))
         Mk666 <- Mk16[Mk16$MR6 %in% MR666, ]
-        MR6 <- paste(Mk555$MR6, " * ", Mk666$loading, sep = "", collapse = " + ") %>%
+        MR6 <- paste(Mk555$MR6, " * ", Mk666$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR777 <- kk(Factors3$MR7)
-        Mk17 <- data.frame(MR7 = kk(Factors3$MR7), loading = as.numeric(kk(Factor_m$MR7)))
+        Mk17 <- data.frame(MR7 = kk(Factors3$MR7),
+                           loading = as.numeric(kk(Factor_m$MR7)))
         Mk777 <- Mk17
-        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "", collapse = " + ") %>%
+        MR7 <- paste(Mk777$MR7, " * ", Mk777$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
         expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6, MR7),
-                               nm = c("MR1", "MR2", "MR3", "MR4", "MR5", "MR6", "MR7"))
+                               nm = c("MR1", "MR2", "MR3", "MR4", "MR5", "MR6",
+                                      "MR7"))
 
       } else if (i == 6) {
         Mk999 <- Mk888 <- Mk777 <- NULL
@@ -353,9 +415,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR6))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
@@ -364,9 +428,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR2), kk(Factors3$MR6))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4)),
@@ -374,32 +440,40 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR3), kk(Factors3$MR6))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi4 <- unique(c(intersect(kk(Factors3$MR4), kk(Factors3$MR5)),
                          intersect(kk(Factors3$MR4), kk(Factors3$MR6))))
         MR44 <- kk(Factors3$MR4)
         MR444 <- MR44[!MR44 %in% MRi4]
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14[Mk14$MR4 %in% MR444, ]
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi5 <- unique(intersect(kk(Factors3$MR5), kk(Factors3$MR6)))
         MR55 <- kk(Factors3$MR5)
         MR555 <- MR55[!MR55 %in% MRi5]
-        Mk15 <- data.frame(MR5 = kk(Factors3$MR5), loading = as.numeric(kk(Factor_m$MR5)))
+        Mk15 <- data.frame(MR5 = kk(Factors3$MR5),
+                           loading = as.numeric(kk(Factor_m$MR5)))
         Mk555 <- Mk15[Mk15$MR5 %in% MR555, ]
-        MR5 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "", collapse = " + ") %>%
+        MR5 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR666 <- kk(Factors3$MR6)
-        Mk16 <- data.frame(MR6 = kk(Factors3$MR6), loading = as.numeric(kk(Factor_m$MR6)))
+        Mk16 <- data.frame(MR6 = kk(Factors3$MR6),
+                           loading = as.numeric(kk(Factor_m$MR6)))
         Mk666 <- Mk16
-        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "", collapse = " + ") %>%
+        MR6 <- paste(Mk666$MR6, " * ", Mk666$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
         expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6),
                                nm = c("MR1", "MR2", "MR3", "MR4", "MR5", "MR6"))
@@ -413,9 +487,11 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR5))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
@@ -423,34 +499,43 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR2), kk(Factors3$MR5))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4)),
                          intersect(kk(Factors3$MR3), kk(Factors3$MR5))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi4 <- unique(intersect(kk(Factors3$MR4), kk(Factors3$MR5)))
         MR44 <- kk(Factors3$MR4)
         MR444 <- MR44[!MR44 %in% MRi4]
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14[Mk14$MR4 %in% MR444, ]
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR555 <- kk(Factors3$MR5)
-        Mk15 <- data.frame(MR5 = kk(Factors3$MR5), loading = as.numeric(kk(Factor_m$MR5)))
+        Mk15 <- data.frame(MR5 = kk(Factors3$MR5),
+                           loading = as.numeric(kk(Factor_m$MR5)))
         Mk555 <- Mk15
-        MR5 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "", collapse = " + ") %>%
+        MR5 <- paste(Mk555$MR5, " * ", Mk555$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
-        expression <- setNames(c(MR1, MR2, MR3, MR4, MR5), nm = c("MR1", "MR2", "MR3", "MR4", "MR5"))
+        expression <- setNames(c(MR1, MR2, MR3, MR4, MR5),
+                               nm = c("MR1", "MR2", "MR3", "MR4", "MR5"))
       } else if (i == 4)  {
 
         Mk999 <- Mk888 <- Mk777 <- Mk666 <- Mk555 <- NULL
@@ -459,35 +544,44 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR4))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3)),
                          intersect(kk(Factors3$MR2), kk(Factors3$MR4))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi3 <- unique(c(intersect(kk(Factors3$MR3), kk(Factors3$MR4))))
         MR33 <- kk(Factors3$MR3)
         MR333 <- MR33[!MR33 %in% MRi3]
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13[Mk13$MR3 %in% MR333, ]
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR444 <- kk(Factors3$MR4)
-        Mk14 <- data.frame(MR4 = kk(Factors3$MR4), loading = as.numeric(kk(Factor_m$MR4)))
+        Mk14 <- data.frame(MR4 = kk(Factors3$MR4),
+                           loading = as.numeric(kk(Factor_m$MR4)))
         Mk444 <- Mk14
-        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "", collapse = " + ") %>%
+        MR4 <- paste(Mk444$MR4, " * ", Mk444$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
-        expression <- setNames(c(MR1, MR2, MR3, MR4), nm = c("MR1", "MR2", "MR3", "MR4"))
+        expression <- setNames(c(MR1, MR2, MR3, MR4),
+                               nm = c("MR1", "MR2", "MR3", "MR4"))
       } else if (i == 3){
 
         Mk999 <- Mk888 <- Mk777 <- Mk666 <- Mk555 <- Mk444 <- NULL
@@ -495,23 +589,29 @@ model_factors <- function(data, DATA) {
                          intersect(kk(Factors3$MR1), kk(Factors3$MR3))))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MRi2 <- unique(c(intersect(kk(Factors3$MR2), kk(Factors3$MR3))))
         MR22 <- kk(Factors3$MR2)
         MR222 <- MR22[!MR22 %in% MRi2]
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12[Mk12$MR2 %in% MR222, ]
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR333 <- kk(Factors3$MR3)
-        Mk13 <- data.frame(MR3 = kk(Factors3$MR3), loading = as.numeric(kk(Factor_m$MR3)))
+        Mk13 <- data.frame(MR3 = kk(Factors3$MR3),
+                           loading = as.numeric(kk(Factor_m$MR3)))
         Mk333 <- Mk13
-        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "", collapse = " + ") %>%
+        MR3 <- paste(Mk333$MR3, " * ", Mk333$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         expression <- setNames(c(MR1, MR2, MR3), nm = c("MR1", "MR2", "MR3"))
@@ -521,15 +621,19 @@ model_factors <- function(data, DATA) {
         MRi1 <- unique(intersect(kk(Factors3$MR1), kk(Factors3$MR3)))
         MR11 <- kk(Factors3$MR1)
         MR111 <- MR11[!MR11 %in% MRi1]
-        Mk11 <- data.frame(MR1 = kk(Factors3$MR1), loading = as.numeric(kk(Factor_m$MR1)))
+        Mk11 <- data.frame(MR1 = kk(Factors3$MR1),
+                           loading = as.numeric(kk(Factor_m$MR1)))
         Mk111 <- Mk11[Mk11$MR1 %in% MR111, ]
-        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "", collapse = " + ") %>%
+        MR1 <- paste(Mk111$MR1, " * ", Mk111$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
 
         MR222 <- kk(Factors3$MR2)
-        Mk12 <- data.frame(MR2 = kk(Factors3$MR2), loading = as.numeric(kk(Factor_m$MR2)))
+        Mk12 <- data.frame(MR2 = kk(Factors3$MR2),
+                           loading = as.numeric(kk(Factor_m$MR2)))
         Mk222 <- Mk12
-        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "", collapse = " + ") %>%
+        MR2 <- paste(Mk222$MR2, " * ", Mk222$loading, sep = "",
+                     collapse = " + ") %>%
           eees(.)
       }
     }

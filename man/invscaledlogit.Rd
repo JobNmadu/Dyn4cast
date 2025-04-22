@@ -7,14 +7,18 @@
 invscaledlogit(x, lower, upper)
 }
 \arguments{
-\item{x}{The forecast values from constrained forecast package. Please specify the appropriate column containing the forecast values.}
+\item{x}{The forecast values from constrained forecast package. Please
+specify the appropriate column containing the forecast values.}
 
 \item{lower}{Lower limits of the forecast values}
 
 \item{upper}{Upper limits of the forecast values}
 }
 \description{
-This function is used to estimate exponential lower (80\% and 95\%) and upper (80\% and 95\%) values from the outcome of the \code{scaledlogit} function. The exponentiation ensures that the forecast does not go beyond the upper and lower limits of the base data.
+This function is used to estimate exponential lower (80\% and 95\%) and upper
+(80\% and 95\%) values from the outcome of the \code{scaledlogit} function.
+The exponentiation ensures that the forecast does not go beyond the upper
+and lower limits of the base data.
 }
 \examples{
 x <- 1:35

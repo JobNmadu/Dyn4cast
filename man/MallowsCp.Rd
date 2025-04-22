@@ -7,22 +7,45 @@
 MallowsCp(Model, y, x, type, Nlevels = 0)
 }
 \arguments{
-\item{Model}{The estimated \strong{model} from which the Mallows Cp would be computed}
+\item{Model}{The estimated \strong{model} from which the Mallows Cp would be
+computed}
 
 \item{y}{The vector of the \strong{LHS} variable of the estimated model}
 
-\item{x}{The matrix of the \strong{RHS} variable of the estimated model. Note that if the model adds additional factor variables into the output, then the number of additional factors \code{Nlevels} is required otherwise the computed Cp would be biased.}
+\item{x}{The matrix of the \strong{RHS} variable of the estimated model. Note
+that if the model adds additional factor variables into the output, then
+the number of additional factors \code{Nlevels} is required otherwise the
+computed Cp would be biased.}
 
-\item{type}{The type of model (\code{LM}, \code{ALM}, \code{GLM},\code{N-LM}, \code{nls}, \code{ARDL}, \code{SMOOTH}, \code{SPLINE}, \code{ARIMA}, \code{plm}) for which Cp would be computed broadly divided in to linear (\code{LM}, \code{ALM}, \code{GLM}, \code{ARDL}, \code{SMOOTH}, \code{SPLINE}, \code{ARIMA}, \code{plm}) and non-linear (\code{GLM},\code{N-LM}, \code{nls}). The type of model must be specified as indicated. Supported models are \code{LM}, \code{ALM}, \code{GLM} (for binary based models), \code{N-LM} (not linear for models not clearly defined as linear or non-linear especially some of the essemble models that are merely \strong{computed} not \strong{estimated}) or \code{nls} for other non linear models, \code{ARDL}, \code{SMOOTH} for \strong{smooth.spline}, \code{SPLINE} for bs spline models, \code{ARIMA} and \code{plm}.}
+\item{type}{The type of model (\code{LM}, \code{ALM}, \code{GLM},\code{N-LM}, \code{nls}, \code{ARDL},
+\code{SMOOTH}, \code{SPLINE}, \code{ARIMA}, \code{plm}) for which Cp would be computed broadly
+divided in to linear (\code{LM}, \code{ALM}, \code{GLM}, \code{ARDL}, \code{SMOOTH}, \code{SPLINE},
+\code{ARIMA}, \code{plm}) and non-linear (\code{GLM},\code{N-LM}, \code{nls}).
+The type of model must be specified as indicated. Supported models are
+\code{LM}, \code{ALM}, \code{GLM} (for binary based models), \code{N-LM} (not linear for
+models not clearly defined as linear or non-linear especially some of
+the essemble models that are merely \strong{computed} not \strong{estimated}) or
+\code{nls} for other non linear models, \code{ARDL}, \code{SMOOTH} for \strong{smooth.spline},
+\code{SPLINE} for bs spline models, \code{ARIMA} and \code{plm}.}
 
-\item{Nlevels}{Optional number of additional variables created if the model has categorical variables that generates additional dummy variables during estimation or the number of additional variables created if the model involves interaction terms.}
+\item{Nlevels}{Optional number of additional variables created if the model
+has categorical variables that generates additional dummy variables during
+estimation or the number of additional variables created if the model
+involves interaction terms.}
 }
 \value{
 A list with the following components
 \item{\code{MallowsCp}}{of the Model.}
 }
 \description{
-Mallow's Cp is one of the very useful metrics and selection criteria for machine learning algorithms (models). It is used to estimate the closest number to the number of predictors and the intercept (approximate number of explanatory variables) of linear and non-linear based models. The function inherits \code{residuals} from the estimated model. The uniqueness of this function compared to other procedures for computing Mallow's Cp is that it does not require nested models for computation and it is not limited to \code{lm} based models only.
+Mallow's Cp is one of the very useful metrics and selection criteria for
+machine learning algorithms (models). It is used to estimate the closest
+number to the number of predictors and the intercept (approximate number of
+explanatory variables) of linear and non-linear based models. The function
+inherits \code{residuals} from the estimated model. The uniqueness of this
+function compared to other procedures for computing Mallow's Cp is that it
+does not require nested models for computation and it is not limited to \code{lm}
+based models only.
 }
 \examples{
 library(Dyn4cast)

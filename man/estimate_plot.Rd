@@ -7,14 +7,20 @@
 estimate_plot(Model, limit)
 }
 \arguments{
-\item{Model}{Estimated model for which the estimated coefficients would be plotted}
+\item{Model}{Estimated model for which the estimated coefficients would be
+plotted}
 
 \item{limit}{Number of variables to be included in the coefficients plots}
 }
 \value{
-The function returns a plot of the order of importance of the estimated coefficients
-\item{\code{estimate_plot}}{The plot of the order of importance of estimated coefficients}
+The function returns a plot of the order of importance of the
+estimated coefficients
+\item{\code{estimate_plot}}{The plot of the order of importance of estimated
+coefficients}
 }
 \description{
-This function provides graphic displays of the order of significance estimated coefficients of models. This would assists in accessing models so as to decide which can be used for further analysis, prediction and policy consideration.
+This function provides graphic displays of the order of significance
+estimated coefficients of models. This would assists in accessing models so
+as to decide which can be used for further analysis, prediction and policy
+consideration.
 }
