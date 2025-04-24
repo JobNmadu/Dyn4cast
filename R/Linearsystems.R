@@ -165,7 +165,6 @@
 # #' @keywords internal
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
-
   y1 <- y
   Data <- cbind(y, x)
   Names <- names(Data)
@@ -253,7 +252,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                        "and", 6)))
   }
 
-if(mod == 5){
+  if(mod == 5){
     Data <- cbind(y, xnum, xcha)
     reciy_data <- Data
 
@@ -278,7 +277,7 @@ if(mod == 5){
     recixy_data <- Data
 
     `double reciprocal` <- lm(y ~ ., data = Data)
-   reciD <- MLMetrics(Observed = Data, yvalue = y, Model = `double reciprocal`,
+    reciD <- MLMetrics(Observed = Data, yvalue = y, Model = `double reciprocal`,
                        K = 2, Name = "Inverse in Y & X", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciD <- estimate_plot(Model = `double reciprocal`, limit = limit)
@@ -855,7 +854,6 @@ if(mod == 5){
     Test_X <- cbind(xnum8, xcha)
   }
 
-{
   if(mod == 5){
 
     if (case != "complex") {
@@ -915,9 +913,9 @@ if(mod == 5){
                                    values_to = "Effects")
 
     evaluation <- data.frame(cbind(Linear         = Linears,
-                        `Reciprocal in X`         = reciX,
-                        `Reciprocal in Y`         = reciY,
-                        `Double reciprocal`       = reciD))
+                                   `Reciprocal in X`         = reciX,
+                                   `Reciprocal in Y`         = reciY,
+                                   `Double reciprocal`       = reciD))
     #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
     #evaluation <- modelsummary::datasummary_df(evaluation)
@@ -975,8 +973,8 @@ if(mod == 5){
                                    values_to = "Effects")
 
     evaluation <- data.frame(cbind(Linear         = Linears,
-                        `Square root`             = squares,
-                        `Cubic root`              = cubics))
+                                   `Square root`             = squares,
+                                   `Cubic root`              = cubics))
     #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
     #evaluation <- modelsummary::datasummary_df(evaluation)
@@ -1033,8 +1031,8 @@ if(mod == 5){
                                    values_to = "Effects")
 
     evaluation <- data.frame(cbind(Linear         = Linears,
-                        Quadratic                 = quadratics,
-                        Cubic                     = cubes))
+                                   Quadratic                 = quadratics,
+                                   Cubic                     = cubes))
     #evaluation <- data.frame(evaluation)
     evaluation <- tibble::rownames_to_column(evaluation, var = "Name")
     #evaluation <- modelsummary::datasummary_df(evaluation)
@@ -1249,10 +1247,10 @@ if(mod == 5){
     Fitted <- tidyr::pivot_longer(Fitted, -Observed, names_to = "Model",
                                   values_to = "Fitted")
 
-     Predicted <- tidyr::pivot_longer(Predicted, -Observed, names_to = "Model",
+    Predicted <- tidyr::pivot_longer(Predicted, -Observed, names_to = "Model",
                                      values_to = "Predicted")
 
-     Effects <- tidyr::pivot_longer(Effects, -Observed, names_to = "Model",
+    Effects <- tidyr::pivot_longer(Effects, -Observed, names_to = "Model",
                                    values_to = "Effects")
 
     #evaluation <- data.frame(evaluation)
@@ -1419,7 +1417,7 @@ if(mod == 5){
                      Cubic                = cube,
                      `Mixed-power`        = perlog)
 
- Fitted <- data.frame(Observed            = y1,
+      Fitted <- data.frame(Observed            = y1,
                            Linear              = fitted.values(Linear),
                            `Cobb Douglas`      = exp(fitted.values(loglog)),
                            `Mixed-power`       = exp(fitted.values(perlog)),
@@ -1515,7 +1513,7 @@ if(mod == 5){
     #evaluation <- data.frame(evaluation)
     #evaluation <- modelsummary::datasummary_df(evaluation)
   }
-}
+
   ezhe <- list("Visual means of the numeric variable" = e_meanplot,
                "Correlation plot" = e_corplot,
                "Summary of numeric variables" = KNN1,
@@ -1616,10 +1614,8 @@ if(mod == 5){
                      "Naive effects plots wide format" = Effects_wide)
     }
     results <- c(ezhe, result, rezult)
-  } else {
-    results <- result
-    return(results)
   }
+  return(results)
 }
 
 mmmd <- function (family = NULL, face = NULL, size = NULL, colour = NULL,
