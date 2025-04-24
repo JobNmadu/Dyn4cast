@@ -696,6 +696,9 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
 
   if (case != "complex") {
     if(mod == 5){
+      Data <- linear_data
+      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
+
       Data <- recixy_data
       e_reciD      <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
 
@@ -705,18 +708,27 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       Data <- reciy_data
       e_reciY      <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
     }else if (mod == 4){
+      Data <- linear_data
+      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
+
       Data <- squrut_data
       e_square     <- marginaleffects::avg_slopes(`square root`, by = TRUE)
 
       Data <- curut_data
       e_cubic      <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
     }else if(mod == 3){
+      Data <- linear_data
+      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
+
       Data <- quad_data
       e_quadratic  <- marginaleffects::avg_slopes(quadratic, by = TRUE)
 
       Data <- cube_data
       e_cube       <- marginaleffects::avg_slopes(cube, by = TRUE)
     }else if(mod == 2){
+      Data <- linear_data
+      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
+
       Data <- linlog_data
       e_linlog     <- marginaleffects::avg_slopes(linlog, by = TRUE)
 
@@ -1520,16 +1532,16 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                "Summary of character variables" = KKC,
                "Linear" = Linear,
                "Significant plot of Linear" = v_Linear)
-  result <- if(mod == 0) {
-    list("Visual means of the numeric variable" = e_meanplot,
+  if(mod == 0) {
+    results <- list("Visual means of the numeric variable" = e_meanplot,
          "Correlation plot" = e_corplot,
          "Summary of numeric variables" = KNN1,
          "Summary of character variables" = KKC)
   }else if(mod == 1){
-    list("Linear with interaction" = LinearI,
+    result <- list("Linear with interaction" = LinearI,
          "Significant plot of Linear with interaction" = v_LinearI)
   }else if(mod == 2) {
-    list("Semilog" = linlog,
+    result <- list("Semilog" = linlog,
          "Significant plot of Semilog" = v_linlog,
          "Growth" = loglin,
          "Significant plot of Growth" = v_loglin,
@@ -1540,24 +1552,24 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
          "Translog model" = translog,
          "Significant plot of Translog model" = v_translog)
   }else if (mod == 3) {
-    list("Quadratic" = quadratic,
+    result <- list("Quadratic" = quadratic,
          "Significant plot of Quadratic" = v_quadratic,
          "Cubic model" = cube,
          "Significant plot of Cubic model" = v_cube)
   } else if (mod == 4) {
-    list("Square root" = `square root`,
+    result <- list("Square root" = `square root`,
          "Significant plot of Square root" = v_square,
          "Cubic root" = `cubic root`,
          "Significant plot of Cubic root" = v_cubic)
   } else if (mod == 5) {
-    list("Inverse y" = `reciprocal in Y`,
+    result <-  list("Inverse y" = `reciprocal in Y`,
          "Significant plot of Inverse y" = v_reciY,
          "Inverse x" = `reciprocal in X`,
          "Significant plot of Inverse x" = v_reciX,
          "Inverse y & x" = `double reciprocal`,
          "Significant plot of Inverse y & x" = v_reciD)
   }else{
-    list("Linear with interaction" = LinearI,
+    result <- list("Linear with interaction" = LinearI,
          "Significant plot of Linear with interaction" = v_LinearI,
          "Semilog" = linlog,
          "Significant plot of Semilog" = v_linlog,
