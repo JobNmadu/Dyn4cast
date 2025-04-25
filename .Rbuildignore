@@ -5,7 +5,6 @@
 ^data-raw$
 ^LICENSE\.md$
 ^README\.Rmd$
-^appveyor\.yml$
 ^\.travis\.yml$
 ^codecov\.yml$
 ^CODE_OF_CONDUCT\.md$
