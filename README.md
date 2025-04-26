@@ -295,7 +295,7 @@ To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2025). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.24, commit
-  59c2e80b28e6261be1621467d21813883d818265,
+  863511156935524960ff1af505ada562a7b9ddf2,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -304,7 +304,7 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2025},
-    note = {R package version 11.11.24, commit 59c2e80b28e6261be1621467d21813883d818265},
+    note = {R package version 11.11.24, commit 863511156935524960ff1af505ada562a7b9ddf2},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
