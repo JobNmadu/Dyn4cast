@@ -18,7 +18,8 @@
 [![GitHub release (latest by
 date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
-[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
+[![codecov test
+coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
@@ -295,7 +296,7 @@ To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2025). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.24, commit
-  863511156935524960ff1af505ada562a7b9ddf2,
+  16418140286f04d3ce71ad520b75b3befec9d1c6,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -304,7 +305,7 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2025},
-    note = {R package version 11.11.24, commit 863511156935524960ff1af505ada562a7b9ddf2},
+    note = {R package version 11.11.24, commit 16418140286f04d3ce71ad520b75b3befec9d1c6},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
