@@ -183,18 +183,18 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
   xcha_n <- names(xcha)
 
   y <- Data$y
-  linear_data <- Data
-
   Linear <- lm(y ~ ., data = Data)
   Linears <- MLMetrics(Observed = Data, yvalue = y, Model = Linear,
                        K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                        TTy = "Number")
   v_Linear <- estimate_plot(Model = Linear, limit = limit)
-
+  if (case != "complex") {
+    e_Linear <- marginaleffects::avg_slopes(Linear, by = TRUE)
+  } else {
+    e_Linear <- NULL
+  }
   KNN <- Data %>% dplyr::select_if(is.numeric)
-
   KNN1 <- quicksummary(x = KNN, Type = 1)
-
   KKC <- Data %>%
     dplyr::select_if(is.character) %>%
     summary()
@@ -251,133 +251,159 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     stop(message(paste("Choose between", 0,
                        "and", 6)))
   }
-
   if(mod == 5){
     Data <- cbind(y, xnum, xcha)
-    reciy_data <- Data
-
     `reciprocal in Y` <- lm((1/(y + 1)) ~ ., data = Data)
     reciY <- MLMetrics(Observed = Data, yvalue = y, Model = `reciprocal in Y`,
                        K = 2, Name = "Semilog in Y", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciY <- estimate_plot(Model = `reciprocal in Y`, limit = limit)
-
+    if (case != "complex") {
+      e_reciY <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
+    } else {
+      e_reciY <- NULL
+    }
     xnum8 <- 1/(xnum + 1)
     Data <- cbind(y = y, xnum8, xcha)
-    recix_data <- Data
     y <- Data$y
-
     `reciprocal in X` <- lm(y ~ ., data = Data)
     reciX <- MLMetrics(Observed = Data, yvalue = y, Model = `reciprocal in X`,
                        K = 2, Name = "Inverse in X", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciX <- estimate_plot(Model = `reciprocal in X`, limit = limit)
-
+    if (case != "complex") {
+      e_reciX <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
+    } else {
+      e_reciX <- NULL
+    }
     Data$y <- y <- 1/(y + 1)
-    recixy_data <- Data
-
     `double reciprocal` <- lm(y ~ ., data = Data)
     reciD <- MLMetrics(Observed = Data, yvalue = y, Model = `double reciprocal`,
                        K = 2, Name = "Inverse in Y & X", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciD <- estimate_plot(Model = `double reciprocal`, limit = limit)
+    if (case != "complex") {
+      e_reciD  <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
+
+    } else {
+      e_reciD <- NULL
+    }
   }else if (mod == 4){
     xnum3 <- xnum^.5
     names(xnum3) <- paste("I", names(xnum3), sep = "")
     DD3 <- cbind(y, xnum, xcha, xnum3)
     Data <- DD3
-    squrut_data <- Data
     y <- Data$y
-
     `square root` <- lm(y ~ ., data = Data)
     squares <- MLMetrics(Observed = Data, yvalue = y, Model = `square root`,
                          K = 2, Name = "Square root", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_square <- estimate_plot(Model = `square root`, limit = limit)
-
+    if (case != "complex") {
+      e_square <- marginaleffects::avg_slopes(`square root`, by = TRUE)
+    } else {
+      e_square <- NULL
+    }
     xnum4 <- xnum^(1/3)
     names(xnum4) <- paste("I", names(xnum4), sep = "")
     DD4 <- cbind(y, xnum, xcha, xnum4)
     Data <- DD4
-    curut_data <- Data
     y <- Data$y
-
     `cubic root` <- lm(y ~ ., data = Data)
     cubics <- MLMetrics(Observed = Data, yvalue = y, Model = `cubic root`,
                         K = 2, Name = "Cubic root", Form = "LM", kutuf = 0,
                         TTy = "Number")
     v_cubic <- estimate_plot(Model = `cubic root`, limit = limit)
+    if (case != "complex") {
+      e_cubic <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
+    } else {
+      e_cubic <- NULL
+    }
   }else if(mod == 3){
     xnum1 <- xnum^2
     names(xnum1) <- paste("I", names(xnum1), sep = "")
     DD2 <- cbind(y, xnum, xcha, xnum1)
     Data <- DD2
-    quad_data <- Data
     y <- Data$y
-
     quadratic <- lm(y ~ ., data = Data)
     quadratics <- MLMetrics(Observed = Data, yvalue = y, Model = quadratic,
                             K = 2, Name = "Quadratic", Form = "LM", kutuf = 0,
                             TTy = "Number")
     v_quadratic <- estimate_plot(Model = quadratic, limit = limit)
-
+    if (case != "complex") {
+      e_quadratic <- marginaleffects::avg_slopes(quadratic, by = TRUE)
+    } else {
+      e_quadratic <- NULL
+    }
     xnum2 <- xnum^3
     names(xnum2) <- paste("IC", names(xnum), sep = "")
     Data <- cbind(DD2, xnum2)
-    cube_data <- Data
     y <- Data$y
-
     cube <- lm(y ~ ., data = Data)
     cubes <- MLMetrics(Observed = Data, yvalue = y, Model = cube,
                        K = 2, Name = "Cube", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_cube <- estimate_plot(Model = cube, limit = limit)
+    if (case != "complex") {
+      e_cube  <- marginaleffects::avg_slopes(cube, by = TRUE)
+    } else {
+      e_cube  <- NULL
+    }
   }else if(mod == 2){
     Data <- cbind(y = log(y +1), xnum, xcha)
-    loglin_data <- Data
     y <- Data$y
     loglin <- lm(y ~ ., data = Data)
     loglins <- MLMetrics(Observed = Data, yvalue = y, Model = loglin,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_loglin <- estimate_plot(Model = loglin, limit = limit)
-
+    if (case != "complex") {
+      e_loglin  <- marginaleffects::avg_slopes(loglin, by = TRUE)
+    } else {
+      e_loglin  <- NULL
+    }
     xnum5 <- log(xnum + 1)
     DD5 <- cbind(y, xnum5, xcha)
     Data <- DD5
-    linlog_data <- Data
     y <- Data$y
-
     linlog <- lm(y ~ ., data = Data)
     linlogs <- MLMetrics(Observed = Data, yvalue = y, Model = linlog,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_linlog <- estimate_plot(Model = linlog, limit = limit)
-
+    if (case != "complex") {
+      e_linlog  <- marginaleffects::avg_slopes(linlog, by = TRUE)
+    } else {
+      e_linlog  <- NULL
+    }
     names(xnum5) <- paste("I", names(xnum5), sep = "")
     DD6 <- cbind(y, xnum, xcha, xnum5 )
     Data <- DD6
-    perlog_data <- Data
     y <- Data$y
-
     perlog <- lm(y ~ ., data = Data)
     perlogs <- MLMetrics(Observed = Data, yvalue = y, Model = perlog,
                          K = 2, Name = "Mixed-power", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_perlog <- estimate_plot(Model = perlog, limit = limit)
-
+    if (case != "complex") {
+      e_perlog <- marginaleffects::avg_slopes(perlog, by = TRUE)
+    } else {
+      e_perlog <- NULL
+    }
     DD7 <- cbind(y = y, xnum)
     DD7 <- log(DD7 + 1)
     Data <- cbind(DD7, xcha)
-    loglog_data <- Data
     y = Data$y
-
     loglog <- lm(y ~ ., data = Data)
     loglogs <- MLMetrics(Observed = Data, yvalue = y, Model = loglog,
                          K = 2, Name = "Cobb Douglas", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_loglog <- estimate_plot(Model = loglog, limit = limit)
-
+    if (case != "complex") {
+      e_loglog  <- marginaleffects::avg_slopes(loglog, by = TRUE)
+    } else {
+      e_loglog  <- NULL
+    }
     xnum6 <- log(xnum + 1)
     xnum6_n <- names(xnum6)
     xnum7 <- xnum6^2
@@ -414,21 +440,20 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     }
 
     Data <- cbind(y = log(y + 1), DD7)
-    translog_data <- Data
     y <- Data$y
-
     if (case != "complex"){
       translog <- lm(MOD, data = Data)
       translogs <- MLMetrics(Observed = Data, yvalue = y, Model = translog,
                              K = 2, Name = "Translog", Form = "LM", kutuf = 0,
                              TTy = "Number")
       v_translog <- estimate_plot(Model = translog, limit = limit)
+      e_translog  <- marginaleffects::avg_slopes(translog, by = TRUE)
     } else{
       translog <- NULL
       translogs <- NULL
       v_translog <- NULL
+      e_translog  <- NULL
     }
-
   }else if(mod == 1){
     DD0 <- cbind(xnum, xcha)
     DDn <- names(DD0)
@@ -452,20 +477,19 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     }
 
     Data <- cbind(y, DD0)
-    linear1_data <- Data
-
     if (case != "complex") {
       LinearI <- lm(MOD, data = Data)
       LinearIs <- MLMetrics(Observed = Data, yvalue = y, Model = LinearI,
                             K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                             TTy = "Number")
       v_LinearI <- estimate_plot(Model = LinearI, limit = limit)
+      e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
     } else {
       LinearI <- NULL
       LinearIs <- NULL
       v_LinearI <- NULL
+      e_LinearI <- NULL
     }
-
   }else if(mod == 0){
     KNN1 <- KNN1
 
@@ -493,135 +517,144 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                                                collapse = "+")),
                                   collapse = " ~ "))
     }
-
     Data <- cbind(y, DD0)
-    linear1_data <- Data
-
     if (case != "complex") {
       LinearI <- lm(MOD, data = Data)
       LinearIs <- MLMetrics(Observed = Data, yvalue = y, Model = LinearI,
                             K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                             TTy = "Number")
       v_LinearI <- estimate_plot(Model = LinearI, limit = limit)
+      e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
     } else {
       LinearI <- NULL
       LinearIs <- NULL
       v_LinearI <- NULL
+      e_LinearI <- NULL
     }
-
     Data <- cbind(y, xnum, xcha)
-    reciy_data <- Data
-
     `reciprocal in Y` <- lm((1/(y + 1)) ~ ., data = Data)
     reciY <- MLMetrics(Observed = Data, yvalue = y, Model = `reciprocal in Y`,
                        K = 2, Name = "Semilog in Y", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciY <- estimate_plot(Model = `reciprocal in Y`, limit = limit)
-
+    if (case != "complex") {
+      e_reciY <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
+    } else {
+      e_reciY <- NULL
+    }
     Data <- cbind(y = log(y +1), xnum, xcha)
-    loglin_data <- Data
-
     y <- Data$y
     loglin <- lm(y ~ ., data = Data)
     loglins <- MLMetrics(Observed = Data, yvalue = y, Model = loglin,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_loglin <- estimate_plot(Model = loglin, limit = limit)
-
+    if (case != "complex") {
+      e_loglin  <- marginaleffects::avg_slopes(loglin, by = TRUE)
+    } else {
+      e_loglin  <- NULL
+    }
     xnum1 <- xnum^2
     names(xnum1) <- paste("I", names(xnum1), sep = "")
     DD2 <- cbind(y, xnum, xcha, xnum1)
     Data <- DD2
-    quad_data <- Data
-
     y <- Data$y
-
     quadratic <- lm(y ~ ., data = Data)
     quadratics <- MLMetrics(Observed = Data, yvalue = y, Model = quadratic,
                             K = 2, Name = "Quadratic", Form = "LM", kutuf = 0,
                             TTy = "Number")
     v_quadratic <- estimate_plot(Model = quadratic, limit = limit)
-
+    if (case != "complex") {
+      e_quadratic <- marginaleffects::avg_slopes(quadratic, by = TRUE)
+    } else {
+      e_quadratic <- NULL
+    }
     xnum2 <- xnum^3
     names(xnum2) <- paste("IC", names(xnum), sep = "")
     Data <- cbind(DD2, xnum2)
-    cube_data <- Data
-
     y <- Data$y
-
     cube <- lm(y ~ ., data = Data)
     cubes <- MLMetrics(Observed = Data, yvalue = y, Model = cube,
                        K = 2, Name = "Cube", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_cube <- estimate_plot(Model = cube, limit = limit)
-
+    if (case != "complex") {
+      e_cube  <- marginaleffects::avg_slopes(cube, by = TRUE)
+    } else {
+      e_cube  <- NULL
+    }
     xnum3 <- xnum^.5
     names(xnum3) <- paste("I", names(xnum3), sep = "")
     DD3 <- cbind(y, xnum, xcha, xnum3)
     Data <- DD3
-    squrut_data <- Data
-
     y <- Data$y
-
     `square root` <- lm(y ~ ., data = Data)
     squares <- MLMetrics(Observed = Data, yvalue = y, Model = `square root`,
                          K = 2, Name = "Square root", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_square <- estimate_plot(Model = `square root`, limit = limit)
-
+    if (case != "complex") {
+      e_square <- marginaleffects::avg_slopes(`square root`, by = TRUE)
+    } else {
+      e_square <- NULL
+    }
     xnum4 <- xnum^(1/3)
     names(xnum4) <- paste("I", names(xnum4), sep = "")
     DD4 <- cbind(y, xnum, xcha, xnum4)
     Data <- DD4
-    curut_data <- Data
-
     y <- Data$y
-
     `cubic root` <- lm(y ~ ., data = Data)
     cubics <- MLMetrics(Observed = Data, yvalue = y, Model = `cubic root`,
                         K = 2, Name = "Cubic root", Form = "LM", kutuf = 0,
                         TTy = "Number")
     v_cubic <- estimate_plot(Model = `cubic root`, limit = limit)
-
+    if (case != "complex") {
+      e_cubic <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
+    } else {
+      e_cubic <- NULL
+    }
     xnum5 <- log(xnum + 1)
     DD5 <- cbind(y, xnum5, xcha)
     Data <- DD5
-    linlog_data <- Data
-
     y <- Data$y
-
     linlog <- lm(y ~ ., data = Data)
     linlogs <- MLMetrics(Observed = Data, yvalue = y, Model = linlog,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_linlog <- estimate_plot(Model = linlog, limit = limit)
-
+    if (case != "complex") {
+      e_linlog  <- marginaleffects::avg_slopes(linlog, by = TRUE)
+    } else {
+      e_linlog  <- NULL
+    }
     names(xnum5) <- paste("I", names(xnum5), sep = "")
     DD6 <- cbind(y, xnum, xcha, xnum5 )
     Data <- DD6
-    perlog_data <- Data
-
     y <- Data$y
-
     perlog <- lm(y ~ ., data = Data)
     perlogs <- MLMetrics(Observed = Data, yvalue = y, Model = perlog,
                          K = 2, Name = "Mixed-power", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_perlog <- estimate_plot(Model = perlog, limit = limit)
-
+    if (case != "complex") {
+      e_perlog <- marginaleffects::avg_slopes(perlog, by = TRUE)
+    } else {
+      e_perlog <- NULL
+    }
     DD7 <- cbind(y = y, xnum)
     DD7 <- log(DD7 + 1)
     Data <- cbind(DD7, xcha)
-    loglog_data <- Data
-
     y = Data$y
-
     loglog <- lm(y ~ ., data = Data)
     loglogs <- MLMetrics(Observed = Data, yvalue = y, Model = loglog,
                          K = 2, Name = "Cobb Douglas", Form = "LM", kutuf = 0,
                          TTy = "Number")
     v_loglog <- estimate_plot(Model = loglog, limit = limit)
-
+    if (case != "complex") {
+      e_loglog  <- marginaleffects::avg_slopes(loglog, by = TRUE)
+    } else {
+      e_loglog  <- NULL
+    }
     xnum6 <- log(xnum + 1)
     xnum6_n <- names(xnum6)
     xnum7 <- xnum6^2
@@ -654,163 +687,46 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
                                                collapse = "+")),
                                   collapse = " ~ "))
     }
-
     Data <- cbind(y = log(y + 1), DD7)
-    translog_data <- Data
-
     y <- Data$y
-
     if (case != "complex"){
       translog <- lm(MOD, data = Data)
       translogs <- MLMetrics(Observed = Data, yvalue = y, Model = translog,
                              K = 2, Name = "Translog", Form = "LM", kutuf = 0,
                              TTy = "Number")
       v_translog <- estimate_plot(Model = translog, limit = limit)
+      e_translog  <- marginaleffects::avg_slopes(translog, by = TRUE)
     } else{
       translog <- NULL
       translogs <- NULL
       v_translog <- NULL
+      e_translog  <- NULL
     }
-
     xnum8 <- 1/(xnum + 1)
     Data <- cbind(y = y, xnum8, xcha)
-    recix_data <- Data
-
     y <- Data$y
-
     `reciprocal in X` <- lm(y ~ ., data = Data)
     reciX <- MLMetrics(Observed = Data, yvalue = y, Model = `reciprocal in X`,
                        K = 2, Name = "Inverse in X", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciX <- estimate_plot(Model = `reciprocal in X`, limit = limit)
-
+    if (case != "complex") {
+      e_reciX <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
+    } else {
+      e_reciX <- NULL
+    }
     Data$y <- y <- 1/(y + 1)
-    recixy_data <- Data
-
     `double reciprocal` <- lm(y ~ ., data = Data)
     reciD <- MLMetrics(Observed = Data, yvalue = y, Model = `double reciprocal`,
                        K = 2, Name = "Inverse in Y & X", Form = "LM", kutuf = 0,
                        TTy = "Number")
     v_reciD <- estimate_plot(Model = `double reciprocal`, limit = limit)
-  }
-
-  if (case != "complex") {
-    if(mod == 5){
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- recixy_data
-      e_reciD      <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
-
-      Data <- recix_data
-      e_reciX      <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
-
-      Data <- reciy_data
-      e_reciY      <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
-    }else if (mod == 4){
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- squrut_data
-      e_square     <- marginaleffects::avg_slopes(`square root`, by = TRUE)
-
-      Data <- curut_data
-      e_cubic      <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
-    }else if(mod == 3){
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- quad_data
-      e_quadratic  <- marginaleffects::avg_slopes(quadratic, by = TRUE)
-
-      Data <- cube_data
-      e_cube       <- marginaleffects::avg_slopes(cube, by = TRUE)
-    }else if(mod == 2){
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- linlog_data
-      e_linlog     <- marginaleffects::avg_slopes(linlog, by = TRUE)
-
-      Data <- loglin_data
-      e_loglin     <- marginaleffects::avg_slopes(loglin, by = TRUE)
-
-      Data <- loglog_data
-      e_loglog     <- marginaleffects::avg_slopes(loglog, by = TRUE)
-
-      Data <- perlog_data
-      e_perlog     <- marginaleffects::avg_slopes(perlog, by = TRUE)
-
-      Data <- translog_data
-      e_translog   <- marginaleffects::avg_slopes(translog, by = TRUE)
-    }else if(mod == 1){
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- linear1_data
-      e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
-    }else if(mod == 0){
-      cat("EDA...", "\n")
-    }else{
-      Data <- linear_data
-      e_Linear     <- marginaleffects::avg_slopes(Linear, by = TRUE)
-
-      Data <- linear1_data
-      e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
-
-      Data <- cube_data
-      e_cube       <- marginaleffects::avg_slopes(cube, by = TRUE)
-
-      Data <- curut_data
-      e_cubic      <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
-
-      Data <- linlog_data
-      e_linlog     <- marginaleffects::avg_slopes(linlog, by = TRUE)
-
-      Data <- loglin_data
-      e_loglin     <- marginaleffects::avg_slopes(loglin, by = TRUE)
-
-      Data <- loglog_data
-      e_loglog     <- marginaleffects::avg_slopes(loglog, by = TRUE)
-
-      Data <- perlog_data
-      e_perlog     <- marginaleffects::avg_slopes(perlog, by = TRUE)
-
-      Data <- quad_data
-      e_quadratic  <- marginaleffects::avg_slopes(quadratic, by = TRUE)
-
-      Data <- recixy_data
-      e_reciD      <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
-
-      Data <- recix_data
-      e_reciX      <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
-
-      Data <- reciy_data
-      e_reciY      <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
-
-      Data <- squrut_data
-      e_square     <- marginaleffects::avg_slopes(`square root`, by = TRUE)
-
-      Data <- translog_data
-      e_translog   <- marginaleffects::avg_slopes(translog, by = TRUE)
+    if (case != "complex") {
+      e_reciD <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
+    } else {
+      e_reciD <- NULL
     }
-  } else {
-    e_Linear     <- NULL
-    e_LinearI    <- NULL
-    e_cube       <- NULL
-    e_cubic      <- NULL
-    e_linlog     <- NULL
-    e_loglin     <- NULL
-    e_loglog     <- NULL
-    e_perlog     <- NULL
-    e_quadratic  <- NULL
-    e_reciD      <- NULL
-    e_reciX      <- NULL
-    e_reciY      <- NULL
-    e_square     <- NULL
-    e_translog   <- NULL
   }
-
   Test <- Test
   AA <- dim(Test)
 

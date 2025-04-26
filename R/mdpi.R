@@ -72,11 +72,13 @@
 #'
 #' @export mdpi
 #'
+#' @aliases mdpi1
+#' @aliases mdpi2
+#'
 #' @examples
 #' # Not run, uncomment to run
-#' # library(MPI)
-#' # data("examplePovertydf")
-#' # data <- examplePovertydf
+#' # data from `MPI` package
+#' # data <- mdpi1
 #' # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
 #' #            d2 = c("Years.of.education", "School.attendance", "School.lag"),
 #' #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
@@ -85,9 +87,8 @@
 #' # mdpi(data, dm, plots = "t", Factor = "Region")
 #' # mdpi(data, dm, plots = "t")
 #' #
-#' # library(mpitbR)
-#' # data <- subset(syn_cdta)
-#' # data <- na.omit(data)
+#' # data from `mpitbR` package
+#' # data <- mdpi2
 #' # dm <- list(d1 = c("d_nutr","d_cm"),
 #' #            d2 = c("d_satt","d_educ"),
 #' #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))

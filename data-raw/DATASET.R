@@ -51,3 +51,13 @@ treatments <- readr::read_csv("treatments.csv")
 saveRDS(treatments, "inst/treatments.RDS")
 
 usethis::use_data(treatments, overwrite = TRUE)
+
+mdpi1 <- readr::read_csv("mdpi1.csv")
+saveRDS(mdpi1, "inst/mdpi1.RDS")
+
+usethis::use_data(mdpi1, overwrite = TRUE)
+
+mdpi2 <- readr::read_csv("mdpi2.csv")
+saveRDS(mdpi2, "inst/mdpi2.RDS")
+
+usethis::use_data(mdpi2, overwrite = TRUE)

@@ -2,6 +2,8 @@
 % Please edit documentation in R/mdpi.R
 \name{mdpi}
 \alias{mdpi}
+\alias{mdpi1}
+\alias{mdpi2}
 \title{Sequential Computation of Dynamic Multidimensional Poverty Indices (MDPI)}
 \usage{
 mdpi(
@@ -94,9 +96,8 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 }
 \examples{
 # Not run, uncomment to run
-# library(MPI)
-# data("examplePovertydf")
-# data <- examplePovertydf
+# data from `MPI` package
+# data <- mdpi1
 # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
 #            d2 = c("Years.of.education", "School.attendance", "School.lag"),
 #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
@@ -105,9 +106,8 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 # mdpi(data, dm, plots = "t", Factor = "Region")
 # mdpi(data, dm, plots = "t")
 #
-# library(mpitbR)
-# data <- subset(syn_cdta)
-# data <- na.omit(data)
+# data from `mpitbR` package
+# data <- mdpi2
 # dm <- list(d1 = c("d_nutr","d_cm"),
 #            d2 = c("d_satt","d_educ"),
 #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
