@@ -45,7 +45,7 @@ metrics on the table and makes it easier to use them to select a model.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">MLMetrics</span><span class="op">(</span><span class="va">Observed</span>, <span class="va">yvalue</span>, <span class="va">Model</span>, <span class="va">K</span>, <span class="va">Name</span>, <span class="va">Form</span>, <span class="va">kutuf</span>, <span class="va">TTy</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">MLMetrics</span><span class="op">(</span><span class="va">Observed</span>, <span class="va">yvalue</span>, <span class="va">modeli</span>, <span class="va">K</span>, <span class="va">Name</span>, <span class="va">Form</span>, <span class="va">kutuf</span>, <span class="va">TTy</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,7 +60,7 @@ metrics on the table and makes it easier to use them to select a model.</p>
 <dd><p>The Response variable of the estimated Model</p></dd>
 
 
-<dt id="arg-model">Model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
+<dt id="arg-modeli">modeli<a class="anchor" aria-label="anchor" href="#arg-modeli"></a></dt>
 <dd><p>The Estimated Model (<em>Model</em> = a + bx)</p></dd>
 
 
@@ -234,7 +234,7 @@ EssemWet, QUADRATIC polynomial, SPLINE polynomial.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">splines</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Model</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">states</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html" class="external-link">bs</a></span><span class="op">(</span><span class="va">sequence</span>, knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">115</span><span class="op">)</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">Data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">MLMetrics</span><span class="op">(</span>Observed <span class="op">=</span> <span class="va">Data</span>, yvalue <span class="op">=</span> <span class="va">Data</span><span class="op">$</span><span class="va">states</span>, Model <span class="op">=</span> <span class="va">Model</span>, K <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span><span class="fu">MLMetrics</span><span class="op">(</span>Observed <span class="op">=</span> <span class="va">Data</span>, yvalue <span class="op">=</span> <span class="va">Data</span><span class="op">$</span><span class="va">states</span>, modeli <span class="op">=</span> <span class="va">Model</span>, K <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span> Name <span class="op">=</span> <span class="st">"Linear"</span>, Form <span class="op">=</span> <span class="st">"LM"</span>, kutuf <span class="op">=</span> <span class="fl">0</span>, TTy <span class="op">=</span> <span class="st">"Number"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>actual should be a list of vectors. Converting to a list.</span>

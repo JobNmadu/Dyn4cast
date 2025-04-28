@@ -51,7 +51,7 @@ is set to do. It is simple and straight forward to use.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">data_transform</span><span class="op">(</span><span class="va">data</span>, <span class="va">method</span>, MARGIN <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">data_transform</span><span class="op">(</span><span class="va">data</span>, <span class="va">method</span>, margin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -69,7 +69,7 @@ in the data are transformed</p></dd>
 for <code>mean-SD</code> transformation.</p></dd>
 
 
-<dt id="arg-margin">MARGIN<a class="anchor" aria-label="anchor" href="#arg-margin"></a></dt>
+<dt id="arg-margin">margin<a class="anchor" aria-label="anchor" href="#arg-margin"></a></dt>
 <dd><p>Option to either transform the data <code>2 == column-wise</code> or
 <code>1 == row-wise</code>. Defaults to <code>column-wise</code> transformation if no option is
 indicated.</p></dd>
@@ -77,7 +77,8 @@ indicated.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>This function returns the output of the data transformation process as</p>
+    <p>This function returns the output of the data transformation process
+as</p>
 <dl><dt><code>tata_transformed</code></dt>
 <dd><p>A new <code>data.frame</code> containing the
 transformed values</p></dd>

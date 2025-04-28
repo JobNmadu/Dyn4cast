@@ -60,14 +60,14 @@ based models only.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">MallowsCp</span><span class="op">(</span><span class="va">Model</span>, <span class="va">y</span>, <span class="va">x</span>, <span class="va">type</span>, Nlevels <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">MallowsCp</span><span class="op">(</span><span class="va">model2</span>, <span class="va">y</span>, <span class="va">x</span>, <span class="va">type</span>, Nlevels <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-model">Model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
+<dl><dt id="arg-model-">model2<a class="anchor" aria-label="anchor" href="#arg-model-"></a></dt>
 <dd><p>The estimated <strong>model</strong> from which the Mallows Cp would be
 computed</p></dd>
 
@@ -120,7 +120,7 @@ involves interaction terms.</p></dd>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ctl</span>, <span class="va">trt</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Type</span> <span class="op">&lt;-</span> <span class="st">"LM"</span></span></span>
-<span class="r-in"><span><span class="fu">MallowsCp</span><span class="op">(</span>Model <span class="op">=</span> <span class="va">Model</span>, y <span class="op">=</span> <span class="va">y</span>, x <span class="op">=</span> <span class="va">x</span>, type <span class="op">=</span> <span class="va">Type</span>, Nlevels <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">MallowsCp</span><span class="op">(</span>model2 <span class="op">=</span> <span class="va">Model</span>, y <span class="op">=</span> <span class="va">y</span>, x <span class="op">=</span> <span class="va">x</span>, type <span class="op">=</span> <span class="va">Type</span>, Nlevels <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 </code></pre></div>
     </div>
