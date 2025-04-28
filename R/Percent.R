@@ -29,36 +29,31 @@
 #' Data <- 1.2
 #' Percent(Data = Data, Type = "Value")  # Value, Frame
 #' Percent(Data = sample, Type = "Frame")  # Value, Frame
-Percent <- function(Data, Type, format = "f", ...){
+Percent <- function(Data, Type, format = "f", ...) {
   options(scipen = 999, digits = 2)
   if (Type == "Value") {
     percent <- Data
-    Rate <- (percent/percent)*100
-    percent <- paste0(formatC(percent/(1)), "%")
+    Rate <- (percent / percent) * 100
+    percent <- paste0(formatC(percent / (1)), "%")
   } else {
     percent <- Data
-    if(is.null(dim(percent))){
-      Rate <- percent/sum(percent)*100
-      percent <- paste0(formatC((percent/sum(percent))*100, format = format,
+    if (is.null(dim(percent))) {
+      Rate <- percent / sum(percent) * 100
+      percent <- paste0(formatC((percent / sum(percent)) * 100, format = format,
                                 ...), "%")
-    }else{
-      Data <- sweep(Data, 2, colSums(Data), FUN = "/")*100
+    } else {
+      Data <- sweep(Data, 2, colSums(Data), FUN = "/") * 100
       percent <- Rate <- as.data.frame(as.matrix(Data))
       HI <- nrow(percent)
       GI <- ncol(percent)
-      for (i in 1:HI){
-        for (j in 1:GI){
+      for (i in 1:HI) {
+        for (j in 1:GI) {
           percent[i, j] <- paste0(percent[i, j], "%")
         }
       }
-      #Data1 <- as.data.frame(lapply(Data0, as.numeric, digits = 2))
-      #Data2 <- as.data.frame(Data0, digits = 2)
-      #sapply(Data0, paste0(formatC(Data0, digits = 2), "%"))
-      #paste0(formatC(Data1, digits = digits), "%", format = "f")
     }
   }
   result <- list(percent = percent,
                  Rate = Rate)
   return(result)
 }
-

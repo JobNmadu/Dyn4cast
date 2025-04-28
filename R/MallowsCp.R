@@ -10,7 +10,7 @@
 #' does not require nested models for computation and it is not limited to `lm`
 #' based models only.
 #'
-#' @param Model The estimated **model** from which the Mallows Cp would be
+#' @param model2 The estimated **model** from which the Mallows Cp would be
 #' computed
 #' @param y The vector of the **LHS** variable of the estimated model
 #' @param x The matrix of the **RHS** variable of the estimated model. Note
@@ -46,8 +46,8 @@
 #' y <- c(ctl, trt)
 #' Model <- lm(y ~ x)
 #' Type <- "LM"
-#' MallowsCp(Model = Model, y = y, x = x, type = Type, Nlevels = 0)
-MallowsCp <- function(Model, y, x, type, Nlevels = 0){
+#' MallowsCp(model2 = Model, y = y, x = x, type = Type, Nlevels = 0)
+MallowsCp <- function(model2, y, x, type, Nlevels = 0){
   size <- length(y)
   if (is.null(ncol(x))){
     nvars <- 1
@@ -58,27 +58,27 @@ MallowsCp <- function(Model, y, x, type, Nlevels = 0){
   if(type == "QUADRATIC"){
     Nlevels = 1
   }else if(type == "SPLINE"){
-    Nlevels = Model[["rank"]] - 4
+    Nlevels = model2[["rank"]] - 4
   }else{
     Nlevels = 0
   }
 
   DFF <- size - nvars + Nlevels - 1
   if(type == "LM"){
-    RSSp <- sum(Model[["residuals"]]^2)
+    RSSp <- sum(model2[["residuals"]]^2)
     MSEp <- RSSp/DFF
   }else if(type == "SMOOTH"){
-    RSSp <- sum(y - fitted.values(Model))^2
+    RSSp <- sum(y - fitted.values(model2))^2
     MSEp <- RSSp/DFF
   }else if(type == "ALM" | type == "ARIMA" | type == "plm" | type == "ARDL" |
            type == "GLM" | type == "nls"){
-    RSSp <- sum(Model[["residuals"]]^2)
+    RSSp <- sum(model2[["residuals"]]^2)
     MSEp <- RSSp/DFF
   }else if (type == "N-LM"){
-    RSSp <- sum(y - Model)^2
+    RSSp <- sum(y - model2)^2
     MSEp <- RSSp/DFF
   }else{
-    RSSp <- sum(Model[["residuals"]]^2)
+    RSSp <- sum(model2[["residuals"]]^2)
     MSEp <- RSSp/DFF
   }
   Cp <- RSSp/MSEp-size+2*(nvars+Nlevels+1)

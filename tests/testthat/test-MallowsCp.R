@@ -5,9 +5,9 @@ test_that("MallowsCp works", {
   y <- c(ctl, trt)
   Model <- lm(y ~ x)
   Type <- "LM"
-  test <- MallowsCp(Model = Model, y = y, x = x, type = Type, Nlevels = 0)
+  test <- MallowsCp(model2 = Model, y = y, x = x, type = Type, Nlevels = 0)
 
-  expect_identical(test, MallowsCp(Model = Model, y = y, x = x, type = Type,
+  expect_identical(test, MallowsCp(model2 = Model, y = y, x = x, type = Type,
                                    Nlevels = 0))
 
 })

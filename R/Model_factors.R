@@ -69,27 +69,27 @@ model_factors <- function(data, DATA) {
     tidyr::drop_na(Loading) %>%
     mutate(Loading = Variable) %>%
     tidyr::pivot_wider(names_from = Latent,
-                values_from = Loading)
+                       values_from = Loading)
 
   Factors2 <- dplyr::select(Factors1, c(2:ncol(Factors1)))
 
   py <- nrow(Factors2)
   pz <- ncol(Factors2)
-  Factors3 <- as.data.frame(matrix(nrow=py, ncol=pz))
-  for(i in 1 : py) {
-    for(j in 1 : pz){
-      if (Factors[i, j] > is.na(Factors[i+1, j])){
-        Factors3[i+1,j] = NA
+  Factors3 <- as.data.frame(matrix(nrow = py, ncol = pz))
+  for (i in 1 : py) {
+    for (j in 1 : pz) {
+      if (Factors[i, j] > is.na(Factors[i + 1, j])) {
+        Factors3[i + 1, j]  <-  NA
       } else if (Factors[i, j] != "      ")  {
-        Factors3[i,j] = Factors2[i, j]
+        Factors3[i, j]  <-  Factors2[i, j]
       } else {
-        Factors3[i,j] = NA
+        Factors3[i, j] <- NA
       }
     }
   }
   names(Factors3) <- names(Factors)
 
-  Factor_m[Factor_m == "      "] = NA
+  Factor_m[Factor_m == "      "]  <-  NA
 
   if (ncol(Factors3) < 2 | ncol(Factors3) > 9) {
     stop("Factors must be uqual or above 2 and less than or equal 9 to proceed")
@@ -212,8 +212,8 @@ model_factors <- function(data, DATA) {
                      collapse = " + ") %>%
           eees(.)
 
-         expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6, MR7, MR8, MR9),
-                               nm = c("MR1", "MR2", "MR3", "MR4", "MR5",
+        expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6, MR7, MR8, MR9),
+                              nm = c("MR1", "MR2", "MR3", "MR4", "MR5",
                                       "MR6", "MR7", "MR8", "MR9"))
       } else if (i == 8) {
         Mk999 <- NULL
@@ -478,7 +478,7 @@ model_factors <- function(data, DATA) {
         expression <- setNames(c(MR1, MR2, MR3, MR4, MR5, MR6),
                                nm = c("MR1", "MR2", "MR3", "MR4", "MR5", "MR6"))
 
-      } else if (i == 5){
+      } else if (i == 5) {
 
         Mk999 <- Mk888 <- Mk777 <- Mk666 <- NULL
         MRi1 <- unique(c(intersect(kk(Factors3$MR1), kk(Factors3$MR2)),
@@ -656,8 +656,7 @@ model_factors <- function(data, DATA) {
   return(results)
 }
 
-printLoadings <- function (x, digits = 3, cutoff = 0.4, sort = TRUE, ...)
-{
+printLoadings <- function(x, digits = 3, cutoff = 0.4, sort = TRUE, ...) {
   Lambda <- unclass(x)
   p <- nrow(Lambda)
   factors <- ncol(Lambda)
@@ -676,28 +675,25 @@ printLoadings <- function (x, digits = 3, cutoff = 0.4, sort = TRUE, ...)
   vx <- colSums(x^2)
   varex <- rbind(`SS loadings` = vx)
   if (is.null(attr(x, "covariance"))) {
-    varex <- rbind(varex, `Proportion Var` = vx/p)
+    varex <- rbind(varex, `Proportion Var` = vx / p)
     if (factors > 1)
-      varex <- rbind(varex, `Cumulative Var` = cumsum(vx/p))
+      varex <- rbind(varex, `Cumulative Var` = cumsum(vx / p))
   }
   cat("\n")
   print(round(varex, digits))
   invisible(newx)
 }
 
-eees <- function (x)
-{
+eees <- function(x) {
   if (inherits(x, "connection")) {
     if (!isOpen(x)) {
       open(x)
       on.exit(close(x))
     }
     exprs <- parse(file = x, keep.source = FALSE)
-  }
-  else if (is.character(x)) {
+  } else if (is.character(x)) {
     exprs <- cccs(x)
-  }
-  else {
+  } else {
     stop_input_type(x, "a character vector or an R connection")
   }
   as.list(exprs)

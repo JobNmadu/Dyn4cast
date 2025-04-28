@@ -13,13 +13,14 @@
 #' @param method The type of transformation. There three options. `1` is for
 #'  `log` transformation, `2` is for `min-max` transformation and `3` is
 #'  for `mean-SD` transformation.
-#' @param MARGIN Option to either transform the data `2 == column-wise` or
+#' @param margin Option to either transform the data `2 == column-wise` or
 #' `1 == row-wise`. Defaults to `column-wise` transformation if no option is
 #' indicated.
 #'
 #' @importFrom stats sd
 #'
-#' @return This function returns the output of the data transformation process as
+#' @return This function returns the output of the data transformation process
+#' as
 #' \item{\code{tata_transformed}}{ A new `data.frame` containing the
 #' transformed values}
 #'
@@ -87,30 +88,31 @@
 #'   labs(y = "Data", x = "Series", color = "Factors") +
 #'   theme_bw(base_size = 12)
 #'
-data_transform <- function(data, method, MARGIN = 2){
-
-  if(method == 1){
-
-    data_transformed <-  apply(data, MARGIN = MARGIN, FUN = function(x)
-      (x-min(x))/(max(x)-min(x)))
-
-    return (data_transformed)
-
+data_transform <- function(data, method, margin = 2) {
+  if (is.null(margin)) {
+    margin <-  2
+  } else {
+    margin  <-  margin
   }
 
-  else if(method == 2){
+  if (method == 1) {
+
+    data_transformed <-  apply(data, MARGIN = margin, FUN = function(x)
+                                 (x - min(x)) / (max(x) - min(x)))
+
+    return(data_transformed)
+
+  } else if (method == 2) {
 
     data_transformed <- log(as.data.frame(data))
 
-    return (data_transformed)
+    return(data_transformed)
+  } else {
+
+    data_transformed <- apply(data, MARGIN = margin, FUN = function(x)
+                                (x - mean(x)) / sd(x))
+
+    return(data_transformed)
+
   }
-
-  else{
-
-    data_transformed <- apply(data, MARGIN = MARGIN, FUN = function(x)
-      (x-mean(x))/sd(x))
-
-    return (data_transformed)
-
-    }
-  }
+}

@@ -22,4 +22,3 @@
 invscaledlogit <- function(x, lower, upper) {
   (upper - lower) * exp(x) / (1 + exp(x)) + lower
 }
-

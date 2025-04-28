@@ -32,23 +32,28 @@
 #' as.data.frame(DDK %>%
 #' group_by(`Lower class`, `Upper class`, `Class interval`) %>%
 #' tally())
-formattedcut <- function(data, breaks, cut = FALSE){
+formattedcut <- function(data, breaks, cut = FALSE) {
   options(scipen = 999, digits = 2)
-  if(cut == FALSE){
-    Tally <- as.data.frame(table(cut(data, breaks)))
-    Group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*", "\\1",
-                                                                Tally$Var1)),
-                                 `Upper class` = as.numeric(sub("[^,]*,([^]]*)\\]",
-                                                                 "\\1", Tally$Var1))))
-    Group$`Class interval` <- paste(Group$`Lower class`, "-", Group$`Upper class`)
-    Cut <- cbind(Tally, Group)
-    } else {
-      Group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*",
-                                                                  "\\1", data)),
-                                 `Upper class` = as.numeric(sub("[^,]*,([^]]*)\\]",
-                                                                "\\1", data))))
-      Group$`Class interval` <- paste(Group$`Lower class`, "-", Group$`Upper class`)
-      Cut <- Group
-    }
-  Cut
+  if (cut == FALSE) {
+    tally <- as.data.frame(table(cut(data, breaks)))
+    group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*",
+                                                                "\\1",
+                                                                tally$Var1)),
+                                 `Upper class` =
+                                   as.numeric(sub("[^,]*,([^]]*)\\]",
+                                                  "\\1", tally$Var1))))
+    group$`Class interval` <- paste(group$`Lower class`, "-",
+                                    group$`Upper class`)
+    cut <- cbind(tally, group)
+  } else {
+    group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*",
+                                                                "\\1", data)),
+                                 `Upper class`
+                                 = as.numeric(sub("[^,]*,([^]]*)\\]",
+                                                  "\\1", data))))
+    group$`Class interval` <- paste(group$`Lower class`, "-",
+                                    group$`Upper class`)
+    cut <- group
   }
+  cut
+}

@@ -20,16 +20,20 @@
 #' #  "Non-binary/third gender", "male", "female", "female", "male", "male"))
 #' #  gender(df)
 gender <- function(data) {
-  data$Group <- dplyr::case_when(
-    data$Age >= 60 ~ 3,
-    data$Age >  25 ~ 2,
-    data$Age <= 25 ~ 1)
-  data$Gender <- dplyr::case_when(
-    data$Group == 3 & tolower(data$Sex) == "male"   ~ "Elderly male",
-    data$Group == 3 & tolower(data$Sex) == "female" ~ "Elderly female",
-    data$Group == 2 & tolower(data$Sex) == "male"   ~ "Adult male",
-    data$Group == 2 & tolower(data$Sex) == "female" ~ "Adult female",
-    data$Group == 1                               ~ "Youth",
-    .default   =  data$Sex)
+  data$Group <- dplyr::case_when(data$Age >= 60 ~ 3,
+                                 data$Age >  25 ~ 2,
+                                 data$Age <= 25 ~ 1)
+  data$Gender <- dplyr::case_when(data$Group == 3 & tolower(data$Sex) == "male"
+                                  ~ "Elderly male",
+                                  data$Group == 3 &
+                                    tolower(data$Sex) == "female" ~
+                                    "Elderly female",
+                                  data$Group == 2 & tolower(data$Sex) == "male"
+                                  ~ "Adult male",
+                                  data$Group == 2 &
+                                    tolower(data$Sex) == "female" ~
+                                    "Adult female",
+                                  data$Group == 1 ~ "Youth",
+                                  .default   =  data$Sex)
   return(Gender = data)
 }

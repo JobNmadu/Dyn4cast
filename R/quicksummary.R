@@ -37,76 +37,75 @@
 #' # Continuous data
 #' x <- select(linearsystems, 1:6)
 #' quicksummary(x = x, Type = 1)
-quicksummary <- function (x, Type, Cut, Up, Down, ci = 0.95){
-  y = as.matrix(x)
+quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
+  y  <-  as.matrix(x)
   if (is.null(colnames(y))) {
-    Dim = dim(y)[2]
+    Dim <- dim(y)[2]
     if (Dim == 1) {
-      colnames(y) = paste(substitute(x), collapse = ".")
-    }
-    else if (Dim > 1) {
-      colnames(y) = paste(paste(substitute(x), collapse = ""),
-                          1:Dim, sep = "")
+      colnames(y) <- paste(substitute(x), collapse = ".")
+    } else if (Dim > 1) {
+      colnames(y)  <-  paste(paste(substitute(x), collapse = ""),
+                             1 : Dim, sep = "")
     }
   }
-  cl.vals = function(x, ci) {
-    x = x[!is.na(x)]
-    n = length(x)
+  cl.vals  <-  function(x, ci) {
+    x  <-  x[!is.na(x)]
+    n  <-  length(x)
     if (n <= 1)
       return(c(NA, NA))
-    se.mean = sqrt(stats::var(x)/n)
-    t.val = stats::qt((1 - ci)/2, n - 1)
-    mn = mean(x)
-    lcl = mn + se.mean * t.val
-    ucl = mn - se.mean * t.val
+    se.mean  <-  sqrt(stats::var(x) / n)
+    t.val  <-  stats::qt((1 - ci) / 2, n - 1)
+    mn  <-  mean(x)
+    lcl  <-  mn + se.mean * t.val
+    ucl  <-  mn - se.mean * t.val
     c(lcl, ucl)
   }
-  nColumns = dim(y)[2]
-  ans = NULL
+  nColumns  <-  dim(y)[2]
+  ans  <-  NULL
   for (i in 1:nColumns) {
-    X = y[, i]
-    X.length = length(X)
-    X = X[!is.na(X)]
-    X.na = X.length - length(X)
-    sod <- X-mean(X)
+    X  <-  y[, i]
+    X.length  <-  length(X)
+    X  <-  X[!is.na(X)]
+    X.na  <-  X.length - length(X)
+    sod <- X - mean(X)
     SD <- sd(X)
     n <- length(X)
-    NNS <- n/((n-1)*(n-2))
-    skewness <- NNS*sum((sod/SD)^3)
-    kurtosis <- ((sum(sod^4)/n)/SD^4)-3
+    NNS <- n / ((n - 1) * (n - 2))
+    skewness <- NNS * sum((sod / SD)^3)
+    kurtosis <- ((sum(sod^4) / n) / SD^4) - 3
 
-    if (Type == 1){
-      z = c(mean(X), sqrt(stats::var(X)),
-            sqrt(stats::var(X)/length(X)), min(X), median(X), max(X),
-            as.numeric(stats::quantile(X, prob = 0.25, na.rm = TRUE)),
-            as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
-            skewness, kurtosis, X.length)
-      znames = c("Mean", "SD", "SE Mean", "Min", "Median", "Max", "Q1",
-                 "Q3",  "Skewness", "Kurtosis", "Nobs")
+    if (Type == 1) {
+      z  <-  c(mean(X), sqrt(stats::var(X)),
+               sqrt(stats::var(X) / length(X)), min(X), median(X), max(X),
+               as.numeric(stats::quantile(X, prob = 0.25, na.rm = TRUE)),
+               as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
+               skewness, kurtosis, X.length)
+      znames  <-  c("Mean", "SD", "SE Mean", "Min", "Median", "Max", "Q1",
+                    "Q3",  "Skewness", "Kurtosis", "Nobs")
     } else {
-      z = c(mean(X), sqrt(var(X)), sqrt(var(X)/length(X)),
-            X.length)
-      znames = c("Mean", "SD", "SE Mean", "Nobs")
+      z  <-  c(mean(X), sqrt(var(X)), sqrt(var(X) / length(X)),
+               X.length)
+      znames  <-  c("Mean", "SD", "SE Mean", "Nobs")
     }
-    result = matrix(z, ncol = 1)
-    row.names(result) = znames
-    ans = cbind(ans, result)
+    result  <-  matrix(z, ncol = 1)
+    row.names(result)  <-  znames
+    ans  <-  cbind(ans, result)
   }
-  colnames(ans) = colnames(y)
-  ans = data.frame(round(t(ans), digits = 2))
+  colnames(ans)  <-  colnames(y)
+  ans  <-  data.frame(round(t(ans), digits = 2))
 
-  if (Type != 1){
-    ans        = ans[order(-ans$Mean), ]
-    ans$Rank   = 1:length(ans$Mean)
-    ans$Remark = ifelse(ans$Mean < Cut, Down, Up)
+  if (Type != 1) {
+    ans        <-  ans[order(-ans$Mean), ]
+    ans$Rank    <-  1:length(ans$Mean)
+    ans$Remark  <-  ifelse(ans$Mean < Cut, Down, Up)
   } else {
-    ans = ans
+    ans  <-  ans
   }
 
-  if (ncol(ans) > nrow(ans)){
-    ans = t(ans)
+  if (ncol(ans) > nrow(ans)) {
+    ans  <-  t(ans)
   } else {
-    ans = ans
+    ans  <-  ans
   }
   ans
 }

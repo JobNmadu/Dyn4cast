@@ -130,7 +130,7 @@ mdpi <- function(data, dm, Bar = 0.4,
   id_add1 <- id_add1
   id_addn <- id_addn
   ddm <- length(dm)
-  k <- 1/ddm
+  k <- 1 / ddm
   if (ddm < 3L) {
     stop("Number of dimensions must be an integer not less than 3")
   } else if (ddm > 9L) {
@@ -138,16 +138,16 @@ mdpi <- function(data, dm, Bar = 0.4,
   } else {
     cat("Number of dimensions correct, proceeding...", "\n")
   }
-  if(!is.null(id_addn)){
+  if (!is.null(id_addn)) {
     id0 <- c(id, id_add, id_add1, id_addn)
     cat("Additional dimension is evaluated...", "\n")
-  }else if(ddm == 5){
+  } else if (ddm == 5) {
     id0 <- c(id, id_add, id_add1)
     cat("Additional dimension is null...", "\n")
-  } else if(ddm == 4){
+  } else if (ddm == 4) {
     id0 <- c(id, id_add)
     cat("Additional dimension is null...", "\n")
-  }else{
+  } else {
     id0 <- id
     cat("Additional dimension is null...", "\n")
   }
@@ -160,7 +160,7 @@ mdpi <- function(data, dm, Bar = 0.4,
                 rep("Average deprivation among the deprived", ddm + 1))
   Order <- seq(1, length(Analysis), by = 1)
   cat("Computation commences...", "\n")
-  if(ddm == 3){
+  if (ddm == 3) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -178,7 +178,7 @@ mdpi <- function(data, dm, Bar = 0.4,
     Mean <- 	dplyr::bind_cols(rowMeans(d1), rowMeans(d2), rowMeans(d3))
     SD <- 	dplyr::bind_cols(apply(d1, 1, sd), apply(d2, 1, sd),
                             apply(d3, 1, sd))
-  }else if(ddm == 4){
+  } else if (ddm == 4) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -195,13 +195,14 @@ mdpi <- function(data, dm, Bar = 0.4,
       dplyr::select(tidyselect::all_of(dm$d4))
     d4n <- NCOL(d4)
     d4 <- d4 * (k / d4n)
-    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3), rowSums(d4))
+    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3),
+                               rowSums(d4))
     Scores <- 	dplyr::bind_cols(d1, d2, d3, d4)
     Mean <- 	dplyr::bind_cols(rowMeans(d1), rowMeans(d2), rowMeans(d3),
                               rowMeans(d4))
     SD <- 	dplyr::bind_cols(apply(d1, 1, sd), apply(d2, 1, sd),
                             apply(d3, 1, sd), apply(d4, 1, sd))
-  }else if(ddm == 5){
+  } else if (ddm == 5) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -222,7 +223,8 @@ mdpi <- function(data, dm, Bar = 0.4,
       dplyr::select(tidyselect::all_of(dm$d5))
     d5n <- NCOL(d5)
     d5 <- d5 * (k / d5n)
-    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3), rowSums(d4),
+    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3),
+                               rowSums(d4),
                                rowSums(d5))
     Scores <- 	dplyr::bind_cols(d1, d2, d3, d4, d5)
     Mean <- 	dplyr::bind_cols(rowMeans(d1), rowMeans(d2), rowMeans(d3),
@@ -230,7 +232,7 @@ mdpi <- function(data, dm, Bar = 0.4,
     SD <- 	dplyr::bind_cols(apply(d1, 1, sd), apply(d2, 1, sd),
                             apply(d3, 1, sd), apply(d4, 1, sd),
                             apply(d5, 1, sd))
-  }else if(ddm == 6){
+  } else if (ddm == 6) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -255,7 +257,8 @@ mdpi <- function(data, dm, Bar = 0.4,
       dplyr::select(tidyselect::all_of(dm$d6))
     d6n <- NCOL(d6)
     d6 <- d6 * (k / d6n)
-    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3), rowSums(d4),
+    score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3),
+                               rowSums(d4),
                                rowSums(d5), rowSums(d6))
     Scores <- 	dplyr::bind_cols(d1, d2, d3, d4, d5, d6)
     Mean <- 	dplyr::bind_cols(rowMeans(d1), rowMeans(d2), rowMeans(d3),
@@ -263,7 +266,7 @@ mdpi <- function(data, dm, Bar = 0.4,
     SD <- 	dplyr::bind_cols(apply(d1, 1, sd), apply(d2, 1, sd),
                             apply(d3, 1, sd), apply(d4, 1, sd),
                             apply(d5, 1, sd), apply(d6, 1, sd))
-  }else if(ddm == 7){
+  } else if (ddm == 7) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -293,7 +296,8 @@ mdpi <- function(data, dm, Bar = 0.4,
     d7n <- NCOL(d7)
     d7 <- d7 * (k / d7n)
     score <- 	dplyr::bind_cols(rowSums(d1), rowSums(d2), rowSums(d3),
-                               rowSums(d4), rowSums(d5), rowSums(d6), rowSums(d7))
+                               rowSums(d4), rowSums(d5), rowSums(d6),
+                               rowSums(d7))
     Scores <- 	dplyr::bind_cols(d1, d2, d3, d4, d5, d6, d7)
     Mean <- 	dplyr::bind_cols(rowMeans(d1), rowMeans(d2), rowMeans(d3),
                               rowMeans(d4), rowMeans(d5), rowMeans(d6),
@@ -302,7 +306,7 @@ mdpi <- function(data, dm, Bar = 0.4,
                             apply(d3, 1, sd), apply(d4, 1, sd),
                             apply(d5, 1, sd), apply(d6, 1, sd),
                             apply(d7, 1, sd))
-  }else if(ddm == 8){
+  } else if (ddm == 8) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -346,7 +350,7 @@ mdpi <- function(data, dm, Bar = 0.4,
                             apply(d3, 1, sd), apply(d4, 1, sd),
                             apply(d5, 1, sd), apply(d6, 1, sd),
                             apply(d7, 1, sd), apply(d8, 1, sd))
-  }else{
+  } else {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
     d1n <- NCOL(d1)
@@ -428,7 +432,7 @@ mdpi <- function(data, dm, Bar = 0.4,
   id2  <-  "SD"
   kaY2s <- kkkk(q, nq, n, kay = kay_SD, id1, id2, ddm, Order, Analysis)
   cat("The computation is progressing...5", "\n")
-  if(!is.null(Factor)){
+  if (!is.null(Factor)) {
     modEls2m <- mmmm(data, Scores, score = Mean, Factor, ddm, Analysis,
                      kay2 = KaY2m)
     cat("The computation is progressing...6", "\n")
@@ -438,14 +442,14 @@ mdpi <- function(data, dm, Bar = 0.4,
     models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2)
     if (!is.null(plots) & length(unique(Factor)) > 40) {
       cat("Palette have 40 colors, plots not possible...", "\n")
-      }else if (!is.null(plots) & length(unique(Factor)) < 41){
-        kala <- MetBrewer::met.brewer("Renoir", 40, type = "continuous",
+    } else if (!is.null(plots) & length(unique(Factor)) < 41) {
+      kala <- MetBrewer::met.brewer("Renoir", 40, type = "continuous",
                                     direction = -1)
-        plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
-        cat("Proceeding after plots produced...", "\n")
-        }else{
-          cat("Proceeding without plots...", "\n")
-        }
+      plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
+      cat("Proceeding after plots produced...", "\n")
+    } else {
+      cat("Proceeding without plots...", "\n")
+    }
     cat("The computation is progressing...8", "\n")
     model_l <- list(MDPI_p = modelsummary::datasummary_df(models2, fmt = 4),
                     MDPI = models2,
@@ -457,7 +461,7 @@ mdpi <- function(data, dm, Bar = 0.4,
                     `MDPI SD` = modEls2s,
                     plots = plots)
     cat("National and factor MDPI...", "\n")
-  }else{
+  } else {
     model_l <- list(national = cbind(kay2[, -1], Mean = KaY2m[, 4],
                                      SD = kaY2s[, 4]),
                     dimensions = dds,
@@ -469,11 +473,10 @@ mdpi <- function(data, dm, Bar = 0.4,
   return(model_l)
 }
 kkkk <- function(q, nq, n, kay, id1, id2, ddm, Order, Analysis) {
-  kaye <- data.frame(rbind(
-    q = q,
-    `Non Poor` = nq,
-    n = n,
-    IOP = q / n))
+  kaye <- data.frame(rbind(q = q,
+                           `Non Poor` = nq,
+                           n = n,
+                           IOP = q / n))
   names(kaye) <- id2
   kaye <- tibble::rownames_to_column(kaye, var = "Dimension")
   iopoo <- (kay[, 2]) / kaye[1, 2]
@@ -490,53 +493,53 @@ kkkk <- function(q, nq, n, kay, id1, id2, ddm, Order, Analysis) {
                            adad)
   kay2 <- dplyr::bind_cols(Order = Order, Analysis = Analysis, kay1)
   return(kay2)
-  }
+}
 mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
-    IDn <- setdiff(names(data), names(Scores))
-    fff <- data %>%
-      dplyr::select(tidyselect::all_of(IDn))
-    Factors <- data %>%
-      dplyr::select(tidyselect::all_of(Factor))
-    score1234 <- dplyr::bind_cols(score, fff, Scores)
-    ssd <- score1234 %>%
-      split(Factors) %>%
-      purrr::map(\(df) NROW(df[df$Poverty, ]))
-    ddfn <- as.data.frame(t(do.call(cbind, ssd)))
-    dddm <- ddm + 1
-    ssdc <- score1234 %>%
-      split(Factors) %>%
-      purrr::map(\(df) colSums(df[, 1:dddm]))
-    ddfd <- as.data.frame(t(do.call(cbind, ssdc)))
-    ssdn <- score1234 %>%
-      split(Factors) %>%
-      purrr::map(\(df) NROW(df[df$Poverty == "Deprived", ]))
-    ddfq <- as.data.frame(t(do.call(cbind, ssdn)))
-    ddfnq <- ddfn - ddfq
-    IOP <- ddfq / ddfn
-    model <- cbind(q = ddfq, Non_Poor = ddfnq, n = ddfn, IOP = IOP)
-    names(model) <- c("q", "Non Poor", "n", "IOP")
-    iop   <- ddfd / model$q
-    MPIc  <- ddfd$Combined / model$n
-    MPI   <- ddfd/model$n
-    cont  <- MPI * MPIc * 100
-    adad1 <- iop * ddm
-    ahcr1 <- iop / ddm
-    adad1 <- data.frame(t(adad1))
-    adad1 <- tibble::rownames_to_column(adad1, var = "Dimension")
-    ahcr1 <- data.frame(t(ahcr1))
-    ahcr1 <- tibble::rownames_to_column(ahcr1, var = "Dimension")
-    cont  <- data.frame(t(cont))
-    cont  <- tibble::rownames_to_column(cont, var = "Dimension")
-    model <- data.frame(t(model))
-    model <- tibble::rownames_to_column(model, var = "Dimension")
-    iop   <- data.frame(t(iop))
-    iop   <- tibble::rownames_to_column(iop, var = "Dimension")
-    MPI   <- data.frame(t(MPI))
-    MPI   <- tibble::rownames_to_column(MPI, var = "Dimension")
-    ddfd  <- data.frame(t(ddfd))
-    ddfd  <- tibble::rownames_to_column(ddfd, var = "Dimension")
-    models <- dplyr::bind_rows(model, ahcr1, ddfd, iop, MPI, cont, adad1)
-    models2 <- dplyr::bind_cols(Analysis = Analysis, models,
+  IDn <- setdiff(names(data), names(Scores))
+  fff <- data %>%
+    dplyr::select(tidyselect::all_of(IDn))
+  Factors <- data %>%
+    dplyr::select(tidyselect::all_of(Factor))
+  score1234 <- dplyr::bind_cols(score, fff, Scores)
+  ssd <- score1234 %>%
+    split(Factors) %>%
+    purrr::map(\(df) NROW(df[df$Poverty, ]))
+  ddfn <- as.data.frame(t(do.call(cbind, ssd)))
+  dddm <- ddm + 1
+  ssdc <- score1234 %>%
+    split(Factors) %>%
+    purrr::map(\(df) colSums(df[, 1:dddm]))
+  ddfd <- as.data.frame(t(do.call(cbind, ssdc)))
+  ssdn <- score1234 %>%
+    split(Factors) %>%
+    purrr::map(\(df) NROW(df[df$Poverty == "Deprived", ]))
+  ddfq <- as.data.frame(t(do.call(cbind, ssdn)))
+  ddfnq <- ddfn - ddfq
+  IOP <- ddfq / ddfn
+  model <- cbind(q = ddfq, Non_Poor = ddfnq, n = ddfn, IOP = IOP)
+  names(model) <- c("q", "Non Poor", "n", "IOP")
+  iop   <- ddfd / model$q
+  MPIc  <- ddfd$Combined / model$n
+  MPI   <- ddfd / model$n
+  cont  <- MPI * MPIc * 100
+  adad1 <- iop * ddm
+  ahcr1 <- iop / ddm
+  adad1 <- data.frame(t(adad1))
+  adad1 <- tibble::rownames_to_column(adad1, var = "Dimension")
+  ahcr1 <- data.frame(t(ahcr1))
+  ahcr1 <- tibble::rownames_to_column(ahcr1, var = "Dimension")
+  cont  <- data.frame(t(cont))
+  cont  <- tibble::rownames_to_column(cont, var = "Dimension")
+  model <- data.frame(t(model))
+  model <- tibble::rownames_to_column(model, var = "Dimension")
+  iop   <- data.frame(t(iop))
+  iop   <- tibble::rownames_to_column(iop, var = "Dimension")
+  MPI   <- data.frame(t(MPI))
+  MPI   <- tibble::rownames_to_column(MPI, var = "Dimension")
+  ddfd  <- data.frame(t(ddfd))
+  ddfd  <- tibble::rownames_to_column(ddfd, var = "Dimension")
+  models <- dplyr::bind_rows(model, ahcr1, ddfd, iop, MPI, cont, adad1)
+  models2 <- dplyr::bind_cols(Analysis = Analysis, models,
                                 National = kay2$National)
-    return(models2)
-  }
+  return(models2)
+}

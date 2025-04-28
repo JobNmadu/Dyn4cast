@@ -8,7 +8,7 @@
 #' modified for independent use rather than be restricted to be used with a
 #' particular package.
 #'
-#' @param Model This is the exponential values from the `invscaledlogit`
+#' @param model10 This is the exponential values from the `invscaledlogit`
 #' function.
 #' @param lower The lower limit of the forecast
 #' @param upper The upper limit of the forecast
@@ -34,18 +34,18 @@
 #' FitModel <- scaledlogit(x = fitted.values(Model), lower = lower,
 #'  upper = upper)
 #' ForecastModel <- forecast(FitModel, h = length(200))
-#' ForecastValues <- constrainedforecast(Model = ForecastModel, lower, upper)
-constrainedforecast <- function(Model, lower, upper) {
-  F2 <- Model$upper
-  F1 <- Model$lower
-  F1l1 <- invscaledlogit(x = F1[, 1], lower = lower, upper = upper)
-  F1l2 <- invscaledlogit(x = F1[, 2], lower = lower, upper = upper)
-  F2u1 <- invscaledlogit(x = F2[, 1], lower = lower, upper = upper)
-  F2u2 <- invscaledlogit(x = F2[, 2], lower = lower, upper = upper)
+#' ForecastValues <- constrainedforecast(model10 = ForecastModel, lower, upper)
+constrainedforecast <- function(model10, lower, upper) {
+  f2 <- model10$upper
+  f1 <- model10$lower
+  f1l1 <- invscaledlogit(x = f1[, 1], lower = lower, upper = upper)
+  f1l2 <- invscaledlogit(x = f1[, 2], lower = lower, upper = upper)
+  f2u1 <- invscaledlogit(x = f2[, 1], lower = lower, upper = upper)
+  f2u2 <- invscaledlogit(x = f2[, 2], lower = lower, upper = upper)
 
-  results <- list("Lower80" = F1l1,
-                  "Lower95" = F1l2,
-                  "Upper80" = F2u1,
-                  "Upper95" = F2u2)
+  results <- list("Lower80" = f1l1,
+                  "Lower95" = f1l2,
+                  "Upper80" = f2u1,
+                  "Upper95" = f2u2)
   return(results)
 }

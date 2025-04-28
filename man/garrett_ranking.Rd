@@ -30,13 +30,14 @@ mean score.}
 \description{
 There are three main types of ranking: Standard competition, Ordinal and
 Fractional. Garrett's Ranking Technique is the application of fractional
-ranking in which the data points are ordered and given an ordinal number/rank.
-The ordering and ranking provide additional information which may not be
-available from frequency distribution. Again, the ordering is based on the
-level of seriousness or severity of the data point from the view point of
-the respondent. Ranking enables ease of comparison and makes grouping more
-meaningful. It is used in social science, psychology and other survey types
-of research. This functions performs Garrett Ranking of up to 15 ranks.
+ranking in which the data points are ordered and given an ordinal
+number/rank. The ordering and ranking provide additional information which
+may not be available from frequency distribution. Again, the ordering is
+based on the level of seriousness or severity of the data point from the view
+point of the respondent. Ranking enables ease of comparison and makes
+grouping more meaningful. It is used in social science, psychology and
+other survey types of research. This functions performs Garrett Ranking
+of up to 15 ranks.
 }
 \examples{
 garrett_data <- data.frame(garrett_data)

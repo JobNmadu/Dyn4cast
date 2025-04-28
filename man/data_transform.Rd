@@ -6,7 +6,7 @@
 \title{Standardize \code{data.frame} for comparable \strong{Machine Learning} prediction
 and visualization}
 \usage{
-data_transform(data, method, MARGIN = 2)
+data_transform(data, method, margin = 2)
 }
 \arguments{
 \item{data}{A \code{data.frame} with numeric data for transformation. All columns
@@ -16,12 +16,13 @@ in the data are transformed}
 \code{log} transformation, \code{2} is for \code{min-max} transformation and \code{3} is
 for \code{mean-SD} transformation.}
 
-\item{MARGIN}{Option to either transform the data \code{2 == column-wise} or
+\item{margin}{Option to either transform the data \code{2 == column-wise} or
 \code{1 == row-wise}. Defaults to \code{column-wise} transformation if no option is
 indicated.}
 }
 \value{
-This function returns the output of the data transformation process as
+This function returns the output of the data transformation process
+as
 \item{\code{tata_transformed}}{ A new \code{data.frame} containing the
 transformed values}
 }

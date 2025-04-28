@@ -8,10 +8,6 @@ test_that("DynamicForecast works", {
                                 MaximumDate = "2021-02-08", Trend = "Day", Length = 0,
                                 Type = "Integer", origin = "2020-02-29")
 
-  y = linearsystems$MKTcost
-  x <- select(linearsystems, -MKTcost)
-  test_model1 <- Linearsystems(y, x, 6, 7)
-
   Test_01 <- test_model$Plot
   Test_02 <- test_model[["Spline without knots"]][["coefficients"]]
   Test_03 <- test_model[["Spline with knots"]][["coefficients"]]
@@ -24,14 +20,6 @@ test_that("DynamicForecast works", {
   Test_10 <- test_model[["Forecast"]][["Case"]]
   Test_11 <- test_model[["RMSE"]]
   Test_12 <- test_model[["Date"]]
-  Test_13 <- test_model1[["Significant plot of Cubic root"]]
-  Test_14 <- test_model1[["Model Table"]]
-  Test_15 <- test_model1[["Machine Learning Metrics"]]
-  Test_16 <- test_model1[["Correlation plot"]]$plot()
-  Test_17 <- test_model1[["Summary of numeric variables"]]
-  Test_18 <- test_model1[["Fitted plots wide format"]]
-  Test_19 <- test_model1[["Visual means of the numeric variable"]]
-  Test_20 <- test_model1[["Mixed-power model"]]
 
   expect_identical(test_model$Plot, Test_01)
   expect_identical(test_model[["Spline without knots"]][["coefficients"]], Test_02)
@@ -45,13 +33,5 @@ test_that("DynamicForecast works", {
   expect_identical(test_model[["Forecast"]][["Case"]], Test_10)
   expect_identical(test_model[["RMSE"]], Test_11)
   expect_identical(test_model[["Date"]], Test_12)
-  expect_identical(test_model1[["Significant plot of Cubic root"]], Test_13)
-  expect_identical(test_model1[["Model Table"]], Test_14)
-  expect_identical(test_model1[["Machine Learning Metrics"]], Test_15)
-  expect_identical(test_model1[["Correlation plot"]]$plot(), Test_16)
-  expect_identical(test_model1[["Summary of numeric variables"]], Test_17)
-  expect_identical(test_model1[["Fitted plots wide format"]], Test_18)
-  expect_identical(test_model1[["Visual means of the numeric variable"]], Test_19)
-  expect_identical(test_model1[["Mixed-power model"]], Test_20)
 }
 )

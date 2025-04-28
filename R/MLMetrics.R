@@ -7,7 +7,7 @@
 #'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
-#' @param Model The Estimated Model (*Model* = a + bx)
+#' @param modeli The Estimated Model (*Model* = a + bx)
 #' @param K The number of variables in the estimated Model to consider
 #' @param Name The Name of the Models that need to be specified. They are ARIMA,
 #'  Values if the model computes the fitted value without estimation like
@@ -123,63 +123,63 @@
 #' @examples
 #' library(splines)
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-#' MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2,
+#' MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
 #'  Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
-MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
+MLMetrics <- function(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy){
   Predy = 0
   Preds = 0
   Probable = 0
   Predy <- if(Name == "ARIMA"){
-    Model[["fitted"]]
+    modeli[["fitted"]]
   }else if (Form == "ALM"){
-    Model[["fitted"]]
+    modeli[["fitted"]]
   }else if(Form == "ARDL"){
-    c(0, 0, 0, Model[["fitted.values"]])
+    c(0, 0, 0, modeli[["fitted.values"]])
   }else if(Name == "Values"){
-    Model
+    modeli
   }else{
-    fitted.values(Model)
+    fitted.values(modeli)
   }
 
   if(Form == "LM"){
-    Preds = fitted.values(Model)
+    Preds = fitted.values(modeli)
   }else if(Form == "ALM"){
-    Preds = Model[["fitted"]]
+    Preds = modeli[["fitted"]]
   }else if(Form == "N-LM"){
     Preds = 0
   }else if(Form == "GLM" & Name != "Log"){
-    KK <- broom::augment(Model, data = Observed)
+    KK <- broom::augment(modeli, data = Observed)
     KK$Probable =  1/(1 + exp(-KK$.fitted))
     KK$Predicted =  ifelse(Probable > 0.5, 1, 0)
     Preds = KK$Predicted
   }else{
-    Preds = stats::predict(Model, type = "response")
+    Preds = stats::predict(modeli, type = "response")
   }
 
   ppk <- if(sum(Preds) == 0) 1 else 2
   kutuf <- if (kutuf != 0) kutuf else .5
 
-  RD01 <- signif(ifelse(Name == "ARIMA",  Model$aic,
+  RD01 <- signif(ifelse(Name == "ARIMA",  modeli$aic,
                         ifelse(Name == "SMOOTH"| Name == "Values", 0,
-                               stats::AIC(Model))), 2)
-  RD02 <- signif(ifelse(Name == "ARIMA",  Model$bic,
+                               stats::AIC(modeli))), 2)
+  RD02 <- signif(ifelse(Name == "ARIMA",  modeli$bic,
                         ifelse(Name == "SMOOTH"| Name == "Values", 0,
-                               stats::BIC(Model))), 2)
+                               stats::BIC(modeli))), 2)
   RD03 <- if(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
              Name == "Values"| Name == "Logit"){
     0
   }else if(Name == "ALM"){
-    signif(summary(Model[["r.squared"]]), 2)
+    signif(summary(modeli[["r.squared"]]), 2)
   }else{
-    signif(summary(Model)$r.squared, 2)
+    signif(summary(modeli)$r.squared, 2)
   }
   RD04 <- if(Name == "ARIMA" | Name == "SMOOTH"| Form == "GLM"|
              Name == "Values"| Name == "Logit"){
     0
   } else if (Name == "ALM"){
-    signif(summary(Model[["adj.r.squared"]]), 2)
+    signif(summary(modeli[["adj.r.squared"]]), 2)
   } else {
-    signif(summary(Model)$adj.r.squared, 2)
+    signif(summary(modeli)$adj.r.squared, 2)
   }
   RD05 = signif(Metrics::accuracy(yvalue, Preds), 2)
   RD06 = signif(sum(Metrics::ae(yvalue, Preds)), 2)
@@ -191,7 +191,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   RD10 = signif(Metrics::bias(yvalue, Preds), 2)
   RD11 = signif(ifelse(Form == "LM" | TTy == "Number"| Form == "ALM",
                        ModelMetrics::ce(yvalue, Predy),
-                       ModelMetrics::ce(Model)), 2)
+                       ModelMetrics::ce(modeli)), 2)
   RD12 = signif(ifelse(Form == "LM" | Form == "ALM",
                        Metrics::f1(yvalue, Predy),
                        ModelMetrics::f1Score(yvalue, Preds,
@@ -244,7 +244,7 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
   if(Name == "QUADRATIC"){
     Nlevels = 1
   }else if(Name == "SPLINE"){
-    Nlevels = Model[["rank"]] - 4
+    Nlevels = modeli[["rank"]] - 4
   }else{
     Nlevels = 0
   }
@@ -255,16 +255,16 @@ MLMetrics <- function(Observed, yvalue, Model, K, Name, Form, kutuf, TTy){
     Type = "SPLINE"
   }
 
-  RD37 = MallowsCp(Model = Model, y = yvalue, x = Observed[, -1],
+  RD37 = MallowsCp(model2 = modeli, y = yvalue, x = Observed[, -1],
                              type = Type, Nlevels = Nlevels)
 #  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
-#                 signif(qpcR::PRESS(Model, verbose = FALSE)$P.square, 2), 0)
+#                 signif(qpcR::PRESS(modeli, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
                        ModelMetrics::brier(yvalue, Preds),
-                       ModelMetrics::brier(Model)), 0)
+                       ModelMetrics::brier(modeli)), 0)
   RD40 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
                        ModelMetrics::gini(yvalue, Predy),
-                       ModelMetrics::gini(Model)), 0)
+                       ModelMetrics::gini(modeli)), 0)
   RD41 = signif(ifelse(Form == "LM" | Form == "ALM", 0,
                        ModelMetrics::kappa(yvalue, Preds,
                                            cutoff = kutuf)), 0)

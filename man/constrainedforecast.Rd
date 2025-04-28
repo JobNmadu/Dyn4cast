@@ -5,10 +5,10 @@
 \alias{Data}
 \title{Constrained Forecast of One-sided Integer Response Model}
 \usage{
-constrainedforecast(Model, lower, upper)
+constrainedforecast(model10, lower, upper)
 }
 \arguments{
-\item{Model}{This is the exponential values from the \code{invscaledlogit}
+\item{model10}{This is the exponential values from the \code{invscaledlogit}
 function.}
 
 \item{lower}{The lower limit of the forecast}
@@ -41,5 +41,5 @@ Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
 FitModel <- scaledlogit(x = fitted.values(Model), lower = lower,
  upper = upper)
 ForecastModel <- forecast(FitModel, h = length(200))
-ForecastValues <- constrainedforecast(Model = ForecastModel, lower, upper)
+ForecastValues <- constrainedforecast(model10 = ForecastModel, lower, upper)
 }

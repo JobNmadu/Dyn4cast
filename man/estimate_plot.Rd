@@ -4,10 +4,10 @@
 \alias{estimate_plot}
 \title{Plot of Order of Significance of Estimated Regression Coefficients}
 \usage{
-estimate_plot(Model, limit)
+estimate_plot(model, limit)
 }
 \arguments{
-\item{Model}{Estimated model for which the estimated coefficients would be
+\item{model}{Estimated model for which the estimated coefficients would be
 plotted}
 
 \item{limit}{Number of variables to be included in the coefficients plots}

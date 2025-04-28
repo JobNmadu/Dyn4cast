@@ -74,25 +74,25 @@
 #' @usage treatment_model(Treatment, x_data)
 #'
 treatment_model <- function(Treatment, x_data) {
-  data = cbind(Treatment, x_data)
-  MM = stats::glm(Treatment ~ 1 + ., data = data,
-                  family = stats::binomial(link = "logit"))
+  data  <-  cbind(Treatment, x_data)
+  MM  <-  stats::glm(Treatment ~ 1 + ., data = data,
+                     family = stats::binomial(link = "logit"))
   propensity_score <- predict(MM, type = "response")
 
-  w_ate = (Treatment / propensity_score) +  ((1 - Treatment) /
+  w_ate  <-  (Treatment / propensity_score) +  ((1 - Treatment) /
                                                (1 - propensity_score))
 
-  w_att = ((propensity_score * Treatment) / propensity_score) +
+  w_att  <-  ((propensity_score * Treatment) / propensity_score) +
     ((propensity_score * (1 - Treatment)) / (1 - propensity_score))
 
-  w_atc = (((1 - propensity_score) * Treatment) / propensity_score) +
+  w_atc  <-  (((1 - propensity_score) * Treatment) / propensity_score) +
     (((1 - propensity_score) * (1 - Treatment)) / (1 - propensity_score))
 
-  w_atm = pmin(propensity_score, 1 - propensity_score) /
+  w_atm  <-  pmin(propensity_score, 1 - propensity_score) /
     (Treatment * propensity_score + (1 - Treatment) *
        (1 - propensity_score))
 
-  w_ato = (1 - propensity_score) * Treatment + propensity_score *
+  w_ato  <-  (1 - propensity_score) * Treatment + propensity_score *
     (1 - Treatment)
 
   datw <- data.frame(cbind(ATE = w_ate, ATT = w_att, ATC = w_atc, ATM = w_atm,
@@ -102,8 +102,8 @@ treatment_model <- function(Treatment, x_data) {
                            w_atc, w_atm, w_ato))
 
   dat1$Status <- dplyr::case_match(dat1$Treatment,
-                              1 ~ "Treated-actual",
-                              0 ~ "Control-actual")
+                                   1 ~ "Treated-actual",
+                                   0 ~ "Control-actual")
 
   Exp <- NULL
 
@@ -119,7 +119,7 @@ treatment_model <- function(Treatment, x_data) {
 
   dat2 <- dat1 %>%
     tidyr::pivot_wider(names_from = Treatment, values_from = propensity_score,
-                names_prefix= "treat_p")
+                       names_prefix = "treat_p")
 
   # ATE
   ATE_P <- plotu(dat2$treat_p1, dat2$treat_p0, dat2$w_ate)
@@ -139,12 +139,11 @@ treatment_model <- function(Treatment, x_data) {
   x_data <- x_data %>%
     dplyr::select_if(is.numeric)
 
-  Effect  <- data.frame(
-    ATE = treatment_effect(Treatment, x_data, w_ate),
-    ATT = treatment_effect(Treatment, x_data, w_att),
-    ATC = treatment_effect(Treatment, x_data, w_atc),
-    ATM = treatment_effect(Treatment, x_data, w_atm),
-    ATO = treatment_effect(Treatment, x_data, w_ato))
+  Effect  <- data.frame(ATE = treatment_effect(Treatment, x_data, w_ate),
+                        ATT = treatment_effect(Treatment, x_data, w_att),
+                        ATC = treatment_effect(Treatment, x_data, w_atc),
+                        ATM = treatment_effect(Treatment, x_data, w_atm),
+                        ATO = treatment_effect(Treatment, x_data, w_ato))
 
   RR <- list(P_score = propensity_score,
              Effect = Effect,
@@ -172,26 +171,25 @@ plotu <- function(p1, p0, www) {
     ggplot2::geom_histogram(aes(x = p1,
                                 y = ggplot2::after_stat(!!str2lang("count")),
                                 fill = "g"),
-                   alpha = .5, binwidth = 0.05) +
+                            alpha = .5, binwidth = 0.05) +
     ggplot2::geom_histogram(aes(x = p1, weight = www, fill = "o"),
-                   alpha = .5, binwidth = 0.05) +
+                            alpha = .5, binwidth = 0.05) +
     ggplot2::geom_histogram(aes(x = p0,
                                 y = -ggplot2::after_stat(!!str2lang("count")),
                                 fill = "p"),
-                   alpha = .5, binwidth = 0.05) +
+                            alpha = .5, binwidth = 0.05) +
     ggplot2::geom_histogram(aes(x = p0, weight = www,
                                 y = -ggplot2::after_stat(!!str2lang("count")),
                                 fill = "s"),
-                   alpha = .5, binwidth = 0.05)  +
+                            alpha = .5, binwidth = 0.05)  +
     labs(x = "Propensity scores", y = "Frequency") +
     ggplot2::geom_hline(yintercept = 0, lwd = 0.5) +
     ggplot2::scale_y_continuous(label = abs) +
     ggplot2::scale_fill_manual(name = "Scores",
                                values = c("g" = "green", "o" = "orangered",
                                           "p" = "purple", "s" = "skyblue2"),
-                      labels = c("g" = "Treated - actual",
-                                 "o" = "Treated - weighted",
-                                 "p" = "Control - actual",
-                                 "s" = "Control - weighted"))
+                               labels = c("g" = "Treated - actual",
+                                          "o" = "Treated - weighted",
+                                          "p" = "Control - actual",
+                                          "s" = "Control - weighted"))
 }
-

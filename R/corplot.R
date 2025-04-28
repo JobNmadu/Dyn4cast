@@ -16,7 +16,7 @@
 corplot <- function(r) {
   plot <- function() {
     corrplot::corrplot.mixed(r, bg = "forestgreen", lower.col = "black",
-                   tl.pos = 'lt', tl.col = 'darkgreen')
+                             tl.pos = "lt", tl.col = "darkgreen")
   }
   list(plot = plot)
 }

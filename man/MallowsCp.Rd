@@ -4,10 +4,10 @@
 \alias{MallowsCp}
 \title{Computation of MallowsCp}
 \usage{
-MallowsCp(Model, y, x, type, Nlevels = 0)
+MallowsCp(model2, y, x, type, Nlevels = 0)
 }
 \arguments{
-\item{Model}{The estimated \strong{model} from which the Mallows Cp would be
+\item{model2}{The estimated \strong{model} from which the Mallows Cp would be
 computed}
 
 \item{y}{The vector of the \strong{LHS} variable of the estimated model}
@@ -55,5 +55,5 @@ x <- gl(2, 10, 20, labels = c("Ctl","Trt"))
 y <- c(ctl, trt)
 Model <- lm(y ~ x)
 Type <- "LM"
-MallowsCp(Model = Model, y = y, x = x, type = Type, Nlevels = 0)
+MallowsCp(model2 = Model, y = y, x = x, type = Type, Nlevels = 0)
 }

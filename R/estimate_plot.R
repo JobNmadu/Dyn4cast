@@ -6,7 +6,7 @@
 #'  as to decide which can be used for further analysis, prediction and policy
 #'  consideration.
 #'
-#' @param Model Estimated model for which the estimated coefficients would be
+#' @param model Estimated model for which the estimated coefficients would be
 #'  plotted
 #' @param limit Number of variables to be included in the coefficients plots
 #'
@@ -33,16 +33,15 @@
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 .data
 #'
-estimate_plot <- function(Model, limit) {
-  ModelV <- caret::varImp(Model)
-  Variables <- row.names(ModelV)
-  ModelV <- cbind(Variables, ModelV)
-  KK(var = ModelV$Variables, imp = ModelV$Overall, limit = limit,
-                          colours = ModelV$Variables)
+estimate_plot <- function(model, limit) {
+  modelv <- caret::varImp(model)
+  variables <- row.names(modelv)
+  modelv <- cbind(variables, modelv)
+  kk0(var = modelv$variables, imp = modelv$Overall, limit = limit,
+     colours = modelv$variables)
 }
 
-KK <- function (var, imp, limit, colours = NA)
-{
+kk0 <- function(var, imp, limit, colours = NA) {
   if (is.null(imp)) {
     return(NULL)
   }
@@ -59,17 +58,19 @@ KK <- function (var, imp, limit, colours = NA)
     limit <- length(var)
   output <- out[1:limit, ]
   p <- ggplot2::ggplot(output, aes(x = stats::reorder(.data$var, .data$imp),
-                          y = .data$imp, label = xnumt(.data$imp, 1))) +
+                                   y = .data$imp,
+                                   label = xnumt(.data$imp, 1))) +
     ggplot2::geom_col(aes(fill = .data$Type),
-             width = 0.08, colour = "transparent") +
+                      width = 0.08, colour = "transparent") +
     ggplot2::geom_point(ggplot2::aes(colour = .data$Type),
-               size = 6.2) + ggplot2::coord_flip() +
+                        size = 6.2) + ggplot2::coord_flip() +
     ggplot2::geom_text(hjust = 0.5,
-              size = 2.1, inherit.aes = TRUE, colour = "white") +
-    ggplot2::labs(title = paste0("Order of significance from ", limit, " to ", 1),
-         x = NULL, y = NULL) +
+                       size = 2.1, inherit.aes = TRUE, colour = "white") +
+    ggplot2::labs(title = paste0("Order of significance from ", limit,
+                                 " to ", 1),
+                  x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(position = "right", expand = c(0, 0),
-                       limits = c(0, 1.03 * max(output$imp))) +
+                                limits = c(0, 1.03 * max(output$imp))) +
     ggplot2::guides(fill = "none", colour = "none") +
     ggplot2::theme_minimal()
   if (length(unique(output$Type)) == 1) {
@@ -77,14 +78,14 @@ KK <- function (var, imp, limit, colours = NA)
       ggplot2::geom_col(fill = colours, width = 0.2, colour = "transparent") +
       ggplot2::geom_point(colour = colours, size = 6) +
       ggplot2::guides(fill = "none", colour = "none") +
-      ggplot2::geom_text(hjust = 0.5, size = 2, inherit.aes = TRUE, colour = "white")
+      ggplot2::geom_text(hjust = 0.5, size = 2, inherit.aes = TRUE,
+                         colour = "white")
   }
   return(p)
 }
 
-xnumt <- function (x, decimals = 2, signif = NULL, type = 2,
-                   pre = "", pos = "", sign = FALSE, abbr = FALSE, ...)
-{
+xnumt <- function(x, decimals = 2, signif = NULL, type = 2,
+                  pre = "", pos = "", sign = FALSE, abbr = FALSE, ...) {
   if (sign)
     signs <- ifelse(x > 0, "+", "")
   if (is.null(decimals))
@@ -94,15 +95,13 @@ xnumt <- function (x, decimals = 2, signif = NULL, type = 2,
     x <- base::signif(x, signif)
   if (abbr) {
     x <- num_abbr(x, n = decimals + 1)
-  }
-  else {
+  } else {
     if (is.null(decimals))
       decimals <- 0L
     if (type == 1) {
       x <- format(as.numeric(x), big.mark = ".", decimal.mark = ",",
                   ...)
-    }
-    else {
+    } else {
       x <- format(as.numeric(x), big.mark = ",", decimal.mark = ".",
                   ...)
     }
@@ -116,8 +115,7 @@ xnumt <- function (x, decimals = 2, signif = NULL, type = 2,
   return(ret)
 }
 
-num_abbr <- function (x, n = 3)
-{
+num_abbr <- function(x, n = 3) {
   if (!is.numeric(x))
     stop("Input vector x needs to be numeric.")
   if (!is.numeric(n))
@@ -130,9 +128,9 @@ num_abbr <- function (x, n = 3)
   x <- abs(x)
   div <- findInterval(x, c(0, 1000, 1e+06, 1e+09, 1e+12, 1e+15,
                            1e+18))
-  x <- round(x, -nchar(round(x, 0)) + n)/10^(3 * (div - 1))
+  x <- round(x, -nchar(round(x, 0)) + n) / 10^(3 * (div - 1))
   div <- ifelse(nchar(as.integer(x)) > 3, div + 1, div)
-  x <- ifelse(nchar(as.integer(x)) > 3, x/1000, x)
+  x <- ifelse(nchar(as.integer(x)) > 3, x / 1000, x)
   x <- round(x, 3)
   x <- paste0(x, c("", "K", "M", "B", "T", "Qa", "Qi")[div])
   output <- paste0(negative_positions, x)

@@ -31,7 +31,8 @@ data frame, meaning that forecasting starts the next date following it.
 The date must be a recognized date format. Note that for forecasting, the
 date origin is set to 1970-01-01.}
 
-\item{Trend}{The type of trend. There are three options \strong{Day, Month and Year}.}
+\item{Trend}{The type of trend. There are three options
+\strong{Day, Month and Year}.}
 
 \item{Type}{The type of response variable. There are two options
 \strong{Continuous and Integer}. For integer variable, the forecasts are
@@ -93,8 +94,8 @@ are lm, smooth spline, polynomial splines with or without knots, quadratic
 polynomial,  and ARIMA. The robust output include the models' estimates,
 time-varying forecasts and plots  based on themes from ggplot. The main
 attraction of this function is the use of the newly introduced
-\emph{equal number of trend (days, months, years) to estimate forecast from the model}.
-The function takes \verb{daily, monthly and yearly data sets for now}.
+\emph{equal number of trend (days, months, years) to estimate forecast from
+the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
 # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')

@@ -4,14 +4,14 @@
 \alias{MLMetrics}
 \title{Collection of Machine Learning Model Metrics for Easy Reference}
 \usage{
-MLMetrics(Observed, yvalue, Model, K, Name, Form, kutuf, TTy)
+MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)
 }
 \arguments{
 \item{Observed}{The Observed data in a data frame format}
 
 \item{yvalue}{The Response variable of the estimated Model}
 
-\item{Model}{The Estimated Model (\emph{Model} = a + bx)}
+\item{modeli}{The Estimated Model (\emph{Model} = a + bx)}
 
 \item{K}{The number of variables in the estimated Model to consider}
 
@@ -83,6 +83,6 @@ metrics on the table and makes it easier to use them to select a model.
 \examples{
 library(splines)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-MLMetrics(Observed = Data, yvalue = Data$states, Model = Model, K = 2,
+MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
  Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
 }

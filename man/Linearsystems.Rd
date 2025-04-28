@@ -54,15 +54,16 @@ independent variables.}
 third-power (x^3) of \emph{numeric} independent variable(s) is/are included as
 independent variables.}
 \item{\code{Inverse y}}{The full estimates of the Inverse Model. Here the
-dependent variable is inverse-transformed (1/y).}
+dependent variable is inverse-transformed (1 / y).}
 \item{\code{Inverse x}}{The full estimates of the Inverse Model. Here the
-independent variable is inverse-transformed (1/x).}
+independent variable is inverse-transformed (1 / x).}
 \item{\code{Inverse y & x}}{The full estimates of the Inverse Model. Here
-the dependent and independent variables are inverse-transformed 1/y & 1/x).}
+the dependent and independent variables are inverse-transformed 1 / y & 1 /
+x).}
 \item{\code{Square root}}{The full estimates of the Square root Model. Here
 the independent variable is square root-transformed (x^0.5).}
 \item{\code{Cubic root}}{The full estimates of the cubic root Model. Here
-the independent variable is cubic root-transformed (x^1/3).}
+the independent variable is cubic root-transformed (x^1 / 3).}
 \item{\code{Significant plot of Linear}}{Plots of order of importance and
 significance of estimates coefficients of the model.}
 \item{\code{Significant plot of Linear with interaction}}{Plots of order of
