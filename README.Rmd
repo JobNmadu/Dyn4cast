@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
-[![codecov test coverage](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
