@@ -1,6 +1,6 @@
 test_that("treatment_model works", {
-  Treatment = treatments$treatment
-  data = treatments[, c(2:3)]
+  Treatment  <- treatments$treatment
+  data  <- treatments[, c(2:3)]
   test_model <- treatment_model(Treatment, data)
 
   Test_13 <- test_model[["Model"]]

@@ -1,12 +1,13 @@
 test_that("DynamicForecast works", {
   DDD <- as.data.frame(readr::read_csv("data/day_14.csv"))
   DDD$Date <- as.Date(DDD$Date)
-  BREAKS = c(70, 131, 173, 228, 274)
+  BREAKS <- c(70, 131, 173, 228, 274)
 
   test_model <- DynamicForecast(date = DDD$Date, series = DDD$Case,
                                 BREAKS = BREAKS,
-                                MaximumDate = "2021-02-08", Trend = "Day", Length = 0,
-                                Type = "Integer", origin = "2020-02-29")
+                                MaximumDate = "2021-02-08", Trend = "Day",
+                                Length = 0, Type = "Integer",
+                                origin = "2020-02-29")
 
   Test_01 <- test_model$Plot
   Test_02 <- test_model[["Spline without knots"]][["coefficients"]]
