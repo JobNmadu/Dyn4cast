@@ -34,10 +34,11 @@ test_that("mdpi works", {
                    Test_08)
   expect_identical(test_model[["plots"]]$`Intensity of poverty`, Test_09)
   expect_identical(
-    test_model[["plots"]]$`Average deprivation among the deprived`, Test_10)
+    test_model[["plots"]]$`Average deprivation among the deprived`,
+    Test_10)
   expect_identical(test_model[["plots"]]$`Contribution of each Dimension`,
                    Test_11)
   expect_identical(test_model[["plots"]]$combined_only, Test_12)
   expect_identical(test_model[["plots"]]$national_only, Test_13)
-  expect_identical(test_model[["plots"]]$combined_national_only , Test_14)
+  expect_identical(test_model[["plots"]]$combined_national_only, Test_14)
 })

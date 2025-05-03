@@ -138,21 +138,22 @@
 #'
 #' @examples
 #' ## Without test data (not run)
-#' # y = linearsystems$MKTcost # to run all the exercises, uncomment.
+#' # y <- linearsystems$MKTcost # to run all the exercises, uncomment.
 #' # x <- select(linearsystems, -MKTcost)
 #' # Linearsystems(y, x, 6, 15) # NaNs produced if run
 #' ## Without test data (not run)
-#' # x = sampling[, -1]
-#' # y = sampling$qOutput
-#' # limit = 20
+#' # x <- sampling[, -1]
+#' # y <- sampling$qOutput
+#' # limit <- 20
 #' # mod <-3
 #' # Test <- NA
 #' # Linearsystems(y, x, 3, 15) # NaNs produced if run
 #' # # with test data
-#' # x = sampling[, -1]
-#' # y = sampling$qOutput
+#' # x <- sampling[, -1]
+#' # y <- sampling$qOutput
 #' # Data <- cbind(y, x)
-#' # sampling <- sample(1:nrow(Data), 0.8*nrow(Data)) # 80% of data is sampled
+#' # # 80% of data is sampled
+#' # sampling <- sample(1 : nrow(Data), 0.8 * nrow(Data))
 #' # for training the model
 #' # train <- Data[sampling, ]
 #' # Test  <- Data[-sampling, ]

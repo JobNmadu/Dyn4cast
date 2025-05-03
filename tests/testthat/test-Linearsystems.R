@@ -1,5 +1,5 @@
 test_that("Linearsystems works", {
-  y = linearsystems$MKTcost
+  y <- linearsystems$MKTcost
   x <- select(linearsystems, -MKTcost)
   test_model1 <- Linearsystems(y, x, 6, 7)
 
