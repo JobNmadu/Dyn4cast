@@ -3,7 +3,7 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   Dyn4cast: Dyn4cast.html
-last_built: 2025-05-03T18:28Z
+last_built: 2025-05-03T18:30Z
 urls:
   reference: https://jobnmadu.github.io/Dyn4cast/reference
   article: https://jobnmadu.github.io/Dyn4cast/articles
