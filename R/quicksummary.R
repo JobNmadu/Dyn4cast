@@ -61,7 +61,8 @@ quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
     c(lcl, ucl)
   }
   nColumns  <-  dim(y)[2]
-  ans  <-  NULL
+  ans <-NULL
+  ank <- NULL
   for (i in 1:nColumns) {
     X  <-  y[, i]
     X.length  <-  length(X)
@@ -82,17 +83,27 @@ quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
                skewness, kurtosis, X.length)
       znames  <-  c("Mean", "SD", "SE Mean", "Min", "Median", "Max", "Q1",
                     "Q3",  "Skewness", "Kurtosis", "Nobs")
+      me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
+      me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     } else {
       z  <-  c(mean(X), sqrt(var(X)), sqrt(var(X) / length(X)),
                X.length)
       znames  <-  c("Mean", "SD", "SE Mean", "Nobs")
+      me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
+      me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     }
-    result  <-  matrix(z, ncol = 1)
+    result <- matrix(z, ncol = 1)
+    risult <- matrix(me, ncol = 1)
     row.names(result)  <-  znames
+    row.names(risult)  <-  me_n
     ans  <-  cbind(ans, result)
+    ank  <-  cbind(ank, risult)
   }
   colnames(ans)  <-  colnames(y)
   ans  <-  data.frame(round(t(ans), digits = 2))
+
+  colnames(ank)  <-  colnames(y)
+  ank  <-  data.frame(round(t(ank), digits = 2))
 
   if (Type != 1) {
     ans        <-  ans[order(-ans$Mean), ]
@@ -104,8 +115,17 @@ quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
 
   if (ncol(ans) > nrow(ans)) {
     ans  <-  t(ans)
+    ank  <-  t(ank)
   } else {
     ans  <-  ans
+    ank  <-  ank
   }
-  ans
+  list(Summary = ans, Means = ank)
 }
+
+amean <- function(x) sum(x, na.rm = TRUE) / length(x[!is.na(x)])
+gmean <- function(x) prod(x, na.rm = TRUE) ^ (1 / length(x[!is.na(x)]))
+qmean <- function(x) sqrt(sum(x ^ 2, na.rm = TRUE) / length(x[!is.na(x)]))
+hmean <- function(x) length(x[!is.na(x)]) / sum(1 / x, na.rm = TRUE)
+cmean <- function(x) (sum(x ^ 3, na.rm = TRUE) /
+                        length(x[!is.na(x)])) ^ 0.3333333
