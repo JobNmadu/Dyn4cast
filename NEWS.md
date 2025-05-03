@@ -1,3 +1,9 @@
+# Dyn4cast 11.11.26-delta 2025-05-03
+
+`quicksummary` now have additional output of five types of mean, which can be useful when working on various modelling tasks.
+
+Some editing on the various functions to make them more readable.
+
 # Dyn4cast 11.11.26-kappa 2025-04-22
 
 More efficient estimation procedure and better logic in selecting the option to estimate. Some options will not output because of complexity.
