@@ -276,21 +276,22 @@ May be identical with plots of marginal effects if performed.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Without test data (not run)</span></span></span>
-<span class="r-in"><span><span class="co"># y = linearsystems$MKTcost # to run all the exercises, uncomment.</span></span></span>
+<span class="r-in"><span><span class="co"># y &lt;- linearsystems$MKTcost # to run all the exercises, uncomment.</span></span></span>
 <span class="r-in"><span><span class="co"># x &lt;- select(linearsystems, -MKTcost)</span></span></span>
 <span class="r-in"><span><span class="co"># Linearsystems(y, x, 6, 15) # NaNs produced if run</span></span></span>
 <span class="r-in"><span><span class="co">## Without test data (not run)</span></span></span>
-<span class="r-in"><span><span class="co"># x = sampling[, -1]</span></span></span>
-<span class="r-in"><span><span class="co"># y = sampling$qOutput</span></span></span>
-<span class="r-in"><span><span class="co"># limit = 20</span></span></span>
+<span class="r-in"><span><span class="co"># x &lt;- sampling[, -1]</span></span></span>
+<span class="r-in"><span><span class="co"># y &lt;- sampling$qOutput</span></span></span>
+<span class="r-in"><span><span class="co"># limit &lt;- 20</span></span></span>
 <span class="r-in"><span><span class="co"># mod &lt;-3</span></span></span>
 <span class="r-in"><span><span class="co"># Test &lt;- NA</span></span></span>
 <span class="r-in"><span><span class="co"># Linearsystems(y, x, 3, 15) # NaNs produced if run</span></span></span>
 <span class="r-in"><span><span class="co"># # with test data</span></span></span>
-<span class="r-in"><span><span class="co"># x = sampling[, -1]</span></span></span>
-<span class="r-in"><span><span class="co"># y = sampling$qOutput</span></span></span>
+<span class="r-in"><span><span class="co"># x &lt;- sampling[, -1]</span></span></span>
+<span class="r-in"><span><span class="co"># y &lt;- sampling$qOutput</span></span></span>
 <span class="r-in"><span><span class="co"># Data &lt;- cbind(y, x)</span></span></span>
-<span class="r-in"><span><span class="co"># sampling &lt;- sample(1:nrow(Data), 0.8*nrow(Data)) # 80% of data is sampled</span></span></span>
+<span class="r-in"><span><span class="co"># # 80% of data is sampled</span></span></span>
+<span class="r-in"><span><span class="co"># sampling &lt;- sample(1 : nrow(Data), 0.8 * nrow(Data))</span></span></span>
 <span class="r-in"><span><span class="co"># for training the model</span></span></span>
 <span class="r-in"><span><span class="co"># train &lt;- Data[sampling, ]</span></span></span>
 <span class="r-in"><span><span class="co"># Test  &lt;- Data[-sampling, ]</span></span></span>
