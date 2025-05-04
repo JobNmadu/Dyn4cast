@@ -16,8 +16,8 @@
 #' `Not a Constraint` etc which would appear in the remark column.
 #' @param ci Confidence interval which is defaults to 0.95.
 #'
-#' @return The function returns a formatted Table of the Quick summary
-#' \item{\code{ANS}}{The formatted Table of the summary}
+#' @return The function returns formatted tables of the Quick summary
+#' \item{\code{Summary}}{List of two `data.frames`}
 #'
 #' @export quicksummary
 #'

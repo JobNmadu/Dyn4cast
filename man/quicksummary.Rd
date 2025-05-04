@@ -24,8 +24,8 @@ which would appear in the remark column.}
 \item{ci}{Confidence interval which is defaults to 0.95.}
 }
 \value{
-The function returns a formatted Table of the Quick summary
-\item{\code{ANS}}{The formatted Table of the summary}
+The function returns formatted tables of the Quick summary
+\item{\code{Summary}}{List of two \code{data.frames}}
 }
 \description{
 There is increasing need to make user-friendly and production ready Tables
