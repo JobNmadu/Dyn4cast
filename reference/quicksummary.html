@@ -92,7 +92,8 @@ which would appear in the remark column.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Likert-type data</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Likert-type data</span></span></span>
 <span class="r-in"><span><span class="va">Up</span> <span class="op">&lt;-</span> <span class="st">"Constraint"</span></span></span>
 <span class="r-in"><span><span class="va">Down</span> <span class="op">&lt;-</span> <span class="st">"Not a constraint"</span></span></span>
 <span class="r-in"><span><span class="fu">quicksummary</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Quicksummary</span>, Type <span class="op">=</span> <span class="fl">2</span>, Cut <span class="op">=</span> <span class="fl">2.60</span>, Up <span class="op">=</span> <span class="va">Up</span>, Down <span class="op">=</span> <span class="va">Down</span><span class="op">)</span></span></span>
@@ -162,7 +163,7 @@ which would appear in the remark column.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Continuous data</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">linearsystems</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">linearsystems</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">quicksummary</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, Type <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Summary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          MKTcost    Age Experience Years spent in formal education</span>

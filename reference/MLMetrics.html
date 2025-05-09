@@ -180,6 +180,9 @@ EssemWet, QUADRATIC polynomial, SPLINE polynomial.</p></dd>
 <dt><code>Precision</code></dt>
 <dd><p>of the Model.</p></dd>
 
+<dt><code>Predictive Residual Sum of Squares</code></dt>
+<dd><p>of the Model.</p></dd>
+
 <dt><code>R Square</code></dt>
 <dd><p>of the Model.</p></dd>
 
@@ -233,6 +236,7 @@ EssemWet, QUADRATIC polynomial, SPLINE polynomial.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">splines</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Model</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">states</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html" class="external-link">bs</a></span><span class="op">(</span><span class="va">sequence</span>, knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">115</span><span class="op">)</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">Data</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">MLMetrics</span><span class="op">(</span>Observed <span class="op">=</span> <span class="va">Data</span>, yvalue <span class="op">=</span> <span class="va">Data</span><span class="op">$</span><span class="va">states</span>, modeli <span class="op">=</span> <span class="va">Model</span>, K <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span> Name <span class="op">=</span> <span class="st">"Linear"</span>, Form <span class="op">=</span> <span class="st">"LM"</span>, kutuf <span class="op">=</span> <span class="fl">0</span>, TTy <span class="op">=</span> <span class="st">"Number"</span><span class="op">)</span></span></span>
@@ -328,6 +332,9 @@ EssemWet, QUADRATIC polynomial, SPLINE polynomial.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Precision</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Predictive Residual Sum of Squares`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`R Square`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.78</span>

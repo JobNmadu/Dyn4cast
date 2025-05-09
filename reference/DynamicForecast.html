@@ -61,7 +61,7 @@ the model</em>. The function takes <code>daily, monthly and yearly data sets for
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">DynamicForecast</span><span class="op">(</span><span class="va">date</span>, <span class="va">series</span>, <span class="va">Trend</span>, <span class="va">Type</span>, <span class="va">MaximumDate</span>, x <span class="op">=</span> <span class="fl">0</span>, BREAKS <span class="op">=</span> <span class="fl">0</span>,</span>
-<span> ORIGIN <span class="op">=</span> <span class="va">origin</span>, Length <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span> ORIGIN <span class="op">=</span> <span class="cn">NULL</span>, origin <span class="op">=</span> <span class="st">"1970-01-01"</span>, Length <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -116,10 +116,15 @@ constrained between the minimum and maximum value of the response variable.</p><
 would default to the length of the dataset i.e. sample size.</p></dd>
 
 
+<dt id="arg-origin">origin<a class="anchor" aria-label="anchor" href="#arg-origin"></a></dt>
+<dd><p>default date origin which is <strong>1970-01-01</strong> used to position
+the date of data to properly <code>date</code> the forecasts.</p></dd>
+
+
 <dt id="arg-origin">ORIGIN<a class="anchor" aria-label="anchor" href="#arg-origin"></a></dt>
-<dd><p>if different from <strong>1970-01-01</strong> must be in the format
-<code>"YYYY-MM-DD"</code>. This is used to position the date of the data in order to
-properly <code>date</code> the forecasts.</p></dd>
+<dd><p>date origin of the dataset and if different from <strong>origin</strong>
+must be in the format <code>"YYYY-MM-DD"</code>. This is used to position the date of
+the data to properly <code>date</code> the forecasts.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -204,7 +209,8 @@ the various models in the forecast.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># COVID19$Date &lt;- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># library(readr)</span></span></span>
+<span class="r-in"><span><span class="co"># COVID19$Date &lt;- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')</span></span></span>
 <span class="r-in"><span><span class="co">#  #The date is formatted to R format</span></span></span>
 <span class="r-in"><span><span class="co"># LEN &lt;- length(COVID19$Case)</span></span></span>
 <span class="r-in"><span><span class="co"># Dss &lt;- seq(COVID19$Date[1], by = "day", length.out = LEN)</span></span></span>

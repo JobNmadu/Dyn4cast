@@ -87,7 +87,8 @@ cut is <code>FALSE</code>).</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">DD</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100000</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">DD</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">formattedcut</span><span class="op">(</span><span class="va">DD</span>, <span class="fl">12</span>, <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              Var1  Freq Lower class Upper class Class interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   (-4.71,-3.97]     5       -4.71       -3.97  -4.71 - -3.97</span>
@@ -102,7 +103,6 @@ cut is <code>FALSE</code>).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10    (1.91,2.64]  2328        1.91        2.64    1.91 - 2.64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11    (2.64,3.38]   364        2.64        3.38    2.64 - 3.38</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12    (3.38,4.12]    30        3.38        4.12    3.38 - 4.12</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">DD1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">DD</span>, <span class="fl">12</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">DDK</span> <span class="op">&lt;-</span> <span class="fu">formattedcut</span><span class="op">(</span><span class="va">DD1</span>, <span class="fl">12</span>, <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">DDK</span></span></span>
@@ -33443,8 +33443,8 @@ cut is <code>FALSE</code>).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [ reached 'max' / getOption("max.print") -- omitted 66667 rows ]</span>
 <span class="r-in"><span><span class="co"># if data is not from a data frame, the frequency distribution is required.</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">DDK</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span><span class="fu">group_by</span><span class="op">(</span><span class="va">`Lower class`</span>, <span class="va">`Upper class`</span>, <span class="va">`Class interval`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span><span class="fu">tally</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">`Lower class`</span>, <span class="va">`Upper class`</span>, <span class="va">`Class interval`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">tally</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Lower class Upper class Class interval     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1        -4.71       -3.97  -4.71 - -3.97     5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2        -3.97       -3.23  -3.97 - -3.23    63</span>
