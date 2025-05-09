@@ -58,6 +58,7 @@ A list with the following components:
 \item{\code{Percent Bias}}{of the Model.}
 \item{\code{Positive Predictive Value}}{of the Model.}
 \item{\code{Precision}}{of the Model.}
+\item{\code{Predictive Residual Sum of Squares}}{of the Model.}
 \item{\code{R Square}}{of the Model.}
 \item{\code{Relative Absolute Error}}{of the Model.}
 \item{\code{Recall}}{of the Model.}
@@ -82,6 +83,7 @@ metrics on the table and makes it easier to use them to select a model.
 }
 \examples{
 library(splines)
+library(readr)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
 MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
  Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")

@@ -67,6 +67,7 @@
 #' @aliases treatments
 #'
 #' @examples
+#' library(readr)
 #' Treatment = treatments$treatment
 #' data = treatments[, c(2:3)]
 #' treatment_model(Treatment, data)

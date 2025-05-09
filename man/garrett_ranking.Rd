@@ -40,6 +40,7 @@ other survey types of research. This functions performs Garrett Ranking
 of up to 15 ranks.
 }
 \examples{
+library(readr)
 garrett_data <- data.frame(garrett_data)
 ranking <- c("Serious constraint", "Constraint",
 "Not certain it is a constraint", "Not a constraint",

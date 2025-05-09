@@ -6,7 +6,7 @@
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \usage{
 DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
- ORIGIN = origin, Length = 0, ...)
+ ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
 }
 \arguments{
 \item{date}{A vector containing the dates for which the data is collected.
@@ -41,9 +41,12 @@ constrained between the minimum and maximum value of the response variable.}
 \item{Length}{The length for which the forecast would be made. If not given,
 would default to the length of the dataset i.e. sample size.}
 
-\item{ORIGIN}{if different from \strong{1970-01-01} must be in the format
-\code{"YYYY-MM-DD"}. This is used to position the date of the data in order to
-properly \code{date} the forecasts.}
+\item{origin}{default date origin which is \strong{1970-01-01} used to position
+the date of data to properly \code{date} the forecasts.}
+
+\item{ORIGIN}{date origin of the dataset and if different from \strong{origin}
+must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of
+the data to properly \code{date} the forecasts.}
 
 \item{...}{Additional arguments that may be passed to the function. If the
 maximum date is NULL which is is the default, it is set to the last date of
@@ -98,6 +101,7 @@ attraction of this function is the use of the newly introduced
 the model}. The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
+# library(readr)
 # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
 #  #The date is formatted to R format
 # LEN <- length(COVID19$Case)

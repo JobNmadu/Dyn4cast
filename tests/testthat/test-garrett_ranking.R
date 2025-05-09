@@ -1,4 +1,5 @@
 test_that("garrett_ranking works", {
+  library(readr)
   garrett_data <- data.frame(garrett_data)
   ranking <- c("Serious constraint", "Constraint",
                "Not certain it is a constraint", "Not a constraint",

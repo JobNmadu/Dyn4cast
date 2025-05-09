@@ -36,6 +36,8 @@ is set to do. It is simple and straight forward to use.
 \examples{
 
 library(Dyn4cast)
+library(tidyverse)
+
 # View the data without transformation
 
 data0 <- Transform \%>\%

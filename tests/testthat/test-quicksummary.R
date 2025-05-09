@@ -1,4 +1,5 @@
 test_that("quicksummary works", {
+  library(tidyverse)
   Up <- "Constraint"
   Down <- "Not a constraint"
   test1 <- quicksummary(x = Quicksummary, Type = 2, Cut = 2.60,

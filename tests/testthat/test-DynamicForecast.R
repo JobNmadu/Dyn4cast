@@ -1,5 +1,6 @@
 test_that("DynamicForecast works", {
-  DDD <- as.data.frame(readr::read_csv("data/day_14.csv"))
+  library(readr)
+  DDD <- as.data.frame(read_csv("data/day_14.csv"))
   DDD$Date <- as.Date(DDD$Date)
   BREAKS <- c(70, 131, 173, 228, 274)
 

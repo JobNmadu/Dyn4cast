@@ -60,6 +60,7 @@ There are excellent materials dealing with each of the treatment effects,
 please see \href{https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/}{Understanding propensity score weighting}
 }
 \examples{
+library(readr)
 Treatment = treatments$treatment
 data = treatments[, c(2:3)]
 treatment_model(Treatment, data)

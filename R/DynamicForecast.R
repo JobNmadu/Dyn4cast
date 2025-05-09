@@ -34,22 +34,22 @@
 #'  constrained between the minimum and maximum value of the response variable.
 #' @param Length The length for which the forecast would be made. If not given,
 #'  would default to the length of the dataset i.e. sample size.
-#' @param ORIGIN if different from **1970-01-01** must be in the format
-#' `"YYYY-MM-DD"`. This is used to position the date of the data in order to
-#' properly `date` the forecasts.
+#' @param origin default date origin which is **1970-01-01** used to position
+#' the date of data to properly `date` the forecasts.
+#' @param ORIGIN date origin of the dataset and if different from **origin**
+#'  must be in the format `"YYYY-MM-DD"`. This is used to position the date of
+#'  the data to properly `date` the forecasts.
 #' @param ... Additional arguments that may be passed to the function. If the
 #' maximum date is NULL which is is the default, it is set to the last date of
 #' the `series`.
 #'
 #' @usage
 #' DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
-#'  ORIGIN = origin, Length = 0, ...)
+#'  ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
 #'
-#' @import tidyverse
 #' @importFrom stats lm
 #' @importFrom stats fitted.values
 #' @importFrom stats smooth.spline
-#' @importFrom ModelMetrics rmse
 #' @importFrom splines bs
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
@@ -113,6 +113,7 @@
 #' @aliases COVID19
 #'
 #' @examples
+#' # library(readr)
 #' # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
 #' #  #The date is formatted to R format
 #' # LEN <- length(COVID19$Case)
@@ -147,10 +148,16 @@ utils::globalVariables(c("origin", "Spline without knots",
 
 lifecycle::badge("stable")
 DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
-                            BREAKS = 0, ORIGIN = origin, Length = 0, ...) {
+                            BREAKS = 0, ORIGIN = NULL, origin = "1970-01-01",
+                            Length = 0, ...) {
+  if(base::is.null(ORIGIN)) {
+    ORIGIN <- 0
+  } else {
+    ORIGIN <- ORIGIN
+  }
 
-  ORIGIN <- ifelse(ORIGIN == 0, origin, ORIGIN)
-  date   <- zoo::as.Date(date, origin = ORIGIN)
+  oreegin <- ifelse(ORIGIN == 0, origin, ORIGIN)
+  date   <- zoo::as.Date(date, origin =  oreegin)
   Series <- ss <- seq(1:length(series))
   NN <- ifelse(length(x) != 0, 99, 100)
   BREAKS <- ifelse(length(BREAKS) < 5, 0, BREAKS)
@@ -197,8 +204,8 @@ DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
   if (is.null(MaximumDate)) {
     Dss19     <- seq(Data$Series[1], by = 1, length.out = length(Series))
     Dss191    <- seq(max(Dss19) + 1, by = 1, length.out = length(Series))
-    DayDat0   <- zoo::as.Date(Dss19[length(Dss19)], origin = ORIGIN)
-    DayDat1   <- zoo::as.Date(Dss191[length(Dss191)], origin = ORIGIN)
+    DayDat0   <- zoo::as.Date(Dss19[length(Dss19)], origin =  oreegin)
+    DayDat1   <- zoo::as.Date(Dss191[length(Dss191)], origin =  oreegin)
     MaxDayDat <- zoo::as.Date(DayDat0)
   } else {
     MaximumDate <- zoo::as.Date(MaximumDate)
@@ -247,7 +254,7 @@ DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
                              Grwoth = Growth1))
   Fitted <- tidyr::pivot_longer(Fitted, -date, names_to = "Models",
                         values_to = "Fitted values")
-  Fitted$date <- zoo::as.Date(Fitted$date, origin = ORIGIN)
+  Fitted$date <- zoo::as.Date(Fitted$date, origin =  oreegin)
 
   Fit_plot <- ggplot2::ggplot(Fitted) +
     ggplot2::aes(x = date, y = `Fitted values`, colour = Models) +
@@ -316,7 +323,7 @@ if (Length != 0) {
               "Upper ARIMA" = ModelMetrics::rmse(series, ARIMA))
 
   RMSE_weight91 <- as.list(RMSE91 / sum(RMSE91))
-  KK91$Date <- zoo::as.Date(KK91$Date, origin = ORIGIN)
+  KK91$Date <- zoo::as.Date(KK91$Date, origin =  oreegin)
   KK91$`Ensembled with equal weight` <- kk3191[["mean"]]
   KK91$`Ensembled based on weight` <- kk4191[["mean"]]
   KK91$`Ensembled based on summed weight` <- kk6191[["mean"]]
@@ -431,7 +438,7 @@ if (Length != 0) {
     KK91c$`Polynomial 95%`     <- kk10c$Upper95
     KK91c$`ARIMA 80%`          <- kk2c$Lower80
     KK91c$`ARIMA 95%`          <- kk2c$Upper95
-    KK91c$Date <- zoo::as.Date(KK91c$Date, origin = ORIGIN)
+    KK91c$Date <- zoo::as.Date(KK91c$Date, origin =  oreegin)
     DDfc <- c("Linear", "Semilog", "Growth", "Without knots 80%",
               "Without knots 95%", "Smooth Spline 80%",
               "Smooth Spline 95%", "With knots 80%", "With knots 95%",

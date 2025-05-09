@@ -1,4 +1,5 @@
 test_that("treatment_model works", {
+  library(readr)
   Treatment  <- treatments$treatment
   data  <- treatments[, c(2:3)]
   test_model <- treatment_model(Treatment, data)

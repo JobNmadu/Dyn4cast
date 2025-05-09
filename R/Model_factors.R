@@ -42,6 +42,7 @@
 #'
 #' @examples
 #' library(psych)
+#' library(readr)
 #' Data <- Quicksummary
 #' GGn <- names(Data)
 #' GG <- ncol(Data)
@@ -674,7 +675,7 @@ printLoadings <- function(x, digits = 3, cutoff = 0.4, sort = TRUE, ...) {
   newx <- print(fx, quote = FALSE, ...)
   vx <- colSums(x^2)
   varex <- rbind(`SS loadings` = vx)
-  if (is.null(attr(x, "covariance"))) {
+  if (base::is.null(attr(x, "covariance"))) {
     varex <- rbind(varex, `Proportion Var` = vx / p)
     if (factors > 1)
       varex <- rbind(varex, `Cumulative Var` = cumsum(vx / p))
@@ -705,11 +706,11 @@ cccs <- function(x) {
   nms <- names(parsed)
   parsed <- unname(parsed)
 
-  if (!is_null(nms)) {
-    nms <- list_c(purrr::map2(parsed, nms, rep_along))
+  if (!base::is.null(nms)) {
+    nms <- purrr::list_c(purrr::map2(parsed, nms, rep_along))
   }
   if (length(parsed)) {
-    parsed <- list_c(parsed)
+    parsed <- purrr::list_c(parsed)
   }
 }
 

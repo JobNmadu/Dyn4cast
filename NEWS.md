@@ -1,8 +1,10 @@
 # Dyn4cast 11.11.26-delta 2025-05-03
 
-`quicksummary` now have additional output of five types of mean, which can be useful when working on various modelling tasks.
+`quicksummary` now have additional output of five types of mean, which can be useful when working on various modeling tasks.
 
 Some editing on the various functions to make them more readable.
+
+`tidyverse` now demoted to suggestion from requirement to reduce the load of dependencies. `PRESS` restored as _Predictive Residual Sum of Squares_.
 
 # Dyn4cast 11.11.26-kappa 2025-04-22
 

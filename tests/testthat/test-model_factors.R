@@ -1,5 +1,6 @@
 test_that("model_factors works", {
   library(psych)
+  library(readr)
   Data <- Quicksummary
   GGn <- names(Data)
   GG <- ncol(Data)

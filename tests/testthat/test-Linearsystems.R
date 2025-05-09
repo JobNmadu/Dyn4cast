@@ -1,4 +1,5 @@
 test_that("Linearsystems works", {
+  library(tidyverse)
   y <- linearsystems$MKTcost
   x <- select(linearsystems, -MKTcost)
   test_model1 <- Linearsystems(y, x, 6, 7)

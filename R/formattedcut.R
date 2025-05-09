@@ -22,9 +22,9 @@
 #' @export formattedcut
 #'
 #' @examples
+#' library(tidyverse)
 #' DD <- rnorm(100000)
 #' formattedcut(DD, 12, FALSE)
-#'
 #' DD1 <- cut(DD, 12)
 #' DDK <- formattedcut(DD1, 12, TRUE)
 #' DDK

@@ -35,6 +35,7 @@ particular package.
 library(Dyn4cast)
 library(splines)
 library(forecast)
+library(readr)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)

@@ -1,4 +1,5 @@
 test_that("formattedcut works", {
+  library(tidyverse)
   DD <- rnorm(100000)
   test1 <- formattedcut(DD, 12, FALSE)
   test2 <- cut(DD, 12)

@@ -30,9 +30,9 @@ user-friendly output and is provided in a formatted manner. It is a easy to
 implement function.
 }
 \examples{
+library(tidyverse)
 DD <- rnorm(100000)
 formattedcut(DD, 12, FALSE)
-
 DD1 <- cut(DD, 12)
 DDK <- formattedcut(DD1, 12, TRUE)
 DDK

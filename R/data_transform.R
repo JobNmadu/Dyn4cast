@@ -33,6 +33,8 @@
 #' @examples
 #'
 #' library(Dyn4cast)
+#' library(tidyverse)
+#'
 #' # View the data without transformation
 #'
 #' data0 <- Transform %>%

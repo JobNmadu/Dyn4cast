@@ -32,6 +32,7 @@
 #' @export garrett_ranking
 #'
 #' @examples
+#' library(readr)
 #' garrett_data <- data.frame(garrett_data)
 #' ranking <- c("Serious constraint", "Constraint",
 #' "Not certain it is a constraint", "Not a constraint",

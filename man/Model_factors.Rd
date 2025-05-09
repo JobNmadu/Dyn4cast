@@ -39,6 +39,7 @@ can be used as \code{R} objects to perform other analysis.
 }
 \examples{
 library(psych)
+library(readr)
 Data <- Quicksummary
 GGn <- names(Data)
 GG <- ncol(Data)

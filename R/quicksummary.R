@@ -29,6 +29,7 @@
 #' @aliases Quicksummary
 #'
 #' @examples
+#' library(tidyverse)
 #' # Likert-type data
 #' Up <- "Constraint"
 #' Down <- "Not a constraint"

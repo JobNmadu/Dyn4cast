@@ -138,6 +138,7 @@
 #'
 #' @examples
 #' ## Without test data (not run)
+#' # library(tidyverse)
 #' # y <- linearsystems$MKTcost # to run all the exercises, uncomment.
 #' # x <- select(linearsystems, -MKTcost)
 #' # Linearsystems(y, x, 6, 15) # NaNs produced if run
@@ -164,7 +165,6 @@
 #' # Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
 #'
 #' @usage Linearsystems(y, x, mod, limit, Test = NA)
-# #' @keywords internal
 utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
   y1 <- y

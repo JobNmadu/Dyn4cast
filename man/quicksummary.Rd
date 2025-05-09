@@ -34,6 +34,7 @@ the output is a formatted table. This is very handy for those who do not
 have the time to write codes for user-friendly summaries.
 }
 \examples{
+library(tidyverse)
 # Likert-type data
 Up <- "Constraint"
 Down <- "Not a constraint"

@@ -19,7 +19,6 @@
 #'
 #' @export MLMetrics
 #'
-#' @import tidyverse
 #' @importFrom broom augment
 #' @importFrom stats AIC
 #' @importFrom stats BIC
@@ -65,8 +64,6 @@
 #' @importFrom ModelMetrics tpr
 #' @importFrom ModelMetrics ppv
 #' @importFrom ModelMetrics npv
-# #' @importFrom qpcR PRESS
-#' @importFrom dplyr mutate
 #' @importFrom stats predict
 #'
 #' @return A list with the following components:
@@ -75,7 +72,6 @@
 #' \item{\code{Accuracy}}{of the Model.}
 #' \item{\code{Adjusted R Square}}{of the Model.}
 #' \item{\code{`Akaike's` Information Criterion AIC}}{of the Model.}
-# #' \item{\code{`Allen's` Prediction Sum-Of-Squares (PRESS, P-Square)}}{of the Model.}
 #' \item{\code{Area under the ROC curve (AUC)}}{of the Model.}
 #' \item{\code{Average Precision at k}}{of the Model.}
 #' \item{\code{Bias}}{of the Model.}
@@ -101,6 +97,7 @@
 #' \item{\code{Percent Bias}}{of the Model.}
 #' \item{\code{Positive Predictive Value}}{of the Model.}
 #' \item{\code{Precision}}{of the Model.}
+#' \item{\code{Predictive Residual Sum of Squares}}{of the Model.}
 #' \item{\code{R Square}}{of the Model.}
 #' \item{\code{Relative Absolute Error}}{of the Model.}
 #' \item{\code{Recall}}{of the Model.}
@@ -122,6 +119,7 @@
 #'
 #' @examples
 #' library(splines)
+#' library(readr)
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
 #' MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
 #'  Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
@@ -257,8 +255,8 @@ MLMetrics <- function(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy){
 
   RD37 = MallowsCp(model2 = modeli, y = yvalue, x = Observed[, -1],
                              type = Type, Nlevels = Nlevels)
-#  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
-#                 signif(qpcR::PRESS(modeli, verbose = FALSE)$P.square, 2), 0)
+  RD38 <- ifelse(ppk == 1 & Name == "QUADRATIC",
+                 signif(predict_square(modeli, verbose = FALSE)$P.square, 2), 0)
   RD39 = signif(ifelse(Form == "LM"| TTy == "Number" | Form == "ALM",
                        ModelMetrics::brier(yvalue, Preds),
                        ModelMetrics::brier(modeli)), 0)
@@ -293,7 +291,6 @@ MLMetrics <- function(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy){
     "Accuracy" = RD05,
     "Adjusted R Square" = RD04,
     "Akaike's Information Criterion AIC" = RD01,
-#    "Allen's Prediction Sum-Of-Squares (PRESS, P-Square)" = RD38,
     "Area under the ROC curve (AUC)" = RD09,
     "Average Precision at k" = RD08,
     "Bias" = RD10,
@@ -320,6 +317,7 @@ MLMetrics <- function(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy){
     "Percent Bias" = RD22,
     "Positive Predictive Value" = RD48,
     "Precision" = RD23,
+    "Predictive Residual Sum of Squares" = RD38,
     "R Square" = RD03,
     "Relative Absolute Error" = RD24,
     "Recall" = RD25,
