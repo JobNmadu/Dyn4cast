@@ -155,7 +155,7 @@ DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
 
   oreegin <- ifelse(ORIGIN == 0, origin, ORIGIN)
   date   <- zoo::as.Date(date, origin =  oreegin)
-  Series <- ss <- seq_along(length(series))
+  Series <- ss <- seq(1 : length(series))
   NN <- ifelse(length(x) != 0, 99, 100)
   BREAKS <- ifelse(length(BREAKS) < 5, 0, BREAKS)
 
@@ -422,7 +422,7 @@ if (Length != 0) {
                          h = H)
     kk61c <-  constrainedforecast(model10 = kk61F, lower = lower, upper = upper)
     KK91c <- as.data.frame(cbind("Date" = Dsf19, "Series" =
-                                   seq_along(length(Dsf19)),
+                                   seq(1 : length(Dsf19)),
                                  "Linear" = LinearF[["mean"]],
                                  "Semilog" = SemilogF[["mean"]],
                                  "Growth" = GrowthF[["mean"]]))
