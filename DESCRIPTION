@@ -21,13 +21,12 @@ Imports:
     Metrics,
     tidyr,
     ggplot2,
+    generics,
     magrittr,
     formattable,
     utils,
-    lifecycle,
     zoo,
     ModelMetrics,
-    broom,
     dplyr,
     modelsummary,
     caret,
@@ -49,6 +48,7 @@ Suggests:
     knitr,
     spelling,
     psych,
+    lifecycle,
     readr
 Config/testthat/edition: 3
 URL: https://github.com/JobNmadu/Dyn4cast, https://jobnmadu.github.io/Dyn4cast/

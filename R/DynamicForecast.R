@@ -67,7 +67,6 @@
 #' @importFrom utils globalVariables
 #' @importFrom zoo yearmon
 #' @importFrom zoo as.Date
-#' @importFrom lifecycle badge
 #' @importFrom utils globalVariables
 #'
 #' @name DynamicForecast
@@ -145,12 +144,10 @@ utils::globalVariables(c("origin", "Spline without knots",
                          "Ensembled based on summed weight",
                          "Ensembled based on weight of fit", "Date", "Day",
                          "Forecast", "Models", "Fitted values"))
-
-lifecycle::badge("stable")
 DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
                             BREAKS = 0, ORIGIN = NULL, origin = "1970-01-01",
                             Length = 0, ...) {
-  if(base::is.null(ORIGIN)) {
+  if (base::is.null(ORIGIN)) {
     ORIGIN <- 0
   } else {
     ORIGIN <- ORIGIN
@@ -158,7 +155,7 @@ DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
 
   oreegin <- ifelse(ORIGIN == 0, origin, ORIGIN)
   date   <- zoo::as.Date(date, origin =  oreegin)
-  Series <- ss <- seq(1:length(series))
+  Series <- ss <- seq_along(length(series))
   NN <- ifelse(length(x) != 0, 99, 100)
   BREAKS <- ifelse(length(BREAKS) < 5, 0, BREAKS)
 
@@ -203,9 +200,7 @@ DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
   MaxDayDat <- 0
   if (is.null(MaximumDate)) {
     Dss19     <- seq(Data$Series[1], by = 1, length.out = length(Series))
-    Dss191    <- seq(max(Dss19) + 1, by = 1, length.out = length(Series))
     DayDat0   <- zoo::as.Date(Dss19[length(Dss19)], origin =  oreegin)
-    DayDat1   <- zoo::as.Date(Dss191[length(Dss191)], origin =  oreegin)
     MaxDayDat <- zoo::as.Date(DayDat0)
   } else {
     MaximumDate <- zoo::as.Date(MaximumDate)
@@ -309,10 +304,12 @@ if (Length != 0) {
   names(KK91) <- c("Date", "Series", "Linear", "Semilog", "Growth",
                    "Without Knots", "Smooth spline", "With Knots",
                    "Polynomial", "Lower ARIMA", "Upper ARIMA")
-  RMSE91L <- as.data.frame(cbind(
-    "Linear" = ModelMetrics::rmse(series, Linear1),
-    "Semilog" = ModelMetrics::rmse(series, Semilog1),
-    "Growth" = ModelMetrics::rmse(series, Growth1)))
+  RMSE91L <- as.data.frame(cbind("Linear" = ModelMetrics::rmse(series,
+                                                               Linear1),
+                                 "Semilog" = ModelMetrics::rmse(series,
+                                                                Semilog1),
+                                 "Growth" = ModelMetrics::rmse(series,
+                                                               Growth1)))
 
   RMSE91 <- c("Without knots" = ModelMetrics::rmse(series,
                                                    Without.knots),
@@ -373,7 +370,7 @@ if (Length != 0) {
   RMSE_f91 <- cbind(DDf91, RMSE_f91)
 
   KK91 <-  tidyr::pivot_longer(KK91, -c(Date, Series), names_to = "Models",
-                              values_to = "Forecast")
+                               values_to = "Forecast")
   KK91$Date <- zoo::as.Date(KK91$Date)
   KK0091 <- ggplot2::ggplot(KK91) +
     aes(x = Date, y = Forecast, colour = Models, group = Models) +
@@ -408,15 +405,15 @@ if (Length != 0) {
                                             upper = upper), h = H)
     kk10c <-  constrainedforecast(model10 = kk10F, lower = lower, upper = upper)
     kk2F <- forecast::forecast(scaledlogit(x = ARIMA, lower = lower,
-                                            upper = upper), h = H)
+                                           upper = upper), h = H)
     kk2c <-  constrainedforecast(model10 = kk2F, lower = lower, upper = upper)
     kk31F <- forecast::forecast(scaledlogit(x = kk3091,
-                                             lower = lower,
-                                             upper = upper), h = H)
+                                            lower = lower,
+                                            upper = upper), h = H)
     kk31c <-  constrainedforecast(model10 = kk31F, lower = lower, upper = upper)
     kk41F <-
       forecast::forecast(scaledlogit(x = fitted.values(kk4091),
-                                      lower = lower, upper = upper),
+                                     lower = lower, upper = upper),
                          h = H)
     kk41c <-  constrainedforecast(model10 = kk41F, lower = lower, upper = upper)
     kk61F <-
@@ -424,7 +421,8 @@ if (Length != 0) {
                                      lower = lower, upper = upper),
                          h = H)
     kk61c <-  constrainedforecast(model10 = kk61F, lower = lower, upper = upper)
-    KK91c <- as.data.frame(cbind("Date" = Dsf19, "Series" = 1:length(Dsf19),
+    KK91c <- as.data.frame(cbind("Date" = Dsf19, "Series" =
+                                   seq_along(length(Dsf19)),
                                  "Linear" = LinearF[["mean"]],
                                  "Semilog" = SemilogF[["mean"]],
                                  "Growth" = GrowthF[["mean"]]))

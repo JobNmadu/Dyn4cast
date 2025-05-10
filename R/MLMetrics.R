@@ -19,8 +19,8 @@
 #'
 #' @export MLMetrics
 #'
-#' @importFrom broom augment
 #' @importFrom stats AIC
+#' @importFrom generics augment
 #' @importFrom stats BIC
 #' @importFrom stats na.omit
 #' @importFrom Metrics accuracy
@@ -146,7 +146,7 @@ MLMetrics <- function(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy){
   }else if(Form == "N-LM"){
     Preds = 0
   }else if(Form == "GLM" & Name != "Log"){
-    KK <- broom::augment(modeli, data = Observed)
+    KK <- generics::augment(modeli, data = Observed)
     KK$Probable =  1/(1 + exp(-KK$.fitted))
     KK$Predicted =  ifelse(Probable > 0.5, 1, 0)
     Preds = KK$Predicted
