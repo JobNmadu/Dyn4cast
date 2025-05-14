@@ -189,7 +189,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
   Linears <- MLMetrics(Observed = Data, yvalue = y, modeli = Linear,
                        K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                        TTy = "Number")
-  v_Linear <- estimate_plot(model = Linear, limit = limit)
+  v_Linear <- estimate_plot(model25 = Linear, limit = limit)
   if (case != "complex") {
     e_Linear <- marginaleffects::avg_slopes(Linear, by = TRUE)
   } else {
@@ -261,7 +261,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciY <- MLMetrics(Observed = Data, yvalue = y, modeli = `reciprocal in Y`,
                        K = 2, Name = "Semilog in Y", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciY <- estimate_plot(model = `reciprocal in Y`, limit = limit)
+    v_reciY <- estimate_plot(model25 = `reciprocal in Y`, limit = limit)
     if (case != "complex") {
       e_reciY <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
     } else {
@@ -274,7 +274,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciX <- MLMetrics(Observed = Data, yvalue = y, modeli = `reciprocal in X`,
                        K = 2, Name = "Inverse in X", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciX <- estimate_plot(model = `reciprocal in X`, limit = limit)
+    v_reciX <- estimate_plot(model25 = `reciprocal in X`, limit = limit)
     if (case != "complex") {
       e_reciX <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
     } else {
@@ -285,7 +285,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciD <- MLMetrics(Observed = Data, yvalue = y, modeli = `double reciprocal`,
                        K = 2, Name = "Inverse in Y & X", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciD <- estimate_plot(model = `double reciprocal`, limit = limit)
+    v_reciD <- estimate_plot(model25 = `double reciprocal`, limit = limit)
     if (case != "complex") {
       e_reciD  <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
 
@@ -302,7 +302,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     squares <- MLMetrics(Observed = Data, yvalue = y, modeli = `square root`,
                          K = 2, Name = "Square root", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_square <- estimate_plot(model = `square root`, limit = limit)
+    v_square <- estimate_plot(model25 = `square root`, limit = limit)
     if (case != "complex") {
       e_square <- marginaleffects::avg_slopes(`square root`, by = TRUE)
     } else {
@@ -317,7 +317,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     cubics <- MLMetrics(Observed = Data, yvalue = y, modeli = `cubic root`,
                         K = 2, Name = "Cubic root", Form = "LM", kutuf = 0,
                         TTy = "Number")
-    v_cubic <- estimate_plot(model = `cubic root`, limit = limit)
+    v_cubic <- estimate_plot(model25 = `cubic root`, limit = limit)
     if (case != "complex") {
       e_cubic <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
     } else {
@@ -333,7 +333,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     quadratics <- MLMetrics(Observed = Data, yvalue = y, modeli = quadratic,
                             K = 2, Name = "Quadratic", Form = "LM", kutuf = 0,
                             TTy = "Number")
-    v_quadratic <- estimate_plot(model = quadratic, limit = limit)
+    v_quadratic <- estimate_plot(model25 = quadratic, limit = limit)
     if (case != "complex") {
       e_quadratic <- marginaleffects::avg_slopes(quadratic, by = TRUE)
     } else {
@@ -347,7 +347,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     cubes <- MLMetrics(Observed = Data, yvalue = y, modeli = cube,
                        K = 2, Name = "Cube", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_cube <- estimate_plot(model = cube, limit = limit)
+    v_cube <- estimate_plot(model25 = cube, limit = limit)
     if (case != "complex") {
       e_cube  <- marginaleffects::avg_slopes(cube, by = TRUE)
     } else {
@@ -360,7 +360,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     loglins <- MLMetrics(Observed = Data, yvalue = y, modeli = loglin,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_loglin <- estimate_plot(model = loglin, limit = limit)
+    v_loglin <- estimate_plot(model25 = loglin, limit = limit)
     if (case != "complex") {
       e_loglin  <- marginaleffects::avg_slopes(loglin, by = TRUE)
     } else {
@@ -374,7 +374,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     linlogs <- MLMetrics(Observed = Data, yvalue = y, modeli = linlog,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_linlog <- estimate_plot(model = linlog, limit = limit)
+    v_linlog <- estimate_plot(model25 = linlog, limit = limit)
     if (case != "complex") {
       e_linlog  <- marginaleffects::avg_slopes(linlog, by = TRUE)
     } else {
@@ -388,7 +388,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     perlogs <- MLMetrics(Observed = Data, yvalue = y, modeli = perlog,
                          K = 2, Name = "Mixed-power", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_perlog <- estimate_plot(model = perlog, limit = limit)
+    v_perlog <- estimate_plot(model25 = perlog, limit = limit)
     if (case != "complex") {
       e_perlog <- marginaleffects::avg_slopes(perlog, by = TRUE)
     } else {
@@ -402,7 +402,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     loglogs <- MLMetrics(Observed = Data, yvalue = y, modeli = loglog,
                          K = 2, Name = "Cobb Douglas", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_loglog <- estimate_plot(model = loglog, limit = limit)
+    v_loglog <- estimate_plot(model25 = loglog, limit = limit)
     if (case != "complex") {
       e_loglog  <- marginaleffects::avg_slopes(loglog, by = TRUE)
     } else {
@@ -450,7 +450,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       translogs <- MLMetrics(Observed = Data, yvalue = y, modeli = translog,
                              K = 2, Name = "Translog", Form = "LM", kutuf = 0,
                              TTy = "Number")
-      v_translog <- estimate_plot(model = translog, limit = limit)
+      v_translog <- estimate_plot(model25 = translog, limit = limit)
       e_translog  <- marginaleffects::avg_slopes(translog, by = TRUE)
     } else {
       translog <- NULL
@@ -488,7 +488,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       LinearIs <- MLMetrics(Observed = Data, yvalue = y, modeli = LinearI,
                             K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                             TTy = "Number")
-      v_LinearI <- estimate_plot(model = LinearI, limit = limit)
+      v_LinearI <- estimate_plot(model25 = LinearI, limit = limit)
       e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
     } else {
       LinearI <- NULL
@@ -532,7 +532,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       LinearIs <- MLMetrics(Observed = Data, yvalue = y, modeli = LinearI,
                             K = 2, Name = "Linear", Form = "LM", kutuf = 0,
                             TTy = "Number")
-      v_LinearI <- estimate_plot(model = LinearI, limit = limit)
+      v_LinearI <- estimate_plot(model25 = LinearI, limit = limit)
       e_LinearI    <- marginaleffects::avg_slopes(LinearI, by = TRUE)
     } else {
       LinearI <- NULL
@@ -545,7 +545,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciY <- MLMetrics(Observed = Data, yvalue = y, modeli = `reciprocal in Y`,
                        K = 2, Name = "Semilog in Y", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciY <- estimate_plot(model = `reciprocal in Y`, limit = limit)
+    v_reciY <- estimate_plot(model25 = `reciprocal in Y`, limit = limit)
     if (case != "complex") {
       e_reciY <- marginaleffects::avg_slopes(`reciprocal in Y`, by = TRUE)
     } else {
@@ -557,7 +557,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     loglins <- MLMetrics(Observed = Data, yvalue = y, modeli = loglin,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_loglin <- estimate_plot(model = loglin, limit = limit)
+    v_loglin <- estimate_plot(model25 = loglin, limit = limit)
     if (case != "complex") {
       e_loglin  <- marginaleffects::avg_slopes(loglin, by = TRUE)
     } else {
@@ -572,7 +572,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     quadratics <- MLMetrics(Observed = Data, yvalue = y, modeli = quadratic,
                             K = 2, Name = "Quadratic", Form = "LM", kutuf = 0,
                             TTy = "Number")
-    v_quadratic <- estimate_plot(model = quadratic, limit = limit)
+    v_quadratic <- estimate_plot(model25 = quadratic, limit = limit)
     if (case != "complex") {
       e_quadratic <- marginaleffects::avg_slopes(quadratic, by = TRUE)
     } else {
@@ -586,7 +586,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     cubes <- MLMetrics(Observed = Data, yvalue = y, modeli = cube,
                        K = 2, Name = "Cube", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_cube <- estimate_plot(model = cube, limit = limit)
+    v_cube <- estimate_plot(model25 = cube, limit = limit)
     if (case != "complex") {
       e_cube  <- marginaleffects::avg_slopes(cube, by = TRUE)
     } else {
@@ -601,7 +601,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     squares <- MLMetrics(Observed = Data, yvalue = y, modeli = `square root`,
                          K = 2, Name = "Square root", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_square <- estimate_plot(model = `square root`, limit = limit)
+    v_square <- estimate_plot(model25 = `square root`, limit = limit)
     if (case != "complex") {
       e_square <- marginaleffects::avg_slopes(`square root`, by = TRUE)
     } else {
@@ -616,7 +616,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     cubics <- MLMetrics(Observed = Data, yvalue = y, modeli = `cubic root`,
                         K = 2, Name = "Cubic root", Form = "LM", kutuf = 0,
                         TTy = "Number")
-    v_cubic <- estimate_plot(model = `cubic root`, limit = limit)
+    v_cubic <- estimate_plot(model25 = `cubic root`, limit = limit)
     if (case != "complex") {
       e_cubic <- marginaleffects::avg_slopes(`cubic root`, by = TRUE)
     } else {
@@ -630,7 +630,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     linlogs <- MLMetrics(Observed = Data, yvalue = y, modeli = linlog,
                          K = 2, Name = "Semilog in X", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_linlog <- estimate_plot(model = linlog, limit = limit)
+    v_linlog <- estimate_plot(model25 = linlog, limit = limit)
     if (case != "complex") {
       e_linlog  <- marginaleffects::avg_slopes(linlog, by = TRUE)
     } else {
@@ -644,7 +644,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     perlogs <- MLMetrics(Observed = Data, yvalue = y, modeli = perlog,
                          K = 2, Name = "Mixed-power", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_perlog <- estimate_plot(model = perlog, limit = limit)
+    v_perlog <- estimate_plot(model25 = perlog, limit = limit)
     if (case != "complex") {
       e_perlog <- marginaleffects::avg_slopes(perlog, by = TRUE)
     } else {
@@ -658,7 +658,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     loglogs <- MLMetrics(Observed = Data, yvalue = y, modeli = loglog,
                          K = 2, Name = "Cobb Douglas", Form = "LM", kutuf = 0,
                          TTy = "Number")
-    v_loglog <- estimate_plot(model = loglog, limit = limit)
+    v_loglog <- estimate_plot(model25 = loglog, limit = limit)
     if (case != "complex") {
       e_loglog  <- marginaleffects::avg_slopes(loglog, by = TRUE)
     } else {
@@ -705,7 +705,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
       translogs <- MLMetrics(Observed = Data, yvalue = y, modeli = translog,
                              K = 2, Name = "Translog", Form = "LM", kutuf = 0,
                              TTy = "Number")
-      v_translog <- estimate_plot(model = translog, limit = limit)
+      v_translog <- estimate_plot(model25 = translog, limit = limit)
       e_translog  <- marginaleffects::avg_slopes(translog, by = TRUE)
     } else {
       translog <- NULL
@@ -720,7 +720,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciX <- MLMetrics(Observed = Data, yvalue = y, modeli = `reciprocal in X`,
                        K = 2, Name = "Inverse in X", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciX <- estimate_plot(model = `reciprocal in X`, limit = limit)
+    v_reciX <- estimate_plot(model25 = `reciprocal in X`, limit = limit)
     if (case != "complex") {
       e_reciX <- marginaleffects::avg_slopes(`reciprocal in X`, by = TRUE)
     } else {
@@ -731,7 +731,7 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     reciD <- MLMetrics(Observed = Data, yvalue = y, modeli = `double reciprocal`,
                        K = 2, Name = "Inverse in Y & X", Form = "LM", kutuf = 0,
                        TTy = "Number")
-    v_reciD <- estimate_plot(model = `double reciprocal`, limit = limit)
+    v_reciD <- estimate_plot(model25 = `double reciprocal`, limit = limit)
     if (case != "complex") {
       e_reciD <- marginaleffects::avg_slopes(`double reciprocal`, by = TRUE)
     } else {
