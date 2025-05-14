@@ -4,14 +4,15 @@ test_that("garrett_ranking works", {
   ranking <- c("Serious constraint", "Constraint",
                "Not certain it is a constraint", "Not a constraint",
                "Not a serious constraint")
-  test_model1 <- garrett_ranking(garrett_data, 5, ranking)
 
-  Test_13 <- test_model1[["Garrett value"]]
-  Test_14 <- test_model1[["Garrett ranked data"]]
-  Test_15 <- test_model1[["Data mean table"]]
+  test1 <- garrett_ranking(garrett_data, 5, ranking)
+  test2 <- garrett_ranking(garrett_data, 5)
+  test3 <- garrett_ranking(garrett_data, 8)
+  test4 <- garrett_ranking(garrett_data, 4)
 
-  expect_identical(test_model1[["Garrett value"]], Test_13)
-  expect_identical(test_model1[["Garrett ranked data"]], Test_14)
-  expect_identical(test_model1[["Data mean table"]], Test_15)
+  expect_identical(test1, garrett_ranking(garrett_data, 5, ranking))
+  expect_identical(test2, garrett_ranking(garrett_data, 5))
+  expect_identical(test3, garrett_ranking(garrett_data, 8))
+  expect_identical(test4, garrett_ranking(garrett_data, 4))
 }
 )
