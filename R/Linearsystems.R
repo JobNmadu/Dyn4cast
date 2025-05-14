@@ -155,10 +155,10 @@
 #' # Data <- cbind(y, x)
 #' # # 80% of data is sampled
 #' # sampling <- sample(1 : nrow(Data), 0.8 * nrow(Data))
-#' # for training the model
+#' # # for training the model
 #' # train <- Data[sampling, ]
 #' # Test  <- Data[-sampling, ]
-#' # 20% of data is reserved for testing (predicting) the model
+#' # # 20% of data is reserved for testing (predicting) the model
 #' # y <- train$y
 #' # x <- train[, -1]
 #' # mod <- 4
