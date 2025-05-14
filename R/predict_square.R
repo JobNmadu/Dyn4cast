@@ -8,7 +8,9 @@
 #' @importFrom stats update
 #' @importFrom utils flush.console
 #'
-#' @name predict.square
+#' @name predict_square
+#' @keywords internal
+#' @export
 #'
 utils::globalVariables("pcrfit")
 predict_square <- function(object, verbose = TRUE) {

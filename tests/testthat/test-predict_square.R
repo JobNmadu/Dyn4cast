@@ -12,8 +12,9 @@ test_that("predict_square works", {
   trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
   group <- gl(2, 10, 20, labels = c("Ctl","Trt"))
   weight <- c(ctl, trt)
-  lm.D9 <- lm(weight ~ group)
   Data1 <- data.frame(weight, group)
+  lm.D9 <- lm(weight ~ group, data = Data1)
+  lm.D90 <- lm(weight ~ group - 1, data = Data1)
   test1 <- suppressWarnings(MLMetrics(Observed = Data1, yvalue = Data1$weight,
                                       modeli = lm.D9,
                                       K = 2, Name = "Linear", Form = "LM",
