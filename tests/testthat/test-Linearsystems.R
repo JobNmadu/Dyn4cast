@@ -1,25 +1,37 @@
 test_that("Linearsystems works", {
   library(tidyverse)
-  y <- linearsystems$MKTcost
+  library(Dyn4cast)
+  y <- linearsystems$MKTcost # to run all the exercises, uncomment.
   x <- select(linearsystems, -MKTcost)
-  test_model1 <- Linearsystems(y, x, 6, 7)
+  test <- suppressWarnings(Linearsystems(y, x, 6, 15))
+  Test01 <- test[-33]
+  Test02 <- test[33]
+  x1 <- sampling[, -1]
+  y1 <- sampling$qOutput
+  limit <- 20
+  mod <-3
+  Test <- NA
+  test1 <- suppressWarnings(Linearsystems(y1, x1, 3, 15))
+  Test03 <- test1[-11]
+  Test04 <- test1[11]
+  x2 <- sampling[, -1]
+  y2 <- sampling$qOutput
+  Data <- cbind(y2, x2)
+  sampling <- sample(1 : nrow(Data), 0.8 * nrow(Data))
+  train <- Data[sampling, ]
+  Test  <- Data[-sampling, ]
+  y2 <- train$y
+  x2 <- train[, -1]
+  mod <- 4
+  test2 <- suppressWarnings(Linearsystems(y2, x2, 4, 15, Test))
+  Test05 <- test2[-11]
+  Test06 <- test2[11]
 
-  Test_13 <- test_model1[["Significant plot of Cubic root"]]
-  Test_14 <- test_model1[["Model Table"]]
-  Test_15 <- test_model1[["Machine Learning Metrics"]]
-  Test_16 <- test_model1[["Correlation plot"]]$plot()
-  Test_17 <- test_model1[["Summary of numeric variables"]]
-  Test_18 <- test_model1[["Fitted plots wide format"]]
-  Test_19 <- test_model1[["Visual means of the numeric variable"]]
-  Test_20 <- test_model1[["Mixed-power model"]]
-
-  expect_identical(test_model1[["Significant plot of Cubic root"]], Test_13)
-  expect_identical(test_model1[["Model Table"]], Test_14)
-  expect_identical(test_model1[["Machine Learning Metrics"]], Test_15)
-  expect_identical(test_model1[["Correlation plot"]]$plot(), Test_16)
-  expect_identical(test_model1[["Summary of numeric variables"]], Test_17)
-  expect_identical(test_model1[["Fitted plots wide format"]], Test_18)
-  expect_identical(test_model1[["Visual means of the numeric variable"]], Test_19)
-  expect_identical(test_model1[["Mixed-power model"]], Test_20)
+  expect_identical(test[-33],  Test01)
+  expect_identical(test[33],   Test02)
+  expect_identical(test1[-11], Test03)
+  expect_identical(test1[11],  Test04)
+  expect_identical(test2[-11], Test05)
+  expect_identical(test2[11],  Test06)
 }
 )
