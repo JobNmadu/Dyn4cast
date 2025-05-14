@@ -27,11 +27,6 @@ saveRDS(Quicksummary, "inst/Quicksummary.RDS")
 
 usethis::use_data(Quicksummary, overwrite = TRUE)
 
-sample <- readr::read_csv("sample.csv")
-saveRDS(sample, "inst/sample.RDS")
-
-usethis::use_data(sample, overwrite = TRUE)
-
 Transform <- readr::read_csv("transform.csv")
 saveRDS(Transform, "inst/Transform.RDS")
 
