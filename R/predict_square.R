@@ -10,7 +10,7 @@
 #'
 #' @name predict_square
 #' @keywords internal
-#' @export
+#' @export predict_square
 #'
 utils::globalVariables("pcrfit")
 predict_square <- function(object, verbose = TRUE) {

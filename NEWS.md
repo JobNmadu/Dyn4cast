@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.26-epsilon 2025-05-14
+
+`varImp` has been demoted and several editing was carried out for efficiency. Also, `augment` function has been demoted from broom package to `generics`. The test coverage increased from 39% to 54% since more functions are now tested. The number of dependencies continue to reduce making the package less vulnerable.
+
 # Dyn4cast 11.11.26-delta 2025-05-03
 
 `quicksummary` now have additional output of five types of mean, which can be useful when working on various modeling tasks.
