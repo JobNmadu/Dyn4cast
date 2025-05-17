@@ -3,9 +3,6 @@
 \name{MLMetrics}
 \alias{MLMetrics}
 \title{Collection of Machine Learning Model Metrics for Easy Reference}
-\usage{
-MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)
-}
 \arguments{
 \item{Observed}{The Observed data in a data frame format}
 
