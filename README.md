@@ -296,8 +296,9 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.24,
+  Nmadu J (2025). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.24, commit
+  23e0180d4ac8942ab1e8d96bfbc7fdb0a34ddb16,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -305,19 +306,23 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    note = {R package version 11.11.24},
+    year = {2025},
+    note = {R package version 11.11.24, commit 23e0180d4ac8942ab1e8d96bfbc7fdb0a34ddb16},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```
 
 ## Suggested packages
 
-Although not a dependency, the package derives functionally from a
-number of other packages and so may require you to install such packages
-if they are not yet installed. Some of the packages are listed below:
+Although not dependencies, the package derives functionally from a
+number of other packages and so may require you to install them if not
+already installed on your machine. Some of the packages are listed
+below:
 
 ``` r
-install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "tidyverse", "formattable", "xlsx", "readxl"))
+install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
+                   "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
+                   "lifecycle", "MetBrewer"))
 ```
 
 Note that a *warning* (not *error*) is thrown up while estimating the

@@ -262,10 +262,12 @@ citation("Dyn4cast")
 
 ## Suggested packages
 
-Although not a dependency, the package derives functionally from a number of other packages and so may require you to install such packages if they are not yet installed. Some of the packages are listed below:
+Although not dependencies, the package derives functionally from a number of other packages and so may require you to install them if not already installed on your machine. Some of the packages are listed below:
 
 ```{r install-suggested, eval = FALSE}
-install.packages(c("forecast", "lubridate", "Metrics", "tidyr", "tidyverse", "formattable", "xlsx", "readxl"))
+install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
+                   "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
+                   "lifecycle", "MetBrewer"))
 ```
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  
