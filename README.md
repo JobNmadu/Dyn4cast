@@ -322,7 +322,7 @@ below:
 ``` r
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
                    "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
-                   "lifecycle", "MetBrewer"))
+                   "lifecycle", "MetBrewer", "data.table"))
 ```
 
 Note that a *warning* (not *error*) is thrown up while estimating the

@@ -267,7 +267,7 @@ Although not dependencies, the package derives functionally from a number of oth
 ```{r install-suggested, eval = FALSE}
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
                    "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
-                   "lifecycle", "MetBrewer"))
+                   "lifecycle", "MetBrewer", "data.table"))
 ```
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  
