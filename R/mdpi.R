@@ -49,7 +49,8 @@
 #'  as **Employment and Income**. Can be re-defined but never `NULL`.
 #' @param plots plots of the various measures. For this to be possible, the
 #' number of options in the `Factor` argument must be less than 41. The default
-#'  is `NULL`. To produce, any character string will overwrite the default.
+#'  is `NULL`. To produce the plots, any character string will overwrite the
+#'   default.
 #'
 #' @returns A list with the following components:
 #' \item{\code{MDPI_p}}{Publication-ready table of the factor and national
@@ -68,7 +69,6 @@
 #'  computation.}
 #'
 #' @importFrom tidyselect all_of
-#' @importFrom MetBrewer met.brewer
 #'
 #' @export mdpi
 #'
@@ -443,8 +443,7 @@ mdpi <- function(data, dm, Bar = 0.4,
     if (!is.null(plots) & length(unique(Factor)) > 40) {
       cat("Palette have 40 colors, plots not possible...", "\n")
     } else if (!is.null(plots) & length(unique(Factor)) < 41) {
-      kala <- MetBrewer::met.brewer("Renoir", 40, type = "continuous",
-                                    direction = -1)
+      kala <- kolo_mix("Renoir", 40, type = "continuous", direction = -1)
       plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
       cat("Proceeding after plots produced...", "\n")
     } else {
@@ -543,3 +542,68 @@ mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
                                 National = kay2$National)
   return(models2)
 }
+
+kolapalette <- list(
+  Renoir = list(c("#17154f", "#2f357c", "#6c5d9e", "#9d9cd5", "#b0799a",
+                  "#f6b3b0", "#e48171", "#bf3729", "#e69b00", "#f5bb50",
+                  "#ada43b", "#355828"), c(2, 5, 9, 12, 3, 8, 7, 10, 4, 1, 6,
+                                           11), colorblind=FALSE))
+
+kolo_mix <- function(palette_name, n, type = c("discrete", "continuous"),
+                     direction = c(1, -1), override_order = FALSE,
+                     return_hex = FALSE) {
+
+  `%notin%` <- Negate(`%in%`)
+
+  palette <- kolapalette[[palette_name]]
+
+  if (is.null(palette)|is.numeric(palette_name)){
+    stop("Palette does not exist.")
+  }
+
+  if (missing(n)) {
+    n <- length(palette[[1]])
+  }
+
+  if (missing(direction)) {
+    direction <- 1
+  }
+
+  if (direction %notin% c(1, -1)){
+    stop("Direction not valid")
+  }
+
+  if (missing(type)) {
+    if(n > length(palette[[1]])){type <- "continuous"}
+    else{type <- "discrete"}
+  }
+
+  type <- match.arg(type)
+
+
+  if (type == "discrete" && n > length(palette[[1]])) {
+    stop("Number of requested colors greater than what discrete palette offer")
+  }
+
+  continuous <-  if(direction==1){grDevices::colorRampPalette(palette[[1]])(n)
+  }else{
+    grDevices::colorRampPalette(rev(palette[[1]]))(n)}
+
+  discrete <- if(direction==1 & override_order==FALSE){
+    palette[[1]][which(palette[[2]] %in% c(1:n)==TRUE)]
+  }else if(direction==-1 & override_order==FALSE){
+    rev(palette[[1]][which(palette[[2]] %in% c(1:n)==TRUE)])
+  } else if(direction==1 & override_order==TRUE){
+    palette[[1]][1:n]
+  } else{
+    rev(palette[[1]])[1:n]
+  }
+
+  out <- switch(type,
+                continuous = continuous,
+                discrete = discrete
+  )
+  if(return_hex==T){print(out)}
+  structure(out, class = "palette", name = palette_name)
+}
+
