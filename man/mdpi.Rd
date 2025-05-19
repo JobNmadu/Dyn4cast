@@ -96,8 +96,8 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 (2010). See also Alkire & Santos (2014) and Chan & Wong (2024).
 }
 \examples{
-# Not run, uncomment to run
-# data from `MPI` package
+# # Not run, uncomment to run
+# # data from `MPI` package
 # data <- mdpi1
 # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
 #            d2 = c("Years.of.education", "School.attendance", "School.lag"),
@@ -107,7 +107,7 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 # mdpi(data, dm, plots = "t", Factor = "Region")
 # mdpi(data, dm, plots = "t")
 #
-# data from `mpitbR` package
+# # data from `mpitbR` package
 # data <- mdpi2
 # dm <- list(d1 = c("d_nutr","d_cm"),
 #            d2 = c("d_satt","d_educ"),
