@@ -16,6 +16,9 @@
 
 [![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
 
+[![registry status
+badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-universe.dev/)
+
 [![GitHub release (latest by
 date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
