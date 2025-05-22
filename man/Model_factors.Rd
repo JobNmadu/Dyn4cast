@@ -3,6 +3,9 @@
 \name{model_factors}
 \alias{model_factors}
 \title{Latent Factors Recovery from Variables Loadings}
+\usage{
+model_factors(data, DATA)
+}
 \arguments{
 \item{data}{An \verb{R object} obtained from exploratory factor analysis (EFA)
 using the \code{fa} function in \code{psych} package.}
