@@ -1,14 +1,14 @@
 #' Dynamic Forecast of Five Models and their Ensembles
 #'
 #' @description
-#' The function estimates and predict models using time series dataset and
-#' provide subset forecasts within the length of trend. The recognized models
-#' are lm, smooth spline, polynomial splines with or without knots, quadratic
-#'  polynomial,  and ARIMA. The robust output include the models' estimates,
-#'  time-varying forecasts and plots  based on themes from ggplot. The main
-#'  attraction of this function is the use of the newly introduced
-#'   _equal number of trend (days, months, years) to estimate forecast from
-#' the model_. The function takes `daily, monthly and yearly data sets for now`.
+#' The function estimates, predict and forecast time series data with models,
+#' and also make subset forecasts within the length of the entire trend of the
+#' data. The recognized models are lm, smooth spline, polynomial splines with or
+#'  without knots, quadratic polynomial, and ARIMA. The robust output include
+#'   the models' estimates, time-varying forecasts and plots  based on themes
+#'    from ggplot. The main attraction of this function is the use of the newly
+#'     introduced _equal number of trend to forecast from the model_.
+#'     The function takes `daily, monthly and yearly data sets for now`.
 #'
 #' @param date A vector containing the dates for which the data is collected.
 #' Must be the same length with `series`. The date must be in 'YYYY-MM-DD'.

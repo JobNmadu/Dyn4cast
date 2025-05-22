@@ -299,9 +299,8 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (2025). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.24, commit
-  23e0180d4ac8942ab1e8d96bfbc7fdb0a34ddb16,
+  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.24,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -309,8 +308,7 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    year = {2025},
-    note = {R package version 11.11.24, commit 23e0180d4ac8942ab1e8d96bfbc7fdb0a34ddb16},
+    note = {R package version 11.11.24},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```

@@ -71,11 +71,15 @@ garrett_ranking <- function(data, num_rank,
       stop("Number of ranks must be an integer between 2 and 15")
     } else {
       num_rank < num_rank
-      ranking <- paste0(1:num_rank, c("st", "nd", "rd", rep("th",
+      if (num_rank == 2) {
+        ranking <- paste0(1:num_rank, c("st", "nd"), " Rank")
+      } else {
+        ranking <- paste0(1:num_rank, c("st", "nd", "rd", rep("th",
                                                             num_rank - 3)),
                         " Rank")
+        }
     }
-  } else {
+    } else {
     ranking <- ranking
   }
 
