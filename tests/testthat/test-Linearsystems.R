@@ -1,15 +1,28 @@
 test_that("Linearsystems works", {
   library(tidyverse)
   library(Dyn4cast)
-  y <- linearsystems$MKTcost # to run all the exercises, uncomment.
+  y <- linearsystems$MKTcost
   x <- select(linearsystems, -MKTcost)
   test <- suppressWarnings(Linearsystems(y, x, 6, 15))
   Test01 <- test[-33]
   Test02 <- test[33]
+
+  test3 <- suppressWarnings(Linearsystems(y, x, 5, 15))
+  Test07 <- test3[-13]
+  Test08 <- test3[13]
+
   x1 <- sampling[, -1]
   y1 <- sampling$qOutput
-  limit <- 20
-  mod <-3
+
+  mod <- 2
+  test4 <- suppressWarnings(Linearsystems(y1, x1, 2, 15))
+  Test09 <- test4[-17]
+  Test10 <- test4[17]
+
+  mod <- 1
+  test5 <- suppressWarnings(Linearsystems(y1, x1, 1, 15))
+  Test11 <- test5[-9]
+  Test12 <- test5[9]
   Test <- NA
   test1 <- suppressWarnings(Linearsystems(y1, x1, 3, 15))
   Test03 <- test1[-11]
@@ -33,5 +46,11 @@ test_that("Linearsystems works", {
   expect_identical(test1[11],  Test04)
   expect_identical(test2[-11], Test05)
   expect_identical(test2[11],  Test06)
+  expect_identical(test3[-13], Test07)
+  expect_identical(test3[13],  Test08)
+  expect_identical(test4[-17], Test09)
+  expect_identical(test4[17],  Test10)
+  expect_identical(test5[-9],  Test11)
+  expect_identical(test5[9],   Test12)
 }
 )
