@@ -1,0 +1,75 @@
+---
+title: "Getting started with Dyn4cast"
+output: rmarkdown::html_vignette
+description: |
+  An overview of installation procedures.
+vignette: >
+  %\VignetteIndexEntry{Getting started with Dyn4cast}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation
+
+`Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. Presently, it has passed all the tests it was subjected to as can be seen here.
+
+# Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
+
+<!-- badges: start -->
+
+[![](https://img.shields.io/badge/Made%20With-R-9cf)](https://github.com/JobNmadu/Dyn4cast)
+
+[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
+
+[![registry status badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-universe.dev/)
+
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
+
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)  
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+<!-- badges: end -->
+
+
+To install the development version of `Dyn4cast` from GitHub, use the following canonical form:
+ 
+```{r github, comment = "", warning = FALSE, eval = FALSE}
+
+# install.packages("devtools")
+devtools::install_github("JobNmadu/Dyn4cast")
+```
+
+The development version can also be installed through r-universe. Use the form:
+
+```{r universe, comment = "", warning = FALSE, eval = FALSE}
+
+install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
+```
+
+## Suggested packages
+
+A number of other packages are required for the smooth running of the package and may need to be installed if not already installed on your machine. Some of the packages are listed below:
+
+```{r install-suggested, eval = FALSE}
+install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
+                   "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
+                   "psych", "lifecycle", "MetBrewer", "data.table"))
+```
+
+## ## Citation
+
+The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
+
+```{r citation, comment = "", warning = FALSE}
+
+citation("Dyn4cast")
+
+```
+

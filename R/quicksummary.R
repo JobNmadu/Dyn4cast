@@ -6,6 +6,9 @@
 #'  the output is a formatted table. This is very handy for those who do not
 #'  have the time to write codes for user-friendly summaries.
 #'
+#' @name quicksummary
+#' @export quicksummary
+#'
 #' @param x The data to be summarised. Only numeric data is allowed.
 #' @param Type The type of data to be summarised. There are two options here 1
 #' or 2, 1 = `Continuous` and 2 = `Likert-type`
@@ -18,8 +21,6 @@
 #'
 #' @return The function returns formatted tables of the Quick summary
 #' \item{\code{Summary}}{List of two `data.frames`}
-#'
-#' @export quicksummary
 #'
 #' @importFrom stats var
 #' @importFrom stats quantile
