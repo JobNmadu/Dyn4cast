@@ -9,7 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r}
+```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(tidy      = "styler",
                       fig.align = "center",
                       comment   = NA,
@@ -24,6 +25,9 @@ knitr::opts_chunk$set(tidy      = "styler",
                       echo      = FALSE)
 
 options(scipen = 999, digits = 2)
+
+library(Dyn4cast)
+library(tidyverse, quietly = T)
 ```
 
 # Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
@@ -51,7 +55,7 @@ With the following arguments:
 
 ```{r}
 
-library(Dyn4cast)
+
 library(splines)
 library(forecast)
 library(readr)
@@ -84,8 +88,8 @@ With the arguments:
 ## View the data without transformation
 
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
 data0 <- Transform %>%
 pivot_longer(!X, names_to = "Factors", values_to = "Data")
 
@@ -181,7 +185,7 @@ With the arguments
 ```
 
 ```{r}
-library(Dyn4cast)
+
 library(readr)
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
 
@@ -201,9 +205,9 @@ DynamicForecast(date = gggg$Date, series = gggg$Case,
 lastdayfo21 <- Dss[length(Dss)]
 ddy <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
-DynamicForecast(date = ddy$Date, series = ddy$Case, BREAKS = BREAKS ,
+suppressWarnings(DynamicForecast(date = ddy$Date, series = ddy$Case, BREAKS = BREAKS ,
                 MaximumDate = "2021-02-10", Trend = "Day", Length = 0, 
-                Type = "Integer")
+                Type = "Integer"))
 ```
 The constrained and unconstrained forecast are provided. It can be observed that the unconstrained forecast goes below zero and goes beyond the maximum observed value in the data.
 
@@ -230,8 +234,8 @@ tally())
 
 ```
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
 DD <- rnorm(100000)
 formattedcut(DD, 12, FALSE)
 DD1 <- cut(DD, 12)
@@ -297,7 +301,7 @@ With argument:
 
 ```{r}
 
-library(Dyn4cast)
+
 df <- data.frame(Age = c(49, 30, 44, 37, 29, 56, 28, 26, 33, 45, 45, 19,
                          32, 22, 19, 28, 28, 36, 56, 34),
 Sex = c("male", "female", "female", "male", "male", "male", "female",
@@ -329,8 +333,8 @@ With the arguments:
 ## Estimation Without test data, 14 models
 
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 6, 15)
@@ -387,8 +391,8 @@ Linearsystems(y, x, 4, 15, Test)
 ## Estimation Without test data, inverse models
 
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 5, 15)
@@ -444,8 +448,8 @@ With the arguments
 ## With three dimensions and factor
 
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
  data <- mdpi1 # data from `MPI` package
  data1 <- mdpi2 #from `mpitbR` package
 
@@ -604,12 +608,12 @@ Essembles, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight
 ```
 
 ```{r}
-library(Dyn4cast)
+
 library(splines)
 library(readr)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
-           Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number")
+suppressWarnings(MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
+           Name = "Linear", Form = "LM", kutuf = 0, TTy = "Number"))
 ```
 
 
@@ -629,7 +633,7 @@ With the arguments:
 
 ```{r}
 
-library(Dyn4cast)
+
 library(psych)
 library(readr)
 ddd <- Quicksummary
@@ -669,8 +673,8 @@ With the arguments:
 ## Likert-type data
 
 ```{r}
-library(Dyn4cast)
-library(tidyverse)
+
+
 
 Up <- "Constraint"
 Down <- "Not a constraint"
@@ -701,7 +705,7 @@ With the arguments:
 ```
 
 ```{r}
-library(Dyn4cast)
+
 library(readr)
 Treatment = treatments$treatment
 data = treatments[, c(2:3)]
