@@ -5,6 +5,8 @@
 #'  Learning Models. The purpose is to provide a wrapper which brings all the
 #'  metrics on the table and makes it easier to use them to select a model.
 #'
+#' @usage MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)
+#'
 #' @param Observed The Observed data in a data frame format
 #' @param yvalue The Response variable of the estimated Model
 #' @param modeli The Estimated Model (*Model* = a + bx)
@@ -18,6 +20,7 @@
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)
 #'
 #' @export MLMetrics
+#' @name MLMetrics
 #'
 #' @importFrom stats AIC
 #' @importFrom generics augment
@@ -118,8 +121,6 @@
 #' \item{\code{Sum of Squared Errors}}{of the Model.}
 #' \item{\code{True negative rate}}{of the Model.}
 #' \item{\code{True positive rate}}{of the Model.}
-#'
-#' @name MLMetrics
 #'
 #' @examples
 #' library(splines)
