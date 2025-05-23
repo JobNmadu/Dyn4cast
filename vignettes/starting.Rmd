@@ -10,7 +10,20 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy      = "styler",
+                      fig.align = "center",
+                      comment   = NA,
+                      warning   = FALSE,
+                      error     = FALSE,
+                      message   = FALSE,
+                      collapse  = FALSE,
+                      out.width = "100%",
+                      dev = "ragg_png", #<- prevent default Windows device to
+                      # render plots
+                      dpi       = 132,
+                      echo      = FALSE)
+
+options(scipen = 999, digits = 2)
 ```
 
 ## Installation
@@ -40,7 +53,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 To install the development version of `Dyn4cast` from GitHub, use the following canonical form:
  
-```{r github, comment = "", warning = FALSE, eval = FALSE}
+```{r github, eval = FALSE}
 
 # install.packages("devtools")
 devtools::install_github("JobNmadu/Dyn4cast")
@@ -48,7 +61,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 The development version can also be installed through r-universe. Use the form:
 
-```{r universe, comment = "", warning = FALSE, eval = FALSE}
+```{r universe, eval = FALSE}
 
 install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
 ```
