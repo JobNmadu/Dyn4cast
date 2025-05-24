@@ -50,6 +50,7 @@ With the following arguments:
 `upper`	The upper limit of the forecast
 ```
 
+## Example
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -83,7 +84,9 @@ With the arguments:
 
 `margin`	Option to either transform the data 2 == column-wise or 1 == row-wise. Defaults to column-wise transformation if no option is indicated.
 ```
-## View the data without transformation
+## Examples
+
+### View the data without transformation
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -99,7 +102,7 @@ ggplot(data = data0, aes(x = X, y = Data, fill = Factors, color = Factors)) +
   theme_bw(base_size = 12)
 ```
 
-## Transformation by min-max method
+### Transformation by min-max method
 
 ```{r echo = TRUE, eval = FALSE}
 data1 <- data_transform(Transform[, -1], 1)
@@ -115,7 +118,7 @@ ggplot(data = data1, aes(x = X, y = Data, fill = Factors, color = Factors)) +
   theme_bw(base_size = 12)
 ```
 
-## `log` transformation
+### `log` transformation
 
 ```{r echo = TRUE, eval = FALSE}
 data2 <- data_transform(Transform[, -1], 2)
@@ -131,7 +134,7 @@ ggplot(data = data2, aes(x = X, y = Data, fill = Factors, color = Factors)) +
   theme_bw(base_size = 12)
 ```
 
-## `Mean-SD` transformation
+### `Mean-SD` transformation
 
 ```{r echo = TRUE, eval = FALSE}
 data3 <- data_transform(Transform[, -1], 3)
@@ -181,6 +184,9 @@ With the arguments
 
 `...`	Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the series.
 ```
+## Example
+
+### Twenty eight points less than full lenght of data
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -198,6 +204,7 @@ DynamicForecast(date = gggg$Date, series = gggg$Case,
                 Trend = "Day", Length = 0, Type = "Integer")
 ```
 
+### Fourteen points less than full lenght of data
 
 ```{r echo = TRUE, eval = FALSE}
 lastdayfo21 <- Dss[length(Dss)]
@@ -207,6 +214,7 @@ suppressWarnings(DynamicForecast(date = ddy$Date, series = ddy$Case, BREAKS = BR
                 MaximumDate = "2021-02-10", Trend = "Day", Length = 0, 
                 Type = "Integer"))
 ```
+
 The constrained and unconstrained forecast are provided. It can be observed that the unconstrained forecast goes below zero and goes beyond the maximum observed value in the data.
 
 # formattedcut: Convert continuous vector variable to formatted factors
@@ -231,6 +239,8 @@ group_by(`Lower class`, `Upper class`, `Class interval`) %>%
 tally())
 
 ```
+## Example
+
 ```{r echo = TRUE, eval = FALSE}
 
 
@@ -257,7 +267,10 @@ With the arguments:
 
 `m_rank`	The scope of the ranking methods which is between 2 and 15.
 ```
-## Ranking is supplied
+
+## Examples
+
+### Ranking is supplied
 
 ```{r echo = TRUE, eval = FALSE}
 library(readr)
@@ -269,13 +282,13 @@ ranking <- c("Serious constraint", "Constraint",
 garrett_ranking(garrett_data, 5, ranking)
 ```
 
-## Ranking not supplied
+### Ranking not supplied
 
 ```{r echo = TRUE, eval = FALSE}
 garrett_ranking(garrett_data, 5)
 ```
 
-## Rank subset of the data
+### Rank subset of the data
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -296,6 +309,7 @@ With argument:
 
 `data`	data frame containing Age and Sex variables
 ```
+## Example
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -328,7 +342,9 @@ With the arguments:
 
 `Test`	test data to be used to predict y. If not supplied, the fitted y is used hence may be identical with the fitted value. It is important to be cautious if the data is to be divided between train and test subsets in order to train and test the model. If the sample size is not sufficient to have enough data for the test, errors are thrown up.
 ```
-## Estimation Without test data, 14 models
+## Example
+
+### Estimation Without test data, 14 models
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -338,7 +354,7 @@ x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 6, 15)
 ```
 
-## Estimation Without test data, polynomial models
+### Estimation Without test data, polynomial models
 
 ```{r echo = TRUE, eval = FALSE}
 x <- sampling[, -1]
@@ -350,7 +366,7 @@ Linearsystems(y, x, 3, 15)
 
 ```
 
-## Estimation With test data, linear models
+### Estimation With test data, linear models
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -360,7 +376,7 @@ mod <- 1
 Linearsystems(y, x, 1, 15)
 ```
 
-## Estimation With test data, power models
+### Estimation With test data, power models
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -370,7 +386,7 @@ mod <- 2
 Linearsystems(y, x, 2, 15)
 ```
 
-## Estimation With test data, root models
+### Estimation With test data, root models
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -386,7 +402,7 @@ mod <- 4
 Linearsystems(y, x, 4, 15, Test)
 ```
 
-## Estimation Without test data, inverse models
+### Estimation Without test data, inverse models
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -442,8 +458,9 @@ With the arguments
 
 `id_add1` a vector of the fifth dimension in the computation given as _Employment and Income_. Can be re-defined but never NULL.
 ```
+## Examples
 
-## With three dimensions and factor
+### With three dimensions and factor
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -459,13 +476,13 @@ dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
   mdpi(data, dm, plots = "t", Factor = "Region")
 ```
 
-## With three dimensions, no factor
+### With three dimensions, no factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 mdpi(data, dm, plots = "t")
 ```
 
-## With four dimensions and factor
+### With four dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
@@ -479,7 +496,7 @@ dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
                 plots = "t", Factor = "Region")
 ```
 
-## With five dimensions and factor
+### With five dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 dm <- list(d1 = c("d_cm"),
@@ -492,20 +509,20 @@ dm <- list(d1 = c("d_cm"),
        plots = "t", Factor = "region")
 ```
 
-## With five dimensions, no plot
+### With five dimensions, no plot
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
        Factor = "region")
 ```
 
-## With five dimensions, no factor, no plot
+### With five dimensions, no factor, no plot
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition")
 ```
 
-## With six dimensions and factor
+### With six dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 dm <- list(d1 = c("d_cm"),
@@ -519,7 +536,7 @@ dm <- list(d1 = c("d_cm"),
                 id_addn = "Housing and Assets", plots = "t", Factor = "region")
 ```
 
-## With seven dimensions and factor
+### With seven dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 dm <- list(d1 = c("d_cm"),
@@ -535,7 +552,7 @@ dm <- list(d1 = c("d_cm"),
                 plots = "t", Factor = "region")
 ```
 
-## With eight dimensions and factor
+### With eight dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 dm <- list(d1 = c("d_cm"),
@@ -553,7 +570,7 @@ dm <- list(d1 = c("d_cm"),
                  plots = "t", Factor = "region")
 ```
 
-## With nine dimensions and factor
+### With nine dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
 
@@ -604,6 +621,7 @@ Essembles, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight
 `TTy`	Type of response variable (Numeric or Response - like binary)
 
 ```
+## Example
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -628,6 +646,7 @@ With the arguments:
 
 `DATA`	A data.frame, the raw data used to carry out the parallel analysis to obtain data object.
 ```
+## Example
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -646,6 +665,49 @@ model_factors(data = dat, DATA = ddd)
 
 ```
 
+# Percent: Attach Per Cent Sign to Data
+
+This function is a wrapper for easy affixing of the per cent sign (%) to a value or a vector or a data frame of values. The basic usage is:
+
+```
+Percent(Data, Type, format = "f", ...)
+
+With the arguments:
+
+`Data`	The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
+
+`Type`	The type of data. The default arguments are Value for single numeric data of Frame for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
+
+`format`	The format of the output which is internal and the default is a character factor
+
+`...`	Additional arguments that may be passed to the function
+
+```
+## Example
+
+### A vector data
+
+```{r echo = TRUE, eval = FALSE}
+Data <- c(1.2, 0.5, 0.103, 7, 0.1501)
+Percent(Data = Data, Type = "Frame")
+Data <- 1.2
+Percent(Data = Data, Type = "Value")
+```
+
+### Data franme 
+
+```{r echo = TRUE, eval = FALSE}
+df <- data.frame(c(A = 2320, 5760, 4800, 2600, 5700, 7800, 3000, 6300, 2400,
+10000, 2220, 3740),
+B = c(0, 0, 1620, 3600, 1200, 1200, 1200, 4250, 14000, 10000, 1850, 1850),
+C = c(3000, 3000, 7800, 5400, 3900, 7800, 1950, 2400, 2400, 7000, 1850, 1850),
+D = c(2900, 5760, 3750, 5400, 4095, 3150, 2080, 7800, 1920, 1200, 5000, 1950),
+E = c(2900, 2030, 0, 5400, 5760, 1800, 2000, 1950, 1850, 3600, 5200, 5760),
+F = c(2800, 5760, 1820, 4340, 7500, 2400, 2300, 1680, 1850, 0, 2800, 8000),
+G = c(5760, 4600, 13000, 7800, 6270, 1200, 1440, 8000, 1200, 2025, 4800, 2600),
+H = c(2100, 5760, 8250, 3900, 1800, 1200, 4800, 1800, 7800, 2035, 8000, 3000))
+Percent(Data = df, Type = "Frame")  # Value, Frame
+```
 
 # quicksummary: Quick Formatted Summary of Machine Learning Data
 
@@ -668,7 +730,9 @@ With the arguments:
 
 `ci`	Confidence interval which is defaults to 0.95.
 ```
-## Likert-type data
+## Examples
+
+### Likert-type data
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -679,7 +743,7 @@ Down <- "Not a constraint"
 quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
 ```
 
-## Continuous data
+### Continuous data
 
 ```{r echo = TRUE, eval = FALSE}
 
@@ -701,6 +765,7 @@ With the arguments:
 
 `x_data`	Data frame of explanatory variables for the RHS of the estimation
 ```
+## Example
 
 ```{r echo = TRUE, eval = FALSE}
 
