@@ -30,8 +30,6 @@ options(scipen = 999, digits = 2)
 
 `Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. Presently, it has passed all the tests it was subjected to as can be seen here.
 
-# Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
-
 <!-- badges: start -->
 
 [![](https://img.shields.io/badge/Made%20With-R-9cf)](https://github.com/JobNmadu/Dyn4cast)
@@ -53,7 +51,7 @@ options(scipen = 999, digits = 2)
 
 To install the development version of `Dyn4cast` from GitHub, use the following canonical form:
  
-```{r github, eval = FALSE}
+```{r github, echo = TRUE, eval = FALSE}
 
 # install.packages("devtools")
 devtools::install_github("JobNmadu/Dyn4cast")
@@ -61,7 +59,7 @@ devtools::install_github("JobNmadu/Dyn4cast")
 
 The development version can also be installed through r-universe. Use the form:
 
-```{r universe, eval = FALSE}
+```{r universe, echo = TRUE, eval = FALSE}
 
 install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
 ```
