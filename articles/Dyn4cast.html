@@ -114,6 +114,9 @@ With the following arguments:
 `lower` The lower limit of the forecast
 
 `upper` The upper limit of the forecast</code></pre>
+<div class="section level3">
+<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">splines</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span>
@@ -127,6 +130,7 @@ With the following arguments:
 <span><span class="fu"><a href="../reference/constrainedforecast.html">constrainedforecast</a></span><span class="op">(</span>model10 <span class="op">=</span> <span class="va">ForecastModel</span>, <span class="va">lower</span>, <span class="va">upper</span><span class="op">)</span></span></code></pre></div>
 <p>The values are the unconstrained and constrained forecast. The
 constrained forecast remains within the limits of the data.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="data_transform-standardize-data-frame-for-comparable-machine-learning-prediction-and-visualization">data_transform: Standardize data.frame for comparable Machine
@@ -145,8 +149,11 @@ With the arguments:
 
 `margin`    Option to either transform the data 2 == column-wise or 1 == row-wise. Defaults to column-wise transformation if no option is indicated.</code></pre>
 <div class="section level3">
-<h3 id="view-the-data-without-transformation">View the data without transformation<a class="anchor" aria-label="anchor" href="#view-the-data-without-transformation"></a>
+<h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h3>
+<div class="section level4">
+<h4 id="view-the-data-without-transformation">View the data without transformation<a class="anchor" aria-label="anchor" href="#view-the-data-without-transformation"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data0</span> <span class="op">&lt;-</span> <span class="va">Transform</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="op">!</span><span class="va">X</span>, names_to <span class="op">=</span> <span class="st">"Factors"</span>, values_to <span class="op">=</span> <span class="st">"Data"</span><span class="op">)</span></span>
@@ -158,9 +165,9 @@ With the arguments:
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Data"</span>, x <span class="op">=</span> <span class="st">"Series"</span>, color <span class="op">=</span> <span class="st">"Factors"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="transformation-by-min-max-method">Transformation by min-max method<a class="anchor" aria-label="anchor" href="#transformation-by-min-max-method"></a>
-</h3>
+<div class="section level4">
+<h4 id="transformation-by-min-max-method">Transformation by min-max method<a class="anchor" aria-label="anchor" href="#transformation-by-min-max-method"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_transform.html">data_transform</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">data1</span><span class="op">)</span></span>
@@ -174,10 +181,10 @@ With the arguments:
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Data"</span>, x <span class="op">=</span> <span class="st">"Series"</span>, color <span class="op">=</span> <span class="st">"Factors"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="log-transformation">
+<div class="section level4">
+<h4 id="log-transformation">
 <code>log</code> transformation<a class="anchor" aria-label="anchor" href="#log-transformation"></a>
-</h3>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_transform.html">data_transform</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">data2</span><span class="op">)</span></span>
@@ -191,10 +198,10 @@ With the arguments:
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Data"</span>, x <span class="op">=</span> <span class="st">"Series"</span>, color <span class="op">=</span> <span class="st">"Factors"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="mean-sd-transformation">
+<div class="section level4">
+<h4 id="mean-sd-transformation">
 <code>Mean-SD</code> transformation<a class="anchor" aria-label="anchor" href="#mean-sd-transformation"></a>
-</h3>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_transform.html">data_transform</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">data3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Transform</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">data3</span><span class="op">)</span></span>
@@ -210,6 +217,7 @@ With the arguments:
 <p>From the various transformation, the pattern in the dataset became
 more clear. The choice of which method to use will depend on the nature
 of data.</p>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -247,6 +255,12 @@ With the arguments
 `ORIGIN`    date origin of the dataset and if different from **origin** must be in the format "YYYY-MM-DD". This is used to position the date of the data to properly date the forecasts.
 
 `...`   Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the series.</code></pre>
+<div class="section level3">
+<h3 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
+</h3>
+<div class="section level4">
+<h4 id="twenty-eight-points-less-than-full-lenght-of-data">Twenty eight points less than full lenght of data<a class="anchor" aria-label="anchor" href="#twenty-eight-points-less-than-full-lenght-of-data"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="va">COVID19</span><span class="op">$</span><span class="va">Date</span> <span class="op">&lt;-</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/yearmon.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">COVID19</span><span class="op">$</span><span class="va">Date</span>, format <span class="op">=</span> <span class="st">'%m/%d/%Y'</span><span class="op">)</span></span>
@@ -260,6 +274,10 @@ With the arguments
 <span><span class="fu"><a href="../reference/DynamicForecast.html">DynamicForecast</a></span><span class="op">(</span>date <span class="op">=</span> <span class="va">gggg</span><span class="op">$</span><span class="va">Date</span>, series <span class="op">=</span> <span class="va">gggg</span><span class="op">$</span><span class="va">Case</span>, </span>
 <span>                BREAKS <span class="op">=</span> <span class="va">BREAKS</span>, MaximumDate <span class="op">=</span> <span class="st">"2021-02-10"</span>,</span>
 <span>                Trend <span class="op">=</span> <span class="st">"Day"</span>, Length <span class="op">=</span> <span class="fl">0</span>, Type <span class="op">=</span> <span class="st">"Integer"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="fourteen-points-less-than-full-lenght-of-data">Fourteen points less than full lenght of data<a class="anchor" aria-label="anchor" href="#fourteen-points-less-than-full-lenght-of-data"></a>
+</h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lastdayfo21</span> <span class="op">&lt;-</span> <span class="va">Dss</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">Dss</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">ddy</span> <span class="op">&lt;-</span> <span class="va">COVID19</span><span class="op">[</span><span class="va">COVID19</span><span class="op">$</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="va">lastdayfo21</span> <span class="op">-</span> <span class="fl">14</span>, <span class="op">]</span></span>
@@ -270,6 +288,8 @@ With the arguments
 <p>The constrained and unconstrained forecast are provided. It can be
 observed that the unconstrained forecast goes below zero and goes beyond
 the maximum observed value in the data.</p>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="formattedcut-convert-continuous-vector-variable-to-formatted-factors">formattedcut: Convert continuous vector variable to formatted
@@ -295,11 +315,15 @@ as.data.frame(DDK %&gt;%
 group_by(`Lower class`, `Upper class`, `Class interval`) %&gt;%
 tally())
 </code></pre>
+<div class="section level3">
+<h3 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">DD</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100000</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/formattedcut.html">formattedcut</a></span><span class="op">(</span><span class="va">DD</span>, <span class="fl">12</span>, <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">DD1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">DD</span>, <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/formattedcut.html">formattedcut</a></span><span class="op">(</span><span class="va">DD1</span>, <span class="fl">12</span>, <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="garrett_ranking-garrett-ranking-of-categorical-data">garrett_ranking: Garrett Ranking of Categorical Data<a class="anchor" aria-label="anchor" href="#garrett_ranking-garrett-ranking-of-categorical-data"></a>
@@ -321,8 +345,11 @@ With the arguments:
 
 `m_rank`    The scope of the ranking methods which is between 2 and 15.</code></pre>
 <div class="section level3">
-<h3 id="ranking-is-supplied">Ranking is supplied<a class="anchor" aria-label="anchor" href="#ranking-is-supplied"></a>
+<h3 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a>
 </h3>
+<div class="section level4">
+<h4 id="ranking-is-supplied">Ranking is supplied<a class="anchor" aria-label="anchor" href="#ranking-is-supplied"></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="va">garrett_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">garrett_data</span><span class="op">)</span></span>
@@ -332,19 +359,20 @@ With the arguments:
 <span></span>
 <span><span class="fu"><a href="../reference/garrett_ranking.html">garrett_ranking</a></span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span>, <span class="va">ranking</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="ranking-not-supplied">Ranking not supplied<a class="anchor" aria-label="anchor" href="#ranking-not-supplied"></a>
-</h3>
+<div class="section level4">
+<h4 id="ranking-not-supplied">Ranking not supplied<a class="anchor" aria-label="anchor" href="#ranking-not-supplied"></a>
+</h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/garrett_ranking.html">garrett_ranking</a></span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="rank-subset-of-the-data">Rank subset of the data<a class="anchor" aria-label="anchor" href="#rank-subset-of-the-data"></a>
-</h3>
+<div class="section level4">
+<h4 id="rank-subset-of-the-data">Rank subset of the data<a class="anchor" aria-label="anchor" href="#rank-subset-of-the-data"></a>
+</h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/garrett_ranking.html">garrett_ranking</a></span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">8</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/garrett_ranking.html">garrett_ranking</a></span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -359,6 +387,9 @@ is:</p>
 With argument: 
 
 `data`  data frame containing Age and Sex variables</code></pre>
+<div class="section level3">
+<h3 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
+</h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">49</span>, <span class="fl">30</span>, <span class="fl">44</span>, <span class="fl">37</span>, <span class="fl">29</span>, <span class="fl">56</span>, <span class="fl">28</span>, <span class="fl">26</span>, <span class="fl">33</span>, <span class="fl">45</span>, <span class="fl">45</span>, <span class="fl">19</span>,</span>
 <span>                         <span class="fl">32</span>, <span class="fl">22</span>, <span class="fl">19</span>, <span class="fl">28</span>, <span class="fl">28</span>, <span class="fl">36</span>, <span class="fl">56</span>, <span class="fl">34</span><span class="op">)</span>,</span>
@@ -367,6 +398,7 @@ With argument:
 <span>        <span class="st">"male"</span>, <span class="st">"Non-binary/third gender"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>,</span>
 <span>        <span class="st">"male"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/gender.html">gender</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="linearsystems-linear-model-and-various-transformations-for-efficiency">Linearsystems: Linear Model and various Transformations for
@@ -392,16 +424,19 @@ With the arguments:
 
 `Test`  test data to be used to predict y. If not supplied, the fitted y is used hence may be identical with the fitted value. It is important to be cautious if the data is to be divided between train and test subsets in order to train and test the model. If the sample size is not sufficient to have enough data for the test, errors are thrown up.</code></pre>
 <div class="section level3">
-<h3 id="estimation-without-test-data-14-models">Estimation Without test data, 14 models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-14-models"></a>
+<h3 id="example-4">Example<a class="anchor" aria-label="anchor" href="#example-4"></a>
 </h3>
+<div class="section level4">
+<h4 id="estimation-without-test-data-14-models">Estimation Without test data, 14 models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-14-models"></a>
+</h4>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">linearsystems</span><span class="op">$</span><span class="va">MKTcost</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">linearsystems</span>, <span class="op">-</span><span class="va">MKTcost</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">6</span>, <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="estimation-without-test-data-polynomial-models">Estimation Without test data, polynomial models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-polynomial-models"></a>
-</h3>
+<div class="section level4">
+<h4 id="estimation-without-test-data-polynomial-models">Estimation Without test data, polynomial models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-polynomial-models"></a>
+</h4>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span>
@@ -410,27 +445,27 @@ With the arguments:
 <span><span class="va">Test</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">3</span>, <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="estimation-with-test-data-linear-models">Estimation With test data, linear models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-linear-models"></a>
-</h3>
+<div class="section level4">
+<h4 id="estimation-with-test-data-linear-models">Estimation With test data, linear models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-linear-models"></a>
+</h4>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span>
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">1</span>, <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="estimation-with-test-data-power-models">Estimation With test data, power models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-power-models"></a>
-</h3>
+<div class="section level4">
+<h4 id="estimation-with-test-data-power-models">Estimation With test data, power models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-power-models"></a>
+</h4>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span>
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">2</span>, <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="estimation-with-test-data-root-models">Estimation With test data, root models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-root-models"></a>
-</h3>
+<div class="section level4">
+<h4 id="estimation-with-test-data-root-models">Estimation With test data, root models<a class="anchor" aria-label="anchor" href="#estimation-with-test-data-root-models"></a>
+</h4>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">sampling</span><span class="op">$</span><span class="va">qOutput</span></span>
@@ -443,13 +478,14 @@ With the arguments:
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fl">4</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">4</span>, <span class="fl">15</span>, <span class="va">Test</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="estimation-without-test-data-inverse-models">Estimation Without test data, inverse models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-inverse-models"></a>
-</h3>
+<div class="section level4">
+<h4 id="estimation-without-test-data-inverse-models">Estimation Without test data, inverse models<a class="anchor" aria-label="anchor" href="#estimation-without-test-data-inverse-models"></a>
+</h4>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">linearsystems</span><span class="op">$</span><span class="va">MKTcost</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">linearsystems</span>, <span class="op">-</span><span class="va">MKTcost</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/Linearsystems.html">Linearsystems</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, <span class="fl">5</span>, <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -502,8 +538,11 @@ With the arguments
 
 `id_add1` a vector of the fifth dimension in the computation given as _Employment and Income_. Can be re-defined but never NULL.</code></pre>
 <div class="section level3">
-<h3 id="with-three-dimensions-and-factor">With three dimensions and factor<a class="anchor" aria-label="anchor" href="#with-three-dimensions-and-factor"></a>
+<h3 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a>
 </h3>
+<div class="section level4">
+<h4 id="with-three-dimensions-and-factor">With three dimensions and factor<a class="anchor" aria-label="anchor" href="#with-three-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mdpi1</span> <span class="co"># data from `MPI` package</span></span>
 <span> <span class="va">data1</span> <span class="op">&lt;-</span> <span class="va">mdpi2</span> <span class="co">#from `mpitbR` package</span></span>
@@ -515,15 +554,15 @@ With the arguments
 <span>                    <span class="st">"Housing.Materials"</span>, <span class="st">"Asset.ownership"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">dm</span>, plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"Region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-three-dimensions-no-factor">With three dimensions, no factor<a class="anchor" aria-label="anchor" href="#with-three-dimensions-no-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-three-dimensions-no-factor">With three dimensions, no factor<a class="anchor" aria-label="anchor" href="#with-three-dimensions-no-factor"></a>
+</h4>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">dm</span>, plots <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-four-dimensions-and-factor">With four dimensions and factor<a class="anchor" aria-label="anchor" href="#with-four-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-four-dimensions-and-factor">With four dimensions and factor<a class="anchor" aria-label="anchor" href="#with-four-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Child.Mortality"</span>, <span class="st">"Access.to.health.care"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Years.of.education"</span>, <span class="st">"School.attendance"</span>, <span class="st">"School.lag"</span><span class="op">)</span>,</span>
@@ -535,9 +574,9 @@ With the arguments
 <span>  <span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">dm</span>, id_add <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Water and Sanitation"</span><span class="op">)</span>,</span>
 <span>                plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"Region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-five-dimensions-and-factor">With five dimensions and factor<a class="anchor" aria-label="anchor" href="#with-five-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-five-dimensions-and-factor">With five dimensions and factor<a class="anchor" aria-label="anchor" href="#with-five-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_cm"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_satt"</span>,<span class="st">"d_educ"</span><span class="op">)</span>,</span>
@@ -548,22 +587,22 @@ With the arguments
 <span>  <span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data1</span>, <span class="va">dm</span>, id_add <span class="op">=</span> <span class="st">"Water and Sanitation"</span>, id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span>,</span>
 <span>       plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-five-dimensions-no-plot">With five dimensions, no plot<a class="anchor" aria-label="anchor" href="#with-five-dimensions-no-plot"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-five-dimensions-no-plot">With five dimensions, no plot<a class="anchor" aria-label="anchor" href="#with-five-dimensions-no-plot"></a>
+</h4>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data1</span>, <span class="va">dm</span>, id_add <span class="op">=</span> <span class="st">"Water and Sanitation"</span>, id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span>,</span>
 <span>       Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-five-dimensions-no-factor-no-plot">With five dimensions, no factor, no plot<a class="anchor" aria-label="anchor" href="#with-five-dimensions-no-factor-no-plot"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-five-dimensions-no-factor-no-plot">With five dimensions, no factor, no plot<a class="anchor" aria-label="anchor" href="#with-five-dimensions-no-factor-no-plot"></a>
+</h4>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data1</span>, <span class="va">dm</span>, id_add <span class="op">=</span> <span class="st">"Water and Sanitation"</span>, id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-six-dimensions-and-factor">With six dimensions and factor<a class="anchor" aria-label="anchor" href="#with-six-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-six-dimensions-and-factor">With six dimensions and factor<a class="anchor" aria-label="anchor" href="#with-six-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_cm"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_satt"</span>,<span class="st">"d_educ"</span><span class="op">)</span>,</span>
@@ -575,9 +614,9 @@ With the arguments
 <span>  <span class="fu"><a href="../reference/mdpi.html">mdpi</a></span><span class="op">(</span><span class="va">data1</span>, <span class="va">dm</span>, id_add <span class="op">=</span> <span class="st">"Water and Sanitation"</span>, id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span>,</span>
 <span>                id_addn <span class="op">=</span> <span class="st">"Housing and Assets"</span>, plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-seven-dimensions-and-factor">With seven dimensions and factor<a class="anchor" aria-label="anchor" href="#with-seven-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-seven-dimensions-and-factor">With seven dimensions and factor<a class="anchor" aria-label="anchor" href="#with-seven-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_cm"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_satt"</span>,<span class="st">"d_educ"</span><span class="op">)</span>,</span>
@@ -591,9 +630,9 @@ With the arguments
 <span>                id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span>, id_addn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Housing"</span>, <span class="st">"Assets"</span><span class="op">)</span>,</span>
 <span>                plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-eight-dimensions-and-factor">With eight dimensions and factor<a class="anchor" aria-label="anchor" href="#with-eight-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-eight-dimensions-and-factor">With eight dimensions and factor<a class="anchor" aria-label="anchor" href="#with-eight-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_cm"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_satt"</span>,<span class="st">"d_educ"</span><span class="op">)</span>,</span>
@@ -609,9 +648,9 @@ With the arguments
 <span>                 id_addn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Housing"</span>, <span class="st">"Assets"</span>, <span class="st">"Water"</span><span class="op">)</span>,</span>
 <span>                 plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="with-nine-dimensions-and-factor">With nine dimensions and factor<a class="anchor" aria-label="anchor" href="#with-nine-dimensions-and-factor"></a>
-</h3>
+<div class="section level4">
+<h4 id="with-nine-dimensions-and-factor">With nine dimensions and factor<a class="anchor" aria-label="anchor" href="#with-nine-dimensions-and-factor"></a>
+</h4>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>d1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_cm"</span><span class="op">)</span>,</span>
 <span>             d2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_satt"</span>,<span class="st">"d_educ"</span><span class="op">)</span>,</span>
@@ -627,6 +666,7 @@ With the arguments
 <span>                 id_add1 <span class="op">=</span> <span class="st">"Nutrition"</span>,</span>
 <span>                 id_addn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Housing"</span>, <span class="st">"Assets"</span>, <span class="st">"Water"</span>, <span class="st">"Electricity"</span><span class="op">)</span>,</span>
 <span>                 plots <span class="op">=</span> <span class="st">"t"</span>, Factor <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -659,12 +699,16 @@ Essembles, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight
 
 `TTy`   Type of response variable (Numeric or Response - like binary)
 </code></pre>
+<div class="section level3">
+<h3 id="example-5">Example<a class="anchor" aria-label="anchor" href="#example-5"></a>
+</h3>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">splines</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="va">Model</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">states</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html" class="external-link">bs</a></span><span class="op">(</span><span class="va">sequence</span>, knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">115</span><span class="op">)</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">Data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="../reference/MLMetrics.html">MLMetrics</a></span><span class="op">(</span>Observed <span class="op">=</span> <span class="va">Data</span>, yvalue <span class="op">=</span> <span class="va">Data</span><span class="op">$</span><span class="va">states</span>, modeli <span class="op">=</span> <span class="va">Model</span>, K <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>           Name <span class="op">=</span> <span class="st">"Linear"</span>, Form <span class="op">=</span> <span class="st">"LM"</span>, kutuf <span class="op">=</span> <span class="fl">0</span>, TTy <span class="op">=</span> <span class="st">"Number"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="model_factors-latent-factors-recovery-from-variables-loadings">model_factors: Latent Factors Recovery from Variables Loadings<a class="anchor" aria-label="anchor" href="#model_factors-latent-factors-recovery-from-variables-loadings"></a>
@@ -680,6 +724,9 @@ With the arguments:
 `data`  An ⁠R object⁠ obtained from exploratory factor analysis (EFA) using the fa function in psych package.
 
 `DATA`  A data.frame, the raw data used to carry out the parallel analysis to obtain data object.</code></pre>
+<div class="section level3">
+<h3 id="example-6">Example<a class="anchor" aria-label="anchor" href="#example-6"></a>
+</h3>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/" class="external-link">psych</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
@@ -692,6 +739,54 @@ With the arguments:
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.html" class="external-link">fa</a></span><span class="op">(</span><span class="va">ddd</span>, nfactors <span class="op">=</span> <span class="va">lll</span><span class="op">[[</span><span class="st">"nfact"</span><span class="op">]</span><span class="op">]</span>, rotate <span class="op">=</span> <span class="st">"varimax"</span>,fm <span class="op">=</span> <span class="st">"minres"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/Model_factors.html">model_factors</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, DATA <span class="op">=</span> <span class="va">ddd</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="percent-attach-per-cent-sign-to-data">Percent: Attach Per Cent Sign to Data<a class="anchor" aria-label="anchor" href="#percent-attach-per-cent-sign-to-data"></a>
+</h2>
+<p>This function is a wrapper for easy affixing of the per cent sign (%)
+to a value or a vector or a data frame of values. The basic usage
+is:</p>
+<pre><code>Percent(Data, Type, format = "f", ...)
+
+With the arguments:
+
+`Data`  The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
+
+`Type`  The type of data. The default arguments are Value for single numeric data of Frame for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
+
+`format`    The format of the output which is internal and the default is a character factor
+
+`...`   Additional arguments that may be passed to the function
+</code></pre>
+<div class="section level3">
+<h3 id="example-7">Example<a class="anchor" aria-label="anchor" href="#example-7"></a>
+</h3>
+<div class="section level4">
+<h4 id="a-vector-data">A vector data<a class="anchor" aria-label="anchor" href="#a-vector-data"></a>
+</h4>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">0.5</span>, <span class="fl">0.103</span>, <span class="fl">7</span>, <span class="fl">0.1501</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Percent.html">Percent</a></span><span class="op">(</span>Data <span class="op">=</span> <span class="va">Data</span>, Type <span class="op">=</span> <span class="st">"Frame"</span><span class="op">)</span></span>
+<span><span class="va">Data</span> <span class="op">&lt;-</span> <span class="fl">1.2</span></span>
+<span><span class="fu"><a href="../reference/Percent.html">Percent</a></span><span class="op">(</span>Data <span class="op">=</span> <span class="va">Data</span>, Type <span class="op">=</span> <span class="st">"Value"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="data-franme">Data franme<a class="anchor" aria-label="anchor" href="#data-franme"></a>
+</h4>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fl">2320</span>, <span class="fl">5760</span>, <span class="fl">4800</span>, <span class="fl">2600</span>, <span class="fl">5700</span>, <span class="fl">7800</span>, <span class="fl">3000</span>, <span class="fl">6300</span>, <span class="fl">2400</span>,</span>
+<span><span class="fl">10000</span>, <span class="fl">2220</span>, <span class="fl">3740</span><span class="op">)</span>,</span>
+<span>B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1620</span>, <span class="fl">3600</span>, <span class="fl">1200</span>, <span class="fl">1200</span>, <span class="fl">1200</span>, <span class="fl">4250</span>, <span class="fl">14000</span>, <span class="fl">10000</span>, <span class="fl">1850</span>, <span class="fl">1850</span><span class="op">)</span>,</span>
+<span>C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3000</span>, <span class="fl">3000</span>, <span class="fl">7800</span>, <span class="fl">5400</span>, <span class="fl">3900</span>, <span class="fl">7800</span>, <span class="fl">1950</span>, <span class="fl">2400</span>, <span class="fl">2400</span>, <span class="fl">7000</span>, <span class="fl">1850</span>, <span class="fl">1850</span><span class="op">)</span>,</span>
+<span>D <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2900</span>, <span class="fl">5760</span>, <span class="fl">3750</span>, <span class="fl">5400</span>, <span class="fl">4095</span>, <span class="fl">3150</span>, <span class="fl">2080</span>, <span class="fl">7800</span>, <span class="fl">1920</span>, <span class="fl">1200</span>, <span class="fl">5000</span>, <span class="fl">1950</span><span class="op">)</span>,</span>
+<span>E <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2900</span>, <span class="fl">2030</span>, <span class="fl">0</span>, <span class="fl">5400</span>, <span class="fl">5760</span>, <span class="fl">1800</span>, <span class="fl">2000</span>, <span class="fl">1950</span>, <span class="fl">1850</span>, <span class="fl">3600</span>, <span class="fl">5200</span>, <span class="fl">5760</span><span class="op">)</span>,</span>
+<span>F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2800</span>, <span class="fl">5760</span>, <span class="fl">1820</span>, <span class="fl">4340</span>, <span class="fl">7500</span>, <span class="fl">2400</span>, <span class="fl">2300</span>, <span class="fl">1680</span>, <span class="fl">1850</span>, <span class="fl">0</span>, <span class="fl">2800</span>, <span class="fl">8000</span><span class="op">)</span>,</span>
+<span>G <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5760</span>, <span class="fl">4600</span>, <span class="fl">13000</span>, <span class="fl">7800</span>, <span class="fl">6270</span>, <span class="fl">1200</span>, <span class="fl">1440</span>, <span class="fl">8000</span>, <span class="fl">1200</span>, <span class="fl">2025</span>, <span class="fl">4800</span>, <span class="fl">2600</span><span class="op">)</span>,</span>
+<span>H <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2100</span>, <span class="fl">5760</span>, <span class="fl">8250</span>, <span class="fl">3900</span>, <span class="fl">1800</span>, <span class="fl">1200</span>, <span class="fl">4800</span>, <span class="fl">1800</span>, <span class="fl">7800</span>, <span class="fl">2035</span>, <span class="fl">8000</span>, <span class="fl">3000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Percent.html">Percent</a></span><span class="op">(</span>Data <span class="op">=</span> <span class="va">df</span>, Type <span class="op">=</span> <span class="st">"Frame"</span><span class="op">)</span>  <span class="co"># Value, Frame</span></span></code></pre></div>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="quicksummary-quick-formatted-summary-of-machine-learning-data">quicksummary: Quick Formatted Summary of Machine Learning Data<a class="anchor" aria-label="anchor" href="#quicksummary-quick-formatted-summary-of-machine-learning-data"></a>
@@ -714,19 +809,23 @@ With the arguments:
 
 `ci`    Confidence interval which is defaults to 0.95.</code></pre>
 <div class="section level3">
-<h3 id="likert-type-data">Likert-type data<a class="anchor" aria-label="anchor" href="#likert-type-data"></a>
+<h3 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a>
 </h3>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="likert-type-data">Likert-type data<a class="anchor" aria-label="anchor" href="#likert-type-data"></a>
+</h4>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Up</span> <span class="op">&lt;-</span> <span class="st">"Constraint"</span></span>
 <span><span class="va">Down</span> <span class="op">&lt;-</span> <span class="st">"Not a constraint"</span></span>
 <span><span class="fu"><a href="../reference/quicksummary.html">quicksummary</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Quicksummary</span>, Type <span class="op">=</span> <span class="fl">2</span>, Cut <span class="op">=</span> <span class="fl">2.60</span>, Up <span class="op">=</span> <span class="va">Up</span>, Down <span class="op">=</span> <span class="va">Down</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="continuous-data">Continuous data<a class="anchor" aria-label="anchor" href="#continuous-data"></a>
-</h3>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="continuous-data">Continuous data<a class="anchor" aria-label="anchor" href="#continuous-data"></a>
+</h4>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">linearsystems</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/quicksummary.html">quicksummary</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, Type <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -745,11 +844,15 @@ With the arguments:
 `Treatment` Vector of binary data (0 = control population, 1 = treated population) LHS for the treatment effects estimation
 
 `x_data`    Data frame of explanatory variables for the RHS of the estimation</code></pre>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="example-8">Example<a class="anchor" aria-label="anchor" href="#example-8"></a>
+</h3>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="va">Treatment</span> <span class="op">=</span> <span class="va">treatments</span><span class="op">$</span><span class="va">treatment</span></span>
 <span><span class="va">data</span> <span class="op">=</span> <span class="va">treatments</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="fu"><a href="../reference/treatment_model.html">treatment_model</a></span><span class="op">(</span><span class="va">Treatment</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
