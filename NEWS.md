@@ -12,7 +12,7 @@ Some editing on the various functions to make them more readable.
 
 # Dyn4cast 11.11.26-kappa 2025-04-22
 
-More efficient estimation procedure and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity.
+More efficient estimation procedure in and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity. Vignette is now included in the documentation with lots of examples.
 
 Some editing on the various functions to make them more readable.
 
