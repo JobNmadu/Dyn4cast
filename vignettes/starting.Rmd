@@ -68,13 +68,13 @@ install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https
 
 A number of other packages are required for the smooth running of the package and may need to be installed if not already installed on your machine. Some of the packages are listed below:
 
-```{r install-suggested, eval = FALSE}
+```{r install-suggested, echo = TRUE, eval = FALSE}
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
                    "psych", "lifecycle", "MetBrewer", "data.table"))
 ```
 
-## ## Citation
+# Citation
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
 
