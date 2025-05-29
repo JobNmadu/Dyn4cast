@@ -325,7 +325,7 @@ gender(df)
 
 # Linearsystems: Linear Model and various Transformations for Efficiency
 
-This function is unique and versatile as it estimates 14 different transformation of the linear. The interesting thing about this function is its simplicity and one line code but a workforce outputting above 20 different objects. The function incorporates two other functions: `corplot` and `estimate_plot`. The basic usage is:
+This function is unique and versatile as it estimates 14 different transformation of the linear regression model. The interesting thing about this function is its simplicity and one line code but a workforce outputting above 20 different objects. The function incorporates two other functions: `corplot` and `estimate_plot`. The basic usage is:
 
 ```
 Linearsystems(y, x, mod, limit, Test = NA)
