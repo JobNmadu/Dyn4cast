@@ -53,8 +53,6 @@ With the following arguments:
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 library(splines)
 library(forecast)
 library(readr)
@@ -89,8 +87,6 @@ With the arguments:
 ### View the data without transformation
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 data0 <- Transform %>%
 pivot_longer(!X, names_to = "Factors", values_to = "Data")
 
@@ -186,10 +182,9 @@ With the arguments
 ```
 ## Example
 
-### Twenty eight points less than full lenght of data
+### Twenty eight points less than full length of data
 
 ```{r echo = TRUE, eval = FALSE}
-
 library(readr)
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
 
@@ -204,7 +199,7 @@ DynamicForecast(date = gggg$Date, series = gggg$Case,
                 Trend = "Day", Length = 0, Type = "Integer")
 ```
 
-### Fourteen points less than full lenght of data
+### Fourteen points less than full length of data
 
 ```{r echo = TRUE, eval = FALSE}
 lastdayfo21 <- Dss[length(Dss)]
@@ -242,8 +237,6 @@ tally())
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 DD <- rnorm(100000)
 formattedcut(DD, 12, FALSE)
 DD1 <- cut(DD, 12)
@@ -291,11 +284,9 @@ garrett_ranking(garrett_data, 5)
 ### Rank subset of the data
 
 ```{r echo = TRUE, eval = FALSE}
-
 garrett_ranking(garrett_data, 8)
 
 garrett_ranking(garrett_data, 4)
-
 ```
 
 # gender: Create Gender Variable
@@ -312,8 +303,6 @@ With argument:
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 df <- data.frame(Age = c(49, 30, 44, 37, 29, 56, 28, 26, 33, 45, 45, 19,
                          32, 22, 19, 28, 28, 36, 56, 34),
 Sex = c("male", "female", "female", "male", "male", "male", "female",
@@ -347,8 +336,6 @@ With the arguments:
 ### Estimation Without test data, 14 models
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 6, 15)
@@ -363,13 +350,11 @@ limit <- 20
 mod <-3
 Test <- NA
 Linearsystems(y, x, 3, 15)
-
 ```
 
 ### Estimation With test data, linear models
 
 ```{r echo = TRUE, eval = FALSE}
-
 x <- sampling[, -1]
 y <- sampling$qOutput
 mod <- 1
@@ -379,7 +364,6 @@ Linearsystems(y, x, 1, 15)
 ### Estimation With test data, power models
 
 ```{r echo = TRUE, eval = FALSE}
-
 x <- sampling[, -1]
 y <- sampling$qOutput
 mod <- 2
@@ -389,7 +373,6 @@ Linearsystems(y, x, 2, 15)
 ### Estimation With test data, root models
 
 ```{r echo = TRUE, eval = FALSE}
-
 x <- sampling[, -1]
 y <- sampling$qOutput
 ddc <- cbind(y, x)
@@ -405,8 +388,6 @@ Linearsystems(y, x, 4, 15, Test)
 ### Estimation Without test data, inverse models
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 5, 15)
@@ -463,8 +444,6 @@ With the arguments
 ### With three dimensions and factor
 
 ```{r echo = TRUE, eval = FALSE}
-
-
  data <- mdpi1 # data from `MPI` package
  data1 <- mdpi2 #from `mpitbR` package
 
@@ -573,7 +552,6 @@ dm <- list(d1 = c("d_cm"),
 ### With nine dimensions and factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
-
   dm <- list(d1 = c("d_cm"),
              d2 = c("d_satt","d_educ"),
              d3 = c("d_elct", "d_ckfl"),
@@ -588,7 +566,6 @@ dm <- list(d1 = c("d_cm"),
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water", "Electricity"),
                  plots = "t", Factor = "region")
-
 ```
 
 
@@ -624,7 +601,6 @@ Essembles, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
 library(splines)
 library(readr)
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
@@ -649,8 +625,6 @@ With the arguments:
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
-
 library(psych)
 library(readr)
 ddd <- Quicksummary
@@ -662,7 +636,6 @@ lll <- fa.parallel(ddd, fm = "minres", fa = "fa")
 dat <- fa(ddd, nfactors = lll[["nfact"]], rotate = "varimax",fm = "minres")
 
 model_factors(data = dat, DATA = ddd)
-
 ```
 
 # Percent: Attach Per Cent Sign to Data
@@ -694,7 +667,7 @@ Data <- 1.2
 Percent(Data = Data, Type = "Value")
 ```
 
-### Data franme 
+### Data frame 
 
 ```{r echo = TRUE, eval = FALSE}
 df <- data.frame(c(A = 2320, 5760, 4800, 2600, 5700, 7800, 3000, 6300, 2400,
@@ -735,9 +708,6 @@ With the arguments:
 ### Likert-type data
 
 ```{r echo = TRUE, eval = FALSE}
-
-
-
 Up <- "Constraint"
 Down <- "Not a constraint"
 quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
@@ -746,10 +716,8 @@ quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
 ### Continuous data
 
 ```{r echo = TRUE, eval = FALSE}
-
 x <- select(linearsystems, 1:6)
 quicksummary(x = x, Type = 1)
-
 ```
 
 # treatment_model: Enhanced Estimation of Treatment Effects of Binary Data from Randomized Experiments
@@ -768,7 +736,6 @@ With the arguments:
 ## Example
 
 ```{r echo = TRUE, eval = FALSE}
-
 library(readr)
 Treatment = treatments$treatment
 data = treatments[, c(2:3)]
