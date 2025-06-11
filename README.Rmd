@@ -56,7 +56,7 @@ The __Dyn4cast__ package is designed to be a lightweight package. The philosophy
 
 ## Installation
 
-Although it would be possible to install the released version of _Dyn4cast_ from [CRAN](https://CRAN.R-project.org) in future, presently, only the development version is available. The canonical form for  [CRAN](https://CRAN.R-project.org) is:
+Although the released version of _Dyn4cast_ could be installed from [CRAN](https://CRAN.R-project.org), the plans to submit it to _CRAN_ is underway. Therefore, only the development version is currently running. The canonical form for  [CRAN](https://CRAN.R-project.org) is:
 
 ```
 install.packages("Dyn4cast")

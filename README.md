@@ -60,10 +60,10 @@ machine learning tasks.
 
 ## Installation
 
-Although it would be possible to install the released version of
-*Dyn4cast* from [CRAN](https://CRAN.R-project.org) in future, presently,
-only the development version is available. The canonical form for
-[CRAN](https://CRAN.R-project.org) is:
+Although the released version of *Dyn4cast* could be installed from
+[CRAN](https://CRAN.R-project.org), the plans to submit it to *CRAN* is
+underway. Therefore, only the development version is currently running.
+The canonical form for [CRAN](https://CRAN.R-project.org) is:
 
     install.packages("Dyn4cast")
 
@@ -297,19 +297,19 @@ you run `citation("Dyn4cast")` in your `R` console.
 ``` r
 
 citation("Dyn4cast")
+
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.24,
-  <https://github.com/JobNmadu/Dyn4cast>.
+  Job Nmadu (NA). Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment. https://github.com/JobNmadu/Dyn4cast,
+  https://jobnmadu.github.io/Dyn4cast/.
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    note = {R package version 11.11.24},
-    url = {https://github.com/JobNmadu/Dyn4cast},
+    note = {https://github.com/JobNmadu/Dyn4cast, https://jobnmadu.github.io/Dyn4cast/},
   }
 ```
 
