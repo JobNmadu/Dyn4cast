@@ -1,5 +1,5 @@
 ---
-title: "Dyn4cast: Dynamic Modeling and Machine Learning Environment"
+title: "Dyn4cast"
 output: rmarkdown::html_vignette
 description: |
   An introduction to Dyn4cast packge and the various functions it presents.
@@ -28,11 +28,52 @@ options(scipen = 999, digits = 2)
 
 library(Dyn4cast)
 library(tidyverse, quietly = T)
+options(rmarkdown.html_vignette.check_title = FALSE)
 ```
+
+# Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
+
+<!-- badges: start -->
+
+[![](https://img.shields.io/badge/Made%20With-R-9cf)](https://github.com/JobNmadu/Dyn4cast)
+
+[![R-CMD-check](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml)
+
+[![registry status badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-universe.dev/)
+
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
+
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)  
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+<!-- badges: end -->
+
 
 # Introduction
 
-The `Dyn4cast` is designed to be a lightweight package. The philosophy behind it was the need to provide quick methods for estimation, prediction and forecast, updates and visualization of data. The package was launched as a function during the COVID-19 lockdown as a means of providing live updates and forecast of the Nigeria cases. The function was converted to a package in February 2021 with just one function,  `DynamicForecast`. From that single function, the number of functions have grown to more than 10 because there were need to have supporting functions to make the forecasting easy. The package prides itself of line line technology by providing various machine learning functions with excellent functionality in one line of codes. At inception, the package had heavy dependencies on other software (e.g. Java), packages and functions, making the installation quite busy. Currently, efforts have been made and the number of dependencies have become minimal; and the functions are working optimally. Outlined below are the various functions and their capacities as provided by the package.
+The `Dyn4cast` is designed to be a lightweight package. The philosophy behind it was the need to provide quick methods for estimation, prediction and forecast, updates and visualization of data. The package was launched as a function during the COVID-19 lockdown as a means of providing live updates and forecast of the Nigeria cases. The function was converted to a package in February 2021 with just one function,  `DynamicForecast`. From that single function, the number of functions have grown to more than 10 because there were need to have supporting functions to make the forecasting easy. The package prides itself of line line technology by providing various machine learning functions with excellent functionality in one line of codes. At inception, the package had heavy dependencies on other software (e.g. Java), packages and functions, making the installation quite busy. Currently, efforts have been made and the number of dependencies have become minimal; and the functions are working optimally.
+
+## Installation
+
+`Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. To install the development version of `Dyn4cast` from GitHub, use the following canonical form:
+ 
+```{r github, echo = TRUE, eval = FALSE}
+
+# install.packages("devtools")
+devtools::install_github("JobNmadu/Dyn4cast")
+```
+
+The development version can also be installed through r-universe. Use the form:
+
+```{r universe, echo = TRUE, eval = FALSE}
+
+install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
+```
+
+Outlined below are the various functions and their capacities as provided by the package.
 
 # constrainedforecast: Constrained Forecast of One-sided Integer Response Model
 
