@@ -831,12 +831,6 @@ With the arguments:
 
 `Type`  The type of data to be summarised. There are two options here 1 or 2, 1 = Continuous and 2 = Likert-type
 
-`Cut`   The cut-off point for Likert-type data
-
-`Up`    The top Likert-type scale, for example, Agree, Constraints etc which would appear in the remark column.
-
-`Down`  The lower Likert-type scale, for example, Disagree, ⁠Not a Constraint⁠ etc which would appear in the remark column.
-
 `ci`    Confidence interval which is defaults to 0.95.</code></pre>
 <div class="section level3">
 <h3 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a>
@@ -845,9 +839,7 @@ With the arguments:
 <h4 id="likert-type-data">Likert-type data<a class="anchor" aria-label="anchor" href="#likert-type-data"></a>
 </h4>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Up</span> <span class="op">&lt;-</span> <span class="st">"Constraint"</span></span>
-<span><span class="va">Down</span> <span class="op">&lt;-</span> <span class="st">"Not a constraint"</span></span>
-<span><span class="fu"><a href="../reference/quicksummary.html">quicksummary</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Quicksummary</span>, Type <span class="op">=</span> <span class="fl">2</span>, Cut <span class="op">=</span> <span class="fl">2.60</span>, Up <span class="op">=</span> <span class="va">Up</span>, Down <span class="op">=</span> <span class="va">Down</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/quicksummary.html">quicksummary</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Quicksummary</span>, Type <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="continuous-data">Continuous data<a class="anchor" aria-label="anchor" href="#continuous-data"></a>

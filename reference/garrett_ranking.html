@@ -99,8 +99,8 @@ If not available, positional ranks are applied.</p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A list with the following components:</p>
-<dl><dt><code>Data mean table</code></dt>
-<dd><p>Table of data ranked using simple average.</p></dd>
+<dl><dt><code>RII</code></dt>
+<dd><p>Relative importance index.</p></dd>
 
 <dt><code>Garrett ranked data</code></dt>
 <dd><p>Table of data ranked using Garrett
@@ -123,25 +123,9 @@ mean score.</p></dd>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span>, <span class="va">ranking</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...8`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...8`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...9`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Number `Garrett point` `Garrett index` `Garrett value`</span>
@@ -185,47 +169,65 @@ mean score.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13                              0                2                        2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14                              5                2                       17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15                              5                2                       17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Total Garrett Score Mean score Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     13                 976         75    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     19                1425         75    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     19                1425         75    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     25                1872         75    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     25                1872         75    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     24                1682         70    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     24                1682         70    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     14                 960         69    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9      3                 202         67    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    21                1394         66   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11    21                1394         66   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12     6                 398         66   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13     6                 398         66   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    24                1493         62   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15    24                1493         62   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Mean Total Garrett Score Mean Garrett score Total Item score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     13  8.2                 976                 75               48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     19  4.5                1425                 75               70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     19  4.5                1425                 75               70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     25  3.4                1872                 75               92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     25  3.4                1872                 75               92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     24  3.3                1682                 70               71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     24  3.3                1682                 70               71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     14  6.0                 960                 69               39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9      3 14.8                 202                 67                8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    21  4.0                1394                 66               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11    21  4.0                1394                 66               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12     6  7.0                 398                 66               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13     6  7.0                 398                 66               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    24  1.9                1493                 62               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15    24  1.9                1493                 62               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Relative importance index Rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      0.331    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                      0.483    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                      0.483    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      0.634    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                      0.634    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                      0.490    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                      0.490    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                      0.269    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                      0.055    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                     0.345   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     0.345   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     0.097   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     0.097   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     0.248   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     0.248   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $RII</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    V1 V2 V3 V4 V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0  0  6  2  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  25 12  6  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   5  8 15 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  35 24  0 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 35 24  0 10  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ranking not supplied</span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...8`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...8`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...9`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Number `Garrett point` `Garrett index` `Garrett value`</span>
@@ -237,63 +239,81 @@ mean score.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>      5           30                 40              60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett ranked data`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description 1st Rank 2nd Rank 3rd Rank 4th Rank 5th Rank Total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     2          S2        5        3        2        2        1    13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     9          S9        7        6        0        5        1    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    15         S15        7        6        0        5        1    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     5          S5       10        2        8        5        0    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    11         S11       10        2        8        5        0    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     4          S4        4        4        6        7        3    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    10         S10        4        4        6        7        3    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     3          S3        1        2        5        5        1    14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     1          S1        0        0        2        1        0     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    6          S6        0        4        6        5        6    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   12         S12        0        4        6        5        6    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    7          S7        0        2        0        2        2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13        0        2        0        2        2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8        0        0        5        2       17    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14        0        0        5        2       17    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Garrett Score Mean score Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  976         75    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 1425         75    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 1425         75    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 1872         75    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 1872         75    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 1682         70    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 1682         70    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                  960         69    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9                  202         67    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10                1394         66   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                1394         66   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                 398         66   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                 398         66   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                1493         62   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                1493         62   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description 1st Rank 2nd Rank 3rd Rank 4th Rank 5th Rank Total Mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     2          S2        5        3        2        2        1    13  8.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     9          S9        7        6        0        5        1    19  4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    15         S15        7        6        0        5        1    19  4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     5          S5       10        2        8        5        0    25  3.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    11         S11       10        2        8        5        0    25  3.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     4          S4        4        4        6        7        3    24  3.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    10         S10        4        4        6        7        3    24  3.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     3          S3        1        2        5        5        1    14  6.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     1          S1        0        0        2        1        0     3 14.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    6          S6        0        4        6        5        6    21  4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   12         S12        0        4        6        5        6    21  4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    7          S7        0        2        0        2        2     6  7.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13         S13        0        2        0        2        2     6  7.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8        0        0        5        2       17    24  1.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14        0        0        5        2       17    24  1.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Garrett Score Mean Garrett score Total Item score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  976                 75               48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 1425                 75               70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 1425                 75               70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 1872                 75               92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 1872                 75               92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 1682                 70               71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 1682                 70               71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                  960                 69               39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                  202                 67                8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                1394                 66               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                1394                 66               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                 398                 66               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                 398                 66               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                1493                 62               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                1493                 62               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Relative importance index Rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      0.331    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                      0.483    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                      0.483    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      0.634    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                      0.634    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                      0.490    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                      0.490    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                      0.269    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                      0.055    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                     0.345   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     0.345   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     0.097   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     0.097   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     0.248   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     0.248   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $RII</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    V1 V2 V3 V4 V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0  0  6  2  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  25 12  6  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   5  8 15 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  35 24  0 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 35 24  0 10  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># you can rank subset of the data</span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">8</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...11`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Below    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Below    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Below   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Below   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Below   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Below   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...11`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...12`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Number `Garrett point` `Garrett index` `Garrett value`</span>
@@ -324,46 +344,64 @@ mean score.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13    1          S1        0        0        0        0        0        2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8        1        0        0        0        0        5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14        1        0        0        0        0        5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    7th Rank 8th Rank Total Total Garrett Score Mean score Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         2        2    14                 954         68    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         2        2    14                 954         68    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         2        1    17                1078         63    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         5        1    27                1699         63    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         5        1    27                1699         63    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         5        1    22                1370         62    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         5        0    26                1556         60    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         5        0    26                1556         60    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         7        3    28                1641         59    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        7        3    28                1641         59   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        5        6    23                1291         56   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        5        6    23                1291         56   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        1        0     3                 167         56   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        2       17    25                1326         53   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        2       17    25                1326         53   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    7th Rank 8th Rank Total Mean Total Garrett Score Mean Garrett score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         2        2    14  7.0                 954                 68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         2        2    14  7.0                 954                 68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         2        1    17  8.2                1078                 63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         5        1    27  4.5                1699                 63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         5        1    27  4.5                1699                 63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         5        1    22  6.0                1370                 62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         5        0    26  3.4                1556                 60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         5        0    26  3.4                1556                 60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         7        3    28  3.3                1641                 59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        7        3    28  3.3                1641                 59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        5        6    23  4.0                1291                 56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        5        6    23  4.0                1291                 56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        1        0     3 14.8                 167                 56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        2       17    25  1.9                1326                 53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        2       17    25  1.9                1326                 53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Item score Relative importance index Rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                72                     0.310    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                72                     0.310    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                76                     0.328    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               122                     0.526    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               122                     0.526    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                92                     0.397    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                99                     0.427    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                99                     0.427    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                96                     0.414    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10               96                     0.414   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11               63                     0.272   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12               63                     0.272   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                8                     0.034   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14               44                     0.190   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15               44                     0.190   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $RII</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    V1 V2 V3 V4 V5 V6 V7 V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0  0  0  0  0  6  2  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  16  0 12 25 12  6  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   8 21 24  5  8 15 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0  7 18 20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0  7  0 50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0  7  6  0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  32 14 12  0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   8  0  0  0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0 28 24 35 24  0 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  0  7 18 20 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  0  7  0 50  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  0  7  6  0 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 32 14 12  0  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  8  0  0  0  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  0 28 24 35 24  0 10  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">garrett_ranking</span><span class="op">(</span><span class="va">garrett_data</span>, <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...7`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data mean table`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description Mean Remark Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     1          S1 14.8  Above    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2          S2  8.2  Above    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     7          S7  7.0  Above    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    13         S13  7.0  Above    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     3          S3  6.0  Above    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     9          S9  4.5  Above    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    15         S15  4.5  Above    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     6          S6  4.0  Above    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    12         S12  4.0  Above    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    5          S5  3.4  Above   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11         S11  3.4  Above   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    4          S4  3.3  Above   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   10         S10  3.3  Above   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8  1.9  Below   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14  1.9  Below   15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `V1` -&gt; `V1...7`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...8`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett value`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Number `Garrett point` `Garrett index` `Garrett value`</span>
@@ -374,38 +412,72 @@ mean score.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>      4           23.3               36              64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Garrett ranked data`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description 1st Rank 2nd Rank 3rd Rank 4th Rank Total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     9          S9        6        0        5        1    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    15         S15        6        0        5        1    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     2          S2        3        2        2        1     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     5          S5        2        8        5        0    15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    11         S11        2        8        5        0    15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     3          S3        2        5        5        1    13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     4          S4        4        6        7        3    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    10         S10        4        6        7        3    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     1          S1        0        2        1        0     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    7          S7        2        0        2        2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   13         S13        2        0        2        2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    6          S6        4        6        5        6    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   12         S12        4        6        5        6    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8        0        5        2       17    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14        0        5        2       17    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Garrett Score Mean score Rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  919         77    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                  919         77    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                  607         76    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 1115         74    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 1115         74    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  954         73    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 1465         73    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                 1465         73    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9                  219         73    9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10                 436         73   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                 436         73   11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                1519         72   12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                1519         72   13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                1601         67   14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                1601         67   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    S/No Description 1st Rank 2nd Rank 3rd Rank 4th Rank Total Mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     9          S9        6        0        5        1    12  4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    15         S15        6        0        5        1    12  4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     2          S2        3        2        2        1     8  8.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     5          S5        2        8        5        0    15  3.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    11         S11        2        8        5        0    15  3.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     3          S3        2        5        5        1    13  6.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     4          S4        4        6        7        3    20  3.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    10         S10        4        6        7        3    20  3.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     1          S1        0        2        1        0     3 14.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    7          S7        2        0        2        2     6  7.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   13         S13        2        0        2        2     6  7.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    6          S6        4        6        5        6    21  4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   12         S12        4        6        5        6    21  4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    8          S8        0        5        2       17    24  1.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14         S14        0        5        2       17    24  1.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Total Garrett Score Mean Garrett score Total Item score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  919                 77               35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                  919                 77               35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                  607                 76               23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 1115                 74               42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 1115                 74               42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  954                 73               34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 1465                 73               51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                 1465                 73               51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                  219                 73                8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                 436                 73               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                 436                 73               14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                1519                 72               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                1519                 72               50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                1601                 67               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                1601                 67               36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Relative importance index Rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      0.302    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                      0.302    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                      0.198    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      0.362    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                      0.362    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                      0.293    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                      0.440    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                      0.440    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                      0.069    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                     0.121   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     0.121   11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     0.431   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     0.431   13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     0.310   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     0.310   15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $RII</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    V1 V2 V3 V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0  6  2  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  12  6  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   8 15 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  24  0 10  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 16 18 14  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  8 24 10  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 16 18 10  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  8  0  4  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  0 15  4 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 24  0 10  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
