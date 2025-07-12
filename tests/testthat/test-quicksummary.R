@@ -1,9 +1,6 @@
 test_that("quicksummary works", {
   library(tidyverse)
-  Up <- "Constraint"
-  Down <- "Not a constraint"
-  test1 <- quicksummary(x = Quicksummary, Type = 2, Cut = 2.60,
-                        Up = Up, Down = Down)
+  test1 <- quicksummary(x = Quicksummary, Type = 2)
   Test_01 <- test1$Summary
   Test_02 <- test1$Means
   x <- select(linearsystems, 1:6)

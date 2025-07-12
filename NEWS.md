@@ -10,9 +10,15 @@ Some editing on the various functions to make them more readable.
 
 `tidyverse` now demoted to suggestion from requirement to reduce the load of dependencies. `PRESS` restored as _Predictive Residual Sum of Squares_.
 
+# Dyn4cast 11.11.26-eta 2025-07-12
+
+Relative importance index now part of the objects created in Garrett Ranking. The data summary and the Garrett ranking are now in one `data.frame`. The _Remark_ column in Likert-type object in `quicksummary` is discontinued. It is now left to the user to interpret the results obtained.
+
+Some editing to make codes more readable.
+
 # Dyn4cast 11.11.26-kappa 2025-04-22
 
-More efficient estimation procedure in and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity. Vignette is now included in the documentation with lots of examples. The test coverage has increased to 76%. `met.brewer` function has been retired and `MetBrewer` package  was demoted to suggestion rather than import.
+More efficient estimation procedure and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity. Vignette is now included in the documentation with lots of examples. The test coverage has increased to 76%. `met.brewer` function has been retired and `MetBrewer` package  was demoted to suggestion rather than import.
 
 Some editing on the various functions to make them more readable.
 

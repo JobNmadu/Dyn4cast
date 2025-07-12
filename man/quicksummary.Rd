@@ -5,21 +5,13 @@
 \alias{Quicksummary}
 \title{Quick Formatted Summary of Machine Learning Data}
 \usage{
-quicksummary(x, Type, Cut, Up, Down, ci = 0.95)
+quicksummary(x, Type, ci = 0.95)
 }
 \arguments{
 \item{x}{The data to be summarised. Only numeric data is allowed.}
 
 \item{Type}{The type of data to be summarised. There are two options here 1
 or 2, 1 = \code{Continuous} and 2 = \code{Likert-type}}
-
-\item{Cut}{The cut-off point for Likert-type data}
-
-\item{Up}{The top Likert-type scale, for example, \code{Agree}, \code{Constraints} etc
-which would appear in the remark column.}
-
-\item{Down}{The lower Likert-type scale, for example, \code{Disagree},
-\verb{Not a Constraint} etc which would appear in the remark column.}
 
 \item{ci}{Confidence interval which is defaults to 0.95.}
 }
@@ -36,9 +28,7 @@ have the time to write codes for user-friendly summaries.
 \examples{
 library(tidyverse)
 # Likert-type data
-Up <- "Constraint"
-Down <- "Not a constraint"
-quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
+quicksummary(x = Quicksummary, Type = 2)
 
 # Continuous data
 x <- select(linearsystems, 1:6)

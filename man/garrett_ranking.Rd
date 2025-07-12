@@ -22,7 +22,7 @@ If not available, positional ranks are applied.}
 }
 \value{
 A list with the following components:
-\item{\code{Data mean table}}{Table of data ranked using simple average.}
+\item{\code{RII}}{Relative importance index.}
 \item{\code{Garrett ranked data}}{Table of data ranked using Garrett
 mean score.}
 \item{\code{Garrett value}}{Table of ranking Garrett values}

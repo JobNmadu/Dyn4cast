@@ -736,12 +736,6 @@ With the arguments:
 
 `Type`	The type of data to be summarised. There are two options here 1 or 2, 1 = Continuous and 2 = Likert-type
 
-`Cut`	The cut-off point for Likert-type data
-
-`Up`	The top Likert-type scale, for example, Agree, Constraints etc which would appear in the remark column.
-
-`Down`	The lower Likert-type scale, for example, Disagree, ⁠Not a Constraint⁠ etc which would appear in the remark column.
-
 `ci`	Confidence interval which is defaults to 0.95.
 ```
 ## Examples
@@ -749,9 +743,7 @@ With the arguments:
 ### Likert-type data
 
 ```{r echo = TRUE, eval = FALSE}
-Up <- "Constraint"
-Down <- "Not a constraint"
-quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
+quicksummary(x = Quicksummary, Type = 2)
 ```
 
 ### Continuous data

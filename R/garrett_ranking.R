@@ -24,7 +24,7 @@
 #' @aliases garrett_data
 #'
 #' @return A list with the following components:
-#' \item{\code{Data mean table}}{Table of data ranked using simple average.}
+#' \item{\code{RII}}{Relative importance index.}
 #' \item{\code{Garrett ranked data}}{Table of data ranked using Garrett
 #' mean score.}
 #' \item{\code{Garrett value}}{Table of ranking Garrett values}
@@ -61,6 +61,7 @@ garrett_ranking <- function(data, num_rank,
   pr <- nrow(Data)
   pc <- ncol(Data)
   garrett <- as.data.frame(matrix(pc, num_rank))
+  garrett_i <- as.data.frame(matrix(pc, num_rank))
   z_m <- as.data.frame(matrix(pc, 5))
   gv <- as.data.frame(matrix(num_rank, 3))
   cuty <- mean(1:num_rank)
@@ -94,268 +95,388 @@ garrett_ranking <- function(data, num_rank,
       if (num_rank == 2) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 3) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else{
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 4) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 5) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 6) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 7) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 8) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 9) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 10) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 11) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 11] / 11)
+          garrett_i[i, p] <-  garrett[i, p] * 11
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 3) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 10) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
+
         }
       } else if (num_rank == 12) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 12] / 12)
+          garrett_i[i, p] <-  garrett[i, p] * 12
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 11] / 11)
+          garrett_i[i, p] <-  garrett[i, p] * 11
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 4) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 10) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 11) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 13) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 13] / 13)
+          garrett_i[i, p] <-  garrett[i, p] * 13
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 12] / 12)
+          garrett_i[i, p] <-  garrett[i, p] * 12
         } else if (p == 3) {
           garrett[i, p] <- sum(X[X == 11] / 11)
+          garrett_i[i, p] <-  garrett[i, p] * 11
         } else if  (p == 4) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 5) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 10) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 11) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 12) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       } else if (num_rank == 14) {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 14] / 14)
+          garrett_i[i, p] <-  garrett[i, p] * 14
         } else if  (p == 2) {
           garrett[i, p] <- sum(X[X == 13] / 13)
+          garrett_i[i, p] <-  garrett[i, p] * 13
         } else if (p == 3) {
           garrett[i, p] <- sum(X[X == 12] / 12)
+          garrett_i[i, p] <-  garrett[i, p] * 12
         } else if (p == 4) {
           garrett[i, p] <- sum(X[X == 11] / 11)
+          garrett_i[i, p] <-  garrett[i, p] * 11
         } else if  (p == 5) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 6) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 7) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 10) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 11) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 12) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 13) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       }else {
         if (p == 1) {
           garrett[i, p] <- sum(X[X == 15] / 15)
+          garrett_i[i, p] <-  garrett[i, p] * 15
         } else if (p == 2) {
           garrett[i, p] <- sum(X[X == 14] / 14)
+          garrett_i[i, p] <-  garrett[i, p] * 14
         } else if  (p == 3) {
           garrett[i, p] <- sum(X[X == 13] / 13)
+          garrett_i[i, p] <-  garrett[i, p] * 13
         } else if (p == 4) {
           garrett[i, p] <- sum(X[X == 12] / 12)
+          garrett_i[i, p] <-  garrett[i, p] * 12
         } else if (p == 5) {
           garrett[i, p] <- sum(X[X == 11] / 11)
+          garrett_i[i, p] <-  garrett[i, p] * 11
         } else if  (p == 6) {
           garrett[i, p] <- sum(X[X == 10] / 10)
+          garrett_i[i, p] <-  garrett[i, p] * 10
         } else if (p == 7) {
           garrett[i, p] <- sum(X[X == 9] / 9)
+          garrett_i[i, p] <-  garrett[i, p] * 9
         } else if  (p == 8) {
           garrett[i, p] <- sum(X[X == 8] / 8)
+          garrett_i[i, p] <-  garrett[i, p] * 8
         } else if  (p == 9) {
           garrett[i, p] <- sum(X[X == 7] / 7)
+          garrett_i[i, p] <-  garrett[i, p] * 7
         } else if  (p == 10) {
           garrett[i, p] <- sum(X[X == 6] / 6)
+          garrett_i[i, p] <-  garrett[i, p] * 6
         } else if  (p == 11) {
           garrett[i, p] <- sum(X[X == 5] / 5)
+          garrett_i[i, p] <-  garrett[i, p] * 5
         } else if  (p == 12) {
           garrett[i, p] <- sum(X[X == 4] / 4)
+          garrett_i[i, p] <-  garrett[i, p] * 4
         } else if  (p == 13) {
           garrett[i, p] <- sum(X[X == 3] / 3)
+          garrett_i[i, p] <-  garrett[i, p] * 3
         } else if  (p == 14) {
           garrett[i, p] <- sum(X[X == 2] / 2)
+          garrett_i[i, p] <-  garrett[i, p] * 2
         } else {
           garrett[i, p] <- sum(X[X == 1] / 1)
+          garrett_i[i, p] <-  garrett[i, p] * 1
         }
       }
     }
@@ -379,24 +500,30 @@ garrett_ranking <- function(data, num_rank,
   }
 
   garrett$V16 <- rowSums(garrett)
-  garrett_d <- dplyr::bind_cols(ggn, garrett, `Total Garrett Score`)
+  garrett_d <- dplyr::bind_cols(ggn, garrett, z_m, `Total Garrett Score`)
 
   row.names(z_m) <- ggn
   z_m <- rownames_to_column(z_m, var = "Description")
   names(z_m) <- c("Description", "Mean")
-  z_m$Remark <- ifelse(z_m$Mean > cuty, "Above",
-                       ifelse(z_m$Mean == cuty, "Equal", "Below"))
-  z_m <- z_m[order(-z_m$Mean), ] %>%
-    mutate(Rank = dplyr::row_number()) %>%
-    rownames_to_column(., var = "S/No")
+  z_m$`Total Item score` <- rowSums(garrett_i)
+  z_m$`Relative importance index` <- rowSums(garrett_i / (num_rank * pr))
+  #z_m$Remark <- ifelse(z_m$Mean > cuty, "Above",
+  #                     ifelse(z_m$Mean == cuty, "Equal", "Below"))
+  #z_m <- z_m[order(-z_m$Mean), ] %>%
+  #  mutate(Rank = dplyr::row_number()) %>%
+  #  rownames_to_column(., var = "S/No")
 
-  names(garrett_d) <- c("Description", ranking, "Total", "Total Garrett Score")
-  garrett_d$`Mean score` <- garrett_d$`Total Garrett Score` / garrett_d$Total
-  garrett_d <- garrett_d[order(-garrett_d$`Mean score`), ] %>%
+  names(garrett_d) <- c("Description", ranking, "Total", "Mean",
+                        "Total Garrett Score")
+  garrett_d$`Mean Garrett score` <- garrett_d$`Total Garrett Score` /
+    garrett_d$Total
+  garrett_d$`Total Item score` <- rowSums(garrett_i)
+  garrett_d$`Relative importance index` <- rowSums(garrett_i / (num_rank * pr))
+  garrett_d <- garrett_d[order(-garrett_d$`Mean Garrett score`), ] %>%
     mutate(Rank = dplyr::row_number()) %>%
     rownames_to_column(., var = "S/No")
-  results <- list(`Data mean table` = z_m, `Garrett value` = garrett_p,
-                  `Garrett ranked data` = garrett_d)
+  results <- list(`Garrett value` = garrett_p,
+                  `Garrett ranked data` = garrett_d, RII = garrett_i)
   return(results)
 }
 

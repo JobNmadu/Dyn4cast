@@ -12,11 +12,6 @@
 #' @param x The data to be summarised. Only numeric data is allowed.
 #' @param Type The type of data to be summarised. There are two options here 1
 #' or 2, 1 = `Continuous` and 2 = `Likert-type`
-#' @param Cut The cut-off point for Likert-type data
-#' @param Up The top Likert-type scale, for example, `Agree`, `Constraints` etc
-#'  which would appear in the remark column.
-#' @param Down The lower Likert-type scale, for example, `Disagree`,
-#' `Not a Constraint` etc which would appear in the remark column.
 #' @param ci Confidence interval which is defaults to 0.95.
 #'
 #' @return The function returns formatted tables of the Quick summary
@@ -32,14 +27,12 @@
 #' @examples
 #' library(tidyverse)
 #' # Likert-type data
-#' Up <- "Constraint"
-#' Down <- "Not a constraint"
-#' quicksummary(x = Quicksummary, Type = 2, Cut = 2.60, Up = Up, Down = Down)
+#' quicksummary(x = Quicksummary, Type = 2)
 #'
 #' # Continuous data
 #' x <- select(linearsystems, 1:6)
 #' quicksummary(x = x, Type = 1)
-quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
+quicksummary <- function(x, Type, ci = 0.95) {
   y  <-  as.matrix(x)
   if (is.null(colnames(y))) {
     Dim <- dim(y)[2]
@@ -110,7 +103,7 @@ quicksummary <- function(x, Type, Cut, Up, Down, ci = 0.95) {
   if (Type != 1) {
     ans        <-  ans[order(-ans$Mean), ]
     ans$Rank    <-  1:length(ans$Mean)
-    ans$Remark  <-  ifelse(ans$Mean < Cut, Down, Up)
+ #   ans$Remark  <-  ifelse(ans$Mean < Cut, Down, Up)
   } else {
     ans  <-  ans
   }
