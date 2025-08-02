@@ -33,6 +33,7 @@ Imports:
     marginaleffects,
     tibble,
     purrr,
+    lifecycle,
     tidyselect
 Depends:
     R (>= 4.1)
@@ -47,7 +48,6 @@ Suggests:
     knitr,
     spelling,
     psych,
-    lifecycle,
     readr,
     MetBrewer,
     data.table

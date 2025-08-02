@@ -35,6 +35,18 @@ their loadings.}
 their loadings.}
 \item{\code{Latent_9}}{\code{data.frame} of variables in Latent factor 9 with
 their loadings.}
+\item{\code{Latent_10}}{\code{data.frame} of variables in Latent factor 10 with
+their loadings.}
+\item{\code{Latent_11}}{\code{data.frame} of variables in Latent factor 11 with
+their loadings.}
+\item{\code{Latent_12}}{\code{data.frame} of variables in Latent factor 12 with
+their loadings.}
+\item{\code{Latent_13}}{\code{data.frame} of variables in Latent factor 13 with
+their loadings.}
+\item{\code{Latent_14}}{\code{data.frame} of variables in Latent factor 14 with
+their loadings.}
+\item{\code{Latent_15}}{\code{data.frame} of variables in Latent factor 15 with
+their loadings.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which

@@ -12,6 +12,9 @@
 #' @param x The data to be summarised. Only numeric data is allowed.
 #' @param Type The type of data to be summarised. There are two options here 1
 #' or 2, 1 = `Continuous` and 2 = `Likert-type`
+#' @param Cut `r lifecycle::badge("deprecated")`
+#' @param Up `r lifecycle::badge("deprecated")`
+#' @param Down `r lifecycle::badge("deprecated")`
 #' @param ci Confidence interval which is defaults to 0.95.
 #'
 #' @return The function returns formatted tables of the Quick summary
@@ -21,6 +24,7 @@
 #' @importFrom stats quantile
 #' @importFrom stats qt
 #' @importFrom stats median
+#' @importFrom lifecycle deprecated
 #'
 #' @aliases Quicksummary
 #'
@@ -32,7 +36,9 @@
 #' # Continuous data
 #' x <- select(linearsystems, 1:6)
 #' quicksummary(x = x, Type = 1)
-quicksummary <- function(x, Type, ci = 0.95) {
+quicksummary <- function(x, Type,  Cut = deprecated(),
+                         Up = deprecated(),
+                         Down = deprecated(), ci = 0.95) {
   y  <-  as.matrix(x)
   if (is.null(colnames(y))) {
     Dim <- dim(y)[2]

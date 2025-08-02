@@ -5,13 +5,26 @@
 \alias{Quicksummary}
 \title{Quick Formatted Summary of Machine Learning Data}
 \usage{
-quicksummary(x, Type, ci = 0.95)
+quicksummary(
+  x,
+  Type,
+  Cut = deprecated(),
+  Up = deprecated(),
+  Down = deprecated(),
+  ci = 0.95
+)
 }
 \arguments{
 \item{x}{The data to be summarised. Only numeric data is allowed.}
 
 \item{Type}{The type of data to be summarised. There are two options here 1
 or 2, 1 = \code{Continuous} and 2 = \code{Likert-type}}
+
+\item{Cut}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
+
+\item{Up}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
+
+\item{Down}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
 \item{ci}{Confidence interval which is defaults to 0.95.}
 }
