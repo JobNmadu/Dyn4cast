@@ -4,6 +4,8 @@
 #' This function retrieves the latent factors and their variable loadings which
 #'  can be used as `R` objects to perform other analysis.
 #'
+#' @usage model_factors(data, DATA, RC = "No")
+#'
 #' @param data An `R object` obtained from exploratory factor analysis (EFA)
 #' using the `fa` function in `psych` package.
 #' @param DATA A `data.frame`, the raw data used to carry out the parallel
