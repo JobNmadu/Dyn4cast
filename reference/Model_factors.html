@@ -44,10 +44,6 @@ can be used as R objects to perform other analysis."><meta property="og:image" c
 can be used as <code>R</code> objects to perform other analysis.</p>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">model_factors</span><span class="op">(</span><span class="va">data</span>, <span class="va">DATA</span><span class="op">)</span></span></code></pre></div>
-    </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
@@ -62,24 +58,36 @@ using the <code>fa</code> function in <code>psych</code> package.</p></dd>
 <dd><p>A <code>data.frame</code>, the raw data used to carry out the parallel
 analysis to obtain <code>data</code> object.</p></dd>
 
+
+<dt id="arg-rc">RC<a class="anchor" aria-label="anchor" href="#arg-rc"></a></dt>
+<dd><p>Optional factor indicating whether resilience capacity is to be
+estimated but defaults to <code>NULL</code> once the number of variables in the data
+is not sufficient, i.e. &lt; 20. To estimate, turn it to "Yes".</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A list with the following components:</p>
 <dl><dt><code>Loadings data</code></dt>
-<dd><p>.</p></dd>
+<dd><p><code>dataframe</code> of the factor loadings from the
+data.</p></dd>
 
 <dt><code>Factors extracted</code></dt>
-<dd><p>.</p></dd>
+<dd><p><code>dataframe</code> of retrieved latent factors.</p></dd>
 
 <dt><code>factored data</code></dt>
-<dd><p>.</p></dd>
+<dd><p><code>dataframe</code> of latent data based the product of
+recovered latent factors and the on raw data.</p></dd>
 
 <dt><code>Factors list</code></dt>
-<dd><p>.</p></dd>
+<dd><p>A list of vectors of individual latent factors
+recovered from the data. However, to make it usable, the vector should
+be <code>bind</code> with the names of the variables in the data and the
+<code>NA</code> removed.</p></dd>
 
 <dt><code>Resilence capacity</code></dt>
-<dd><p>.</p></dd>
+<dd><p>A vector of the resilience capacity if the
+data is prepared for that otherwise NULL.</p></dd>
 
 </dl></div>
 
@@ -317,21 +325,7 @@ analysis to obtain <code>data</code> object.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Resilence capacity`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] 0.4138058 0.4073301 0.4229417 0.4138058 0.4080583 0.4138058 0.3778932</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] 0.4080583 0.4080583 0.3778932 0.2800000 0.2756602 0.1845049 0.1935728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] 0.2281068 0.3467670 0.2499320 0.1235825 0.1773592 0.3081942 0.5928932</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] 0.6099806 0.5794660 0.3757184 0.4055922 0.3190000 0.4962621 0.3938835</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] 0.6016505 0.4309320 0.6195825 0.6173786 0.4440097 0.4552136 0.4698058</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] 0.4340485 0.4340485 0.4356408 0.4162427 0.4554563 0.4340485 0.4469029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] 0.3315340 0.3315340 0.3549806 0.3263495 0.2923495 0.3315340 0.3410680</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] 0.3565631 0.3237087 0.3334175 0.3236699 0.3928447 0.3281553 0.3467864</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] 0.2902913 0.3518252 0.3831553 0.3401165 0.4332330 0.4296408 0.3903495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] 0.4599320 0.4698155 0.4607670 0.4324078 0.3505631 0.3170097 0.4611845</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] 0.5380485 0.4301942 0.3634369 0.3403301 0.3403301 0.3450971 0.3496505</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] 0.4631262 0.3787379 0.4186311 0.4294369 0.4493495 0.2904563 0.4440680</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] 0.3550583 0.3752233 0.2861068 0.3516796 0.4556019 0.3662816 0.3691748</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] 0.3324951 0.3104369 0.3718641 0.4230680 0.3267670 0.3565922 0.3718641</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] 0.3566019 0.3205049 0.2711748 0.2801456 0.3088544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
