@@ -3,23 +3,30 @@
 \name{model_factors}
 \alias{model_factors}
 \title{Latent Factors Recovery from Variables Loadings}
-\usage{
-model_factors(data, DATA)
-}
 \arguments{
 \item{data}{An \verb{R object} obtained from exploratory factor analysis (EFA)
 using the \code{fa} function in \code{psych} package.}
 
 \item{DATA}{A \code{data.frame}, the raw data used to carry out the parallel
 analysis to obtain \code{data} object.}
+
+\item{RC}{Optional factor indicating whether resilience capacity is to be
+estimated but defaults to \code{NULL} once the number of variables in the data
+is not sufficient, i.e. < 20. To estimate, turn it to "Yes".}
 }
 \value{
 A list with the following components:
-\item{\code{Loadings data}}{.}
-\item{\code{Factors extracted}}{.}
-\item{\code{factored data}}{.}
-\item{\code{Factors list}}{.}
-\item{\code{Resilence capacity}}{.}
+\item{\code{Loadings data}}{\code{dataframe} of the factor loadings from the
+data.}
+\item{\code{Factors extracted}}{\code{dataframe} of retrieved latent factors.}
+\item{\code{factored data}}{\code{dataframe} of latent data based the product of
+recovered latent factors and the on raw data.}
+\item{\code{Factors list}}{A list of vectors of individual latent factors
+recovered from the data. However, to make it usable, the vector should
+be \code{bind} with the names of the variables in the data and the
+\code{NA} removed.}
+\item{\code{Resilence capacity}}{A vector of the resilience capacity if the
+data is prepared for that otherwise NULL.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which

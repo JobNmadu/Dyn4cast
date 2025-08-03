@@ -4,19 +4,26 @@
 #' This function retrieves the latent factors and their variable loadings which
 #'  can be used as `R` objects to perform other analysis.
 #'
-#' @usage model_factors(data, DATA)
-#'
 #' @param data An `R object` obtained from exploratory factor analysis (EFA)
 #' using the `fa` function in `psych` package.
 #' @param DATA A `data.frame`, the raw data used to carry out the parallel
 #' analysis to obtain `data` object.
+#' @param RC Optional factor indicating whether resilience capacity is to be
+#'  estimated but defaults to `NULL` once the number of variables in the data
+#'   is not sufficient, i.e. < 20. To estimate, turn it to "Yes".
 #'
 #' @return A list with the following components:
-#' \item{\code{Loadings data}}{.}
-#' \item{\code{Factors extracted}}{.}
-#' \item{\code{factored data}}{.}
-#' \item{\code{Factors list}}{.}
-#' \item{\code{Resilence capacity}}{.}
+#' \item{\code{Loadings data}}{`dataframe` of the factor loadings from the
+#'  data.}
+#' \item{\code{Factors extracted}}{`dataframe` of retrieved latent factors.}
+#' \item{\code{factored data}}{`dataframe` of latent data based the product of
+#'  recovered latent factors and the on raw data.}
+#' \item{\code{Factors list}}{A list of vectors of individual latent factors
+#'  recovered from the data. However, to make it usable, the vector should
+#'   be `bind` with the names of the variables in the data and the
+#'    `NA` removed.}
+#' \item{\code{Resilence capacity}}{A vector of the resilience capacity if the
+#'  data is prepared for that otherwise NULL.}
 #'
 #' @name model_factors
 #' @export model_factors
@@ -40,7 +47,7 @@
 utils::globalVariables(c("."))
 name  <-  NULL
 value <- 0
-model_factors <- function(data, DATA) {
+model_factors <- function(data, DATA, RC = "No") {
   llp <- printLoadings(data$loadings)
 
   #convert chr to num
@@ -74,9 +81,14 @@ model_factors <- function(data, DATA) {
   z_bRC <- data.frame(as.matrix(DATA) %*% as.matrix(Load))
   z_bRC[is.na(z_bRC)] <- 0
 
+  if (RC == "Yes" & NCOL(data) > 20) {
+    Rc = rowSums(z_bRC) / NROW(z_bRC)
+  }else{
+    Rc = NULL
+  }
   return(load <- list(`Loadings data` = llp, `Factors extracted` = Factors,
                `factored data` =  z_bRC, `Factors list` = TR,
-               `Resilence capacity` = rowSums(z_bRC) / NROW(z_bRC)))
+               `Resilence capacity` = Rc))
 }
 
 printLoadings <- function(x, digits = 3, cutoff = 0.01, sort = TRUE, ...) {
