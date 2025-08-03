@@ -15,38 +15,11 @@ analysis to obtain \code{data} object.}
 }
 \value{
 A list with the following components:
-\item{\code{Latent_frame}}{\code{data.frame} of latent factors based on the
-variables loadings.}
-\item{\code{Latent_1}}{\code{data.frame} of variables in Latent factor 1 with
-their loadings.}
-\item{\code{Latent_2}}{\code{data.frame} of variables in Latent factor 2 with
-their loadings.}
-\item{\code{Latent_3}}{\code{data.frame} of variables in Latent factor 3 with
-their loadings.}
-\item{\code{Latent_4}}{\code{data.frame} of variables in Latent factor 3 with
-their loadings.}
-\item{\code{Latent_5}}{\code{data.frame} of variables in Latent factor 5 with
-their loadings.}
-\item{\code{Latent_6}}{\code{data.frame} of variables in Latent factor 6 with
-their loadings.}
-\item{\code{Latent_7}}{\code{data.frame} of variables in Latent factor 7 with
-their loadings.}
-\item{\code{Latent_8}}{\code{data.frame} of variables in Latent factor 8 with
-their loadings.}
-\item{\code{Latent_9}}{\code{data.frame} of variables in Latent factor 9 with
-their loadings.}
-\item{\code{Latent_10}}{\code{data.frame} of variables in Latent factor 10 with
-their loadings.}
-\item{\code{Latent_11}}{\code{data.frame} of variables in Latent factor 11 with
-their loadings.}
-\item{\code{Latent_12}}{\code{data.frame} of variables in Latent factor 12 with
-their loadings.}
-\item{\code{Latent_13}}{\code{data.frame} of variables in Latent factor 13 with
-their loadings.}
-\item{\code{Latent_14}}{\code{data.frame} of variables in Latent factor 14 with
-their loadings.}
-\item{\code{Latent_15}}{\code{data.frame} of variables in Latent factor 15 with
-their loadings.}
+\item{\code{Loadings data}}{.}
+\item{\code{Factors extracted}}{.}
+\item{\code{factored data}}{.}
+\item{\code{Factors list}}{.}
+\item{\code{Resilence capacity}}{.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which
