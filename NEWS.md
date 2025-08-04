@@ -1,8 +1,12 @@
-# Dyn4cast 11.11.26-epsilon 2025-05-14
+# Dyn4cast 11.11.26-Iota 2025-08-04
+
+In view of the persistent error thrown up in some parts of `model_factors`, the strategy of recovery was changed, hence the `1768 lines` of codes was replaced by a more efficient `22 lines` of codes which produces enhanced objects and kills the error. There is a new argument to estimate `Resilience capacity` with `model_factors`. Some functions in `quicksummary` are deprecated. 
+
+# Dyn4cast 11.11.26-epsilon 2025-07-12
 
 `varImp` has been demoted and several editing was carried out for efficiency. Also, `augment` function has been demoted from broom package to `generics`. The test coverage increased from 39% to 54% since more functions are now tested. The number of dependencies continue to reduce making the package less vulnerable.
 
-# Dyn4cast 11.11.26-delta 2025-05-03
+# Dyn4cast 11.11.26-delta 2025-07-12
 
 `quicksummary` now have additional output of five types of mean, which can be useful when working on various modeling tasks.
 
