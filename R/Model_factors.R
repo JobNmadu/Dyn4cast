@@ -19,13 +19,13 @@
 #'  data.}
 #' \item{\code{Factors extracted}}{`dataframe` of retrieved latent factors.}
 #' \item{\code{factored data}}{`dataframe` of latent data based the product of
-#'  recovered latent factors and the on raw data.}
+#'  recovered latent factors on the raw data.}
 #' \item{\code{Factors list}}{A list of vectors of individual latent factors
 #'  recovered from the data. However, to make it usable, the vector should
 #'   be `bind` with the names of the variables in the data and the
 #'    `NA` removed.}
 #' \item{\code{Resilence capacity}}{A vector of the resilience capacity if the
-#'  data is prepared for that otherwise NULL.}
+#'  data is prepared for that, otherwise NULL.}
 #'
 #' @name model_factors
 #' @export model_factors

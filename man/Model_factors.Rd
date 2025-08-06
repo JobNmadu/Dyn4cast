@@ -23,13 +23,13 @@ A list with the following components:
 data.}
 \item{\code{Factors extracted}}{\code{dataframe} of retrieved latent factors.}
 \item{\code{factored data}}{\code{dataframe} of latent data based the product of
-recovered latent factors and the on raw data.}
+recovered latent factors on the raw data.}
 \item{\code{Factors list}}{A list of vectors of individual latent factors
 recovered from the data. However, to make it usable, the vector should
 be \code{bind} with the names of the variables in the data and the
 \code{NA} removed.}
 \item{\code{Resilence capacity}}{A vector of the resilience capacity if the
-data is prepared for that otherwise NULL.}
+data is prepared for that, otherwise NULL.}
 }
 \description{
 This function retrieves the latent factors and their variable loadings which
