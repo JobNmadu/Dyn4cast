@@ -13,7 +13,7 @@ data_transform(data, method, margin = 2)
 in the data are transformed}
 
 \item{method}{The type of transformation. There three options. \code{1} is for
-\code{log} transformation, \code{2} is for \code{min-max} transformation and \code{3} is
+\code{min-max} transformation, \code{2}  is for \code{log} transformation and \code{3} is
 for \code{mean-SD} transformation.}
 
 \item{margin}{Option to either transform the data \code{2 == column-wise} or
@@ -50,7 +50,7 @@ ggplot(data = data0, aes(x = X, y = Data, fill = Factors, color = Factors)) +
   labs(y = "Data", x = "Series", color = "Factors") +
   theme_bw(base_size = 12)
 
-# Example 1: Transformation by min-max method.
+# Example 1: Transformation by `min-max` method.
 # You could also transform the `X column` but is is better not to.
 
 data1 <- data_transform(Transform[, -1], 1)

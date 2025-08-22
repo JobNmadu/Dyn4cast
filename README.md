@@ -308,7 +308,7 @@ A BibTeX entry for LaTeX users is
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2025},
-    note = {R package version 11.11.24, commit 9149b8494082a5a5b06931a938fc69292449ac91},
+    note = {R package version 11.11.24},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
 ```

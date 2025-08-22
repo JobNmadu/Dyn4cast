@@ -11,7 +11,7 @@
 #' @param data A `data.frame` with numeric data for transformation. All columns
 #'  in the data are transformed
 #' @param method The type of transformation. There three options. `1` is for
-#'  `log` transformation, `2` is for `min-max` transformation and `3` is
+#'  `min-max` transformation, `2`  is for `log` transformation and `3` is
 #'  for `mean-SD` transformation.
 #' @param margin Option to either transform the data `2 == column-wise` or
 #' `1 == row-wise`. Defaults to `column-wise` transformation if no option is
@@ -47,7 +47,7 @@
 #'   labs(y = "Data", x = "Series", color = "Factors") +
 #'   theme_bw(base_size = 12)
 #'
-#' # Example 1: Transformation by min-max method.
+#' # Example 1: Transformation by `min-max` method.
 #' # You could also transform the `X column` but is is better not to.
 #'
 #' data1 <- data_transform(Transform[, -1], 1)
