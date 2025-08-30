@@ -4,15 +4,12 @@
 #' This function retrieves the latent factors and their variable loadings which
 #'  can be used as `R` objects to perform other analysis.
 #'
-#' @usage model_factors(data, DATA, RC = "No")
+#' @usage model_factors(data, DATA)
 #'
 #' @param data An `R object` obtained from exploratory factor analysis (EFA)
 #' using the `fa` function in `psych` package.
 #' @param DATA A `data.frame`, the raw data used to carry out the parallel
 #' analysis to obtain `data` object.
-#' @param RC Optional factor indicating whether resilience capacity is to be
-#'  estimated but defaults to `NULL` once the number of variables in the data
-#'   is not sufficient, i.e. < 20. To estimate, turn it to "Yes".
 #'
 #' @return A list with the following components:
 #' \item{\code{Loadings data}}{`dataframe` of the factor loadings from the
@@ -24,8 +21,7 @@
 #'  recovered from the data. However, to make it usable, the vector should
 #'   be `bind` with the names of the variables in the data and the
 #'    `NA` removed.}
-#' \item{\code{Resilence capacity}}{A vector of the resilience capacity if the
-#'  data is prepared for that, otherwise NULL.}
+#' \item{\code{Resilence capacity}}{A vector of the resilience capacity.}
 #'
 #' @name model_factors
 #' @export model_factors
@@ -49,7 +45,7 @@
 utils::globalVariables(c("."))
 name  <-  NULL
 value <- 0
-model_factors <- function(data, DATA, RC = "No") {
+model_factors <- function(data, DATA) {
   llp <- printLoadings(data$loadings)
 
   #convert chr to num
@@ -83,11 +79,8 @@ model_factors <- function(data, DATA, RC = "No") {
   z_bRC <- data.frame(as.matrix(DATA) %*% as.matrix(Load))
   z_bRC[is.na(z_bRC)] <- 0
 
-  if (RC == "Yes" & NCOL(data) > 20) {
-    Rc = rowSums(z_bRC) / NROW(z_bRC)
-  }else{
-    Rc = NULL
-  }
+  Rc = rowSums(z_bRC) / NROW(z_bRC)
+
   return(load <- list(`Loadings data` = llp, `Factors extracted` = Factors,
                `factored data` =  z_bRC, `Factors list` = TR,
                `Resilence capacity` = Rc))
