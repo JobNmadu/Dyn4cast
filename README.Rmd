@@ -110,6 +110,8 @@ At present, the package exports the following functions:
 
 8. `gender` is to convert age and sex to gender  
 
+8. `index_construction` is to convert indicators of exposure or sensitivity to vector of index  
+
 ## Things the package can do  
 
 The package is capable of 
@@ -249,6 +251,8 @@ The package is capable of
 * _plot_mdpi_ produces the plots of all the indices
 
 * _gender_ converts age and sex to gender
+
+* _index_construction_ converts indicators of exposure or sensitivity to vector of index
 
 ## Citation
 

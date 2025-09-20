@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.26-Iota 2025-09-20
+
+A new function **index_construction** added to the package. 
+
 # Dyn4cast 11.11.26-Iota 2025-08-04
 
 In view of the persistent error thrown up in some parts of `model_factors`, the strategy of recovery was changed, hence the `1768 lines` of codes was replaced by a more efficient `22 lines` of codes which produces enhanced objects and kills the error. There is a new argument to estimate `Resilience capacity` with `model_factors`. Some functions in `quicksummary` are deprecated. 
