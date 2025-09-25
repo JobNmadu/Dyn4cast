@@ -94,9 +94,8 @@ cut is <code>FALSE</code>).</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">DD</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">formattedcut</span><span class="op">(</span><span class="va">DD</span>, <span class="fl">12</span>, <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NAs introduced by coercion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              Var1  Freq Lower class Upper class Class interval</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [-4.71,-3.97]     5          NA       -3.97     NA - -3.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   (-4.71,-3.97]     5       -4.71       -3.97  -4.71 - -3.97</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   (-3.97,-3.23]    63       -3.97       -3.23  -3.97 - -3.23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    (-3.23,-2.5]   557       -3.23       -2.50   -3.23 - -2.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4    (-2.5,-1.76]  3263       -2.50       -1.76   -2.5 - -1.76</span>
