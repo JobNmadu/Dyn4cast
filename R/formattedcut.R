@@ -35,7 +35,7 @@
 formattedcut <- function(data, breaks, cut = FALSE) {
   options(scipen = 999, digits = 2)
   if (cut == FALSE) {
-    tally <- as.data.frame(table(cut(data, breaks, include.lowest = TRUE)))
+    tally <- as.data.frame(table(cut(data, breaks, include.lowest = FALSE)))
     group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*",
                                                                 "\\1",
                                                                 tally$Var1)),
