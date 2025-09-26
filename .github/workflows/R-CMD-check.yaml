@@ -17,8 +17,8 @@ on:
 
   name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
-  strategy:
-    fail-fast: false
+strategy:
+      fail-fast: false
       matrix:
         config:
           - {os: macos-latest,   r: 'release'}
