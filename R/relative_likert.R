@@ -33,8 +33,8 @@
 #'  	institutional networks can be obtained from `model_factors()`.
 #'
 #' @param data Data frame of likert data either in **text** or **scores**.
-#' @param Likert Vector of likert-type factors in the data frame which must be
-#' given if the data frame is in **text**.
+#' @param Likert Vector of likert-type factors in **descending order** as in the
+#'  data frame which must be given if the data frame is in **text**.
 #' @param Option Optional vector indicating whether the data frame is in text
 #' or scores format. Defaults to **text** if not given for text data frame.
 #' @param Ranks Optional vector of number of levels which is required if the
@@ -242,10 +242,10 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text") 
     rrrr <- dddd %>%
       tidyr::pivot_longer(cols = tidyselect::everything()) %>%
       dplyr::mutate(value = dplyr::case_when(value == 3 ~ bbb[1],
-                               value == 2 ~ bbb[2],
-                               value == 1 ~ bbb[3],
-                               value == 0 ~ 0.0,
-                               .default = 0)) %>%
+                                             value == 2 ~ bbb[2],
+                                             value == 1 ~ bbb[3],
+                                             value == 0 ~ 0.0,
+                                             .default = 0)) %>%
       dplyr::group_by(name) %>%
       dplyr::mutate(row = dplyr::row_number()) %>%
       tidyr::pivot_wider(names_from = name, values_from = value) %>%

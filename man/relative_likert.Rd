@@ -9,8 +9,8 @@ relative_likert(data, Likert = NULL, Ranks = NULL, Option = "text")
 \arguments{
 \item{data}{Data frame of likert data either in \strong{text} or \strong{scores}.}
 
-\item{Likert}{Vector of likert-type factors in the data frame which must be
-given if the data frame is in \strong{text}.}
+\item{Likert}{Vector of likert-type factors in \strong{descending order} as in the
+data frame which must be given if the data frame is in \strong{text}.}
 
 \item{Ranks}{Optional vector of number of levels which is required if the
 data frame is in scores rather than text. There are only four choices
