@@ -773,4 +773,76 @@ data = treatments[, c(2:3)]
 treatment_model(Treatment, data)
 ```
 
+# index_construction: Index Construction for estimation of Exposure or Sensitivity
  
+This function is for conversion of indicators exposure and sensitivity into a vector of index through normalization and weighting. The resulting index from each of the component is then combined via an appropriate model into vulnerability index. The basic usage is:
+
+```
+index_construction(data)
+
+With the arguments:
+
+`data` Data frame of indicators of Exposure or Sensitivity. The data frame must be numeric.
+
+
+```
+## Example
+
+```{r echo = TRUE, eval = FALSE}
+
+library(readr)
+garrett_data <- data.frame(garrett_data)
+index_construction(garrett_data)
+```
+
+# relative_likert: Convert Likert Data to Relative Scores and knowledge-based Adaptive Capacity
+ 
+This function is for knowledge-based **Adaptive Capacity**. The indices from the various knowledge areas like Awareness, availability, affordability, accessibility, benefits, adequacy, usage, effectiveness, etc can be obtained individually and converted to adaptive capacity. The basic usage is:
+
+```
+relative_likert(data, Likert = NULL, Ranks = NULL, Option = "text")
+
+With the arguments:
+
+`data` Data frame of likert data either in text or scores.
+
+`Likert` Vector of likert-type factors in the data frame which must be given if the data frame is in text.
+
+`Ranks` Optional vector of number of levels which is required if the data frame is in scores rather than text. There are only four choices i.e. 3, 5, 7, 9.
+
+`Option` Optional vector indicating whether the data frame is in text or scores format. Defaults to text if not given for text data frame.
+```
+## Example
+
+```{r echo = TRUE, eval = FALSE}
+
+library(readr)
+garrett_data <- data.frame(garrett_data)
+relative_likert(garrett_data, Ranks = 3, Option = "sccore")
+relative_likert(garrett_data, Ranks = 5, Option = "sccore")
+relative_likert(garrett_data, Ranks = 7, Option = "sccore")
+relative_likert(garrett_data, Ranks = 9, Option = "sccore")
+
+relative_likert(Quicksummary, Ranks = 5, Option = "sccore")
+
+library(tidyverse)
+data_l <- garrett_data %>%
+pivot_longer(cols = everything()) %>%
+ mutate(value = case_when(value == 5 ~ "Serious constraint",
+                          value == 4 ~ "Constraint",
+                          value == 3 ~ "Not certain it is a constraint",
+                          value == 2 ~ "Not a constraint",
+                          value == 1 ~ "Not a serious constraint",
+                          .default = "None")) %>%
+ group_by(name) %>%
+ mutate(row = row_number()) %>%
+ pivot_wider(names_from = name, values_from = value) %>%
+ select(-row) %>%
+ unnest(cols = everything())
+
+ ranking <- c("Serious constraint", "Constraint",
+"Not certain it is a constraint", "Not a constraint",
+"Not a serious constraint")
+
+ relative_likert(data_l, Likert = ranking)
+```

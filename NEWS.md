@@ -1,4 +1,8 @@
-# Dyn4cast 11.11.26-Iota 2025-09-20
+# Dyn4cast 11.11.26-Upsilon 2025-27-20
+
+A new function **relative_likert** added to the package. 
+
+# Dyn4cast 11.11.26-Upsilon 2025-09-20
 
 A new function **index_construction** added to the package. 
 

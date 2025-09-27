@@ -110,7 +110,9 @@ At present, the package exports the following functions:
 
 8. `gender` is to convert age and sex to gender  
 
-8. `index_construction` is to convert indicators of exposure or sensitivity to vector of index  
+8. `index_construction` is to convert indicators of exposure or sensitivity to vector of index 
+
+8. `relative_likert` converts likert scores to vector of index for adaptive capacity
 
 ## Things the package can do  
 
@@ -253,6 +255,8 @@ The package is capable of
 * _gender_ converts age and sex to gender
 
 * _index_construction_ converts indicators of exposure or sensitivity to vector of index
+
+*  _relative_likert_ converts likert scores to vector of index for adaptive capacity
 
 ## Citation
 
