@@ -44,17 +44,22 @@ jobs:
            any::pkgdown
            any::pals
           needs: check
+
       - uses: r-lib/actions/check-r-package@v2
         with:
            upload-snapshots: true
            args: 'c("--no-manual", "--as-cran", "--run-donttest")'
+
+      - uses: r-lib/actions/check-r-package@v2
       - name: Install package
         run: R CMD INSTALL .
+
       - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+
       - name: Test coverage
         run: covr::codecov()
         shell: Rscript {0}
