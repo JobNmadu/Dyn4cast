@@ -8,8 +8,6 @@ on:
 
 name: R-CMD-check.yaml
 
-permissions: read-all
-
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
