@@ -1,5 +1,5 @@
 ---
-title: "Dyn4cast"
+title: "Dyn4cast: Dynamic Modeling and Machine Learning Environment"
 output: rmarkdown::html_vignette
 description: |
   An introduction to Dyn4cast packge and the various functions it presents.

@@ -1,5 +1,5 @@
 ---
-title: "Dyn4cast: Dynamic Modeling and Machine Learning Environment"
+title: "Getting started with Dyn4cast"
 output: rmarkdown::html_vignette
 description: |
   An overview of installation procedures.
