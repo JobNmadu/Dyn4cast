@@ -48,7 +48,7 @@ jobs:
         with:
            upload-snapshots: true
            args: 'c("--no-manual", "--as-cran", "--run-donttest")'
-     - name: Install package
+      - name: Install package
         run: R CMD INSTALL .
       - name: Deploy package
         run: |
