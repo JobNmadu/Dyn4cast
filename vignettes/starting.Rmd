@@ -25,7 +25,6 @@ knitr::opts_chunk$set(tidy      = "styler",
 
 options(scipen = 999, digits = 2)
 options(rmarkdown.html_vignette.check_title = FALSE)
-library(styler)
 ```
 
 ## Installation
