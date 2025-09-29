@@ -28,6 +28,7 @@ options(scipen = 999, digits = 2)
 
 library(Dyn4cast)
 library(tidyverse, quietly = T)
+library(styler)
 options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
