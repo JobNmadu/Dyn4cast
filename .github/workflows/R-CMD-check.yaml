@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [main, master]
 
-name: R-CMD-check.yaml
-
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
