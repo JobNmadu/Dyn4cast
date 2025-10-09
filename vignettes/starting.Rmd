@@ -1,10 +1,10 @@
 ---
-title: "Getting started with Dyn4cast"
+title: "Dyn4cast: Dynamic Modeling and Machine Learning Environment"
 output: rmarkdown::html_vignette
 description: |
   An overview of installation procedures.
 vignette: >
-  %\VignetteIndexEntry{Getting started with Dyn4cast}
+  %\VignetteIndexEntry{Dyn4cast: Dynamic Modeling and Machine Learning Environment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
