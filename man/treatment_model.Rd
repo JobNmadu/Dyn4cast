@@ -10,10 +10,11 @@ treatment_model(Treatment, x_data)
 }
 \arguments{
 \item{Treatment}{Vector of binary data (0 = control population,
-1 = treated population) LHS for the treatment effects estimation}
+1 = treated population), the LHS of the model for treatment effects
+estimation}
 
 \item{x_data}{Data frame of explanatory variables for the RHS of the
-estimation}
+model for treatment effects estimation}
 }
 \value{
 A list with the following components:

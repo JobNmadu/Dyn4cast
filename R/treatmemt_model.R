@@ -28,9 +28,10 @@
 #'  please see [Understanding propensity score weighting](https://livefreeordichotomize.com/posts/2019-01-17-understanding-propensity-score-weighting/)
 #'
 #' @param Treatment Vector of binary data (0 = control population,
-#' 1 = treated population) LHS for the treatment effects estimation
-#' @param x_data Data frame of explanatory variables for the RHS of the
+#' 1 = treated population), the LHS of the model for treatment effects
 #'  estimation
+#' @param x_data Data frame of explanatory variables for the RHS of the
+#'  model for treatment effects estimation
 #'
 #' @return A list with the following components:
 #' \item{\code{Model}}{Estimated treatment effects model.}
