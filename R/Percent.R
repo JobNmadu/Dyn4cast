@@ -5,12 +5,12 @@
 #' value or a vector or a data frame of values.
 #'
 #' @param Data The Data which the percent sign is to be affixed. The data must
-#'  be in the raw form because for frame argument, the per cent value of each
+#'  be in the raw form for *frame* argument since the per cent value of each
 #'  cell is calculated before the sign is affixed.
-#' @param Type The type of data. The default arguments are *Value* for single
-#' numeric data of *Frame* for a numeric vector or data frame data. In the case
-#'  of vector or data frame, the per cent value of each cell is calculated
-#'  before the per cent sign is affixed.
+#' @param Type The type of data. The options for this argument are *Value* for
+#' scalar or vector numeric data or *Frame* for a numeric vector or *data.frame*
+#' data. In the case of *frame*, whether vector or columns, the per cent value
+#' of each cell is calculated before the per cent sign is affixed.
 #' @param format The format of the output which is internal and the default is
 #'  a character factor
 #' @param ... Additional arguments that may be passed to the function

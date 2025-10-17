@@ -8,13 +8,13 @@ Percent(Data, Type, format = "f", ...)
 }
 \arguments{
 \item{Data}{The Data which the percent sign is to be affixed. The data must
-be in the raw form because for frame argument, the per cent value of each
+be in the raw form for \emph{frame} argument since the per cent value of each
 cell is calculated before the sign is affixed.}
 
-\item{Type}{The type of data. The default arguments are \emph{Value} for single
-numeric data of \emph{Frame} for a numeric vector or data frame data. In the case
-of vector or data frame, the per cent value of each cell is calculated
-before the per cent sign is affixed.}
+\item{Type}{The type of data. The options for this argument are \emph{Value} for
+scalar or vector numeric data or \emph{Frame} for a numeric vector or \emph{data.frame}
+data. In the case of \emph{frame}, whether vector or columns, the per cent value
+of each cell is calculated before the per cent sign is affixed.}
 
 \item{format}{The format of the output which is internal and the default is
 a character factor}
