@@ -130,6 +130,8 @@ the simplicity, and it is a \emph{one line} code.
 \examples{
 ## Without test data (not run)
 # library(tidyverse)
+# library(ggtext)
+#
 # y <- linearsystems$MKTcost # to run all the exercises, uncomment.
 # x <- select(linearsystems, -MKTcost)
 # Linearsystems(y, x, 6, 15) # NaNs produced if run

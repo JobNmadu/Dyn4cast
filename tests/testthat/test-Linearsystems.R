@@ -1,6 +1,8 @@
 test_that("Linearsystems works", {
   library(tidyverse)
   library(Dyn4cast)
+  library(ggtext)
+
   y <- linearsystems$MKTcost
   x <- select(linearsystems, -MKTcost)
   test <- suppressWarnings(Linearsystems(y, x, 6, 15))
