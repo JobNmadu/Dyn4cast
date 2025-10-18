@@ -72,7 +72,7 @@ A number of other packages are required for the smooth running of the package an
 ```{r install-suggested, echo = TRUE, eval = FALSE}
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
-                   "psych", "lifecycle", "MetBrewer", "data.table"))
+                   "psych", "lifecycle", "MetBrewer", "data.table", "ggtext"))
 ```
 
 ## Citation
