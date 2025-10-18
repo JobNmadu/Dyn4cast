@@ -1,13 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<!--
-[![Build Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
-&#10;[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-&#10;[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
--->
-
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- badges: start -->
@@ -27,13 +20,6 @@ date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](h
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-
-<!--
-&#10;[![Build Status](https://travis-ci.org/JobNmadu/Dyn4cast.svg?branch=master)](https://travis-ci.org/JobNmadu/Dyn4cast)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-&#10;[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/branch/master/graph/badge.svg)](https://codecov.io/gh/JobNmadu/Dyn4cast)
-&#10;[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
--->
 
 <!-- badges: end -->
 
@@ -334,7 +320,7 @@ below:
 ``` r
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
                    "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
-                   "lifecycle", "MetBrewer", "data.table"))
+                   "lifecycle", "MetBrewer", "data.table", "ggtext"))
 ```
 
 Note that a *warning* (not *error*) is thrown up while estimating the
