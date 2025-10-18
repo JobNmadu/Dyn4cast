@@ -375,6 +375,9 @@ With the arguments:
 ### Estimation Without test data, 14 models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 6, 15)
@@ -383,6 +386,9 @@ Linearsystems(y, x, 6, 15)
 ### Estimation Without test data, polynomial models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 x <- sampling[, -1]
 y <- sampling$qOutput
 limit <- 20
@@ -394,6 +400,9 @@ Linearsystems(y, x, 3, 15)
 ### Estimation With test data, linear models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 x <- sampling[, -1]
 y <- sampling$qOutput
 mod <- 1
@@ -403,6 +412,9 @@ Linearsystems(y, x, 1, 15)
 ### Estimation With test data, power models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 x <- sampling[, -1]
 y <- sampling$qOutput
 mod <- 2
@@ -412,6 +424,9 @@ Linearsystems(y, x, 2, 15)
 ### Estimation With test data, root models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 x <- sampling[, -1]
 y <- sampling$qOutput
 ddc <- cbind(y, x)
@@ -427,6 +442,9 @@ Linearsystems(y, x, 4, 15, Test)
 ### Estimation Without test data, inverse models
 
 ```{r echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(ggtext)
+
 y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 5, 15)
