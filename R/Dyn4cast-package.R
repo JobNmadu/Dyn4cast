@@ -69,3 +69,11 @@ NULL
 #' - `Plot of the average treatment effect for the **treated** population`
 #' - `Plot of the average treatment effect for the **controlled** population`
 #' - `Plot of the average Treatment effect for the **evenly** population`
+#' + estimate_plot
+#' + garrett_ranking
+#' + model_factors
+#' + mdpi
+#' + plot_mdpi
+#' + gender
+#' + index_construction
+#' + relative_likert
