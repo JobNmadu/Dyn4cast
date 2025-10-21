@@ -1,3 +1,4 @@
+
 test_that("estimate_plot works", {
   library(Dyn4cast)
   library(readr)

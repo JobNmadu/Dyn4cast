@@ -1,3 +1,4 @@
+
 test_that("garrett_ranking works", {
   library(readr)
   library(Dyn4cast)

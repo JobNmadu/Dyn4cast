@@ -1,3 +1,4 @@
+
 test_that("relative_likert works", {
   library(readr)
   garrett_data <- data.frame(garrett_data)

@@ -318,9 +318,9 @@ already installed on your machine. Some of the packages are listed
 below:
 
 ``` r
-install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown", "covr",
-                   "qpdf", "caret", "kableExtra", "knitr", "spelling", "psych", 
-                   "lifecycle", "MetBrewer", "data.table", "ggtext"))
+install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
+                   "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
+                   "psych", "lifecycle", "MetBrewer", "data.table", "ggtext"))
 ```
 
 Note that a *warning* (not *error*) is thrown up while estimating the

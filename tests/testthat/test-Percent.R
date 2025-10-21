@@ -1,3 +1,4 @@
+
 test_that("Percent works", {
   library(Dyn4cast)
   Data1 <- c(1.2, 0.5, 0.103, 7, 0.1501)

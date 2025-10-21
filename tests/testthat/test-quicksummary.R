@@ -1,3 +1,4 @@
+
 test_that("quicksummary works", {
   library(tidyverse)
   test1 <- quicksummary(x = Quicksummary, Type = 2)
