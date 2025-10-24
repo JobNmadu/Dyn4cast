@@ -17,7 +17,7 @@ data frame is in scores rather than text. There are only four choices
 i.e. 3, 5, 7, 9.}
 
 \item{Option}{Optional vector indicating whether the data frame is in text
-or scores format. Defaults to \strong{text} if not given for text data frame.}
+or scores format. Defaults to \strong{text} if not given.}
 }
 \value{
 A list with the following components:

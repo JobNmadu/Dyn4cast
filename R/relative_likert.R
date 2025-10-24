@@ -36,7 +36,7 @@
 #' @param Likert Vector of likert-type factors in **descending order** as in the
 #'  data frame which must be given if the data frame is in **text**.
 #' @param Option Optional vector indicating whether the data frame is in text
-#' or scores format. Defaults to **text** if not given for text data frame.
+#' or scores format. Defaults to **text** if not given.
 #' @param Ranks Optional vector of number of levels which is required if the
 #' data frame is in scores rather than text. There are only four choices
 #'  i.e. 3, 5, 7, 9.
