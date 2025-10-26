@@ -4,7 +4,7 @@ output: rmarkdown::html_vignette
 description: |
   An overview of installation procedures.
 vignette: >
-  %\VignetteIndexEntry{Dyn4cast: Getting started with Dyn4cast}
+  %\VignetteIndexEntry{Getting started with Dyn4cast}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
