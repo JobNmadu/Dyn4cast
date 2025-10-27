@@ -39,12 +39,14 @@
 #' @param ORIGIN date origin of the dataset and if different from **origin**
 #'  must be in the format `"YYYY-MM-DD"`. This is used to position the date of
 #'  the data to properly `date` the forecasts.
+#' @param Data `r lifecycle::badge("deprecated")`. Now broken into three
+#'  vectors `date`, `series` and `x`.
 #' @param ... Additional arguments that may be passed to the function. If the
 #' maximum date is NULL which is is the default, it is set to the last date of
 #' the `series`.
 #'
 #' @usage
-#' DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
+#' DynamicForecast(Data, date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
 #'  ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
 #'
 #' @importFrom stats lm
@@ -144,7 +146,7 @@ utils::globalVariables(c("origin", "Spline without knots",
                          "Ensembled based on summed weight",
                          "Ensembled based on weight of fit", "Date", "Day",
                          "Forecast", "Models", "Fitted values"))
-DynamicForecast <- function(date, series, Trend, Type, MaximumDate, x = 0,
+DynamicForecast <- function(Data, date, series, Trend, Type, MaximumDate, x = 0,
                             BREAKS = 0, ORIGIN = NULL, origin = "1970-01-01",
                             Length = 0, ...) {
   if (base::is.null(ORIGIN)) {

@@ -5,7 +5,7 @@
 \alias{COVID19}
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \usage{
-DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
+DynamicForecast(Data, date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
  ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
 }
 \arguments{
@@ -47,6 +47,9 @@ the date of data to properly \code{date} the forecasts.}
 \item{ORIGIN}{date origin of the dataset and if different from \strong{origin}
 must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of
 the data to properly \code{date} the forecasts.}
+
+\item{Data}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. Now broken into three
+vectors \code{date}, \code{series} and \code{x}.}
 
 \item{...}{Additional arguments that may be passed to the function. If the
 maximum date is NULL which is is the default, it is set to the last date of
