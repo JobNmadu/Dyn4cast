@@ -23,10 +23,10 @@
 #' Must be the same length with `series`.
 #' @param BREAKS A vector of numbers indicating points of breaks for estimation
 #'  of the spline models.
-#' @param MaximumDate The date indicating the maximum date (last date) in the
-#' data frame, meaning that forecasting starts the next date following it.
-#' The date must be a recognized date format. Note that for forecasting, the
-#' date origin is set to 1970-01-01.
+#' @param MaximumDate `r lifecycle::badge("deprecated")`. The date indicating
+#' the maximum date (last date) in the data frame, meaning that forecasting
+#'  starts the next date following it. The date must be a recognized date
+#'   format. Note that for forecasting, the date origin is set to 1970-01-01.
 #' @param Trend The type of trend. There are three options
 #'  **Day, Month and Year**.
 #' @param Type The type of response variable. There are two options
@@ -126,15 +126,13 @@
 #' # # desired length of forecast
 #' # BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 #' # DynamicForecast(date = Data$Date, series = Data$Case,
-#' # BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#' #  Trend = "Day", Length = 0, Type = "Integer")
+#' # BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer")
 #' #
 #' # lastdayfo21 <- Dss[length(Dss)]
 #' # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 #' # BREAKS = c(70, 131, 173, 228, 274)
 #' # DynamicForecast(date = Data$Date, series = Data$Case,
-#' # BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#' #  Trend = "Day", Length = 0, Type = "Integer")
+#' # BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer")
 # #' @keywords internal
 utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
@@ -160,6 +158,8 @@ DynamicForecast <- function(Data, date, series, Trend, Type, MaximumDate, x = 0,
   Series <- ss <- seq(1 : length(series))
   NN <- ifelse(length(x) != 0, 99, 100)
   BREAKS <- ifelse(length(BREAKS) < 5, 0, BREAKS)
+  LEN <- length(date)
+  MaximumDate <- date[LEN]
 
   if (NN == 100) {
 

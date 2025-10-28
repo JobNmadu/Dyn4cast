@@ -26,10 +26,10 @@ Must be the same length with \code{series}.}
 \item{BREAKS}{A vector of numbers indicating points of breaks for estimation
 of the spline models.}
 
-\item{MaximumDate}{The date indicating the maximum date (last date) in the
-data frame, meaning that forecasting starts the next date following it.
-The date must be a recognized date format. Note that for forecasting, the
-date origin is set to 1970-01-01.}
+\item{MaximumDate}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. The date indicating
+the maximum date (last date) in the data frame, meaning that forecasting
+starts the next date following it. The date must be a recognized date
+format. Note that for forecasting, the date origin is set to 1970-01-01.}
 
 \item{Trend}{The type of trend. There are three options
 \strong{Day, Month and Year}.}
@@ -116,13 +116,11 @@ The function takes \verb{daily, monthly and yearly data sets for now}.
 # # desired length of forecast
 # BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
 # DynamicForecast(date = Data$Date, series = Data$Case,
-# BREAKS = BREAKS, MaximumDate = "2021-02-10",
-#  Trend = "Day", Length = 0, Type = "Integer")
+# BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer")
 #
 # lastdayfo21 <- Dss[length(Dss)]
 # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 # BREAKS = c(70, 131, 173, 228, 274)
 # DynamicForecast(date = Data$Date, series = Data$Case,
-# BREAKS = BREAKS , MaximumDate = "2021-02-10",
-#  Trend = "Day", Length = 0, Type = "Integer")
+# BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer")
 }
