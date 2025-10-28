@@ -1,4 +1,8 @@
-# Dyn4cast 11.11.26-Upsilon 2025-27-20
+# Dyn4cast 11.11.26-Tau 2025-10-28
+
+`MaximumDate` argument in the function **DynamicForecast** is deprecated. 
+
+# Dyn4cast 11.11.26-Upsilon 2025-09-25
 
 A new function **relative_likert** added to the package. 
 
