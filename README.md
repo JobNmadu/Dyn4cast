@@ -15,7 +15,7 @@ date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](h
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
