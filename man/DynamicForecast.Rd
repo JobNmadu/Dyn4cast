@@ -16,7 +16,7 @@ the month of the dataset e.g. 2021-02-28. If the data is a yearly series,
 the recognized date format is the last day of the year of the data set e.g.
 2020-12-31. There is no format for Quarterly data for now.}
 
-\item{series}{A vector containing data for estimation and forecasting.
+\item{series}{A vector containing observations for estimation and forecasting.
 Must be the same length with \code{date}.}
 
 \item{x}{vector of optional dataset that is to be added to the model for
@@ -42,7 +42,8 @@ constrained between the minimum and maximum value of the response variable.}
 would default to the length of the dataset i.e. sample size.}
 
 \item{origin}{default date origin which is \strong{1970-01-01} used to position
-the date of data to properly \code{date} the forecasts.}
+the date of data so that the forecasts are in tandem with the period of the
+observations.}
 
 \item{ORIGIN}{date origin of the dataset and if different from \strong{origin}
 must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of
@@ -51,9 +52,7 @@ the data to properly \code{date} the forecasts.}
 \item{Data}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. Now broken into three
 vectors \code{date}, \code{series} and \code{x}.}
 
-\item{...}{Additional arguments that may be passed to the function. If the
-maximum date is NULL which is is the default, it is set to the last date of
-the \code{series}.}
+\item{...}{Additional arguments that may be passed to the function.}
 }
 \value{
 A list with the following components:

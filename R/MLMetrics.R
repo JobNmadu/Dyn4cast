@@ -11,10 +11,10 @@
 #' @param yvalue The Response variable of the estimated Model
 #' @param modeli The Estimated Model (*Model* = a + bx)
 #' @param K The number of variables in the estimated Model to consider
-#' @param Name The Name of the Models that need to be specified. They are ARIMA,
-#'  Values if the model computes the fitted value without estimation like
-#'  Essembles, SMOOTH (smooth.spline), Logit, Ensembles based on weight -
-#'  EssemWet, QUADRATIC polynomial, SPLINE polynomial.
+#' @param Name The Name of the Models that need to be specified. They are *ARIMA*,
+#'  *Values* if the model computes the fitted value without estimation like
+#'  *Essembles*, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight -
+#'  *EssemWet*, *QUADRATIC* polynomial, *SPLINE* polynomial.
 #' @param Form Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)
 #' @param kutuf Cutoff for the Estimated values (defaults to 0.5 if not specified)
 #' @param TTy Type of response variable (Numeric or Response - like *binary*)

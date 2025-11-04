@@ -23,7 +23,7 @@ indicated.}
 \value{
 This function returns the output of the data transformation process
 as
-\item{\code{tata_transformed}}{ A new \code{data.frame} containing the
+\item{\code{data_transformed}}{ A new \code{data.frame} containing the
 transformed values}
 }
 \description{

@@ -2,9 +2,9 @@
 #'
 #' @description
 #' There is increasing need to make user-friendly and production ready Tables
-#'  for machine learning data. This function is a simplified quick summary and
-#'  the output is a formatted table. This is very handy for those who do not
-#'  have the time to write codes for user-friendly summaries.
+#'  for machine learning data. This function is simplified and quick summary;
+#'   and the output is a formatted table. This is very handy for those who
+#'  do not have the time to write codes for user-friendly summaries.
 #'
 #' @name quicksummary
 #' @export quicksummary

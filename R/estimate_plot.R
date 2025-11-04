@@ -1,10 +1,10 @@
 #' Plot of Order of Significance of Estimated Regression Coefficients
 #'
 #' @description
-#' This function provides graphic displays of the order of significance
-#' estimated coefficients of models. This would assists in accessing models so
-#'  as to decide which can be used for further analysis, prediction and policy
-#'  consideration.
+#' This function provides graphic displays of the estimated coefficients in the
+#'  order of their significance in the models. This would assists in accessing
+#'   models to decide which can be used for further analysis, prediction and
+#'   policy consideration.
 #'
 #' @param model25 Estimated model for which the estimated coefficients would be
 #'  plotted

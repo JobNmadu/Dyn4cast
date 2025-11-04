@@ -16,7 +16,7 @@
 #'  the month of the dataset e.g. 2021-02-28. If the data is a yearly series,
 #'  the recognized date format is the last day of the year of the data set e.g.
 #'   2020-12-31. There is no format for Quarterly data for now.
-#' @param series A vector containing data for estimation and forecasting.
+#' @param series A vector containing observations for estimation and forecasting.
 #' Must be the same length with `date`.
 #' @param x vector of optional dataset that is to be added to the model for
 #' forecasting. The modeling and forecasting is still done if not provided.
@@ -35,15 +35,14 @@
 #' @param Length The length for which the forecast would be made. If not given,
 #'  would default to the length of the dataset i.e. sample size.
 #' @param origin default date origin which is **1970-01-01** used to position
-#' the date of data to properly `date` the forecasts.
+#' the date of data so that the forecasts are in tandem with the period of the
+#' observations.
 #' @param ORIGIN date origin of the dataset and if different from **origin**
 #'  must be in the format `"YYYY-MM-DD"`. This is used to position the date of
 #'  the data to properly `date` the forecasts.
 #' @param Data `r lifecycle::badge("deprecated")`. Now broken into three
 #'  vectors `date`, `series` and `x`.
-#' @param ... Additional arguments that may be passed to the function. If the
-#' maximum date is NULL which is is the default, it is set to the last date of
-#' the `series`.
+#' @param ... Additional arguments that may be passed to the function.
 #'
 #' @usage
 #' DynamicForecast(Data, date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,

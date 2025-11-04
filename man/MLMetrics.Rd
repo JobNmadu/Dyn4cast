@@ -15,10 +15,10 @@ MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)
 
 \item{K}{The number of variables in the estimated Model to consider}
 
-\item{Name}{The Name of the Models that need to be specified. They are ARIMA,
-Values if the model computes the fitted value without estimation like
-Essembles, SMOOTH (smooth.spline), Logit, Ensembles based on weight -
-EssemWet, QUADRATIC polynomial, SPLINE polynomial.}
+\item{Name}{The Name of the Models that need to be specified. They are \emph{ARIMA},
+\emph{Values} if the model computes the fitted value without estimation like
+\emph{Essembles}, \emph{SMOOTH} (smooth.spline), \emph{Logit}, Ensembles based on weight -
+\emph{EssemWet}, \emph{QUADRATIC} polynomial, \emph{SPLINE} polynomial.}
 
 \item{Form}{Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)}
 

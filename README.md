@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
+# Dyn4cast <img src="../man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- badges: start -->
 
