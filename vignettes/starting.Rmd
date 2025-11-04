@@ -31,7 +31,9 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 `Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. Presently, it has passed all the tests it was subjected to as can be seen here.
 
-# Dyn4cast  <img src="../man/figures/logo.png" align="right" alt="" width="150" height="150" />  
+<!--  
+
+# Dyn4cast  <img src="../man/figures/logo.png" align="right" alt="" width="150" height="150" />  -->
 
 <!-- badges: start -->
 
