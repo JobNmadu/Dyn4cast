@@ -4,7 +4,13 @@
 \alias{relative_likert}
 \title{Convert Likert Data to Relative Scores and knowledge-based \strong{Adaptive Capacity}}
 \usage{
-relative_likert(data, Likert = NULL, Ranks = NULL, Option = "text")
+relative_likert(
+  data,
+  Likert = NULL,
+  Ranks = NULL,
+  Option = "text",
+  Echo = TRUE
+)
 }
 \arguments{
 \item{data}{Data frame of likert data either in \strong{text} or \strong{scores}.}
@@ -18,6 +24,9 @@ i.e. 3, 5, 7, 9.}
 
 \item{Option}{Optional vector indicating whether the data frame is in text
 or scores format. Defaults to \strong{text} if not given.}
+
+\item{Echo}{Optional indicating whether the progress note is visible
+defaults to TRUE.}
 }
 \value{
 A list with the following components:

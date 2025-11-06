@@ -40,6 +40,8 @@
 #' @param Ranks Optional vector of number of levels which is required if the
 #' data frame is in scores rather than text. There are only four choices
 #'  i.e. 3, 5, 7, 9.
+#' @param Echo Optional indicating whether the progress note is visible
+#'  defaults to TRUE.
 #'
 #' @returns A list with the following components:
 #' \item{\code{lik_num}}{`dataframe` of likert scores}
@@ -79,10 +81,12 @@
 #' "Not a serious constraint")
 #'
 #'  relative_likert(data_l, Likert = ranking)
-relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text") {
+relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
+                            Echo = TRUE) {
 
   Likert = Likert
   Ranks = Ranks
+  Echo = Echo
 
   if (is.null(Likert) & is.null(Ranks)) {
     stop("**Likert** and **Ranks** arguments cannot be **NULL** at the same time")
@@ -96,12 +100,21 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text") 
     lll <- Ranks
   }
 
-  cat("Preliminary check success, proceeding...", "\n")
+  if (Echo == TRUE){
+    cat("Preliminary check success, proceeding...", "\n")
+  } else{
+    cat("", "\n")
+  }
+
 
   if (lll < 3L | lll > 9L | lll %% 2 != 1L) {
     stop("Likert lenght out of range, try again")
   } else {
-    cat("Likert lenght check success, proceeding...", "\n")
+    if (Echo == TRUE){
+      cat("Likert lenght check success, proceeding...", "\n")
+    } else{
+      cat("", "\n")
+    }
   }
 
   Option <- Option
@@ -255,7 +268,11 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text") 
 
   ssss <- quicksummary(rrrr, 1)$Summary
 
-  cat("Success, DONE!", "\n")
+  if (Echo == TRUE){
+    cat("Success, DONE!", "\n")
+  } else{
+    cat("", "\n")
+  }
 
   return(data <- list(lik_num = dddd, lik_rate = rrrr, lik_sum = ssss,
                lik_col = rowSums(rrrr)/num_item))
