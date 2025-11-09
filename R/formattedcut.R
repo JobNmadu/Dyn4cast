@@ -33,6 +33,7 @@
 #' group_by(`Lower class`, `Upper class`, `Class interval`) %>%
 #' tally())
 formattedcut <- function(data, breaks, cut = FALSE) {
+  cut <- cut
   options(scipen = 999, digits = 2)
   if (cut == FALSE) {
     tally <- as.data.frame(table(cut(data, breaks, include.lowest = FALSE)))

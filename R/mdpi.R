@@ -51,6 +51,8 @@
 #' number of options in the `Factor` argument must be less than 41. The default
 #'  is `NULL`. To produce the plots, any character string will overwrite the
 #'   default.
+#' @param Echo Optional indicating whether the progress note is visible
+#'  defaults to TRUE.
 #'
 #' @returns A list with the following components:
 #' \item{\code{MDPI_p}}{Publication-ready table of the factor and national
@@ -121,7 +123,9 @@ mdpi <- function(data, dm, Bar = 0.4,
                  plots = NULL,
                  id = c("Health", "Education", "Living standard"),
                  id_add  = "Social security",
-                 id_add1 = "Employment and Income") {
+                 id_add1 = "Employment and Income",
+                 Echo = TRUE) {
+
   Bar <-  Bar
   Factor <- Factor
   plots <- plots
@@ -131,25 +135,31 @@ mdpi <- function(data, dm, Bar = 0.4,
   id_addn <- id_addn
   ddm <- length(dm)
   k <- 1 / ddm
+  Echo  <-  Echo
+
   if (ddm < 3L) {
     stop("Number of dimensions must be an integer not less than 3")
   } else if (ddm > 9L) {
     stop("Number of dimensions must be an integer not greater than 9")
   } else {
-    cat("Number of dimensions correct, proceeding...", "\n")
+    cata <- "Number of dimensions correct, proceeding..."
+    progaress(Echo, cata)
   }
   if (!is.null(id_addn)) {
     id0 <- c(id, id_add, id_add1, id_addn)
-    cat("Additional dimension is evaluated...", "\n")
+    cata <- "Additional dimension is evaluated..."
+    progaress(Echo, cata)
   } else if (ddm == 5) {
     id0 <- c(id, id_add, id_add1)
     cat("Additional dimension is null...", "\n")
   } else if (ddm == 4) {
     id0 <- c(id, id_add)
-    cat("Additional dimension is null...", "\n")
+    cata <- "Additional dimension is null..."
+    progaress(Echo, cata)
   } else {
     id0 <- id
-    cat("Additional dimension is null...", "\n")
+    cata <- "Additional dimension is null..."
+    progaress(Echo, cata)
   }
   Analysis <- c("q", "Non Poor", "n", "Incidence of poverty",
                 rep("Adjusted incidence of poverty", ddm + 1),
@@ -159,7 +169,8 @@ mdpi <- function(data, dm, Bar = 0.4,
                 rep("Contribution", ddm + 1),
                 rep("Average deprivation among the deprived", ddm + 1))
   Order <- seq(1, length(Analysis), by = 1)
-  cat("Computation commences...", "\n")
+  cata <- "Computation commences..."
+  progaress(Echo, cata)
   if (ddm == 3) {
     d1 <- data %>%
       dplyr::select(tidyselect::all_of(dm$d1))
@@ -402,7 +413,8 @@ mdpi <- function(data, dm, Bar = 0.4,
   }
   names(score) <- names(Mean) <- names(SD) <- id0
   id1 <- c("Combined", id0)
-  cat("The computation is progressing...1", "\n")
+  cata <- "The computation is progressing...1"
+  progaress(Echo, cata)
   score <- data.frame(dplyr::bind_cols(Combined = rowSums(score), score))
   Mean <- data.frame(dplyr::bind_cols(Combined = rowMeans(score), Mean))
   SD <- data.frame(dplyr::bind_cols(Combined = apply(score, 1, sd), SD))
@@ -422,34 +434,43 @@ mdpi <- function(data, dm, Bar = 0.4,
   q <- nrow(score[score$Poverty == "Deprived", ])
   nq <- nrow(score) - q
   n <- q + nq
-  cat("The computation is progressing...2", "\n")
+  cata <- "The computation is progressing...2"
+  progaress(Echo, cata)
   id2  <-  "National"
   kay2 <- kkkk(q, nq, n, kay, id1, id2, ddm, Order, Analysis)
-  cat("The computation is progressing...3", "\n")
+  cata <- "The computation is progressing...3"
+  progaress(Echo, cata)
   id2  <-  "Mean"
   KaY2m <- kkkk(q, nq, n, kay = kay_mean, id1, id2, ddm, Order, Analysis)
-  cat("The computation is progressing...4", "\n")
+  cata <- "The computation is progressing...4"
+  progaress(Echo, cata)
   id2  <-  "SD"
   kaY2s <- kkkk(q, nq, n, kay = kay_SD, id1, id2, ddm, Order, Analysis)
-  cat("The computation is progressing...5", "\n")
+  cata <- "The computation is progressing...5"
+  progaress(Echo, cata)
   if (!is.null(Factor)) {
     modEls2m <- mmmm(data, Scores, score = Mean, Factor, ddm, Analysis,
                      kay2 = KaY2m)
-    cat("The computation is progressing...6", "\n")
+    cata <- "The computation is progressing...6"
+    progaress(Echo, cata)
     modEls2s <- mmmm(data, Scores, score = SD, Factor, ddm, Analysis,
                      kay2 = kaY2s)
-    cat("The computation is progressing...7", "\n")
+    cata <- "The computation is progressing...7"
+    progaress(Echo, cata)
     models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2)
     if (!is.null(plots) & length(unique(Factor)) > 40) {
       cat("Palette have 40 colors, plots not possible...", "\n")
     } else if (!is.null(plots) & length(unique(Factor)) < 41) {
       kala <- kolo_mix("Renoir", 40, type = "continuous", direction = -1)
       plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
-      cat("Proceeding after plots produced...", "\n")
+      cata <- "Proceeding after plots produced..."
+      progaress(Echo, cata)
     } else {
-      cat("Proceeding without plots...", "\n")
+      cata <- "Proceeding without plots..."
+      progaress(Echo, cata)
     }
-    cat("The computation is progressing...8", "\n")
+    cata <- "The computation is progressing...8"
+    progaress(Echo, cata)
     model_l <- list(MDPI_p = modelsummary::datasummary_df(models2, fmt = 4),
                     MDPI = models2,
                     national = cbind(kay2[, -1], Mean = KaY2m[, 4],
@@ -459,16 +480,19 @@ mdpi <- function(data, dm, Bar = 0.4,
                     `MDPI mean` = modEls2m,
                     `MDPI SD` = modEls2s,
                     plots = plots)
-    cat("National and factor MDPI...", "\n")
+    cata <- "National and factor MDPI..."
+    progaress(Echo, cata)
   } else {
     model_l <- list(national = cbind(kay2[, -1], Mean = KaY2m[, 4],
                                      SD = kaY2s[, 4]),
                     dimensions = dds,
                     Score = Scores,
                     plots = plots)
-    cat("National MDPI only...", "\n")
+    cata <- "National MDPI only..."
+    progaress(Echo, cata)
   }
-  cat("The computation completed...", "\n")
+  cata <- "The computation completed..."
+  progaress(Echo, cata)
   return(model_l)
 }
 kkkk <- function(q, nq, n, kay, id1, id2, ddm, Order, Analysis) {
@@ -547,7 +571,7 @@ kolapalette <- list(
   Renoir = list(c("#17154f", "#2f357c", "#6c5d9e", "#9d9cd5", "#b0799a",
                   "#f6b3b0", "#e48171", "#bf3729", "#e69b00", "#f5bb50",
                   "#ada43b", "#355828"), c(2, 5, 9, 12, 3, 8, 7, 10, 4, 1, 6,
-                                           11), colorblind=FALSE))
+                                           11), colorblind = FALSE))
 
 kolo_mix <- function(palette_name, n, type = c("discrete", "continuous"),
                      direction = c(1, -1), override_order = FALSE,
@@ -585,15 +609,16 @@ kolo_mix <- function(palette_name, n, type = c("discrete", "continuous"),
     stop("Number of requested colors greater than what discrete palette offer")
   }
 
-  continuous <-  if(direction==1){grDevices::colorRampPalette(palette[[1]])(n)
+  continuous <-  if(direction == 1) {
+    grDevices::colorRampPalette(palette[[1]])(n)
   }else{
     grDevices::colorRampPalette(rev(palette[[1]]))(n)}
 
-  discrete <- if(direction==1 & override_order==FALSE){
-    palette[[1]][which(palette[[2]] %in% c(1:n)==TRUE)]
-  }else if(direction==-1 & override_order==FALSE){
-    rev(palette[[1]][which(palette[[2]] %in% c(1:n)==TRUE)])
-  } else if(direction==1 & override_order==TRUE){
+  discrete <- if(direction == 1 & override_order == FALSE){
+    palette[[1]][which(palette[[2]] %in% c(1:n) == TRUE)]
+  }else if(direction == -1 & override_order == FALSE){
+    rev(palette[[1]][which(palette[[2]] %in% c(1:n) == TRUE)])
+  } else if(direction == 1 & override_order == TRUE){
     palette[[1]][1:n]
   } else{
     rev(palette[[1]])[1:n]
@@ -603,7 +628,14 @@ kolo_mix <- function(palette_name, n, type = c("discrete", "continuous"),
                 continuous = continuous,
                 discrete = discrete
   )
-  if(return_hex==T){print(out)}
+  if(return_hex == T) {print(out)}
   structure(out, class = "palette", name = palette_name)
 }
 
+progaress <- function(Echo, cata) {
+  if (Echo == TRUE) {
+    cat(cata, "\n")
+  } else{
+    cat("", "\n")
+  }
+}

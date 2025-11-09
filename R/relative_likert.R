@@ -84,9 +84,9 @@
 relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
                             Echo = TRUE) {
 
-  Likert = Likert
-  Ranks = Ranks
-  Echo = Echo
+  Likert  <-  Likert
+  Ranks  <-  Ranks
+  Echo  <-  Echo
 
   if (is.null(Likert) & is.null(Ranks)) {
     stop("**Likert** and **Ranks** arguments cannot be **NULL** at the same time")

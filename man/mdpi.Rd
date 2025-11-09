@@ -15,7 +15,8 @@ mdpi(
   plots = NULL,
   id = c("Health", "Education", "Living standard"),
   id_add = "Social security",
-  id_add1 = "Employment and Income"
+  id_add1 = "Employment and Income",
+  Echo = TRUE
 )
 }
 \arguments{
@@ -50,6 +51,9 @@ as \strong{Social security}. Can be re-defined but never \code{NULL}.}
 
 \item{id_add1}{a vector of the fifth dimension in the computation given
 as \strong{Employment and Income}. Can be re-defined but never \code{NULL}.}
+
+\item{Echo}{Optional indicating whether the progress note is visible
+defaults to TRUE.}
 }
 \value{
 A list with the following components:
