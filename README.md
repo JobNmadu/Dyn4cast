@@ -301,7 +301,8 @@ To cite package 'Dyn4cast' in publications use:
 
 A BibTeX entry for LaTeX users is
 
-  @Manual{title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
+  @Manual{,
+    title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
     year = {2025},
     note = {R package version 11.11.26},
