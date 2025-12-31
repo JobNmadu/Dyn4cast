@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-alpha 2025-12-31
+
+__Sen Index__, by Amartya Sen, is now evaluated along with __MDPI__ in the `mdpi` function. 
+
 # Dyn4cast 11.11.26
 
 # Dyn4cast 11.11.26-Tau 2025-10-28

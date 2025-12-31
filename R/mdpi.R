@@ -167,7 +167,8 @@ mdpi <- function(data, dm, Bar = 0.4,
                 rep("Intensity of poverty", ddm + 1),
                 rep("Multidimensional poverty index", ddm + 1),
                 rep("Contribution", ddm + 1),
-                rep("Average deprivation among the deprived", ddm + 1))
+                rep("Average deprivation among the deprived", ddm + 1),
+                rep("Sen Infdex", ddm + 1))
   Order <- seq(1, length(Analysis), by = 1)
   cata <- "Computation commences..."
   progaress(Echo, cata)
@@ -450,14 +451,14 @@ mdpi <- function(data, dm, Bar = 0.4,
   progaress(Echo, cata)
   if (!is.null(Factor)) {
     modEls2m <- mmmm(data, Scores, score = Mean, Factor, ddm, Analysis,
-                     kay2 = KaY2m)
+                     kay2 = KaY2m, id1)
     cata <- "The computation is progressing...6"
     progaress(Echo, cata)
     modEls2s <- mmmm(data, Scores, score = SD, Factor, ddm, Analysis,
-                     kay2 = kaY2s)
+                     kay2 = kaY2s, id1)
     cata <- "The computation is progressing...7"
     progaress(Echo, cata)
-    models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2)
+    models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2, id1)
     if (!is.null(plots) & length(unique(Factor)) > 40) {
       cat("Palette have 40 colors, plots not possible...", "\n")
     } else if (!is.null(plots) & length(unique(Factor)) < 41) {
@@ -510,14 +511,17 @@ kkkk <- function(q, nq, n, kay, id1, id2, ddm, Order, Analysis) {
   Contribution <- data.frame(Dimension = id1,
                              id2 = MPI0[, 2] / MPI0[1, 2] * 100)
   ahcr <- data.frame(Dimension = id1, id2 = iop0[, 2] / ddm)
+  Senix <- data.frame(Dimension = id1,
+                       senix = ahcr[, 2] * (iop0[, 2] + (1 - iop0[, 2]) *
+                                                 kay[, 2]/n))
   names(kay) <- names(iop0) <- names(adad) <- names(MPI0) <-
-    names(Contribution) <- names(ahcr) <- c("Dimension", id2)
+    names(Contribution) <- names(ahcr) <- names(Senix) <- c("Dimension", id2)
   kay1 <- dplyr::bind_rows(kaye, ahcr, kay, iop0, MPI0, Contribution,
-                           adad)
+                           adad, Senix)
   kay2 <- dplyr::bind_cols(Order = Order, Analysis = Analysis, kay1)
   return(kay2)
 }
-mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
+mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2, id1) {
   IDn <- setdiff(names(data), names(Scores))
   fff <- data %>%
     dplyr::select(tidyselect::all_of(IDn))
@@ -547,6 +551,14 @@ mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
   cont  <- MPI * MPIc * 100
   adad1 <- iop * ddm
   ahcr1 <- iop / ddm
+
+  dfs <- data.frame(t(ddfd))
+  dft <- data.frame(t(ddfnq))
+  dft <- do.call("rbind", replicate(nrow(dfs), dft, simplify = FALSE))
+  dfsc <- dfs/dft
+  senSenix <- data.frame(t(ahcr1) * (t(iop) + (1 - t(iop)) * dfsc))
+  senSenix  <- tibble::rownames_to_column(senSenix, var = "Dimension")
+
   adad1 <- data.frame(t(adad1))
   adad1 <- tibble::rownames_to_column(adad1, var = "Dimension")
   ahcr1 <- data.frame(t(ahcr1))
@@ -561,7 +573,10 @@ mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2) {
   MPI   <- tibble::rownames_to_column(MPI, var = "Dimension")
   ddfd  <- data.frame(t(ddfd))
   ddfd  <- tibble::rownames_to_column(ddfd, var = "Dimension")
-  models <- dplyr::bind_rows(model, ahcr1, ddfd, iop, MPI, cont, adad1)
+
+  models <- data.frame(dplyr::bind_rows(model, ahcr1, ddfd, iop, MPI, cont,
+                                          adad1, senSenix))
+
   models2 <- dplyr::bind_cols(Analysis = Analysis, models,
                                 National = kay2$National)
   return(models2)
