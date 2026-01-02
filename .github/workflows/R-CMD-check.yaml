@@ -19,7 +19,7 @@ jobs:
         config:
           - {os: macOS-14,   r: 'release'}
           - {os: macOS-15,   r: 'release'}
-          - {os: macOS,      r: 'latest'}
+          - {os: macOS-15,   r: 'nest'}
 
           - {os: windows-latest,   r: '4.1'}
           - {os: windows-latest,   r: '4.5'}
