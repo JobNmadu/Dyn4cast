@@ -2,27 +2,34 @@
 
 __Sen Index__, by Amartya Sen, is now evaluated along with __MDPI__ in the `mdpi` function. 
 
+
 # Dyn4cast 11.11.26
+
 
 # Dyn4cast 11.11.26-Tau 2025-10-28
 
 `MaximumDate` argument in the function **DynamicForecast** is deprecated. 
 
+
 # Dyn4cast 11.11.26-Upsilon 2025-09-25
 
 A new function **relative_likert** added to the package. 
+
 
 # Dyn4cast 11.11.26-Upsilon 2025-09-20
 
 A new function **index_construction** added to the package. 
 
+
 # Dyn4cast 11.11.26-Iota 2025-08-04
 
-In view of the persistent error thrown up in some parts of `model_factors`, the strategy of recovery was changed, hence the `1768 lines` of codes was replaced by a more efficient `22 lines` of codes which produces enhanced objects and kills the error. There is a new argument to estimate `Resilience capacity` with `model_factors`. Some `Arguments` in `quicksummary` are deprecated. 
+In view of the persistent error thrown up in some parts of `model_factors`, the strategy of recovery was changed, hence the `1768 lines` of codes was replaced by a more efficient `22 lines` of codes which produces enhanced objects and kills the error. There is a new argument to estimate `Resilience capacity` with `model_factors`. Some `Arguments` in `quicksummary` are deprecated. The test coverage increased to 84% 
+
 
 # Dyn4cast 11.11.26-epsilon 2025-07-12
 
-`varImp` has been demoted and several editing was carried out for efficiency. Also, `augment` function has been demoted from broom package to `generics`. The test coverage increased from 39% to 54% since more functions are now tested. The number of dependencies continue to reduce making the package less vulnerable.
+`varImp` has been demoted and several editing was carried out for efficiency. Also, `augment` function has been demoted from broom package to `generics`. The test coverage increased to 76% since more functions are now tested. The number of dependencies continue to reduce making the package less vulnerable.
+
 
 # Dyn4cast 11.11.26-delta 2025-07-12
 
@@ -32,17 +39,20 @@ Some editing on the various functions to make them more readable.
 
 `tidyverse` now demoted to suggestion from requirement to reduce the load of dependencies. `PRESS` restored as _Predictive Residual Sum of Squares_.
 
+
 # Dyn4cast 11.11.26-eta 2025-07-12
 
 Relative importance index now part of the objects created in Garrett Ranking. The data summary and the Garrett ranking are now in one `data.frame`. The _Remark_ column in Likert-type object in `quicksummary` is discontinued. It is now left to the user to interpret the results obtained.
 
 Some editing to make codes more readable.
 
+
 # Dyn4cast 11.11.26-kappa 2025-04-22
 
-More efficient estimation procedure and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity. Vignette is now included in the documentation with lots of examples. The test coverage has increased to 76%. `met.brewer` function has been retired and `MetBrewer` package  was demoted to suggestion rather than import.
+More efficient estimation procedure and better logic in selecting the options to estimate in `Linearsystems` function. Some options will not output because of complexity. Vignette is now included in the documentation with lots of examples. The test coverage has increased from 39% to 61%. `met.brewer` function has been retired and `MetBrewer` package  was demoted to suggestion rather than import.
 
 Some editing on the various functions to make them more readable.
+
 
 # Dyn4cast 11.11.26-beta 2025-03-03
 
@@ -50,15 +60,18 @@ Huge improvements and new additions to the package. A lot of editorial correctio
 
 The functions are for computing and visualizing multidimensional poverty indices. There is also more clarity of the difference between `sex` and `gender`.
 
+
 # Dyn4cast 11.11.26-alpha 2024-10-14
 
 roxygen 2 misleading internal keyword demobilised to index all the help pages.
 
 modelsummary's datasummary_df insistence on tinytable object for some summary data addressed, The datasummary_df was demobilised.
 
+
 # Dyn4cast 11.11.24 2024-07-28
 
 treatment_model introduced for propensity score matching and treatment effects
+
 
 # Dyn4cast 11.11.24-kappa 2024-07-02
 
@@ -66,13 +79,16 @@ PRESS suspended in `MlMetrics`
 
 minor bugs discovered in the garret ranking function modules fixed.
 
+
 # Dyn4cast 11.11.24-kappa 2024-06-24
 
 minor bugs fixed probably due to changes in dependencies following new R release.
 
+
 # Dyn4cast 11.11.24-kappa 2023-10-22
 
 `timeDate` dependency in `quicksummary` is removed.
+
 
 # Dyn4cast 11.11.24-beta 2023-09-29
 
@@ -80,9 +96,11 @@ Huge improvements and new additions to the package. A lot of editorial correctio
 
 The two functions are part of factor analysis, essentially, exploratory factor analysis (EFA), used to unravel the underlying structure of the observed variables. The analysis also helps to reduce the complex structure by determining a smaller number of latent factors that sufficiently represent the variation in the observed variables. With EFA, no prior knowledge or hypothesis about the number or nature of the factors is assumed. These are great tools to help tell the story behind your data. The data used for `Model_factors` is prepared using `fa.parallel` and `fa` functions in the `psych` package.
 
+
 # Dyn4cast 11.11.24-alpha 2023-09-25
 
 The **Data** argument for `DynamicForecast` function has been modified. Rather than the previous argument were a data frame, containing the two required  vectors, was supplied, now data argument is in three vectors `date, series, x`. The `x` argument is new but optional and would now allow additional variables apart from the two mandatory ones to be added to the model. The `origin` argument which was previously embedded in `...` has now being defaulted to **1970-01-01**. Two objects have been added to the results, i.e., `table of estimates` and the `plots of the fitted values`. The function, which was the first in the package has now be promoted to `stable`.
+
 
 # Dyn4cast 11.11.23
 
@@ -94,6 +112,7 @@ Even with this huge improvements, the principle of one line of code is maintaine
 
 As always, comments, questions and suggestions are welcome.
 
+
 # Dyn4cast 11.11.10-kappa 2023-04-02
 
 `quicksummary` now returns a data frame rather a `kable` Table.
@@ -102,13 +121,16 @@ The internal argument `digits` in `Percent` is removed due to observed exaggerat
 
 Final formatting of data frames in the `Linearsystems` package was removed. Now, the estimates can display in the `console`.
 
+
 # Dyn4cast 11.11.10-beta 2023-03-12
 
 A new function `data_transform` added and is working perfectly. The addition of this function only makes the package more versatile for `Machine Learning` operations and estimations.
 
+
 # Dyn4cast 11.11.10-alpha 2022-08-20
 
 A new function `formattedcut` added and is working perfectly. The addition of this function is providing more clarity to the package. Quite a number of editorial fixes were undertaken and the codes are working superbly.
+
 
 # Dyn4cast 11.11.1.9000 2022-04-25
 
@@ -117,6 +139,7 @@ Mallow's Cp successfully added and documentation improved sufficiently. The code
 # Dyn4cast 11.11.01.9000 2022-03-15
 
 Documentation improved and new functions added to the library. Editorial fixes were made.
+
 
 # Dyn4cast 11.11.00 2021-02-12
 
