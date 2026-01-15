@@ -1,3 +1,8 @@
+# Dyn4cast 11.11.28-beta 2026-01-15
+
+`forecst` now demoted; it is no more **imported namespace** but is suggested as **forecast** is now _generics_. The `DynamicFocast` is now more efficient as a result of this change.
+
+
 # Dyn4cast 11.11.28-alpha 2025-12-31
 
 __Sen Index__, by Amartya Sen, is now evaluated along with __MDPI__ in the `mdpi` function. 
