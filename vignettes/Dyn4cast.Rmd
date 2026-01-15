@@ -99,7 +99,7 @@ library(readr)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-FitModel <- scaledlogit(x = fitted.values(Model), lower = lower,
+FitModel <- scaledlogit(x2 = fitted.values(Model), lower = lower,
  upper = upper)
 ForecastModel <- forecast(FitModel, h = length(200))
 constrainedforecast(model10 = ForecastModel, lower, upper)
@@ -193,8 +193,10 @@ From the various transformation, the pattern in the dataset became more clear. T
 The function estimates, predict and forecasts data either for the entire trend of the series or subset with various essembles. The main attraction of this function is the use of the newly introduced equal number of trend (days, months, years) forecast. The basic usage is as follows:
 
 ```
-DynamicForecast(date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
- ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
+DynamicForecast(Data, date, series, dyrima, Trend, Type,
+                            MaximumDate, x = 0, x100 = 0, BREAKS = 0,
+                            ORIGIN = NULL, origin = "1970-01-01",Length = 0,
+                            ...)
 
 With the arguments
 
@@ -202,7 +204,10 @@ With the arguments
 
 `series`	A vector containing data for estimation and forecasting. Must be the same length with date.
 
-`x`	 vector of optional dataset that is to be added to the model for forecasting. The modeling and forecasting is still done if not provided. Must be the same length with series.
+dyrima **ARIMA** object of the `series` obtained from `auto.rima` in
+#' forecast package.
+
+`x100`	 vector of optional dataset that is to be added to the model for forecasting. The modeling and forecasting is still done if not provided. Must be the same length with series.
 
 `BREAKS`	A vector of numbers indicating points of breaks for estimation of the spline models.
 
@@ -225,6 +230,7 @@ With the arguments
 ### Twenty eight points less than full length of data
 
 ```{r echo = TRUE, eval = FALSE}
+library(forecast)
 library(readr)
 COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
 
@@ -234,7 +240,9 @@ ORIGIN = "2020-02-29"
 lastdayfo21 <- Dss[length(Dss)]
 gggg <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 BREAKS <- c(70, 131, 173, 228, 274)
-DynamicForecast(date = gggg$Date, series = gggg$Case, 
+dyrima <- auto.arima(gggg$Case)
+
+DynamicForecast(date = gggg$Date, series = gggg$Case, dyrima = dyrima,
                 BREAKS = BREAKS, MaximumDate = "2021-02-10",
                 Trend = "Day", Length = 0, Type = "Integer")
 ```
@@ -245,7 +253,10 @@ DynamicForecast(date = gggg$Date, series = gggg$Case,
 lastdayfo21 <- Dss[length(Dss)]
 ddy <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 BREAKS = c(70, 131, 173, 228, 274)
-suppressWarnings(DynamicForecast(date = ddy$Date, series = ddy$Case, BREAKS = BREAKS ,
+dyrima <- auto.arima(ddy$Case)
+
+suppressWarnings(DynamicForecast(date = ddy$Date, series = ddy$Case,
+                                 dyrima = dyrima, BREAKS = BREAKS ,
                 MaximumDate = "2021-02-10", Trend = "Day", Length = 0, 
                 Type = "Integer"))
 ```

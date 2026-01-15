@@ -4,10 +4,12 @@
 \alias{scaledlogit}
 \title{Scale Parameter for Integer Modeling and Forecast}
 \usage{
-scaledlogit(x, lower, upper)
+scaledlogit(x, x2, lower, upper)
 }
 \arguments{
-\item{x}{The parameter to be scaled, which is the fitted values from
+\item{x}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
+
+\item{x2}{The parameter to be scaled, which is the fitted values from
 supported models. The scaled parameter is used mainly for constrained
 forecasting of a response variable \emph{positive (0 - inf) or negative
 (-inf - 0)}. The scaling involves log transformation of the parameter}
@@ -30,6 +32,6 @@ library(splines)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-scaledlogit(x = fitted.values(Model), lower = lower,
+scaledlogit(x2 = fitted.values(Model), lower = lower,
  upper = upper)
 }

@@ -4,10 +4,12 @@
 \alias{invscaledlogit}
 \title{Exponential Values after One-Sided Response Integer Variable Forecasting}
 \usage{
-invscaledlogit(x, lower, upper)
+invscaledlogit(x, x3, lower, upper)
 }
 \arguments{
-\item{x}{The forecast values from constrained forecast package. Please
+\item{x}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
+
+\item{x3}{The forecast values from constrained forecast package. Please
 specify the appropriate column containing the forecast values.}
 
 \item{lower}{Lower limits of the forecast values}
@@ -21,8 +23,8 @@ The exponentiation ensures that the forecast does not go beyond the upper
 and lower limits of the base data.
 }
 \examples{
-x <- 1:35
+x3 <- 1:35
 lower <- 1
 upper <- 35
-invscaledlogit(x = x, lower = lower, upper = upper)
+invscaledlogit(x3 = x3, lower = lower, upper = upper)
 }

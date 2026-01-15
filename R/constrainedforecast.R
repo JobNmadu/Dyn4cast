@@ -32,17 +32,17 @@
 #' lower <- 1
 #' upper <- 37
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-#' FitModel <- scaledlogit(x = fitted.values(Model), lower = lower,
+#' FitModel <- scaledlogit(x2 = fitted.values(Model), lower = lower,
 #'  upper = upper)
 #' ForecastModel <- forecast(FitModel, h = length(200))
 #' ForecastValues <- constrainedforecast(model10 = ForecastModel, lower, upper)
 constrainedforecast <- function(model10, lower, upper) {
   f2 <- model10$upper
   f1 <- model10$lower
-  f1l1 <- invscaledlogit(x = f1[, 1], lower = lower, upper = upper)
-  f1l2 <- invscaledlogit(x = f1[, 2], lower = lower, upper = upper)
-  f2u1 <- invscaledlogit(x = f2[, 1], lower = lower, upper = upper)
-  f2u2 <- invscaledlogit(x = f2[, 2], lower = lower, upper = upper)
+  f1l1 <- invscaledlogit(x3 = f1[, 1], lower = lower, upper = upper)
+  f1l2 <- invscaledlogit(x3 = f1[, 2], lower = lower, upper = upper)
+  f2u1 <- invscaledlogit(x3 = f2[, 1], lower = lower, upper = upper)
+  f2u2 <- invscaledlogit(x3 = f2[, 2], lower = lower, upper = upper)
 
   results <- list("Lower80" = f1l1,
                   "Lower95" = f1l2,

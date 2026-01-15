@@ -39,7 +39,7 @@ library(readr)
 lower <- 1
 upper <- 37
 Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-FitModel <- scaledlogit(x = fitted.values(Model), lower = lower,
+FitModel <- scaledlogit(x2 = fitted.values(Model), lower = lower,
  upper = upper)
 ForecastModel <- forecast(FitModel, h = length(200))
 ForecastValues <- constrainedforecast(model10 = ForecastModel, lower, upper)

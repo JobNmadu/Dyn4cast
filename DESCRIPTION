@@ -16,7 +16,6 @@ VignetteBuilder: knitr
 RoxygenNote: 7.3.3
 Imports: 
     stats,
-    forecast,
     lubridate,
     splines,
     Metrics,
@@ -52,7 +51,8 @@ Suggests:
     readr,
     MetBrewer,
     data.table,
-    ggtext
+    ggtext,
+    forecast
 Config/testthat/edition: 3
 URL: https://github.com/JobNmadu/Dyn4cast, https://jobnmadu.github.io/Dyn4cast/
 BugReports: https://github.com/JobNmadu/Dyn4cast/issues

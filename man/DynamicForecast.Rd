@@ -5,8 +5,8 @@
 \alias{COVID19}
 \title{Dynamic Forecast of Five Models and their Ensembles}
 \usage{
-DynamicForecast(Data, date, series, Trend, Type, MaximumDate, x = 0, BREAKS = 0,
- ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
+DynamicForecast(Data, date, series, dyrima, Trend, Type, MaximumDate, x = 0,
+x100 = 0, BREAKS = 0, ORIGIN = NULL, origin = "1970-01-01", Length = 0, ...)
 }
 \arguments{
 \item{date}{A vector containing the dates for which the data is collected.
@@ -16,10 +16,15 @@ the month of the dataset e.g. 2021-02-28. If the data is a yearly series,
 the recognized date format is the last day of the year of the data set e.g.
 2020-12-31. There is no format for Quarterly data for now.}
 
+\item{x}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
+
 \item{series}{A vector containing observations for estimation and forecasting.
 Must be the same length with \code{date}.}
 
-\item{x}{vector of optional dataset that is to be added to the model for
+\item{dyrima}{\strong{ARIMA} object of the \code{series} obtained from \code{auto.rima} in
+forecast package.}
+
+\item{x100}{vector of optional dataset that is to be added to the model for
 forecasting. The modeling and forecasting is still done if not provided.
 Must be the same length with \code{series}.}
 
@@ -104,6 +109,7 @@ The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
 # library(readr)
+# library(forecast)
 # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
 #  #The date is formatted to R format
 # LEN <- length(COVID19$Case)
@@ -114,12 +120,13 @@ The function takes \verb{daily, monthly and yearly data sets for now}.
 # Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
 # # desired length of forecast
 # BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-# DynamicForecast(date = Data$Date, series = Data$Case,
-# BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer")
+# dyrima <- auto.arima(Data$Case)
+# DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
+# BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
 #
 # lastdayfo21 <- Dss[length(Dss)]
 # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 # BREAKS = c(70, 131, 173, 228, 274)
-# DynamicForecast(date = Data$Date, series = Data$Case,
-# BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer")
+# DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
+# BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
 }

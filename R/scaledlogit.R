@@ -6,7 +6,8 @@
 #'  models. The scaling involves some log transformation of the fitted
 #'  (predicted) values.
 #'
-#' @param x The parameter to be scaled, which is the fitted values from
+#' @param x `r lifecycle::badge("deprecated")`.
+#' @param x2 The parameter to be scaled, which is the fitted values from
 #' supported models. The scaled parameter is used mainly for constrained
 #' forecasting of a response variable _positive (0 - inf) or negative
 #' (-inf - 0)_. The scaling involves log transformation of the parameter
@@ -24,8 +25,8 @@
 #' lower <- 1
 #' upper <- 37
 #' Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-#' scaledlogit(x = fitted.values(Model), lower = lower,
+#' scaledlogit(x2 = fitted.values(Model), lower = lower,
 #'  upper = upper)
-scaledlogit <- function(x, lower, upper) {
-  log((x - lower) / (upper - x))
+scaledlogit <- function(x, x2, lower, upper) {
+  log((x2 - lower) / (upper - x2))
 }

@@ -6,7 +6,8 @@
 #'  The exponentiation ensures that the forecast does not go beyond the upper
 #'  and lower limits of the base data.
 #'
-#' @param x The forecast values from constrained forecast package. Please
+#' @param x `r lifecycle::badge("deprecated")`.
+#' @param x3 The forecast values from constrained forecast package. Please
 #' specify the appropriate column containing the forecast values.
 #' @param lower Lower limits of the forecast values
 #' @param upper Upper limits of the forecast values
@@ -15,10 +16,10 @@
 #' @name invscaledlogit
 #'
 #' @examples
-#' x <- 1:35
+#' x3 <- 1:35
 #' lower <- 1
 #' upper <- 35
-#' invscaledlogit(x = x, lower = lower, upper = upper)
-invscaledlogit <- function(x, lower, upper) {
-  (upper - lower) * exp(x) / (1 + exp(x)) + lower
+#' invscaledlogit(x3 = x3, lower = lower, upper = upper)
+invscaledlogit <- function(x, x3, lower, upper) {
+  (upper - lower) * exp(x3) / (1 + exp(x3)) + lower
 }
