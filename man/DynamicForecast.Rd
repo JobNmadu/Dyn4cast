@@ -127,6 +127,7 @@ The function takes \verb{daily, monthly and yearly data sets for now}.
 # lastdayfo21 <- Dss[length(Dss)]
 # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
 # BREAKS = c(70, 131, 173, 228, 274)
+# dyrima <- auto.arima(Data$Case)
 # DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
 # BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
 }
