@@ -44,7 +44,7 @@
 #'  must be in the format `"YYYY-MM-DD"`. This is used to position the date of
 #'  the data to properly `date` the forecasts.
 #' @param Data `r lifecycle::badge("deprecated")`. Now broken into three
-#'  vectors `date`, `series` and `x`.
+#'  vectors `date`, `series` and `x100`.
 #' @param ... Additional arguments that may be passed to the function.
 #'
 #' @usage

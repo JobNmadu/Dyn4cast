@@ -55,7 +55,7 @@ must be in the format \code{"YYYY-MM-DD"}. This is used to position the date of
 the data to properly \code{date} the forecasts.}
 
 \item{Data}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. Now broken into three
-vectors \code{date}, \code{series} and \code{x}.}
+vectors \code{date}, \code{series} and \code{x100}.}
 
 \item{...}{Additional arguments that may be passed to the function.}
 }
