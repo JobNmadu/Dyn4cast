@@ -10,6 +10,9 @@
 [![registry status
 badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-universe.dev/)
 
+[![name status
+badge](https://jobnmadu.r-universe.dev/badges/:name)](https://jobnmadu.r-universe.dev/)
+
 [![GitHub release (latest by
 date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
@@ -295,7 +298,7 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.26,
   <https://github.com/JobNmadu/Dyn4cast>.
 
@@ -304,7 +307,6 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
-    year = {2026},
     note = {R package version 11.11.26},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
@@ -318,9 +320,10 @@ already installed on your machine. Some of the packages are listed
 below:
 
 ``` r
-install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
-                   "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
-                   "psych", "lifecycle", "MetBrewer", "data.table", "ggtext"))
+install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
+                   "caret", "kableExtra", "knitr", "spelling", "psych",
+                   "readr", "MetBrewer", "data.table", "ggtext", "lubridat",
+                   "forecast"))
 ```
 
 Note that a *warning* (not *error*) is thrown up while estimating the

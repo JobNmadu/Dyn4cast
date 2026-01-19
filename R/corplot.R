@@ -11,7 +11,7 @@
 #'
 #' @export corplot
 #'
-#'@importFrom corrplot corrplot.mixed
+#' @importFrom corrplot corrplot.mixed
 #'
 corplot <- function(r) {
   plot <- function() {

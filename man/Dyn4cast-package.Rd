@@ -15,6 +15,7 @@ Useful links:
 \itemize{
   \item \url{https://github.com/JobNmadu/Dyn4cast}
   \item \url{https://jobnmadu.github.io/Dyn4cast/}
+  \item \url{https://jobnmadu.r-universe.dev/Dyn4cast}
   \item Report bugs at \url{https://github.com/JobNmadu/Dyn4cast/issues}
 }
 
