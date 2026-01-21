@@ -124,9 +124,9 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
   list(Summary = ans, Means = ank)
 }
 
-amean <- function(x) sum(x, na.rm = TRUE) / length(x[!is.na(x)])
-gmean <- function(x) prod(x, na.rm = TRUE) ^ (1 / length(x[!is.na(x)]))
-qmean <- function(x) sqrt(sum(x ^ 2, na.rm = TRUE) / length(x[!is.na(x)]))
-hmean <- function(x) length(x[!is.na(x)]) / sum(1 / x, na.rm = TRUE)
-cmean <- function(x) (sum(x ^ 3, na.rm = TRUE) /
-                        length(x[!is.na(x)])) ^ 0.3333333
+amean <- function(x) mean(x[!is.na(x)])
+gmean <- function(x) exp(mean(log(x[!is.na(x >= 0)])))
+qmean <- function(x) sqrt(sum(x^2, na.rm = TRUE) / length(x[!is.na(x)]))
+hmean <- function(x) 1/mean(1/x[!is.na(x)])
+cmean <- function(x) sign(mean(x[!is.na(x)]^3)) *
+  abs(mean(x[!is.na(x)]^3))^(1/3)
