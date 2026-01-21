@@ -138,156 +138,6 @@ At present, the package exports the following functions:
 19. `relative_likert` converts likert scores to vector of index for
     adaptive capacity
 
-## Things the package can do
-
-The package is capable of
-
-- computing, estimating, predicting and forecasting of the following
-  models.
-
-  - Spline without knots
-
-  - Spline with knots
-
-  - Smooth Spline
-
-  - ARIMA
-
-  - Quadratic
-
-  - Ensembled with equal weight
-
-  - Ensembled based on weight
-
-  - Ensembled based on summed weight
-
-  - Ensembled based on weight of fit
-
-- Unconstrained forecasts
-
-- Constrained forecast
-
-- Machine Learning Metrics
-
-- Mallow’s CP
-
-- Per cent sign
-
-  - Rate
-
-  - percent
-
-- Scaled logit for constrained forecast
-
-- Inverse scaled logit for constrained forecast
-
-- Linear regression and functional forms which consists of
-
-  - Linear model
-
-  - Linear model with interactions
-
-  - Semilog model
-
-  - Growth model
-
-  - Double Log model
-
-  - Mixed-power model
-
-  - Translog model
-
-  - Quadratic model
-
-  - Cubic model
-
-  - Inverse of y model
-
-  - Inverse of x model
-
-  - Inverse of y & x model
-
-  - Square root model
-
-  - Cubic root model
-
-  - formatted Model Table
-
-  - Prediction plots
-
-  - Fitted plots
-
-  - Naive effects plots
-
-  - Summary of numeric variables
-
-  - Summary of character variables
-
-- Convert a continuous vector to a data frame
-
-- Convert a raw data frame to a uniform data frame
-
-- Plot of correlation matrix
-
-- Plot of the order of significance of estimates coefficients
-
-- Rank Likert-type data using Garrett ranking technique
-
-- Determine and retrieve the latent factors in Likert-type variables
-
-- *Treatment model* which is for propensity matching and treatment
-  effects. It has the capacity to provide:
-
-  - Estimated treatment effects model
-
-  - Data frame of the estimated various treatment effects
-
-  - Vector of estimated propensity scores from the model
-
-  - Vector of fitted values from the model
-
-  - Residuals of the estimated model
-
-  - Plot of the propensity scores from the model faceted into Treated
-    and control populations
-
-  - Plot of the average treatment effect for the **entire** population
-
-  - Plot of the average treatment effect for the **treated** population
-
-  - Plot of the average treatment effect for the **controlled**
-    population
-
-  - Plot of the average Treatment effect for the **evenly** population
-
-  - Plot of the average Treatment effect for the **overlap** population
-
-  - Estimated weights for each of the treatment effects
-
-- *mdpi* computes MDPI on various dimensions to give:
-
-  - Deprivation scores
-
-  - Incidence of poverty
-
-  - Adjusted incidence of poverty
-
-  - Contribution in % of each of the dimensions to MDPI
-
-  - Multidimensional poverty index (MDPI)
-
-  - Average deprivation among the deprived
-
-- *plot_mdpi* produces the plots of all the indices
-
-- *gender* converts age and sex to gender
-
-- *index_construction* converts indicators of exposure or sensitivity to
-  vector of index
-
-- *relative_likert* converts likert scores to vector of index for
-  adaptive capacity
-
 ## Citation
 
 The citation information for this package can be obtained easily when
@@ -298,7 +148,7 @@ you run `citation("Dyn4cast")` in your `R` console.
 citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
-  Nmadu J (????). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
   Environment_. R package version 11.11.26,
   <https://github.com/JobNmadu/Dyn4cast>.
 
@@ -307,6 +157,7 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
     author = {Job Nmadu},
+    year = {2026},
     note = {R package version 11.11.26},
     url = {https://github.com/JobNmadu/Dyn4cast},
   }
@@ -322,7 +173,7 @@ below:
 ``` r
 install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
                    "caret", "kableExtra", "knitr", "spelling", "psych",
-                   "readr", "MetBrewer", "data.table", "ggtext", "lubridat",
+                   "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
                    "forecast"))
 ```
 

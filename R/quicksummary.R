@@ -125,7 +125,7 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
 }
 
 amean <- function(x) mean(x[!is.na(x)])
-gmean <- function(x) exp(mean(log(x[!is.na(x >= 0)])))
+gmean <- function(x) exp(mean(log(x[!is.na(x > 0)])))
 qmean <- function(x) sqrt(sum(x^2, na.rm = TRUE) / length(x[!is.na(x)]))
 hmean <- function(x) 1/mean(1/x[!is.na(x)])
 cmean <- function(x) sign(mean(x[!is.na(x)]^3)) *
