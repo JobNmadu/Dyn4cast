@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Dynamic Modeling and Machine Learning Environment</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Dynamic Modeling and Machine Learning
+Environment</h1>
+
+
+
+<!-- 
+
+# Dyn4cast  <img src="../man/figures/logo.png" align="right" alt="" width="150" height="150" />  -->
+<!-- badges: start -->
+<p><a href="https://github.com/JobNmadu/Dyn4cast/actions/workflows/R-CMD-check.yaml"><img role="img" aria-label="R-CMD-check" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzUiIGhlaWdodD0iMjAiPgogIDx0aXRsZT5SLUNNRC1jaGVjay55YW1sIC0gZmFpbGluZzwvdGl0bGU+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IndvcmtmbG93LWZpbGwiIHgxPSI1MCUiIHkxPSIwJSIgeDI9IjUwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNDQ0RDU2IiBvZmZzZXQ9IjAlIj48L3N0b3A+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMyNDI5MkUiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3RhdGUtZmlsbCIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNENzNBNDkiIG9mZnNldD0iMCUiPjwvc3RvcD4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0NCMjQzMSIgb2Zmc2V0PSIxMDAlIj48L3N0b3A+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPGcgZm9udC1mYW1pbHk9IiYjMzk7RGVqYVZ1IFNhbnMmIzM5OyxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIj4KICAgICAgPHBhdGggaWQ9IndvcmtmbG93LWJnIiBkPSJNMCwzIEMwLDEuMzQzMSAxLjM1NTIsMCAzLjAyNzAyNzAzLDAgTDEzMiwwIEwxMzIsMjAgTDMuMDI3MDI3MDMsMjAgQzEuMzU1MiwyMCAwLDE4LjY1NjkgMCwxNyBMMCwzIFoiIGZpbGw9InVybCgjd29ya2Zsb3ctZmlsbCkiIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPgogICAgICA8dGV4dCBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj4KICAgICAgICA8dHNwYW4geD0iMjIuMTk4MTk4MiIgeT0iMTUiIGFyaWEtaGlkZGVuPSJ0cnVlIj5SLUNNRC1jaGVjay55YW1sPC90c3Bhbj4KICAgICAgPC90ZXh0PgogICAgICA8dGV4dCBmaWxsPSIjRkZGRkZGIj4KICAgICAgICA8dHNwYW4geD0iMjIuMTk4MTk4MiIgeT0iMTQiPlItQ01ELWNoZWNrLnlhbWw8L3RzcGFuPgogICAgICA8L3RleHQ+CiAgICA8L2c+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMzIpIiBmb250LWZhbWlseT0iJiMzOTtEZWphVnUgU2FucyYjMzk7LFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICA8cGF0aCBkPSJNMCAwaDQwLjQ3QzQxLjg2OSAwIDQzIDEuMzQzIDQzIDN2MTRjMCAxLjY1Ny0xLjEzMiAzLTIuNTMgM0gwVjB6IiBpZD0ic3RhdGUtYmciIGZpbGw9InVybCgjc3RhdGUtZmlsbCkiIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPgogICAgICA8dGV4dCBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgICAgICAgPHRzcGFuIHg9IjUiIHk9IjE1Ij5mYWlsaW5nPC90c3Bhbj4KICAgICAgPC90ZXh0PgogICAgICA8dGV4dCBmaWxsPSIjRkZGRkZGIj4KICAgICAgICA8dHNwYW4geD0iNSIgeT0iMTQiPmZhaWxpbmc8L3RzcGFuPgogICAgICA8L3RleHQ+CiAgICA8L2c+CiAgICA8cGF0aCBmaWxsPSIjOTU5REE1IiBkPSJNMTEgM2MtMy44NjggMC03IDMuMTMyLTcgN2E2Ljk5NiA2Ljk5NiAwIDAgMCA0Ljc4NiA2LjY0MWMuMzUuMDYyLjQ4Mi0uMTQ4LjQ4Mi0uMzMyIDAtLjE2Ni0uMDEtLjcxOC0uMDEtMS4zMDQtMS43NTguMzI0LTIuMjEzLS40MjktMi4zNTMtLjgyMi0uMDc5LS4yMDItLjQyLS44MjMtLjcxNy0uOTktLjI0NS0uMTMtLjU5NS0uNDU0LS4wMS0uNDYzLjU1Mi0uMDA5Ljk0Ni41MDggMS4wNzcuNzE4LjYzIDEuMDU4IDEuNjM2Ljc2IDIuMDM5LjU3Ny4wNjEtLjQ1NS4yNDUtLjc2MS40NDYtLjkzNi0xLjU1Ny0uMTc1LTMuMTg1LS43NzktMy4xODUtMy40NTYgMC0uNzYyLjI3MS0xLjM5Mi43MTgtMS44ODItLjA3LS4xNzUtLjMxNS0uODkyLjA3LTEuODU1IDAgMCAuNTg2LS4xODMgMS45MjUuNzE4YTYuNSA2LjUgMCAwIDEgMS43NS0uMjM2IDYuNSA2LjUgMCAwIDEgMS43NS4yMzZjMS4zMzgtLjkxIDEuOTI1LS43MTggMS45MjUtLjcxOC4zODUuOTYzLjE0IDEuNjguMDcgMS44NTUuNDQ2LjQ5LjcxNyAxLjExMi43MTcgMS44ODIgMCAyLjY4Ni0xLjYzNiAzLjI4LTMuMTk0IDMuNDU2LjI1NC4yMTkuNDczLjYzOS40NzMgMS4yOTUgMCAuOTM2LS4wMDkgMS42ODktLjAwOSAxLjkyNSAwIC4xODQuMTMxLjQwMi40ODEuMzMyQTcuMDExIDcuMDExIDAgMCAwIDE4IDEwYzAtMy44NjctMy4xMzMtNy03LTd6Ij48L3BhdGg+CiAgPC9nPgo8L3N2Zz4KCg==" alt="R-CMD-check" /></a></p>
+<p><a href="https://jobnmadu.r-universe.dev/"><img role="img" aria-label="registry status badge" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTUyLjIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNTIyIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlVwZGF0ZSB1bml2ZXJzZTogcGFzc2luZyI+CiAgPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL3ItdW5pdmVyc2Uvam9ibm1hZHUvYWN0aW9ucy93b3JrZmxvd3Mvc3luYy55bWwiIGFsdD0ici11bml2ZXJzZSI+CiAgPHRpdGxlPlVwZGF0ZSB1bml2ZXJzZTogcGFzc2luZzwvdGl0bGU+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJSaVZaQyIgeDI9IjAiIHkyPSIxMDAlIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1vcGFjaXR5PSIuMSIgc3RvcC1jb2xvcj0iI0VFRSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8bWFzayBpZD0iYlJXQXgiPjxyZWN0IHdpZHRoPSIxNTIyIiBoZWlnaHQ9IjIwMCIgcng9IjMwIiBmaWxsPSIjRkZGIi8+PC9tYXNrPgogIDxnIG1hc2s9InVybCgjYlJXQXgpIj4KICAgIDxyZWN0IHdpZHRoPSIxMDA0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzU1NSIvPgogICAgPHJlY3Qgd2lkdGg9IjUxOCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzQzEiIHg9IjEwMDQiLz4KICAgIDxyZWN0IHdpZHRoPSIxNTIyIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNSaVZaQykiLz4KICA8L2c+CiAgPGcgYXJpYS1oaWRkZW49InRydWUiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1mYW1pbHk9IlZlcmRhbmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMTAiPgogICAgPHRleHQgeD0iNjAiIHk9IjE0OCIgdGV4dExlbmd0aD0iOTA0IiBmaWxsPSIjMDAwIiBvcGFjaXR5PSIwLjI1Ij5VcGRhdGUgdW5pdmVyc2U8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTM4IiB0ZXh0TGVuZ3RoPSI5MDQiPlVwZGF0ZSB1bml2ZXJzZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjEwNTkiIHk9IjE0OCIgdGV4dExlbmd0aD0iNDE4IiBmaWxsPSIjMDAwIiBvcGFjaXR5PSIwLjI1Ij5wYXNzaW5nPC90ZXh0PgogICAgPHRleHQgeD0iMTA0OSIgeT0iMTM4IiB0ZXh0TGVuZ3RoPSI0MTgiPnBhc3Npbmc8L3RleHQ+CiAgPC9nPgogIAogIDwvYT4KPC9zdmc+" alt="registry status badge" /></a></p>
+<p><a href="https://github.com/JobNmadu/Dyn4cast/releases"><img role="img" aria-label="GitHub release (latest by date)" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjYiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0icmVsZWFzZTogdjAuMTEuMTEuMjYiPjx0aXRsZT5yZWxlYXNlOiB2MC4xMS4xMS4yNjwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTI2IiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNDkiIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI0OSIgd2lkdGg9Ijc3IiBoZWlnaHQ9IjIwIiBmaWxsPSIjOTdjYTAwIi8+PHJlY3Qgd2lkdGg9IjEyNiIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIyNTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjM5MCI+cmVsZWFzZTwvdGV4dD48dGV4dCB4PSIyNTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjM5MCI+cmVsZWFzZTwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iODY1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI2NzAiPnYwLjExLjExLjI2PC90ZXh0Pjx0ZXh0IHg9Ijg2NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNjcwIj52MC4xMS4xMS4yNjwvdGV4dD48L2c+PC9zdmc+" alt="GitHub release (latest by date)" /></a></p>
+<p><a href="https://codecov.io/gh/JobNmadu/Dyn4cast"><img role="img" aria-label="codecov" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTIiIGhlaWdodD0iMjAiPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIgLz4KICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPG1hc2sgaWQ9ImEiPgogICAgICAgIDxyZWN0IHdpZHRoPSIxMTIiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIiAvPgogICAgPC9tYXNrPgogICAgPGcgbWFzaz0idXJsKCNhKSI+CiAgICAgICAgPHBhdGggZmlsbD0iIzU1NSIgZD0iTTAgMGg3M3YyMEgweiIgLz4KICAgICAgICA8cGF0aCBmaWxsPSIjY2NiMjFhIiBkPSJNNzMgMGgzOXYyMEg3M3oiIC8+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNiKSIgZD0iTTAgMGgxMTJ2MjBIMHoiIC8+CiAgICA8L2c+CiAgICA8ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRGVqYVZ1IFNhbnMsVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSI+CiAgICAgICAgPHRleHQgeD0iNDYiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj5jb2RlY292PC90ZXh0PgogICAgICAgIDx0ZXh0IHg9IjQ2IiB5PSIxNCI+Y29kZWNvdjwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI5MyIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPjg0JTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSI5MyIgeT0iMTQiPjg0JTwvdGV4dD4KICAgIDwvZz4KICAgIDxzdmcgdmlld0JveD0iMTIwIC04IDYwIDYwIj4KICAgICAgICA8cGF0aCBkPSJNMjMuMDEzIDBDMTAuMzMzLjAwOS4wMSAxMC4yMiAwIDIyLjc2MnYuMDU4bDMuOTE0IDIuMjc1LjA1My0uMDM2YTExLjI5MSAxMS4yOTEgMCAwIDEgOC4zNTItMS43NjcgMTAuOTExIDEwLjkxMSAwIDAgMSA1LjUgMi43MjZsLjY3My42MjQuMzgtLjgyOGMuMzY4LS44MDIuNzkzLTEuNTU2IDEuMjY0LTIuMjQuMTktLjI3Ni4zOTgtLjU1NC42MzctLjg1MWwuMzkzLS40OS0uNDg0LS40MDRhMTYuMDggMTYuMDggMCAwIDAtNy40NTMtMy40NjYgMTYuNDgyIDE2LjQ4MiAwIDAgMC03LjcwNS40NDlDNy4zODYgMTAuNjgzIDE0LjU2IDUuMDE2IDIzLjAzIDUuMDFjNC43NzkgMCA5LjI3MiAxLjg0IDEyLjY1MSA1LjE4IDIuNDEgMi4zODIgNC4wNjkgNS4zNSA0LjgwNyA4LjU5MWExNi41MyAxNi41MyAwIDAgMC00Ljc5Mi0uNzIzbC0uMjkyLS4wMDJhMTYuNzA3IDE2LjcwNyAwIDAgMC0xLjkwMi4xNGwtLjA4LjAxMmMtLjI4LjAzNy0uNTI0LjA3NC0uNzQ4LjExNS0uMTEuMDE5LS4yMTguMDQxLS4zMjcuMDYzLS4yNTcuMDUyLS41MS4xMDgtLjc1LjE2OWwtLjI2NS4wNjdhMTYuMzkgMTYuMzkgMCAwIDAtLjkyNi4yNzZsLS4wNTYuMDE4Yy0uNjgyLjIzLTEuMzYuNTExLTIuMDE2LjgzOGwtLjA1Mi4wMjZjLS4yOS4xNDUtLjU4NC4zMDUtLjg5OS40OWwtLjA2OS4wNGExNS41OTYgMTUuNTk2IDAgMCAwLTQuMDYxIDMuNDY2bC0uMTQ1LjE3NWMtLjI5LjM2LS41MjEuNjY2LS43MjMuOTYtLjE3LjI0Ny0uMzQuNTEzLS41NTIuODY0bC0uMTE2LjE5OWMtLjE3LjI5Mi0uMzIuNTctLjQ0OS44MjRsLS4wMy4wNTdhMTYuMTE2IDE2LjExNiAwIDAgMC0uODQzIDIuMDI5bC0uMDM0LjEwMmExNS42NSAxNS42NSAwIDAgMC0uNzg2IDUuMTc0bC4wMDMuMjE0YTIxLjUyMyAyMS41MjMgMCAwIDAgLjA0Ljc1NGMuMDA5LjExOS4wMi4yMzcuMDMyLjM1NS4wMTQuMTQ1LjAzMi4yOS4wNDkuNDMybC4wMS4wOGMuMDEuMDY3LjAxNy4xMzMuMDI2LjE5Ny4wMzQuMjQyLjA3NC40OC4xMTkuNzIuNDYzIDIuNDE5IDEuNjIgNC44MzYgMy4zNDUgNi45OWwuMDc4LjA5OC4wOC0uMDk1Yy42ODgtLjgxIDIuMzk1LTMuMzggMi41MzktNC45MjJsLjAwMy0uMDI5LS4wMTQtLjAyNWExMC43MjcgMTAuNzI3IDAgMCAxLTEuMjI2LTQuOTU2YzAtNS43NiA0LjU0NS0xMC41NDQgMTAuMzQzLTEwLjg5bC4zODEtLjAxNGExMS40MDMgMTEuNDAzIDAgMCAxIDYuNjUxIDEuOTU3bC4wNTQuMDM2IDMuODYyLTIuMjM3LjA1LS4wM3YtLjA1NmMuMDA2LTYuMDgtMi4zODQtMTEuNzkzLTYuNzI5LTE2LjA4OUMzNC45MzIgMi4zNjEgMjkuMTYgMCAyMy4wMTMgMCIgZmlsbD0iI0YwMUY3QSIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgICA8L3N2Zz4KPC9zdmc+" alt="codecov" /></a></p>
+<p><a href="https://www.tidyverse.org/lifecycle/#stable"><img role="img" aria-label="lifecycle" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJsaWZlY3ljbGU6IHN0YWJsZSI+PHRpdGxlPmxpZmVjeWNsZTogc3RhYmxlPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCIgcng9IjMiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9IjU1IiBoZWlnaHQ9IjIwIiBmaWxsPSIjNTU1Ii8+PHJlY3QgeD0iNTUiIHdpZHRoPSI0MyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzRjMSIvPjxyZWN0IHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIyODUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjQ1MCI+bGlmZWN5Y2xlPC90ZXh0Pjx0ZXh0IHg9IjI4NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNDUwIj5saWZlY3ljbGU8L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9Ijc1NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj5zdGFibGU8L3RleHQ+PHRleHQgeD0iNzU1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzMzAiPnN0YWJsZTwvdGV4dD48L2c+PC9zdmc+" alt="lifecycle" /></a></p>
+<p><a href="https://www.repostatus.org/#active"><img role="img" aria-label="Project Status: Active – The project has reached a stable, usable state and is being actively developed." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTE2IiBoZWlnaHQ9IjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9InJlcG8gc3RhdHVzOiBBY3RpdmUiPjx0aXRsZT5yZXBvIHN0YXR1czogQWN0aXZlPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxMTYiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI3MyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9IjczIiB3aWR0aD0iNDMiIGhlaWdodD0iMjAiIGZpbGw9IiM0YzEiLz48cmVjdCB3aWR0aD0iMTE2IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjM3NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iNjMwIj5yZXBvIHN0YXR1czwvdGV4dD48dGV4dCB4PSIzNzUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjYzMCI+cmVwbyBzdGF0dXM8L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjkzNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj5BY3RpdmU8L3RleHQ+PHRleHQgeD0iOTM1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzMzAiPkFjdGl2ZTwvdGV4dD48L2c+PC9zdmc+" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a></p>
+<!-- badges: end -->
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The <code>Dyn4cast</code> is designed to be a lightweight package.
+The philosophy behind it was the need to provide quick methods for
+estimation, prediction and forecast, updates and visualization of data.
+The package was launched as a function during the COVID-19 lockdown as a
+means of providing live updates and forecast of the Nigeria cases. The
+function was converted to a package in February 2021 with just one
+function, <code>DynamicForecast</code>. From that single function, the
+number of functions have grown to more than 10 because there were need
+to have supporting functions to make the forecasting easy. The package
+prides itself of line line technology by providing various machine
+learning functions with excellent functionality in one line of codes. At
+inception, the package had heavy dependencies on other software
+(e.g. Java), packages and functions, making the installation quite busy.
+Currently, efforts have been made and the number of dependencies have
+become minimal; and the functions are working optimally.</p>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p><code>Dyn4cast</code> is not yet on CRAN, so only the development
+version is available. However, the package is very functional and stable
+and is actively being watched for any issue. To install the development
+version of <code>Dyn4cast</code> from GitHub, use the following
+canonical form:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;JobNmadu/Dyn4cast&quot;</span>)</span></code></pre></div>
+<p>The development version can also be installed through r-universe. Use
+the form:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Dyn4cast&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://jobnmadu.r-universe.dev&quot;</span>, <span class="st">&quot;https://cloud.r-project.org&quot;</span>))</span></code></pre></div>
+<p>Outlined below are the various functions and their capacities as
+provided by the package.</p>
+</div>
+</div>
+<div id="constrainedforecast-constrained-forecast-of-one-sided-integer-response-model" class="section level1">
+<h1>constrainedforecast: Constrained Forecast of One-sided Integer
+Response Model</h1>
+<p>This function constrains the forecast of one-sided integer data to
+ensure that the forecast remain within the limits of the data. It is
+used in conjunction with two other functions: <code>scaled_logit</code>
+and <code>inv_scaled_logit</code>. The basic usage of the function is as
+follows:</p>
+<pre><code>constrainedforecast(model10, lower, upper)
+
+With the following arguments:
+
+`model10`   This is the exponential values from the `inv_scaled_logit` function.
+
+`lower` The lower limit of the forecast
+
+`upper` The upper limit of the forecast</code></pre>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">library</span>(forecast)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>lower <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>upper <span class="ot">&lt;-</span> <span class="dv">37</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>Model <span class="ot">&lt;-</span> <span class="fu">lm</span>(states <span class="sc">~</span> <span class="fu">bs</span>(sequence, <span class="at">knots =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">115</span>)), <span class="at">data =</span> Data)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>FitModel <span class="ot">&lt;-</span> <span class="fu">scaledlogit</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">fitted.values</span>(Model), <span class="at">lower =</span> lower,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  <span class="at">upper =</span> upper</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>ForecastModel <span class="ot">&lt;-</span> <span class="fu">forecast</span>(FitModel, <span class="at">h =</span> <span class="fu">length</span>(<span class="dv">200</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">constrainedforecast</span>(<span class="at">model10 =</span> ForecastModel, lower, upper)</span></code></pre></div>
+<p>The values are the unconstrained and constrained forecast. The
+constrained forecast remains within the limits of the data.</p>
+</div>
+</div>
+<div id="data_transform-standardize-data.frame-for-comparable-machine-learning-prediction-and-visualization" class="section level1">
+<h1>data_transform: Standardize data.frame for comparable Machine
+Learning prediction and visualization</h1>
+<p>This function transforms a dataset to uniform units to facilitate
+estimation, interpretation or visualization. It is simple and straight
+forward to use as outlined below. The basic usage is as follows:</p>
+<pre><code>data_transform(data, method, margin = 2)
+
+With the arguments: 
+
+`data`  A data.frame with numeric data for transformation. All columns in the data are transformed
+
+`method`    The type of transformation. There three options. 1 is for log transformation, 2 is for min-max transformation and 3 is for mean-SD transformation.
+
+`margin`    Option to either transform the data 2 == column-wise or 1 == row-wise. Defaults to column-wise transformation if no option is indicated.</code></pre>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<div id="view-the-data-without-transformation" class="section level3">
+<h3>View the data without transformation</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>data0 <span class="ot">&lt;-</span> Transform <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>X, <span class="at">names_to =</span> <span class="st">&quot;Factors&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Data&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data0, <span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Data, <span class="at">fill =</span> Factors, <span class="at">color =</span> Factors)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Data&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Series&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Factors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+</div>
+<div id="transformation-by-min-max-method" class="section level3">
+<h3>Transformation by min-max method</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data_transform</span>(Transform[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">1</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Transform[, <span class="dv">1</span>], data1)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>X, <span class="at">names_to =</span> <span class="st">&quot;Factors&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Data&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1, <span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Data, <span class="at">fill =</span> Factors, <span class="at">color =</span> Factors)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Data&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Series&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Factors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+</div>
+<div id="log-transformation" class="section level3">
+<h3><code>log</code> transformation</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">data_transform</span>(Transform[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">2</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Transform[, <span class="dv">1</span>], data2)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>X, <span class="at">names_to =</span> <span class="st">&quot;Factors&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Data&quot;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data2, <span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Data, <span class="at">fill =</span> Factors, <span class="at">color =</span> Factors)) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Data&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Series&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Factors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+</div>
+<div id="mean-sd-transformation" class="section level3">
+<h3><code>Mean-SD</code> transformation</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">data_transform</span>(Transform[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">3</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Transform[, <span class="dv">1</span>], data3)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> data3 <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>X, <span class="at">names_to =</span> <span class="st">&quot;Factors&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Data&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data3, <span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Data, <span class="at">fill =</span> Factors, <span class="at">color =</span> Factors)) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Data&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Series&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Factors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p>From the various transformation, the pattern in the dataset became
+more clear. The choice of which method to use will depend on the nature
+of data.</p>
+</div>
+</div>
+</div>
+<div id="dynamicforecast-dynamic-forecast-of-five-models-and-their-ensembles" class="section level1">
+<h1>DynamicForecast: Dynamic Forecast of Five Models and their
+Ensembles</h1>
+<p>The function estimates, predict and forecasts data either for the
+entire trend of the series or subset with various essembles. The main
+attraction of this function is the use of the newly introduced equal
+number of trend (days, months, years) forecast. The basic usage is as
+follows:</p>
+<pre><code>DynamicForecast(Data, date, series, dyrima, Trend, Type,
+                            MaximumDate, x = 0, x100 = 0, BREAKS = 0,
+                            ORIGIN = NULL, origin = &quot;1970-01-01&quot;,Length = 0,
+                            ...)
+
+With the arguments
+
+`date`  A vector containing the dates for which the data is collected. Must be the same length with series. The date must be in &#39;YYYY-MM-DD&#39;. If the data is monthly series, the recognized date format is the last day of the month of the dataset e.g. 2021-02-28. If the data is a yearly series, the recognized date format is the last day of the year of the data set e.g. 2020-12-31. There is no format for Quarterly data for now.
+
+`series`    A vector containing data for estimation and forecasting. Must be the same length with date.
+
+dyrima **ARIMA** object of the `series` obtained from `auto.rima` in
+#&#39; forecast package.
+
+`x100`   vector of optional dataset that is to be added to the model for forecasting. The modeling and forecasting is still done if not provided. Must be the same length with series.
+
+`BREAKS`    A vector of numbers indicating points of breaks for estimation of the spline models.
+
+`MaximumDate`    The date indicating the maximum date (last date) in the data frame, meaning that forecasting starts the next date following it. The date must be a recognized date format. Note that for forecasting, the date origin is set to 1970-01-01.
+
+`Trend` The type of trend. There are three options Day, Month and Year.
+
+`Type`  The type of response variable. There are two options Continuous and Integer. For integer variable, the forecasts are **constrained** between the minimum and maximum value of the response variable.
+
+`Length`    The length for which the forecast would be made. If not given, would default to the length of the dataset i.e. sample size.
+
+`origin`    default date origin which is 1970-01-01 used to position the date of data to properly date the forecasts.
+
+`ORIGIN`    date origin of the dataset and if different from **origin** must be in the format &quot;YYYY-MM-DD&quot;. This is used to position the date of the data to properly date the forecasts.
+
+`...`   Additional arguments that may be passed to the function. If the maximum date is NULL which is is the default, it is set to the last date of the series.</code></pre>
+<div id="example-1" class="section level2">
+<h2>Example</h2>
+<div id="twenty-eight-points-less-than-full-length-of-data" class="section level3">
+<h3>Twenty eight points less than full length of data</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">library</span>(forecast)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>COVID19<span class="sc">$</span>Date <span class="ot">&lt;-</span> zoo<span class="sc">::</span><span class="fu">as.Date</span>(COVID19<span class="sc">$</span>Date, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>LEN <span class="ot">&lt;-</span> <span class="fu">length</span>(COVID19<span class="sc">$</span>Case)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>Dss <span class="ot">&lt;-</span> <span class="fu">seq</span>(COVID19<span class="sc">$</span>Date[<span class="dv">1</span>], <span class="at">by =</span> <span class="st">&quot;day&quot;</span>, <span class="at">length.out =</span> LEN)</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>ORIGIN <span class="ot">&lt;-</span> <span class="st">&quot;2020-02-29&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>lastdayfo21 <span class="ot">&lt;-</span> Dss[<span class="fu">length</span>(Dss)]</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>gggg <span class="ot">&lt;-</span> COVID19[COVID19<span class="sc">$</span>Date <span class="sc">&lt;=</span> lastdayfo21 <span class="sc">-</span> <span class="dv">28</span>, ]</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>BREAKS <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">131</span>, <span class="dv">173</span>, <span class="dv">228</span>, <span class="dv">274</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>dyrima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(gggg<span class="sc">$</span>Case)</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="fu">DynamicForecast</span>(</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  <span class="at">date =</span> gggg<span class="sc">$</span>Date, <span class="at">series =</span> gggg<span class="sc">$</span>Case, <span class="at">dyrima =</span> dyrima,</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  <span class="at">BREAKS =</span> BREAKS, <span class="at">MaximumDate =</span> <span class="st">&quot;2021-02-10&quot;</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  <span class="at">Trend =</span> <span class="st">&quot;Day&quot;</span>, <span class="at">Length =</span> <span class="dv">0</span>, <span class="at">Type =</span> <span class="st">&quot;Integer&quot;</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="fourteen-points-less-than-full-length-of-data" class="section level3">
+<h3>Fourteen points less than full length of data</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>lastdayfo21 <span class="ot">&lt;-</span> Dss[<span class="fu">length</span>(Dss)]</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>ddy <span class="ot">&lt;-</span> COVID19[COVID19<span class="sc">$</span>Date <span class="sc">&lt;=</span> lastdayfo21 <span class="sc">-</span> <span class="dv">14</span>, ]</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>BREAKS <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">131</span>, <span class="dv">173</span>, <span class="dv">228</span>, <span class="dv">274</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>dyrima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ddy<span class="sc">$</span>Case)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">DynamicForecast</span>(</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="at">date =</span> ddy<span class="sc">$</span>Date, <span class="at">series =</span> ddy<span class="sc">$</span>Case,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="at">dyrima =</span> dyrima, <span class="at">BREAKS =</span> BREAKS,</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="at">MaximumDate =</span> <span class="st">&quot;2021-02-10&quot;</span>, <span class="at">Trend =</span> <span class="st">&quot;Day&quot;</span>, <span class="at">Length =</span> <span class="dv">0</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  <span class="at">Type =</span> <span class="st">&quot;Integer&quot;</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>))</span></code></pre></div>
+<p>The constrained and unconstrained forecast are provided. It can be
+observed that the unconstrained forecast goes below zero and goes beyond
+the maximum observed value in the data.</p>
+</div>
+</div>
+</div>
+<div id="formattedcut-convert-continuous-vector-variable-to-formatted-factors" class="section level1">
+<h1>formattedcut: Convert continuous vector variable to formatted
+factors</h1>
+<p>This is a wrapper to improve the output of
+<code>⁠base R⁠ cut function</code>. This function provide a more
+user-friendly output and is provided in a formatted manner. It is a easy
+to implement function. The basic usage is:</p>
+<pre><code>formattedcut(data, breaks, cut = FALSE)
+
+With the arguments:
+
+`data`  A vector of the data to be converted to factors if not cut already or the vector of a cut data
+
+`breaks`    Number of classes to break the data into
+
+`cut`   Logical to indicate if the cut function has already being applied to the data, defaults to FALSE.
+
+if data is not from a data frame, the frequency distribution is required.
+
+as.data.frame(DDK %&gt;%
+group_by(`Lower class`, `Upper class`, `Class interval`) %&gt;%
+tally())
+</code></pre>
+<div id="example-2" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>DD <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">formattedcut</span>(DD, <span class="dv">12</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>DD1 <span class="ot">&lt;-</span> <span class="fu">cut</span>(DD, <span class="dv">12</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">formattedcut</span>(DD1, <span class="dv">12</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="garrett_ranking-garrett-ranking-of-categorical-data" class="section level1">
+<h1>garrett_ranking: Garrett Ranking of Categorical Data</h1>
+<p>The function is the application of fractional ranking in which the
+data points are ordered and given an ordinal number/rank. The ordering
+and ranking provide additional information which may not be available
+from frequency distribution. Ranking enables ease of comparison and
+makes grouping more meaningful. The basic usage is:</p>
+<pre><code>garrett_ranking(data, num_rank, ranking = NULL, m_rank = c(2:15))
+
+With the arguments:
+
+`data`  The data for the Garrett Ranking, must be a data.frame.
+
+`num_rank`  A vector representing the number of ranks applied to the data. If the data is a five-point Likert-type data, then number of ranks is 5.
+
+`ranking`    A vector of list representing the ranks applied to the data. If not available, positional ranks are applied.
+
+`m_rank`    The scope of the ranking methods which is between 2 and 15.</code></pre>
+<div id="examples-1" class="section level2">
+<h2>Examples</h2>
+<div id="ranking-is-supplied" class="section level3">
+<h3>Ranking is supplied</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>garrett_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(garrett_data)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>ranking <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="st">&quot;Serious constraint&quot;</span>, <span class="st">&quot;Constraint&quot;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="st">&quot;Not certain it is a constraint&quot;</span>, <span class="st">&quot;Not a constraint&quot;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="st">&quot;Not a serious constraint&quot;</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="fu">garrett_ranking</span>(garrett_data, <span class="dv">5</span>, ranking)</span></code></pre></div>
+</div>
+<div id="ranking-not-supplied" class="section level3">
+<h3>Ranking not supplied</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">garrett_ranking</span>(garrett_data, <span class="dv">5</span>)</span></code></pre></div>
+</div>
+<div id="rank-subset-of-the-data" class="section level3">
+<h3>Rank subset of the data</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">garrett_ranking</span>(garrett_data, <span class="dv">8</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">garrett_ranking</span>(garrett_data, <span class="dv">4</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="gender-create-gender-variable" class="section level1">
+<h1>gender: Create Gender Variable</h1>
+<p>This function combines <code>Age</code> and <code>Sex</code> to
+create <code>Gender</code>. It also helps to put clarity between the sex
+assigned at birth and the gender of an individual. The basic usage
+is:</p>
+<pre><code>gender(data)
+
+With argument: 
+
+`data`  data frame containing Age and Sex variables</code></pre>
+<div id="example-3" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>    <span class="dv">49</span>, <span class="dv">30</span>, <span class="dv">44</span>, <span class="dv">37</span>, <span class="dv">29</span>, <span class="dv">56</span>, <span class="dv">28</span>, <span class="dv">26</span>, <span class="dv">33</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">19</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>    <span class="dv">32</span>, <span class="dv">22</span>, <span class="dv">19</span>, <span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">36</span>, <span class="dv">56</span>, <span class="dv">34</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  ),</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>  <span class="at">Sex =</span> <span class="fu">c</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>    <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>    <span class="st">&quot;female&quot;</span>, <span class="st">&quot;Prefer not to say&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>    <span class="st">&quot;male&quot;</span>, <span class="st">&quot;Non-binary/third gender&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>    <span class="st">&quot;male&quot;</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a>  )</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a>)</span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="fu">gender</span>(df)</span></code></pre></div>
+</div>
+</div>
+<div id="linearsystems-linear-model-and-various-transformations-for-efficiency" class="section level1">
+<h1>Linearsystems: Linear Model and various Transformations for
+Efficiency</h1>
+<p>This function is unique and versatile as it estimates 14 different
+transformation of the linear regression model. The interesting thing
+about this function is its simplicity and one line code but a workforce
+outputting above 20 different objects. The function incorporates two
+other functions: <code>corplot</code> and <code>estimate_plot</code>.
+The basic usage is:</p>
+<pre><code>Linearsystems(y, x, mod, limit, Test = NA)
+
+With the arguments:
+
+`y` Vector of the dependent variable. This must be numeric.
+
+`x` Data frame of the explanatory variables.
+
+`mod`   The group of linear models to be estimated. It takes value from 0 to 6. 0 = EDA (correlation, summary tables, Visuals means); 1 = Linear systems, 2 = power models, 3 = polynomial models, 4 = root models, 5 = inverse models, 6 = all the 14 models
+
+`limit` Number of variables to be included in the coefficients plots
+
+`Test`  test data to be used to predict y. If not supplied, the fitted y is used hence may be identical with the fitted value. It is important to be cautious if the data is to be divided between train and test subsets in order to train and test the model. If the sample size is not sufficient to have enough data for the test, errors are thrown up.</code></pre>
+<div id="example-4" class="section level2">
+<h2>Example</h2>
+<div id="estimation-without-test-data-14-models" class="section level3">
+<h3>Estimation Without test data, 14 models</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> linearsystems<span class="sc">$</span>MKTcost</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(linearsystems, <span class="sc">-</span>MKTcost)</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">6</span>, <span class="dv">15</span>)</span></code></pre></div>
+</div>
+<div id="estimation-without-test-data-polynomial-models" class="section level3">
+<h3>Estimation Without test data, polynomial models</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> sampling[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> sampling<span class="sc">$</span>qOutput</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>limit <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>Test <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb23-9"><a href="#cb23-9" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">3</span>, <span class="dv">15</span>)</span></code></pre></div>
+</div>
+<div id="estimation-with-test-data-linear-models" class="section level3">
+<h3>Estimation With test data, linear models</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> sampling[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> sampling<span class="sc">$</span>qOutput</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">1</span>, <span class="dv">15</span>)</span></code></pre></div>
+</div>
+<div id="estimation-with-test-data-power-models" class="section level3">
+<h3>Estimation With test data, power models</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> sampling[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> sampling<span class="sc">$</span>qOutput</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">2</span>, <span class="dv">15</span>)</span></code></pre></div>
+</div>
+<div id="estimation-with-test-data-root-models" class="section level3">
+<h3>Estimation With test data, root models</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> sampling[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> sampling<span class="sc">$</span>qOutput</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>ddc <span class="ot">&lt;-</span> <span class="fu">cbind</span>(y, x)</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>sampling <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ddc), <span class="fl">0.8</span> <span class="sc">*</span> <span class="fu">nrow</span>(ddc))</span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>train <span class="ot">&lt;-</span> ddc[sampling, ]</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>Test <span class="ot">&lt;-</span> ddc[<span class="sc">-</span>sampling, ]</span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>y <span class="ot">&lt;-</span> train<span class="sc">$</span>y</span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>x <span class="ot">&lt;-</span> train[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">4</span>, <span class="dv">15</span>, Test)</span></code></pre></div>
+</div>
+<div id="estimation-without-test-data-inverse-models" class="section level3">
+<h3>Estimation Without test data, inverse models</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> linearsystems<span class="sc">$</span>MKTcost</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(linearsystems, <span class="sc">-</span>MKTcost)</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="fu">Linearsystems</span>(y, x, <span class="dv">5</span>, <span class="dv">15</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="mdpi-sequential-computation-of-dynamic-multidimensional-poverty-indices-mdpi" class="section level1">
+<h1>mdpi: Sequential Computation of Dynamic Multidimensional Poverty
+Indices (MDPI)</h1>
+<p>The function, along with <code>plot_mdpi</code>, computes and
+visualise dynamic multidimensional poverty and all associated measures
+of multidimensional poverty.</p>
+<p>The main selling points of this function are:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>computations are made for between <strong>three</strong> and
+<strong>nine</strong> dimensions and can be grouped with factors like
+region, sex, gender, marital status or any suitable one. All the earlier
+algorithms provided for 3 dimensions.</p></li>
+<li><p>In addition to MDPI, <strong>six</strong> additional indices are
+computed.</p></li>
+<li><p>The computations can be done at national or sub-national levels
+or suitable factors</p></li>
+</ol>
+<p>The basic code usage is:</p>
+<pre><code>mdpi(
+  data,
+  dm,
+  Bar = 0.4,
+  id_addn = NULL,
+  Factor = NULL,
+  plots = NULL,
+  id = c(&quot;Health&quot;, &quot;Education&quot;, &quot;Living standard&quot;),
+  id_add = &quot;Social security&quot;,
+  id_add1 = &quot;Employment and Income&quot;)
+  
+With the arguments
+
+`data` ⁠data frame⁠ containing all the variables for the computation. Note that the variables to be used for the computation must be coded ⁠(0,1)⁠.
+
+`dm` list of vectors of indicators making up each dimension to be computed
+
+`Bar` an optional vector of cut-of used to divide the population into those in the poverty category and those that are not. Defaults to 0.4 if not supplied.
+
+`id_addn` an optional vector of additional dimensions to be used for the computation up to a maximum of four.
+
+`Factor` an optional grouping factor for the computation which must be a variable in the data. If not supplied, only the national MDPI will be computed.
+
+`plots` plots of the various measures. For this to be possible, the number of options in the Factor argument must be less than 41. The default is NULL. To produce the plots, any character string will overwrite the default.
+
+`id` a vector of the first three dimensions used in the computation given as _Health, Education and Living standard_. Can be redefined but must match the indicators and cannot be NULL.
+
+`id_add` a vector of the fourth dimension in the computation given as _Social security_. Can be re-defined but never NULL.
+
+`id_add1` a vector of the fifth dimension in the computation given as _Employment and Income_. Can be re-defined but never NULL.</code></pre>
+<div id="examples-2" class="section level2">
+<h2>Examples</h2>
+<div id="with-three-dimensions-and-factor" class="section level3">
+<h3>With three dimensions and factor</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> mdpi1 <span class="co"># data from `MPI` package</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> mdpi2 <span class="co"># from `mpitbR` package</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;Child.Mortality&quot;</span>, <span class="st">&quot;Access.to.health.care&quot;</span>),</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;Years.of.education&quot;</span>, <span class="st">&quot;School.attendance&quot;</span>, <span class="st">&quot;School.lag&quot;</span>),</span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>    <span class="st">&quot;Cooking.Fuel&quot;</span>, <span class="st">&quot;Access.to.clean.source.of.water&quot;</span>,</span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>    <span class="st">&quot;Access.to.an.improve.sanatation&quot;</span>, <span class="st">&quot;Electricity&quot;</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>    <span class="st">&quot;Housing.Materials&quot;</span>, <span class="st">&quot;Asset.ownership&quot;</span></span>
+<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a>  )</span>
+<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a>)</span>
+<span id="cb29-13"><a href="#cb29-13" tabindex="-1"></a><span class="fu">mdpi</span>(data, dm, <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;Region&quot;</span>)</span></code></pre></div>
+</div>
+<div id="with-three-dimensions-no-factor" class="section level3">
+<h3>With three dimensions, no factor</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">mdpi</span>(data, dm, <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+</div>
+<div id="with-four-dimensions-and-factor" class="section level3">
+<h3>With four dimensions and factor</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;Child.Mortality&quot;</span>, <span class="st">&quot;Access.to.health.care&quot;</span>),</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;Years.of.education&quot;</span>, <span class="st">&quot;School.attendance&quot;</span>, <span class="st">&quot;School.lag&quot;</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>    <span class="st">&quot;Cooking.Fuel&quot;</span>, <span class="st">&quot;Electricity&quot;</span>, <span class="st">&quot;Housing.Materials&quot;</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>    <span class="st">&quot;Asset.ownership&quot;</span></span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>  ),</span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(</span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a>    <span class="st">&quot;Access.to.clean.source.of.water&quot;</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a>    <span class="st">&quot;Access.to.an.improve.sanatation&quot;</span></span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a>  )</span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a>)</span>
+<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="fu">mdpi</span>(data, dm,</span>
+<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="fu">c</span>(<span class="st">&quot;Water and Sanitation&quot;</span>),</span>
+<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a>  <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;Region&quot;</span></span>
+<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-five-dimensions-and-factor" class="section level3">
+<h3>With five dimensions and factor</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;d_cm&quot;</span>),</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;d_satt&quot;</span>, <span class="st">&quot;d_educ&quot;</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>, <span class="st">&quot;d_hsg&quot;</span>, <span class="st">&quot;d_ckfl&quot;</span>, <span class="st">&quot;d_asst&quot;</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(<span class="st">&quot;d_sani&quot;</span>, <span class="st">&quot;d_wtr&quot;</span>),</span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>  <span class="at">d5 =</span> <span class="fu">c</span>(<span class="st">&quot;d_nutr&quot;</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>)</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Water and Sanitation&quot;</span>, <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>,</span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>  <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-five-dimensions-no-plot" class="section level3">
+<h3>With five dimensions, no plot</h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Water and Sanitation&quot;</span>, <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>  <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-five-dimensions-no-factor-no-plot" class="section level3">
+<h3>With five dimensions, no factor, no plot</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm, <span class="at">id_add =</span> <span class="st">&quot;Water and Sanitation&quot;</span>, <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>)</span></code></pre></div>
+</div>
+<div id="with-six-dimensions-and-factor" class="section level3">
+<h3>With six dimensions and factor</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;d_cm&quot;</span>),</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;d_satt&quot;</span>, <span class="st">&quot;d_educ&quot;</span>),</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>, <span class="st">&quot;d_ckfl&quot;</span>),</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(<span class="st">&quot;d_sani&quot;</span>, <span class="st">&quot;d_wtr&quot;</span>),</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a>  <span class="at">d5 =</span> <span class="fu">c</span>(<span class="st">&quot;d_nutr&quot;</span>),</span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a>  <span class="at">d6 =</span> <span class="fu">c</span>(<span class="st">&quot;d_hsg&quot;</span>, <span class="st">&quot;d_asst&quot;</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a>)</span>
+<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb35-11"><a href="#cb35-11" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Water and Sanitation&quot;</span>, <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>,</span>
+<span id="cb35-12"><a href="#cb35-12" tabindex="-1"></a>  <span class="at">id_addn =</span> <span class="st">&quot;Housing and Assets&quot;</span>, <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb35-13"><a href="#cb35-13" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-seven-dimensions-and-factor" class="section level3">
+<h3>With seven dimensions and factor</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;d_cm&quot;</span>),</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;d_satt&quot;</span>, <span class="st">&quot;d_educ&quot;</span>),</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>, <span class="st">&quot;d_ckfl&quot;</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(<span class="st">&quot;d_sani&quot;</span>, <span class="st">&quot;d_wtr&quot;</span>),</span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a>  <span class="at">d5 =</span> <span class="fu">c</span>(<span class="st">&quot;d_nutr&quot;</span>),</span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>  <span class="at">d6 =</span> <span class="fu">c</span>(<span class="st">&quot;d_hsg&quot;</span>),</span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a>  <span class="at">d7 =</span> <span class="fu">c</span>(<span class="st">&quot;d_asst&quot;</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a>)</span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Water and Sanitation&quot;</span>,</span>
+<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a>  <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>, <span class="at">id_addn =</span> <span class="fu">c</span>(<span class="st">&quot;Housing&quot;</span>, <span class="st">&quot;Assets&quot;</span>),</span>
+<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a>  <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-eight-dimensions-and-factor" class="section level3">
+<h3>With eight dimensions and factor</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;d_cm&quot;</span>),</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;d_satt&quot;</span>, <span class="st">&quot;d_educ&quot;</span>),</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>, <span class="st">&quot;d_ckfl&quot;</span>),</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(<span class="st">&quot;d_sani&quot;</span>),</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>  <span class="at">d5 =</span> <span class="fu">c</span>(<span class="st">&quot;d_nutr&quot;</span>),</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a>  <span class="at">d6 =</span> <span class="fu">c</span>(<span class="st">&quot;d_hsg&quot;</span>),</span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>  <span class="at">d7 =</span> <span class="fu">c</span>(<span class="st">&quot;d_asst&quot;</span>),</span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a>  <span class="at">d8 =</span> <span class="fu">c</span>(<span class="st">&quot;d_wtr&quot;</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" tabindex="-1"></a>)</span>
+<span id="cb37-11"><a href="#cb37-11" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb37-13"><a href="#cb37-13" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Sanitation&quot;</span>,</span>
+<span id="cb37-14"><a href="#cb37-14" tabindex="-1"></a>  <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>,</span>
+<span id="cb37-15"><a href="#cb37-15" tabindex="-1"></a>  <span class="at">id_addn =</span> <span class="fu">c</span>(<span class="st">&quot;Housing&quot;</span>, <span class="st">&quot;Assets&quot;</span>, <span class="st">&quot;Water&quot;</span>),</span>
+<span id="cb37-16"><a href="#cb37-16" tabindex="-1"></a>  <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb37-17"><a href="#cb37-17" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="with-nine-dimensions-and-factor" class="section level3">
+<h3>With nine dimensions and factor</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="at">d1 =</span> <span class="fu">c</span>(<span class="st">&quot;d_cm&quot;</span>),</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="at">d2 =</span> <span class="fu">c</span>(<span class="st">&quot;d_satt&quot;</span>, <span class="st">&quot;d_educ&quot;</span>),</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>  <span class="at">d3 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>, <span class="st">&quot;d_ckfl&quot;</span>),</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a>  <span class="at">d4 =</span> <span class="fu">c</span>(<span class="st">&quot;d_sani&quot;</span>),</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>  <span class="at">d5 =</span> <span class="fu">c</span>(<span class="st">&quot;d_nutr&quot;</span>),</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>  <span class="at">d6 =</span> <span class="fu">c</span>(<span class="st">&quot;d_hsg&quot;</span>),</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>  <span class="at">d7 =</span> <span class="fu">c</span>(<span class="st">&quot;d_asst&quot;</span>),</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>  <span class="at">d8 =</span> <span class="fu">c</span>(<span class="st">&quot;d_wtr&quot;</span>),</span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>  <span class="at">d9 =</span> <span class="fu">c</span>(<span class="st">&quot;d_elct&quot;</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a>)</span>
+<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a><span class="fu">mdpi</span>(data1, dm,</span>
+<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a>  <span class="at">id_add =</span> <span class="st">&quot;Sanitation&quot;</span>,</span>
+<span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a>  <span class="at">id_add1 =</span> <span class="st">&quot;Nutrition&quot;</span>,</span>
+<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a>  <span class="at">id_addn =</span> <span class="fu">c</span>(<span class="st">&quot;Housing&quot;</span>, <span class="st">&quot;Assets&quot;</span>, <span class="st">&quot;Water&quot;</span>, <span class="st">&quot;Electricity&quot;</span>),</span>
+<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a>  <span class="at">plots =</span> <span class="st">&quot;t&quot;</span>, <span class="at">Factor =</span> <span class="st">&quot;region&quot;</span></span>
+<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="mlmetrics-collection-of-machine-learning-model-metrics-for-easy-reference" class="section level1">
+<h1>MLMetrics: Collection of Machine Learning Model Metrics for Easy
+Reference</h1>
+<p>This function estimates over 40 metrics for assessing the quality of
+Machine Learning Models. The purpose is to provide a wrapper which
+brings all the metrics on the table and makes model selection easy.</p>
+<pre><code>MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)
+
+with the arguments:
+
+`Observed`  The Observed data in a data frame format
+
+`yvalue`    The Response variable of the estimated Model
+
+`modeli`    The Estimated Model (Model = a + bx)
+
+`K` The number of variables in the estimated Model to consider
+
+`Name`  The Name of the Models that need to be specified. They are *ARIMA*,
+*Values* if the model computes the fitted value without estimation like
+Essembles, *SMOOTH* (smooth.spline), *Logit*, Ensembles based on weight 
+- *EssemWet*, *QUADRATIC* polynomial, *SPLINE* polynomial.
+
+`Form`  Form of the Model Estimated (LM, ALM, GLM, N-LM, ARDL)
+
+`kutuf` Cutoff for the Estimated values (defaults to 0.5 if not specified)
+
+`TTy`   Type of response variable (Numeric or Response - like binary)
+</code></pre>
+<div id="example-5" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>Model <span class="ot">&lt;-</span> <span class="fu">lm</span>(states <span class="sc">~</span> <span class="fu">bs</span>(sequence, <span class="at">knots =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">115</span>)), <span class="at">data =</span> Data)</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">MLMetrics</span>(</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>  <span class="at">Observed =</span> Data, <span class="at">yvalue =</span> Data<span class="sc">$</span>states, <span class="at">modeli =</span> Model, <span class="at">K =</span> <span class="dv">2</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>  <span class="at">Name =</span> <span class="st">&quot;Linear&quot;</span>, <span class="at">Form =</span> <span class="st">&quot;LM&quot;</span>, <span class="at">kutuf =</span> <span class="dv">0</span>, <span class="at">TTy =</span> <span class="st">&quot;Number&quot;</span></span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>))</span></code></pre></div>
+</div>
+</div>
+<div id="model_factors-latent-factors-recovery-from-variables-loadings" class="section level1">
+<h1>model_factors: Latent Factors Recovery from Variables Loadings</h1>
+<p>This function retrieves the latent factors as <code>data.frame</code>
+and their variable <code>loadings</code> which can be used as R objects
+to perform other analysis. The function is set to retrieve up to
+<strong>nine</strong> factors.</p>
+<pre><code>model_factors(data, DATA)
+
+With the arguments:
+
+`data`  An ⁠R object⁠ obtained from exploratory factor analysis (EFA) using the fa function in psych package.
+
+`DATA`  A data.frame, the raw data used to carry out the parallel analysis to obtain data object.</code></pre>
+<div id="example-6" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>ddd <span class="ot">&lt;-</span> Quicksummary</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>GGn <span class="ot">&lt;-</span> <span class="fu">names</span>(ddd)</span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>GG <span class="ot">&lt;-</span> <span class="fu">ncol</span>(ddd)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a>GGx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="st">&quot;x0&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="fu">paste</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">10</span><span class="sc">:</span><span class="fu">ncol</span>(ddd), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="fu">names</span>(ddd) <span class="ot">&lt;-</span> GGx</span>
+<span id="cb42-8"><a href="#cb42-8" tabindex="-1"></a>lll <span class="ot">&lt;-</span> <span class="fu">fa.parallel</span>(ddd, <span class="at">fm =</span> <span class="st">&quot;minres&quot;</span>, <span class="at">fa =</span> <span class="st">&quot;fa&quot;</span>)</span>
+<span id="cb42-9"><a href="#cb42-9" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">fa</span>(ddd, <span class="at">nfactors =</span> lll[[<span class="st">&quot;nfact&quot;</span>]], <span class="at">rotate =</span> <span class="st">&quot;varimax&quot;</span>, <span class="at">fm =</span> <span class="st">&quot;minres&quot;</span>)</span>
+<span id="cb42-10"><a href="#cb42-10" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" tabindex="-1"></a><span class="fu">model_factors</span>(<span class="at">data =</span> dat, <span class="at">DATA =</span> ddd)</span></code></pre></div>
+</div>
+</div>
+<div id="percent-attach-per-cent-sign-to-data" class="section level1">
+<h1>Percent: Attach Per Cent Sign to Data</h1>
+<p>This function is a wrapper for easy affixing of the per cent sign (%)
+to a value or a vector or a data frame of values. The basic usage
+is:</p>
+<pre><code>Percent(Data, Type, format = &quot;f&quot;, ...)
+
+With the arguments:
+
+`Data`  The Data which the percent sign is to be affixed. The data must be in the raw form because for frame argument, the per cent value of each cell is calculated before the sign is affixed.
+
+`Type`  The type of data. The default arguments are Value for single numeric data of Frame for a numeric vector or data frame data. In the case of vector or data frame, the per cent value of each cell is calculated before the per cent sign is affixed.
+
+`format`    The format of the output which is internal and the default is a character factor
+
+`...`   Additional arguments that may be passed to the function
+</code></pre>
+<div id="example-7" class="section level2">
+<h2>Example</h2>
+<div id="a-vector-data" class="section level3">
+<h3>A vector data</h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>Data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">0.5</span>, <span class="fl">0.103</span>, <span class="dv">7</span>, <span class="fl">0.1501</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="fu">Percent</span>(<span class="at">Data =</span> Data, <span class="at">Type =</span> <span class="st">&quot;Frame&quot;</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>Data <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a><span class="fu">Percent</span>(<span class="at">Data =</span> Data, <span class="at">Type =</span> <span class="st">&quot;Value&quot;</span>)</span></code></pre></div>
+</div>
+<div id="data-frame" class="section level3">
+<h3>Data frame</h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    <span class="at">A =</span> <span class="dv">2320</span>, <span class="dv">5760</span>, <span class="dv">4800</span>, <span class="dv">2600</span>, <span class="dv">5700</span>, <span class="dv">7800</span>, <span class="dv">3000</span>, <span class="dv">6300</span>, <span class="dv">2400</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>    <span class="dv">10000</span>, <span class="dv">2220</span>, <span class="dv">3740</span></span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>  ),</span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1620</span>, <span class="dv">3600</span>, <span class="dv">1200</span>, <span class="dv">1200</span>, <span class="dv">1200</span>, <span class="dv">4250</span>, <span class="dv">14000</span>, <span class="dv">10000</span>, <span class="dv">1850</span>, <span class="dv">1850</span>),</span>
+<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">3000</span>, <span class="dv">7800</span>, <span class="dv">5400</span>, <span class="dv">3900</span>, <span class="dv">7800</span>, <span class="dv">1950</span>, <span class="dv">2400</span>, <span class="dv">2400</span>, <span class="dv">7000</span>, <span class="dv">1850</span>, <span class="dv">1850</span>),</span>
+<span id="cb45-8"><a href="#cb45-8" tabindex="-1"></a>  <span class="at">D =</span> <span class="fu">c</span>(<span class="dv">2900</span>, <span class="dv">5760</span>, <span class="dv">3750</span>, <span class="dv">5400</span>, <span class="dv">4095</span>, <span class="dv">3150</span>, <span class="dv">2080</span>, <span class="dv">7800</span>, <span class="dv">1920</span>, <span class="dv">1200</span>, <span class="dv">5000</span>, <span class="dv">1950</span>),</span>
+<span id="cb45-9"><a href="#cb45-9" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="dv">2900</span>, <span class="dv">2030</span>, <span class="dv">0</span>, <span class="dv">5400</span>, <span class="dv">5760</span>, <span class="dv">1800</span>, <span class="dv">2000</span>, <span class="dv">1950</span>, <span class="dv">1850</span>, <span class="dv">3600</span>, <span class="dv">5200</span>, <span class="dv">5760</span>),</span>
+<span id="cb45-10"><a href="#cb45-10" tabindex="-1"></a>  <span class="at">F =</span> <span class="fu">c</span>(<span class="dv">2800</span>, <span class="dv">5760</span>, <span class="dv">1820</span>, <span class="dv">4340</span>, <span class="dv">7500</span>, <span class="dv">2400</span>, <span class="dv">2300</span>, <span class="dv">1680</span>, <span class="dv">1850</span>, <span class="dv">0</span>, <span class="dv">2800</span>, <span class="dv">8000</span>),</span>
+<span id="cb45-11"><a href="#cb45-11" tabindex="-1"></a>  <span class="at">G =</span> <span class="fu">c</span>(<span class="dv">5760</span>, <span class="dv">4600</span>, <span class="dv">13000</span>, <span class="dv">7800</span>, <span class="dv">6270</span>, <span class="dv">1200</span>, <span class="dv">1440</span>, <span class="dv">8000</span>, <span class="dv">1200</span>, <span class="dv">2025</span>, <span class="dv">4800</span>, <span class="dv">2600</span>),</span>
+<span id="cb45-12"><a href="#cb45-12" tabindex="-1"></a>  <span class="at">H =</span> <span class="fu">c</span>(<span class="dv">2100</span>, <span class="dv">5760</span>, <span class="dv">8250</span>, <span class="dv">3900</span>, <span class="dv">1800</span>, <span class="dv">1200</span>, <span class="dv">4800</span>, <span class="dv">1800</span>, <span class="dv">7800</span>, <span class="dv">2035</span>, <span class="dv">8000</span>, <span class="dv">3000</span>)</span>
+<span id="cb45-13"><a href="#cb45-13" tabindex="-1"></a>)</span>
+<span id="cb45-14"><a href="#cb45-14" tabindex="-1"></a><span class="fu">Percent</span>(<span class="at">Data =</span> df, <span class="at">Type =</span> <span class="st">&quot;Frame&quot;</span>) <span class="co"># Value, Frame</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="quicksummary-quick-formatted-summary-of-machine-learning-data" class="section level1">
+<h1>quicksummary: Quick Formatted Summary of Machine Learning Data</h1>
+<p>This function summary of dataset and the output is a formatted table.
+This is very handy and user-friendly summaries. The basic usage is:</p>
+<pre><code>quicksummary(x, Type, Cut, Up, Down, ci = 0.95)
+
+With the arguments:
+
+`x` The data to be summarised. Only numeric data is allowed.
+
+`Type`  The type of data to be summarised. There are two options here 1 or 2, 1 = Continuous and 2 = Likert-type
+
+`ci`    Confidence interval which is defaults to 0.95.</code></pre>
+<div id="examples-3" class="section level2">
+<h2>Examples</h2>
+<div id="likert-type-data" class="section level3">
+<h3>Likert-type data</h3>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">quicksummary</span>(<span class="at">x =</span> Quicksummary, <span class="at">Type =</span> <span class="dv">2</span>)</span></code></pre></div>
+</div>
+<div id="continuous-data" class="section level3">
+<h3>Continuous data</h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">select</span>(linearsystems, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a><span class="fu">quicksummary</span>(<span class="at">x =</span> x, <span class="at">Type =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="treatment_model-enhanced-estimation-of-treatment-effects-of-binary-data-from-randomized-experiments" class="section level1">
+<h1>treatment_model: Enhanced Estimation of Treatment Effects of Binary
+Data from Randomized Experiments</h1>
+<p>Against the practice of either determining <em>treatment effects on
+the treated</em> or <em>treatment effects on the untreated</em> alone,
+this function is unique because five different average treatment effects
+are estimated simultaneously in one line code arguments. The basic usage
+is:</p>
+<pre><code>treatment_model(Treatment, x_data)
+
+With the arguments:
+
+`Treatment` Vector of binary data (0 = control population, 1 = treated population) LHS for the treatment effects estimation
+
+`x_data`    Data frame of explanatory variables for the RHS of the estimation</code></pre>
+<div id="example-8" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>Treatment <span class="ot">&lt;-</span> treatments<span class="sc">$</span>treatment</span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> treatments[, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="fu">treatment_model</span>(Treatment, data)</span></code></pre></div>
+</div>
+</div>
+<div id="index_construction-index-construction-for-estimation-of-exposure-or-sensitivity" class="section level1">
+<h1>index_construction: Index Construction for estimation of Exposure or
+Sensitivity</h1>
+<p>This function is for conversion of indicators exposure and
+sensitivity into a vector of index through normalization and weighting.
+The resulting index from each of the component is then combined via an
+appropriate model into vulnerability index. The basic usage is:</p>
+<pre><code>index_construction(data)
+
+With the arguments:
+
+`data` Data frame of indicators of Exposure or Sensitivity. The data frame must be numeric.
+
+</code></pre>
+<div id="example-9" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a>garrett_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(garrett_data)</span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="fu">index_construction</span>(garrett_data)</span></code></pre></div>
+</div>
+</div>
+<div id="relative_likert-convert-likert-data-to-relative-scores-and-knowledge-based-adaptive-capacity" class="section level1">
+<h1>relative_likert: Convert Likert Data to Relative Scores and
+knowledge-based Adaptive Capacity</h1>
+<p>This function is for knowledge-based <strong>Adaptive
+Capacity</strong>. The indices from the various knowledge areas like
+Awareness, availability, affordability, accessibility, benefits,
+adequacy, usage, effectiveness, etc can be obtained individually and
+converted to adaptive capacity. The basic usage is:</p>
+<pre><code>relative_likert(data, Likert = NULL, Ranks = NULL, Option = &quot;text&quot;)
+
+With the arguments:
+
+`data` Data frame of likert data either in text or scores.
+
+`Likert` Vector of likert-type factors in the data frame which must be given if the data frame is in text.
+
+`Ranks` Optional vector of number of levels which is required if the data frame is in scores rather than text. There are only four choices i.e. 3, 5, 7, 9.
+
+`Option` Optional vector indicating whether the data frame is in text or scores format. Defaults to text if not given for text data frame.</code></pre>
+<div id="example-10" class="section level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>garrett_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(garrett_data)</span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a><span class="fu">relative_likert</span>(garrett_data, <span class="at">Ranks =</span> <span class="dv">3</span>, <span class="at">Option =</span> <span class="st">&quot;sccore&quot;</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a><span class="fu">relative_likert</span>(garrett_data, <span class="at">Ranks =</span> <span class="dv">5</span>, <span class="at">Option =</span> <span class="st">&quot;sccore&quot;</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a><span class="fu">relative_likert</span>(garrett_data, <span class="at">Ranks =</span> <span class="dv">7</span>, <span class="at">Option =</span> <span class="st">&quot;sccore&quot;</span>)</span>
+<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a><span class="fu">relative_likert</span>(garrett_data, <span class="at">Ranks =</span> <span class="dv">9</span>, <span class="at">Option =</span> <span class="st">&quot;sccore&quot;</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" tabindex="-1"></a><span class="fu">relative_likert</span>(Quicksummary, <span class="at">Ranks =</span> <span class="dv">5</span>, <span class="at">Option =</span> <span class="st">&quot;sccore&quot;</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb54-11"><a href="#cb54-11" tabindex="-1"></a>data_l <span class="ot">&lt;-</span> garrett_data <span class="sc">%&gt;%</span></span>
+<span id="cb54-12"><a href="#cb54-12" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb54-13"><a href="#cb54-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">case_when</span>(value <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;Serious constraint&quot;</span>,</span>
+<span id="cb54-14"><a href="#cb54-14" tabindex="-1"></a>    value <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;Constraint&quot;</span>,</span>
+<span id="cb54-15"><a href="#cb54-15" tabindex="-1"></a>    value <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;Not certain it is a constraint&quot;</span>,</span>
+<span id="cb54-16"><a href="#cb54-16" tabindex="-1"></a>    value <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;Not a constraint&quot;</span>,</span>
+<span id="cb54-17"><a href="#cb54-17" tabindex="-1"></a>    value <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Not a serious constraint&quot;</span>,</span>
+<span id="cb54-18"><a href="#cb54-18" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">&quot;None&quot;</span></span>
+<span id="cb54-19"><a href="#cb54-19" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb54-20"><a href="#cb54-20" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb54-21"><a href="#cb54-21" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb54-22"><a href="#cb54-22" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> name, <span class="at">values_from =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb54-23"><a href="#cb54-23" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row) <span class="sc">%&gt;%</span></span>
+<span id="cb54-24"><a href="#cb54-24" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span>
+<span id="cb54-25"><a href="#cb54-25" tabindex="-1"></a></span>
+<span id="cb54-26"><a href="#cb54-26" tabindex="-1"></a>ranking <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb54-27"><a href="#cb54-27" tabindex="-1"></a>  <span class="st">&quot;Serious constraint&quot;</span>, <span class="st">&quot;Constraint&quot;</span>,</span>
+<span id="cb54-28"><a href="#cb54-28" tabindex="-1"></a>  <span class="st">&quot;Not certain it is a constraint&quot;</span>, <span class="st">&quot;Not a constraint&quot;</span>,</span>
+<span id="cb54-29"><a href="#cb54-29" tabindex="-1"></a>  <span class="st">&quot;Not a serious constraint&quot;</span></span>
+<span id="cb54-30"><a href="#cb54-30" tabindex="-1"></a>)</span>
+<span id="cb54-31"><a href="#cb54-31" tabindex="-1"></a></span>
+<span id="cb54-32"><a href="#cb54-32" tabindex="-1"></a><span class="fu">relative_likert</span>(data_l, <span class="at">Likert =</span> ranking)</span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
