@@ -58,7 +58,7 @@
 #' @importFrom stats binomial
 #' @importFrom stats glm
 #' @importFrom ggplot2 geom_histogram
-#' @importFrom dplyr case_match
+#' @importFrom dplyr recode_values
 #' @importFrom ggplot2 after_stat
 #' @importFrom dplyr count
 #' @importFrom ggplot2 geom_hline
@@ -103,7 +103,7 @@ treatment_model <- function(Treatment, x_data) {
   dat1 <- data.frame(cbind(data, propensity_score, w_ate, w_att,
                            w_atc, w_atm, w_ato))
 
-  dat1$Status <- dplyr::case_match(dat1$Treatment,
+  dat1$Status <- dplyr::recode_values(dat1$Treatment,
                                    1 ~ "Treated-actual",
                                    0 ~ "Control-actual")
 

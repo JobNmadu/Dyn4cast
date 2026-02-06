@@ -27,6 +27,7 @@
 #' @export model_factors
 #'
 #' @importFrom utils globalVariables
+#' @importFrom dplyr case_when
 #'
 #' @examples
 #' library(psych)
@@ -55,24 +56,27 @@ model_factors <- function(data, DATA) {
   llp[is.na(llp)] <- 0
   llpp <- llp
 
-  llpp <- rownames_to_column(llpp, "Factor")
+  llpp <- tibble::rownames_to_column(llpp, "Factor")
 
-  Factors <- llpp %>%
-    tidyr::pivot_longer(cols = -1) %>%
+  Factors <- llpp |>
+    tidyr::pivot_longer(cols = -1) |>
     dplyr::mutate(value = dplyr::case_when(abs(value) > 0.39 ~ value,
-                             .default = 0)) %>%
-    tidyr::pivot_wider(names_from = name, values_from = value) %>%
+                             .default = 0)) |>
+    tidyr::pivot_wider(names_from = name, values_from = value) |>
     tidyr::unnest(cols = -1)
   Factors <- Factors[order(Factors$Factor),]
 
-  llp <- rownames_to_column(llp, "Factor")
+  llp <- tibble::rownames_to_column(llp, "Factor")
   llp <- llp[order(llp$Factor),]
 
   #data frame computed with factor loadings
+
   Load <- Factors[, -1]
-  TR <- 0
-  for(i in 1 : NCOL(Load)){
-    dplyr::mutate(TR[i] <- dplyr::case_when(Load[, i] > 0 ~ Load[, i]))
+
+  TR <- vector("list", length = NCOL(Load))
+
+  for (i in 1 : NCOL(Load)) {
+    TR[[i]] <- dplyr::case_when(Load[[i]] > 0 ~ Load[[i]])
   }
   names(TR) <- names(Load)
 
