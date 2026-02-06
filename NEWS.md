@@ -1,3 +1,8 @@
+# Dyn4cast 11.11.28-kappa 2026-02-06
+
+`case_match` replaced with `recode_values` in `treatment_model` and vector list used with `case_when` in `model_factors` following the release of `dplyr` 1.2.0.
+
+
 # Dyn4cast 11.11.28-beta 2026-01-15
 
 `forecst` now demoted; it is no more **imported namespace** but is suggested as **forecast** is now _generics_. The `DynamicFocast` is now more efficient as a result of this change.
