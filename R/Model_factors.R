@@ -70,9 +70,9 @@ model_factors <- function(data, DATA) {
 
   #data frame computed with factor loadings
   Load <- Factors[, -1]
-  TR <- 0
+  TR <- vector("list", length = NCOL(Load))
   for(i in 1 : NCOL(Load)){
-    dplyr::mutate(TR[i] <- dplyr::case_when(Load[, i] > 0 ~ Load[, i]))
+    TR[[i]] <- dplyr::case_when(Load[[i]] > 0 ~ Load[[i]])
   }
   names(TR) <- names(Load)
 
