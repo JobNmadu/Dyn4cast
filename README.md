@@ -159,7 +159,7 @@ you run `citation("Dyn4cast")` in your `R` console.
         title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
         author = {Job Nmadu},
         year = {2026},
-        note = {R package version 11.11.26, commit 15ef758e0f4d0300a9aa56814f4da2496ab09bb3},
+        note = {R package version 11.11.26},
         url = {https://github.com/JobNmadu/Dyn4cast},
       }
 
