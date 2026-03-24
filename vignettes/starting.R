@@ -18,7 +18,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ## ----github, echo = TRUE, eval = FALSE----------------------------------------
 # 
 # # install.packages("devtools")
-# devtools::install_github("JobNmadu/Dyn4cast")
+# pak::pak("JobNmadu/Dyn4cast")
 
 ## ----universe, echo = TRUE, eval = FALSE--------------------------------------
 # 
@@ -27,7 +27,8 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ## ----install-suggested, echo = TRUE, eval = FALSE-----------------------------
 # install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
 #                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
-#                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext"))
+#                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext",
+#                    "lubridate", "forecast", "MASS", "mlogit", "nnet"))
 
 ## ----citation, comment = "", warning = FALSE----------------------------------
 

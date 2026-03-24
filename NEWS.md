@@ -1,3 +1,8 @@
+# Dyn4cast 11.11.28-delta 2026-03-23
+
+`odds_summary` added. `select` tightened in testthat. devtools:install_github changed to pak::pak.
+
+
 # Dyn4cast 11.11.28-kappa 2026-02-06
 
 `case_match` replaced with `recode_values` in `treatment_model` and vector list used with `case_when` in `model_factors` following the release of `dplyr` 1.2.0.

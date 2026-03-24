@@ -48,7 +48,7 @@ The development version is the only one available now and can be installed from 
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("JobNmadu/Dyn4cast")
+pak::pak("JobNmadu/Dyn4cast")
 ```
 The development version can also be installed through [r-universe](https://jobnmadu.r-universe.dev/Dyn4cast). Use the form:
 
@@ -118,7 +118,7 @@ Although not dependencies, the package derives functionally from a number of oth
 install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
                    "caret", "kableExtra", "knitr", "spelling", "psych",
                    "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
-                   "forecast"))
+                   "forecast", "MASS", "mlogit", "nnet"))
 ```
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  

@@ -59,7 +59,7 @@ installed from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("JobNmadu/Dyn4cast")
+pak::pak("JobNmadu/Dyn4cast")
 ```
 
 The development version can also be installed through

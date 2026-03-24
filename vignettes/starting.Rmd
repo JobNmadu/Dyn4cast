@@ -57,7 +57,7 @@ To install the development version of `Dyn4cast` from GitHub, use the following 
 ```{r github, echo = TRUE, eval = FALSE}
 
 # install.packages("devtools")
-devtools::install_github("JobNmadu/Dyn4cast")
+pak::pak("JobNmadu/Dyn4cast")
 ```
 
 The development version can also be installed through r-universe. Use the form:
