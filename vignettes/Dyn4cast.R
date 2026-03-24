@@ -396,3 +396,52 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 # 
 #  relative_likert(data_l, Likert = ranking)
 
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# library(Dyn4cast)
+#  library(tidyverse)
+# 
+#  counts <- c(18,17,15,20,10,20,25,13,12)
+#  outcome <- gl(3,1,9)
+#  treatment <- gl(3,3)
+#  ddc <- data.frame(treatment, outcome, counts) # showing data
+#  glm.D93 <- glm(counts ~ ., data = ddc, family = poisson())
+#  odds_summary(glm.D93)
+# 
+#  library(MASS)
+#  anorexia
+# 
+#  anorex.1 <- glm(Postwt ~ Prewt + Treat + offset(Prewt),
+#                  family = gaussian, data = anorexia)
+#  odds_summary(anorex.1)
+# 
+#  clotting <- data.frame(
+#    u = c(5,10,15,20,30,40,60,80,100),
+#    lot1 = c(118,58,42,35,27,25,21,19,18),
+#    lot2 = c(69,35,26,21,18,16,13,12,12))
+#  lot1 <- glm(lot1 ~ log(u), data = clotting, family = Gamma)
+#  odds_summary(lot1)
+# 
+#  lot2 <- glm(lot2 ~ log(u), data = clotting, family = Gamma)
+#  odds_summary(lot2)
+# 
+#  fS <- glm(lot2 ~ log(u) + log(u^2), data = clotting, family = Gamma)
+#  #odds_summary(fS) #error because there is no convergence
+# 
+#  x <- rnorm(100)
+#  y <- rpois(100, exp(1+x))
+# 
+#  lm2 <- glm(y ~ x, family = quasi(variance = "mu", link = "log"))
+#  odds_summary(lm2)
+# 
+#  lm3 <- glm(y ~ x, family = poisson)
+#  odds_summary(lm3)
+# 
+#  lm4 <- glm(y ~ x, family = quasi(variance = "mu^2", link = "log"))
+#  #odds_summary(lm4) #error
+# 
+#  y <- rbinom(100, 1, plogis(x))
+# 
+#  lm5 <- glm(y ~ x, family = quasi(variance = "mu(1-mu)", link = "logit"),
+#             start = c(0,1))
+#  odds_summary(lm5)
+

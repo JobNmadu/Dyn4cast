@@ -21,7 +21,7 @@ test_that("relative_likert works", {
     group_by(name) %>%
     mutate(row = row_number()) %>%
     pivot_wider(names_from = name, values_from = value) %>%
-    select(-row) %>%
+    dplyr::select(-row) %>%
     unnest(cols = everything())
 
   ranking <- c("Serious constraint", "Constraint",
@@ -43,7 +43,7 @@ test_that("relative_likert works", {
     group_by(name) %>%
     mutate(row = row_number()) %>%
     pivot_wider(names_from = name, values_from = value) %>%
-    select(-row) %>%
+    dplyr::select(-row) %>%
     unnest(cols = everything())
 
   ranking1 <- c("Very serious constraint", "Serious constraint", "Constraint",
@@ -67,7 +67,7 @@ test_that("relative_likert works", {
     group_by(name) %>%
     mutate(row = row_number()) %>%
     pivot_wider(names_from = name, values_from = value) %>%
-    select(-row) %>%
+    dplyr::select(-row) %>%
     unnest(cols = everything())
 
   ranking2 <- c("Extreme constraint","Very serious constraint",
@@ -87,7 +87,7 @@ test_that("relative_likert works", {
     group_by(name) %>%
     mutate(row = row_number()) %>%
     pivot_wider(names_from = name, values_from = value) %>%
-    select(-row) %>%
+    dplyr::select(-row) %>%
     unnest(cols = everything())
 
   ranking3 <- c("Serious constraint", "Not certain it is a constraint",

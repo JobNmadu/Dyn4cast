@@ -98,6 +98,8 @@ At present, the package exports the following functions:
 
 8. `relative_likert` converts likert scores to vector of index for adaptive capacity
 
+8. `odds_summary` computes odds ratios, percentage changes, and confidence intervals from fitted binary and categorical regression models
+
 ## Citation
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.

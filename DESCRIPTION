@@ -52,7 +52,10 @@ Suggests:
     data.table,
     ggtext,
     lubridate,
-    forecast
+    forecast,
+    MASS,
+    mlogit,
+    nnet
 Config/testthat/edition: 3
 URL: https://github.com/JobNmadu/Dyn4cast, https://jobnmadu.github.io/Dyn4cast/, https://jobnmadu.r-universe.dev/Dyn4cast
 BugReports: https://github.com/JobNmadu/Dyn4cast/issues

@@ -138,30 +138,30 @@ At present, the package exports the following functions:
 19. `relative_likert` converts likert scores to vector of index for
     adaptive capacity
 
+20. `odds_summary` computes odds ratios, percentage changes, and
+    confidence intervals from fitted binary and categorical regression
+    models
+
 ## Citation
 
 The citation information for this package can be obtained easily when
 you run `citation("Dyn4cast")` in your `R` console.
 
-``` r
+    To cite package 'Dyn4cast' in publications use:
 
-citation("Dyn4cast")
-To cite package 'Dyn4cast' in publications use:
+      Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
+      Environment_. R package version 11.11.26, 
+      <https://github.com/JobNmadu/Dyn4cast>.
 
-  Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.26, 
-  <https://github.com/JobNmadu/Dyn4cast>.
+    A BibTeX entry for LaTeX users is
 
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
-    author = {Job Nmadu},
-    year = {2026},
-    note = {R package version 11.11.26},
-    url = {https://github.com/JobNmadu/Dyn4cast},
-  }
-```
+      @Manual{,
+        title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
+        author = {Job Nmadu},
+        year = {2026},
+        note = {R package version 11.11.26, commit 15ef758e0f4d0300a9aa56814f4da2496ab09bb3},
+        url = {https://github.com/JobNmadu/Dyn4cast},
+      }
 
 ## Suggested packages
 
@@ -169,13 +169,6 @@ Although not dependencies, the package derives functionally from a
 number of other packages and so may require you to install them if not
 already installed on your machine. Some of the packages are listed
 below:
-
-``` r
-install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
-                   "caret", "kableExtra", "knitr", "spelling", "psych",
-                   "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
-                   "forecast"))
-```
 
 Note that a *warning* (not *error*) is thrown up while estimating the
 RMSE for the `Ensembled with equal weight` model. It was thoroughly
