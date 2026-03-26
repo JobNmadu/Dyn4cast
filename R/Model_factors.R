@@ -87,7 +87,7 @@ model_factors <- function(data, DATA) {
 
   return(load <- list(`Loadings data` = llp, `Factors extracted` = Factors,
                `factored data` =  z_bRC, `Factors list` = TR,
-               `Resilence capacity` = Rc))
+               `Resilience capacity` = Rc))
 }
 
 printLoadings <- function(x, digits = 3, cutoff = 0.01, sort = TRUE, ...) {
