@@ -44,10 +44,12 @@
 #'  defaults to TRUE.
 #'
 #' @returns A list with the following components:
-#' \item{\code{lik_num}}{`dataframe` of likert scores}
-#' \item{\code{lik_rate}}{`dataframe` of relative likert scores}
-#' \item{\code{lik_sum}}{`dataframe` summary of relative scores based on factors.}
-#' \item{\code{lik_col}}{A vector of indices for **Adaptive Capacity**.}
+#' \item{\code{Likert-scores}}{`dataframe` of likert scores}
+#' \item{\code{Relative-likert-scores}}{`dataframe` of relative likert scores}
+#' \item{\code{Summary-of-relative-scores}}{`dataframe` summary of relative
+#'  scores based on factors.}
+#' \item{\code{Vector-of-indices}}{A vector of indices for
+#'  **Adaptive Capacity**.}
 #'
 #' @export relative_likert
 #'
@@ -274,6 +276,8 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
     cat("", "\n")
   }
 
-  return(data <- list(lik_num = dddd, lik_rate = rrrr, lik_sum = ssss,
-               lik_col = rowSums(rrrr)/num_item))
+  return(list("Likert-scores" = dddd,
+              "Relative-likert-scores" = rrrr,
+              "Summary-of-relative-scores" = ssss,
+              "Vector-of-indices" = rowSums(rrrr)/num_item))
 }

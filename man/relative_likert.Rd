@@ -30,10 +30,12 @@ defaults to TRUE.}
 }
 \value{
 A list with the following components:
-\item{\code{lik_num}}{\code{dataframe} of likert scores}
-\item{\code{lik_rate}}{\code{dataframe} of relative likert scores}
-\item{\code{lik_sum}}{\code{dataframe} summary of relative scores based on factors.}
-\item{\code{lik_col}}{A vector of indices for \strong{Adaptive Capacity}.}
+\item{\code{Likert-scores}}{\code{dataframe} of likert scores}
+\item{\code{Relative-likert-scores}}{\code{dataframe} of relative likert scores}
+\item{\code{Summary-of-relative-scores}}{\code{dataframe} summary of relative
+scores based on factors.}
+\item{\code{Vector-of-indices}}{A vector of indices for
+\strong{Adaptive Capacity}.}
 }
 \description{
 Adaptive capacity refers to the ability of systems—biological, social, or
