@@ -34,7 +34,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      #FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
