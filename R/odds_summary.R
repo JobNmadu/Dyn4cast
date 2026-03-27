@@ -122,7 +122,7 @@ odds_summary <- function(model) {
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
 
     odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
-  } else {
+  } else if (call == "multinom") {
     coe <- data.frame(t(coef(summary(model)))) %>%
       tibble::rownames_to_column(., var = "Variables")
 
@@ -160,6 +160,9 @@ odds_summary <- function(model) {
       tibble::rownames_to_column(., var = "Variables")
     names(cci) <- gsub("X2.5...", "Lower ", names(cci))
     names(cci) <- gsub(c("X97.5..."), "Upper ", names(cci))
+  } else {
+    stop("Model type not supported. Suggest the model you are analysing for
+         inclusion.")
   }
 
 # Combine everything into a data frame
