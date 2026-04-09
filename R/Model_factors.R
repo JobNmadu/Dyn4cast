@@ -26,8 +26,6 @@
 #' @name model_factors
 #' @export model_factors
 #'
-#' @aliases Model_factors
-#'
 #' @importFrom utils globalVariables
 #' @importFrom dplyr case_when
 #'

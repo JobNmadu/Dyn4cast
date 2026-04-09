@@ -2,13 +2,20 @@
 % Please edit documentation in R/dep_Dyn.R
 \name{Dyn4cast-deprecated}
 \alias{Dyn4cast-deprecated}
+\alias{Model_factors}
 \title{Deprecated functions in Dyn4cast}
+\usage{
+Model_factors(...)
+}
+\arguments{
+\item{...}{Not used.}
+}
+\value{
+None, function now defunct.
+}
 \description{
 These functions have been removed (defunct) as indicated against their names.
 }
-\details{
-\itemize{
-\item \code{\link{Model_factors}}: This function is deprecated as of
-11.11.26 and is no loner in use. Use \strong{model_factors} instead.
-}
+\examples{
+# Non
 }

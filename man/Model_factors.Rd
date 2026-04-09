@@ -2,7 +2,6 @@
 % Please edit documentation in R/model_factors.R
 \name{model_factors}
 \alias{model_factors}
-\alias{Model_factors}
 \title{Latent Factors Recovery from Variables Loadings}
 \usage{
 model_factors(data, DATA)
