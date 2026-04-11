@@ -1,4 +1,8 @@
-# Dyn4cast 11.11.28-delta 2026-03-23
+# Dyn4cast 11.11.28-delta 2026-04-09
+
+Deprecation list introduced.
+
+# Dyn4cast 11.11.28-gamma 2026-03-23
 
 `odds_summary` added. `select` tightened in testthat. devtools:install_github changed to pak::pak.
 
