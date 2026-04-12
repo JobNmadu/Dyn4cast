@@ -16,6 +16,7 @@
 #' @param Up `r lifecycle::badge("deprecated")`
 #' @param Down `r lifecycle::badge("deprecated")`
 #' @param ci Confidence interval which is defaults to 0.95.
+#' @param Dig Number of digits after the decimal point which is defaults to 2.
 #'
 #' @return The function returns formatted tables of the Quick summary
 #' \item{\code{Summary}}{List of two `data.frames`}
@@ -38,8 +39,9 @@
 #' quicksummary(x = x, Type = 1)
 quicksummary <- function(x, Type,  Cut = deprecated(),
                          Up = deprecated(),
-                         Down = deprecated(), ci = 0.95) {
-  y  <-  as.matrix(x)
+                         Down = deprecated(), Dig = 2, ci = 0.95) {
+ Dig <- Dig
+ y  <-  as.matrix(x)
   if (is.null(colnames(y))) {
     Dim <- dim(y)[2]
     if (Dim == 1) {
@@ -101,10 +103,10 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
     ank  <-  cbind(ank, risult)
   }
   colnames(ans)  <-  colnames(y)
-  ans  <-  data.frame(round(t(ans), digits = 2))
+  ans  <-  data.frame(round(t(ans)), digits = Dig)
 
   colnames(ank)  <-  colnames(y)
-  ank  <-  data.frame(round(t(ank), digits = 2))
+  ank  <-  data.frame(round(t(ank)), digits = Dig)
 
   if (Type != 1) {
     ans        <-  ans[order(-ans$Mean), ]
@@ -128,5 +130,5 @@ amean <- function(x) mean(x[!is.na(x)])
 gmean <- function(x) exp(mean(log(x[!is.na(x > 0)])))
 qmean <- function(x) sqrt(sum(x^2, na.rm = TRUE) / length(x[!is.na(x)]))
 hmean <- function(x) 1/mean(1/x[!is.na(x)])
-cmean <- function(x) sign(mean(x[!is.na(x)]^3)) *
-  abs(mean(x[!is.na(x)]^3))^(1/3)
+cmean <- function(x) sign((mean(x[!is.na(x)]^3)) *
+  abs(mean(x[!is.na(x)]^3))^(1/3))
