@@ -16,7 +16,7 @@
 #' @param Up `r lifecycle::badge("deprecated")`
 #' @param Down `r lifecycle::badge("deprecated")`
 #' @param ci Confidence interval which is defaults to 0.95.
-#' @param Dig Number of digits after the decimal point which is defaults to 2.
+#' @param Dig Number of significant digits which is defaults to 2.
 #'
 #' @return The function returns formatted tables of the Quick summary
 #' \item{\code{Summary}}{List of two `data.frames`}

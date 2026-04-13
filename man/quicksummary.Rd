@@ -27,7 +27,7 @@ or 2, 1 = \code{Continuous} and 2 = \code{Likert-type}}
 
 \item{Down}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
-\item{Dig}{Number of digits after the decimal point which is defaults to 2.}
+\item{Dig}{Number of significant digits which is defaults to 2.}
 
 \item{ci}{Confidence interval which is defaults to 0.95.}
 }
