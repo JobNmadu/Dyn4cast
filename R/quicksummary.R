@@ -103,10 +103,10 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
     ank  <-  cbind(ank, risult)
   }
   colnames(ans)  <-  colnames(y)
-  ans  <-  data.frame(round(t(ans)), digits = Dig)
+  ans  <-  data.frame(signif(t(ans)), digits = Dig)
 
   colnames(ank)  <-  colnames(y)
-  ank  <-  data.frame(round(t(ank)), digits = Dig)
+  ank  <-  data.frame(signif(t(ank)), digits = Dig)
 
   if (Type != 1) {
     ans        <-  ans[order(-ans$Mean), ]
