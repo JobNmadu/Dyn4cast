@@ -80,12 +80,13 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
 
     if (Type == 1) {
       z  <-  c(mean(X), sqrt(stats::var(X)),
-               sqrt(stats::var(X) / length(X)), min(X), median(X), max(X),
+               sqrt(stats::var(X) / length(X)), min(X),
                as.numeric(stats::quantile(X, prob = 0.25, na.rm = TRUE)),
+               median(X),
                as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
-               skewness, kurtosis, X.length)
-      znames  <-  c("Mean", "SD", "SE Mean", "Min", "Median", "Max", "Q1",
-                    "Q3",  "Skewness", "Kurtosis", "Nobs")
+               max(X), skewness, kurtosis, X.length)
+      znames  <-  c("Mean", "SD", "SE Mean", "Min",  "Q1", "Median", "Q3",
+                    "Max", "Skewness", "Kurtosis", "Nobs")
       me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
       me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     } else {
