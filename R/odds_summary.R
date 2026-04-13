@@ -67,11 +67,17 @@
 #'            start = c(0,1))
 #' odds_summary(lm5)
 #'
+#' library(betareg)
+#' data("GasolineYield")
+#' gy <- betareg(yield ~ batch + temp, data = GasolineYield)
+#' odds_summary(gy)
+#'
 odds_summary <- function(model) {
   model <- model
   call <- model$call[[1]]
   Coefficient <- 0
   Odds_ratio <- 0
+  dist <-  model$dist
 
 # Get the coefficient table
   ctable <- data.frame(coef(summary(model))) %>%
@@ -99,7 +105,6 @@ odds_summary <- function(model) {
     names(or_ci) <- c("CI_lower", "CI_upper")
     or_ci <- rbind(or_ci, zeze[, 6:7])
 
-# Exponentiate the coefficients and confidence intervals to get odds ratios
     odds_ratios <- data.frame(Odds_ratio = exp(c(coef(model), model$zeta)))
 
     ctable <- ctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
@@ -160,7 +165,40 @@ odds_summary <- function(model) {
       tibble::rownames_to_column(., var = "Variables")
     names(cci) <- gsub("X2.5...", "Lower ", names(cci))
     names(cci) <- gsub(c("X97.5..."), "Upper ", names(cci))
-  } else {
+  } else if (call == "betareg") {
+    ctable <- data.frame(coef(summary(model)))
+    phiy <- ctable[1, 5:8]
+
+    if (dist != "beta") {
+      nunu <- ctable[1, 9:12]
+      names(phiy) <- names(nunu) <- names(ctable[, 1:4])
+      cctable <- dplyr::bind_rows(ctable[, 1:4], phiy, nunu)
+    } else{
+      names(phiy) <- names(ctable[, 1:4])
+      cctable <- dplyr::bind_rows(ctable[, 1:4], phiy)
+    }
+
+    names(cctable) <- c("Coefficient", "Std. Error", "z value", "p value")
+
+    cctable <- cctable %>%
+      tibble::rownames_to_column(., var = "Variables")
+
+    or_ci <- data.frame(exp(confint(model)))
+    names(or_ci) <- c("CI_lower", "CI_upper")
+
+    or_ci <- or_ci %>%
+      tibble::rownames_to_column(., var = "Variables")
+
+    odds_ratios <- data.frame(Odds_ratio = exp(coef(model))) %>%
+      tibble::rownames_to_column(., var = "Variables")
+    p <- cctable$`p value`
+    cctable <- cctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
+    odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
+    odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
+
+    ctable <- data.frame(Variables = or_ci[, 1], cctable[, -1])
+  }
+  else {
     stop("Model type not supported. Suggest the model you are analysing for
          inclusion.")
   }
@@ -173,7 +211,9 @@ odds_summary <- function(model) {
                 Odds_sig = Odds_sig,
                 p_value = ccp, Confident_interval = cci))
 
-  } else {
+  } else if (call == "betareg") {
+    return(dplyr::bind_cols(ctable, odds_ratios[, -1], or_ci[, -1]))
+  }else {
     return(dplyr::bind_cols(ctable, Odds_ratio = odds_ratios, or_ci))
   }
 }

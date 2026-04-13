@@ -54,8 +54,12 @@ test_that("odds_summary works", {
 
  tinom <- multinom(Species ~ Petal.Length + Petal.Width + Sepal.Length
                     + Sepal.Width, data = iris)
-
   ts7 <- odds_summary(tinom)
+
+  library(betareg)
+  data("GasolineYield")
+  gy <- betareg(yield ~ batch + temp, data = GasolineYield)
+  ts9 <- odds_summary(gy)
 
   expect_identical(ts,  odds_summary(glm.D93))
   expect_identical(ts1, odds_summary(house.plr))
@@ -66,4 +70,5 @@ test_that("odds_summary works", {
   expect_identical(ts6, odds_summary(mml))
   expect_identical(ts7, odds_summary(tinom))
   expect_identical(ts8, odds_summary(lm3))
+  expect_identical(ts9, odds_summary(gy))
 })

@@ -70,4 +70,9 @@ lm5 <- glm(y ~ x, family = quasi(variance = "mu(1-mu)", link = "logit"),
            start = c(0,1))
 odds_summary(lm5)
 
+library(betareg)
+data("GasolineYield")
+gy <- betareg(yield ~ batch + temp, data = GasolineYield)
+odds_summary(gy)
+
 }
