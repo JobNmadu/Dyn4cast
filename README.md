@@ -147,21 +147,25 @@ At present, the package exports the following functions:
 The citation information for this package can be obtained easily when
 you run `citation("Dyn4cast")` in your `R` console.
 
-    To cite package 'Dyn4cast' in publications use:
+``` r
 
-      Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-      Environment_. R package version 11.11.26, 
-      <https://github.com/JobNmadu/Dyn4cast>.
+citation("Dyn4cast")
+To cite package 'Dyn4cast' in publications use:
 
-    A BibTeX entry for LaTeX users is
+  Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
+  Environment_. R package version 11.11.26, 
+  <https://github.com/JobNmadu/Dyn4cast>.
 
-      @Manual{,
-        title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
-        author = {Job Nmadu},
-        year = {2026},
-        note = {R package version 11.11.26},
-        url = {https://github.com/JobNmadu/Dyn4cast},
-      }
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
+    author = {Job Nmadu},
+    year = {2026},
+    note = {R package version 11.11.26},
+    url = {https://github.com/JobNmadu/Dyn4cast},
+  }
+```
 
 ## Suggested packages
 
@@ -169,6 +173,14 @@ Although not dependencies, the package derives functionally from a
 number of other packages and so may require you to install them if not
 already installed on your machine. Some of the packages are listed
 below:
+
+``` r
+install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
+                   "caret", "kableExtra", "knitr", "spelling", "psych",
+                   "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
+                   "forecast", "MASS", "mlogit", "nnet", "betareg", "mvProbit",
+                   "miscTools"))
+```
 
 Note that a *warning* (not *error*) is thrown up while estimating the
 RMSE for the `Ensembled with equal weight` model. It was thoroughly

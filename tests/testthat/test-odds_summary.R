@@ -61,6 +61,29 @@ test_that("odds_summary works", {
   gy <- betareg(yield ~ batch + temp, data = GasolineYield)
   ts9 <- odds_summary(gy)
 
+  library(mvProbit)
+  library( miscTools )
+
+  set.seed( 123 )
+  nObs <- 50
+  xMat <- cbind(
+    const = rep( 1, nObs ),
+    x1 = as.numeric( rnorm( nObs ) > 0 ),
+    x2 = rnorm( nObs ) )
+  beta <- cbind( c(  0.8,  1.2, -0.8 ),
+                 c( -0.6,  1.0, -1.6 ),
+                 c(  0.5, -0.6,  1.2 ) )
+  sigma <- symMatrix( c( 1, 0.2, 0.4, 1, -0.1, 1 ) )
+  yMatLin <- xMat %*% beta
+  yMat <- ( yMatLin + rmvnorm( nObs, sigma = sigma ) ) > 0
+  colnames( yMat ) <- paste( "y", 1:3, sep = "" )
+
+  estResultStart <- mvProbit( cbind( y1, y2, y3 ) ~ x1 + x2,
+                              start = c( beta ), startSigma = sigma,
+                              data = as.data.frame( cbind( xMat, yMat ) ),
+                              iterlim = 1, nGHK = 50 )
+  ts10 <- odds_summary(estResultStart)
+
   expect_identical(ts,  odds_summary(glm.D93))
   expect_identical(ts1, odds_summary(house.plr))
   expect_identical(ts2, odds_summary(anorex.1))
@@ -71,4 +94,5 @@ test_that("odds_summary works", {
   expect_identical(ts7, odds_summary(tinom))
   expect_identical(ts8, odds_summary(lm3))
   expect_identical(ts9, odds_summary(gy))
+  expect_identical(ts10, odds_summary(estResultStart))
 })

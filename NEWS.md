@@ -1,6 +1,6 @@
 # Dyn4cast 11.11.28-delta 2026-04-09
 
-Deprecation list introduced. It is now possible to specify the number of digits in `quicksummary`. The flow of the output in `quicksummary` summary is more logical now. `betareg` is now supported in `odds_summary`.
+Deprecation list introduced. It is now possible to specify the number of digits in `quicksummary`. The flow of the output in `quicksummary` summary is more logical now. `betareg` and `mvProbit` are now supported in `odds_summary`.
 
 # Dyn4cast 11.11.28-gamma 2026-03-23
 

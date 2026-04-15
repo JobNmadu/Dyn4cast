@@ -118,7 +118,8 @@ Although not dependencies, the package derives functionally from a number of oth
 install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
                    "caret", "kableExtra", "knitr", "spelling", "psych",
                    "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
-                   "forecast", "MASS", "mlogit", "nnet"))
+                   "forecast", "MASS", "mlogit", "nnet", "betareg", "mvProbit",
+                   "miscTools"))
 ```
 
 Note that a *warning* (not _error_) is thrown up while estimating the RMSE for the `Ensembled with equal weight` model. It was thoroughly investigated and causes no harm. Efforts are still on to silence the warning, which I will soon. The warning is one of such issues that is general to R. If you set your _chunk option_ to `warning = FALSE` you will not notice the warning.  

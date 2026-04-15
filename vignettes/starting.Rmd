@@ -75,7 +75,8 @@ A number of other packages are required for the smooth running of the package an
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext", 
-                   "lubridate", "forecast", "MASS", "mlogit", "nnet"))
+                   "lubridate", "forecast", "MASS", "mlogit", "nnet", "betareg",
+                   "mvProbit", "miscTools"))
 ```
 
 ## Citation

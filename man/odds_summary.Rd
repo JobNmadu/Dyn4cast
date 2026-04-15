@@ -8,7 +8,7 @@ odds_summary(model)
 }
 \arguments{
 \item{model}{An \code{R} object of estimates from models covered. For now only
-\code{glm}, \code{multimon} and \code{polr} models are covered.}
+\code{glm}, \code{betareg}, \code{mlogit}, \code{multimon}, \code{mvProbit} and \code{polr} models are covered.}
 }
 \value{
 A \code{list} or a \code{data.frame} depending on which model. The model must
@@ -22,57 +22,84 @@ predictors for rapid interpretation. It is a \emph{one-line}, \emph{one-argument
 }
 \examples{
 
-library(Dyn4cast)
-library(tidyverse)
+# library(Dyn4cast)  # uncomment to run
+# library(tidyverse)
 
-counts <- c(18,17,15,20,10,20,25,13,12)
-outcome <- gl(3,1,9)
-treatment <- gl(3,3)
-ddc <- data.frame(treatment, outcome, counts) # showing data
-glm.D93 <- glm(counts ~ ., data = ddc, family = poisson())
-odds_summary(glm.D93)
+# counts <- c(18,17,15,20,10,20,25,13,12)
+# outcome <- gl(3,1,9)
+# treatment <- gl(3,3)
+# ddc <- data.frame(treatment, outcome, counts) # showing data
+# glm.D93 <- glm(counts ~ ., data = ddc, family = poisson())
+# odds_summary(glm.D93)
 
-library(MASS)
-anorexia
+# library(MASS)
+# anorexia
 
-anorex.1 <- glm(Postwt ~ Prewt + Treat + offset(Prewt),
-                family = gaussian, data = anorexia)
-odds_summary(anorex.1)
+# anorex.1 <- glm(Postwt ~ Prewt + Treat + offset(Prewt),
+#                 family = gaussian, data = anorexia)
+# odds_summary(anorex.1)
 
-clotting <- data.frame(
-  u = c(5,10,15,20,30,40,60,80,100),
-  lot1 = c(118,58,42,35,27,25,21,19,18),
-  lot2 = c(69,35,26,21,18,16,13,12,12))
-lot1 <- glm(lot1 ~ log(u), data = clotting, family = Gamma)
-odds_summary(lot1)
+# clotting <- data.frame(
+#   u = c(5,10,15,20,30,40,60,80,100),
+#   lot1 = c(118,58,42,35,27,25,21,19,18),
+#   lot2 = c(69,35,26,21,18,16,13,12,12))
+# lot1 <- glm(lot1 ~ log(u), data = clotting, family = Gamma)
+# odds_summary(lot1)
 
-lot2 <- glm(lot2 ~ log(u), data = clotting, family = Gamma)
-odds_summary(lot2)
+# lot2 <- glm(lot2 ~ log(u), data = clotting, family = Gamma)
+# odds_summary(lot2)
 
-fS <- glm(lot2 ~ log(u) + log(u^2), data = clotting, family = Gamma)
-#odds_summary(fS) #error because there is no convergence
+# fS <- glm(lot2 ~ log(u) + log(u^2), data = clotting, family = Gamma)
+# #odds_summary(fS) #error because there is no convergence
 
-x <- rnorm(100)
-y <- rpois(100, exp(1+x))
+# x <- rnorm(100)
+# y <- rpois(100, exp(1+x))
 
-lm2 <- glm(y ~ x, family = quasi(variance = "mu", link = "log"))
-odds_summary(lm2)
+# lm2 <- glm(y ~ x, family = quasi(variance = "mu", link = "log"))
+# odds_summary(lm2)
 
-lm3 <- glm(y ~ x, family = poisson)
-odds_summary(lm3)
+# lm3 <- glm(y ~ x, family = poisson)
+# odds_summary(lm3)
 
-lm4 <- glm(y ~ x, family = quasi(variance = "mu^2", link = "log"))
-#odds_summary(lm4) #error
+# lm4 <- glm(y ~ x, family = quasi(variance = "mu^2", link = "log"))
+# #odds_summary(lm4) #error
 
-y <- rbinom(100, 1, plogis(x))
+# y <- rbinom(100, 1, plogis(x))
 
-lm5 <- glm(y ~ x, family = quasi(variance = "mu(1-mu)", link = "logit"),
-           start = c(0,1))
-odds_summary(lm5)
+# lm5 <- glm(y ~ x, family = quasi(variance = "mu(1-mu)", link = "logit"),
+#            start = c(0,1))
+# odds_summary(lm5)
 
-library(betareg)
-data("GasolineYield")
-gy <- betareg(yield ~ batch + temp, data = GasolineYield)
-odds_summary(gy)
+# library(betareg)
+# data("GasolineYield")
+# gy <- betareg(yield ~ batch + temp, data = GasolineYield)
+# odds_summary(gy)
 
+# library(mvProbit)
+# ## generate a simulated data set
+# set.seed( 123 )
+# # number of observations
+# nObs <- 50
+
+# # generate explanatory variables
+# xMat <- cbind(const = rep(1, nObs), x1 = as.numeric(rnorm(nObs) > 0),
+# x2 = rnorm(nObs))
+
+# # model coefficients
+# beta <- cbind(c(0.8,  1.2, -0.8), c(-0.6, 1.0, -1.6), c(0.5, -0.6, 1.2))
+
+# # covariance matrix of error terms
+# library(miscTools)
+# sigma <- symMatrix(c(1, 0.2, 0.4, 1, -0.1, 1))
+
+# # generate dependent variables
+# yMatLin <- xMat \%*\% beta
+# yMat <- (yMatLin + rmvnorm(nObs, sigma = sigma)) > 0
+# colnames(yMat) <- paste("y", 1:3, sep = "")
+
+# estResultStart <- mvProbit(cbind(y1, y2, y3) ~ x1 + x2, start = c(beta),
+# startSigma = sigma, data = as.data.frame(cbind(xMat, yMat)), iterlim = 1,
+# nGHK = 50)
+# odds_summary(estResultStart)
+#
 }

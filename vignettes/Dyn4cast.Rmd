@@ -936,3 +936,35 @@ library(Dyn4cast)
  lm5 <- glm(y ~ x, family = quasi(variance = "mu(1-mu)", link = "logit"),
             start = c(0,1))
  odds_summary(lm5)
+
+ library(betareg)
+data("GasolineYield")
+gy <- betareg(yield ~ batch + temp, data = GasolineYield)
+odds_summary(gy)
+#'
+library(mvProbit)
+## generate a simulated data set
+set.seed( 123 )
+# number of observations
+nObs <- 50
+#'
+# generate explanatory variables
+xMat <- cbind(const = rep(1, nObs), x1 = as.numeric(rnorm(nObs) > 0),
+x2 = rnorm(nObs))
+#'
+# model coefficients
+beta <- cbind(c(0.8,  1.2, -0.8), c(-0.6, 1.0, -1.6), c(0.5, -0.6, 1.2))
+#'
+# covariance matrix of error terms
+library(miscTools)
+sigma <- symMatrix(c(1, 0.2, 0.4, 1, -0.1, 1))
+#'
+# generate dependent variables
+yMatLin <- xMat %*% beta
+yMat <- (yMatLin + rmvnorm(nObs, sigma = sigma)) > 0
+colnames(yMat) <- paste("y", 1:3, sep = "")
+#'
+estResultStart <- mvProbit(cbind(y1, y2, y3) ~ x1 + x2, start = c(beta),
+startSigma = sigma, data = as.data.frame(cbind(xMat, yMat)), iterlim = 1,
+nGHK = 50)
+odds_summary(estResultStart)
