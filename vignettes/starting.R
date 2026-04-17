@@ -28,7 +28,8 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 # install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
 #                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
 #                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext",
-#                    "lubridate", "forecast", "MASS", "mlogit", "nnet"))
+#                    "lubridate", "forecast", "MASS", "mlogit", "nnet", "betareg",
+#                    "mvProbit", "miscTools"))
 
 ## ----citation, comment = "", warning = FALSE----------------------------------
 

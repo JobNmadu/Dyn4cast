@@ -884,7 +884,8 @@ odds_summary(model)
 
 With the arguments:
 
-model An `R` object of estimates from models covered. For now only `glm`, `multimon` and `polr` models are covered.
+model An `R` object of estimates from models covered. For now only
+`glm`, `betareg`, `mlogit`, `multimon`, `mvProbit` and `polr models are covered.
 ```
 ## Example
 

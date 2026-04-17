@@ -84,9 +84,10 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
                as.numeric(stats::quantile(X, prob = 0.25, na.rm = TRUE)),
                median(X),
                as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
+               as.numeric(stats::IQR(X, na.rm = TRUE)),
                max(X), skewness, kurtosis, X.length)
       znames  <-  c("Mean", "SD", "SE Mean", "Min",  "Q1", "Median", "Q3",
-                    "Max", "Skewness", "Kurtosis", "Nobs")
+                    "IQR", "Max", "Skewness", "Kurtosis", "Nobs")
       me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
       me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     } else {
