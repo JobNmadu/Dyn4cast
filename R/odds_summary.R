@@ -105,12 +105,15 @@ odds_summary <- function(model) {
   Coefficient <- 0
   Odds_ratio <- 0
   dist <-  model$dist
+  hhh <- c(" ", "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
+            " " ," " ," " ," " ," " ," " ," " ," " ," ")
 
 # Get the coefficient table
   ctable <- data.frame(coef(summary(model))) %>%
     tibble::rownames_to_column(., var = "Variables")
 
   if (call == "polr") {
+
     names(ctable) <- c("Variables", "Coefficient", "Std Error", "t value")
     zeze <- data.frame(Coefficient = model[["zeta"]]) %>%
       tibble::rownames_to_column(., var = "Variables")
@@ -139,7 +142,11 @@ odds_summary <- function(model) {
 
     odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
 
+    cdd <- dplyr::bind_cols(ctable, Odds_ratio = odds_ratios, or_ci)
+    return(rbind(cdd, hhh))
+
   } else if (call == "mlogit" | call == "glm") {
+
     names(ctable) <- c("Variables", "Coefficient", "Std Error", "t value",
                        "p value")
 
@@ -154,7 +161,12 @@ odds_summary <- function(model) {
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
 
     odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
+
+    cdd <- dplyr::bind_cols(ctable, Odds_ratio = odds_ratios, or_ci)
+    return(rbind(cdd, hhh))
+
   } else if (call == "multinom") {
+
     coe <- data.frame(t(coef(summary(model)))) %>%
       tibble::rownames_to_column(., var = "Variables")
 
@@ -171,6 +183,7 @@ odds_summary <- function(model) {
     Coef_sig <- Odds_sig <- vector("list", length = NCOL(ctt))
     oddss <- odds_ratios[, -1]
     coefs <- coe[, -1]
+    hhm <- hhh[1 : NCOL(ctt)]
 
     for (i in 1 : NCOL(ctt)) {
       p1 <- pnorm(abs(ctt[, i]), lower.tail = FALSE) * 2
@@ -190,9 +203,17 @@ odds_summary <- function(model) {
 
     cci <- data.frame(confint(model)) %>%
       tibble::rownames_to_column(., var = "Variables")
+
     names(cci) <- gsub("X2.5...", "Lower ", names(cci))
     names(cci) <- gsub(c("X97.5..."), "Upper ", names(cci))
+
+    return(list(coefficient = coe, t_value = ctt, Odds_ratio = odds_ratios,
+                Percent_odds = odds_per, rbind(Coef_sig = Coef_sig, hhm),
+                rbind(Odds_sig = Odds_sig, hhm),
+                p_value = ccp, Confident_interval = cci))
+
   } else if (call == "betareg") {
+
     ctable <- data.frame(coef(summary(model)))
     phiy <- ctable[1, 5:8]
 
@@ -224,7 +245,12 @@ odds_summary <- function(model) {
     odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
 
     ctable <- data.frame(Variables = or_ci[, 1], cctable[, -1])
+
+    cdd <- dplyr::bind_cols(ctable, odds_ratios[, -1], or_ci[, -1])
+    return(rbind(cdd, hhh))
+
   } else if (call == "mvProbit") {
+
     ctable <- data.frame(coef(summary(model)))
     names(ctable) <- c("Coefficient", "Std. Error", "z value", "p value")
 
@@ -241,25 +267,13 @@ odds_summary <- function(model) {
     ctable <- ctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
     odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
+
+    cdd <- dplyr::bind_cols(ctable, odds_ratios, or_ci)
+    return(rbind(cdd, hhh))
+
   } else {
     stop("Model type not supported. Suggest the model you are analysing for
          inclusion.")
-  }
-
-# Combine everything into a data frame
-
-  if (call == "multinom") {
-    return(list(coefficient = coe, t_value = ctt, Odds_ratio = odds_ratios,
-                Percent_odds = odds_per, Coef_sig = Coef_sig,
-                Odds_sig = Odds_sig,
-                p_value = ccp, Confident_interval = cci))
-
-  } else if (call == "betareg") {
-    return(dplyr::bind_cols(ctable, odds_ratios[, -1], or_ci[, -1]))
-  } else if (call == "mvProbit") {
-    return(dplyr::bind_cols(ctable, odds_ratios, or_ci))
-  } else {
-    return(dplyr::bind_cols(ctable, Odds_ratio = odds_ratios, or_ci))
   }
 }
 
