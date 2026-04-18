@@ -208,8 +208,8 @@ odds_summary <- function(model) {
     names(cci) <- gsub(c("X97.5..."), "Upper ", names(cci))
 
     return(list(coefficient = coe, t_value = ctt, Odds_ratio = odds_ratios,
-                Percent_odds = odds_per, rbind(Coef_sig = Coef_sig, hhm),
-                rbind(Odds_sig = Odds_sig, hhm),
+                Percent_odds = odds_per, Coef_sig = rbind(Coef_sig, hhm),
+                Odds_sig = rbind(Odds_sig, hhm),
                 p_value = ccp, Confident_interval = cci))
 
   } else if (call == "betareg") {
