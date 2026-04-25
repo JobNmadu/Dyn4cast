@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-epsilon 2026-04-25
+
+`qpdf` is out of suggests in the first check with R4.6.0.
+
 # Dyn4cast 11.11.28-delta 2026-04-09
 
 Deprecation list introduced. It is now possible to specify the number of digits in `quicksummary`. The flow of the output in `quicksummary` summary is more logical now, i.e., _Min, Q1, Median, Q3, Max, IQR_. `betareg` and `mvProbit` are now supported in `odds_summary`.

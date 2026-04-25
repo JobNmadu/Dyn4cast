@@ -41,7 +41,6 @@ Suggests:
     tidyverse,
     rmarkdown,
     covr,
-    qpdf,
     caret,
     kableExtra,
     knitr,
