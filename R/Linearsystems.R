@@ -171,7 +171,7 @@ utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
   y1 <- y
   Data <- cbind(y, x)
-  Names <- names(Data)
+  # Names <- names(Data)
   case <- if (ncol(Data) > 9) {
     "complex"
   } else {
