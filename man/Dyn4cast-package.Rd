@@ -23,5 +23,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Job Nmadu \email{job.nmadu@gmail.com} (\href{https://orcid.org/0000-0002-1320-8957}{ORCID})
 
+Authors:
+\itemize{
+  \item Job Nmadu \email{job.nmadu@gmail.com} (\href{https://orcid.org/0000-0002-1320-8957}{ORCID})
+}
+
 }
 \keyword{internal}
