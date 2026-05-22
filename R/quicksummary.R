@@ -85,15 +85,14 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
                median(X),
                as.numeric(stats::quantile(X, prob = 0.75, na.rm = TRUE)),
                max(X), as.numeric(stats::IQR(X, na.rm = TRUE)),
-               skewness, kurtosis, X.length)
+               skewness, kurtosis)
       znames  <-  c("Mean", "SD", "SE Mean", "Min",  "Q1", "Median", "Q3",
-                    "Max", "IQR", "Skewness", "Kurtosis", "Nobs")
+                    "Max", "IQR", "Skewness", "Kurtosis")
       me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
       me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     } else {
-      z  <-  c(mean(X), sqrt(var(X)), sqrt(var(X) / length(X)),
-               X.length)
-      znames  <-  c("Mean", "SD", "SE Mean", "Nobs")
+      z  <-  c(mean(X), sqrt(var(X)), sqrt(var(X) / length(X)))
+      znames  <-  c("Mean", "SD", "SE Mean")
       me_n <- c("Arithmetic", "Geometric", "Quadratic", "Harmonic", "Cubic")
       me <- c(amean(X), gmean(X), qmean(X), hmean(X), cmean(X))
     }
@@ -106,9 +105,11 @@ quicksummary <- function(x, Type,  Cut = deprecated(),
   }
   colnames(ans)  <-  colnames(y)
   ans  <-  data.frame(signif(t(ans), digits = Dig))
+  ans$Nobs <- X.length
 
   colnames(ank)  <-  colnames(y)
   ank  <-  data.frame(signif(t(ank), digits = Dig))
+  ank$Nobs <- X.length
 
   if (Type != 1) {
     ans        <-  ans[order(-ans$Mean), ]

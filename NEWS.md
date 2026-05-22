@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-zeta 2026-05-22
+
+Exaggerated `Nobs` in `quicksummary` function is corrected.
+
 # Dyn4cast 11.11.28-epsilon 2026-04-25
 
 `qpdf` is out of suggests in the first check with R4.6.0.
