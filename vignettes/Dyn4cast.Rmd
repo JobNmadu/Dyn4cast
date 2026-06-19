@@ -462,9 +462,9 @@ x <- select(linearsystems, -MKTcost)
 Linearsystems(y, x, 5, 15)
 ```
 
-# mdpi: Sequential Computation of Dynamic Multidimensional Poverty Indices (MDPI)
+# mdi: Sequential Computation of Dynamic Multidimensional Indices (MDI)
 
-The function, along with `plot_mdpi`, computes and visualise dynamic multidimensional poverty and all associated measures of multidimensional poverty.
+The function, along with `plot_mdi`, computes and visualise dynamic multidimensional poverty and all associated measures of multidimensional poverty.
 
 The main selling points of this function are:
 
@@ -477,7 +477,7 @@ iii. The computations can be done at national or sub-national levels or suitable
 The basic code usage is:
 
 ```
-mdpi(
+mdi(
   data,
   dm,
   Bar = 0.4,
@@ -521,13 +521,13 @@ dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
              d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
                     "Access.to.an.improve.sanatation", "Electricity",
                     "Housing.Materials", "Asset.ownership"))
-  mdpi(data, dm, plots = "t", Factor = "Region")
+  mdi(data, dm, plots = "t", Factor = "Region")
 ```
 
 ### With three dimensions, no factor
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
-mdpi(data, dm, plots = "t")
+mdi(data, dm, plots = "t")
 ```
 
 ### With four dimensions and factor
@@ -540,7 +540,7 @@ dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
              d4 = c("Access.to.clean.source.of.water",
                     "Access.to.an.improve.sanatation"))
 
-  mdpi(data, dm, id_add = c("Water and Sanitation"),
+  mdi(data, dm, id_add = c("Water and Sanitation"),
                 plots = "t", Factor = "Region")
 ```
 
@@ -553,21 +553,21 @@ dm <- list(d1 = c("d_cm"),
              d4 = c("d_sani","d_wtr"),
              d5 = c("d_nutr"))
 
-  mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
        plots = "t", Factor = "region")
 ```
 
 ### With five dimensions, no plot
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
-mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
        Factor = "region")
 ```
 
 ### With five dimensions, no factor, no plot
 
 ```{r, echo = TRUE, warning = FALSE, eval = FALSE}
-mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition")
+mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition")
 ```
 
 ### With six dimensions and factor
@@ -580,7 +580,7 @@ dm <- list(d1 = c("d_cm"),
              d5 = c("d_nutr"),
              d6 = c("d_hsg","d_asst"))
 
-  mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
                 id_addn = "Housing and Assets", plots = "t", Factor = "region")
 ```
 
@@ -595,7 +595,7 @@ dm <- list(d1 = c("d_cm"),
              d6 = c("d_hsg"),
              d7 = c("d_asst"))
 
-  mdpi(data1, dm, id_add = "Water and Sanitation",
+  mdi(data1, dm, id_add = "Water and Sanitation",
                 id_add1 = "Nutrition", id_addn = c("Housing", "Assets"),
                 plots = "t", Factor = "region")
 ```
@@ -612,7 +612,7 @@ dm <- list(d1 = c("d_cm"),
              d7 = c("d_asst"),
              d8 = c("d_wtr"))
 
-  mdpi(data1, dm, id_add = "Sanitation",
+  mdi(data1, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water"),
                  plots = "t", Factor = "region")
@@ -631,7 +631,7 @@ dm <- list(d1 = c("d_cm"),
              d8 = c("d_wtr"),
              d9 = c("d_elct"))
 
-  mdpi(data1, dm, id_add = "Sanitation",
+  mdi(data1, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water", "Electricity"),
                  plots = "t", Factor = "region")

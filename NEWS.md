@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-zeta 2026-06-19
+
+There has been huge improvements and higher efficiency as `mdpi` and `plot_mdpi` deprecated in favor of __mdi__ and __plot_mdi__ as the functions can now handle any multidimensional indices like __poverty__, __wellbieng__, etc, as long as they have _indicators_ and _dimensions_.
+
 # Dyn4cast 11.11.28-zeta 2026-05-22
 
 Exaggerated `Nobs` in `quicksummary` function is corrected.

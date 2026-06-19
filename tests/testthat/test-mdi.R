@@ -1,16 +1,17 @@
 
-test_that("mdpi works", {
+test_that("mdi works", {
   library(Dyn4cast)
+  library(lifecycle)
   data <- mdpi1
   dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
              d2 = c("Years.of.education", "School.attendance", "School.lag"),
              d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
                     "Access.to.an.improve.sanatation", "Electricity",
                     "Housing.Materials", "Asset.ownership"))
-  test1 <- mdpi(data, dm, plots = "t", Factor = "Region")
+  test1 <- mdi(data, dm, plots = "t", Factor = "Region")
   Test01 <- test1[-1]
   Test02 <- test1[1]
-  test2 <- mdpi(data, dm, plots = "t")
+  test2 <- mdi(data, dm, plots = "t")
   Test04 <- test2
 
   dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
@@ -20,22 +21,22 @@ test_that("mdpi works", {
              d4 = c("Access.to.clean.source.of.water",
                     "Access.to.an.improve.sanatation"))
 
-  test5 <- mdpi(data, dm, id_add = c("Water and Sanitation"),
+  test5 <- mdi(data, dm, id_add = c("Water and Sanitation"),
                 plots = "t", Factor = "Region")
   Test17 <- test5[-1]
   Test08 <- test5[1]
 
-  test6 <- mdpi(data, dm, id_add = c("Water and Sanitation"), plots = "t")
+  test6 <- mdi(data, dm, id_add = c("Water and Sanitation"), plots = "t")
   Test09 <- test6
 
   data <- mdpi2
   dm <- list(d1 = c("d_nutr","d_cm"),
              d2 = c("d_satt","d_educ"),
              d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
-  test3 <- mdpi(data, dm, plots = "t", Factor = "region")
+  test3 <- mdi(data, dm, plots = "t", Factor = "region")
   Test05 <- test3[-1]
   Test06 <- test3[1]
-  test4 <- mdpi(data, dm, plots = "t")
+  test4 <- mdi(data, dm, plots = "t")
   Test07 <- test4
   dm <- list(d1 = c("d_cm"),
              d2 = c("d_satt","d_educ"),
@@ -43,9 +44,9 @@ test_that("mdpi works", {
              d4 = c("d_sani","d_wtr"),
              d5 = c("d_nutr"))
 
-  test7 <- mdpi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  test7 <- mdi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
        plots = "t", Factor = "region")
-  test8 <- mdpi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  test8 <- mdi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
        plots = "t")
   dm <- list(d1 = c("d_cm"),
              d2 = c("d_satt","d_educ"),
@@ -53,9 +54,9 @@ test_that("mdpi works", {
              d4 = c("d_sani","d_wtr"),
              d5 = c("d_nutr"))
 
-  test7 <- mdpi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  test7 <- mdi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
                 plots = "t", Factor = "region")
-  test8 <- mdpi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+  test8 <- mdi(data, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
                 plots = "t")
   Test10 <- test7[-1]
   Test11 <- test7[1]
@@ -68,11 +69,11 @@ test_that("mdpi works", {
              d5 = c("d_nutr"),
              d6 = c("d_hsg","d_asst"))
 
-  test9 <- mdpi(data, dm, id_add = "Water and Sanitation",
+  test9 <- mdi(data, dm, id_add = "Water and Sanitation",
                 id_add1 = "Nutrition", id_addn = "Housing and Assets",
                 plots = "t", Factor = "region")
 
-  test10 <- mdpi(data, dm, id_add = "Water and Sanitation",
+  test10 <- mdi(data, dm, id_add = "Water and Sanitation",
                  id_add1 = "Nutrition", id_addn = "Housing and Assets",
                  plots = "t")
   Test13 <- test9[-1]
@@ -87,11 +88,11 @@ test_that("mdpi works", {
              d6 = c("d_hsg"),
              d7 = c("d_asst"))
 
-  test11 <- mdpi(data, dm, id_add = "Water and Sanitation",
+  test11 <- mdi(data, dm, id_add = "Water and Sanitation",
                 id_add1 = "Nutrition", id_addn = c("Housing", "Assets"),
                 plots = "t", Factor = "region")
 
-  test12 <- mdpi(data, dm, id_add = "Water and Sanitation",
+  test12 <- mdi(data, dm, id_add = "Water and Sanitation",
                  id_add1 = "Nutrition", id_addn = c("Housing", "Assets"),
                  plots = "t")
   Test16 <- test11[-1]
@@ -107,12 +108,12 @@ test_that("mdpi works", {
              d7 = c("d_asst"),
              d8 = c("d_wtr"))
 
-  test13 <- mdpi(data, dm, id_add = "Sanitation",
+  test13 <- mdi(data, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water"),
                  plots = "t", Factor = "region")
 
-  test14 <- mdpi(data, dm, id_add = "Sanitation",
+  test14 <- mdi(data, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water"), plots = "t")
   Test20 <- test13[-1]
@@ -129,12 +130,12 @@ test_that("mdpi works", {
              d8 = c("d_wtr"),
              d9 = c("d_elct"))
 
-  test15 <- mdpi(data, dm, id_add = "Sanitation",
+  test15 <- mdi(data, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water", "Electricity"),
                  plots = "t", Factor = "region")
 
-  test16 <- mdpi(data, dm, id_add = "Sanitation",
+  test16 <- mdi(data, dm, id_add = "Sanitation",
                  id_add1 = "Nutrition",
                  id_addn = c("Housing", "Assets", "Water", "Electricity"),
                  plots = "t")

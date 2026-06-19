@@ -88,9 +88,9 @@ At present, the package exports the following functions:
 
 8. `treatment_model` is for propensity matching treatments effects and other metrics in the Machine Learning Environment.  
 
-8. `mdpi` is for computation of multidimensional poverty indicators and indices  
+8. `mdi` is for computation of multidimensional indicators and indices  
 
-8. `plot_mdpi` is to plot the indices
+8. `plot_mdi` is to plot the indices
 
 8. `gender` is to convert age and sex to gender  
 

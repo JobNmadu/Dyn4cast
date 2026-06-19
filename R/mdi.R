@@ -1,14 +1,14 @@
 
-#' Sequential Computation of Dynamic Multidimensional Poverty Indices (MDPI)
+#' Sequential Computation of Dynamic Multidimensional Indices (MDI)
 #'
 #'@description
 #' This function computes the indices and all associated measures of
 #'  multidimensional poverty sequentially in a dynamic way. Sequentially
-#'   the function computes _Incidence of poverty (H = q / n)_,
-#'  _Adjusted incidence of poverty (H / (q / D))_, _Deprivation Score_ of each
-#'   dimension in the computation, _Intensity of poverty (A)_,
-#'    _Multidimensional poverty index (MDPI = H * A)_, the _Contribution_ in
-#'    % of each of the dimensions to MDPI, and
+#'   the function computes _Incidence (H = q / n)_,
+#'  _Adjusted incidence (H / (q / D))_, _Deprivation Score_ of each
+#'   dimension in the computation, _Intensity (A)_,
+#'    _Multidimensional index (MDI = H * A)_, the _Contribution_ in
+#'    % of each of the dimensions to MDI, and
 #'    _Average deprivation among the deprived (A * D)_. Dynamically, it
 #'    computes the various indices for between three and nine `dimensions (D)`.
 #'     The first five dimensions included in the computations are _Health_,
@@ -36,7 +36,7 @@
 #' those in the poverty category and those that are not. Defaults to 0.4 if not
 #'  supplied.
 #' @param id_addn an optional vector of additional dimensions to be used for the
-#'  computation up to a _maximum of four_.
+#'  computation up to a __maximum of four__.
 #' @param Factor an optional grouping factor for the computation which must be a
 #'  variable in the *data*. If not supplied, only the national MDPI will be
 #'   computed.
@@ -55,14 +55,14 @@
 #'  defaults to TRUE.
 #'
 #' @returns A list with the following components:
-#' \item{\code{MDPI_p}}{Publication-ready table of the factor and national
+#' \item{\code{MDI_p}}{Publication-ready table of the factor and national
 #' MDPI prepared with `summarymodels package`. Will not _return_ if only
 #' national computation is carried out.}
-#' \item{\code{MDPI}}{`Data frame` of the factor and national MDPI. Will
+#' \item{\code{MDI}}{`Data frame` of the factor and national MDPI. Will
 #'  not _return_ if only national computation is carried out.}
-#'  \item{\code{MDPI mean}}{`Data frame` of the mean MDPI. Will not _return_ if
+#'  \item{\code{MDI mean}}{`Data frame` of the mean MDPI. Will not _return_ if
 #'   only national computation is carried out.}
-#'  \item{\code{MDPI SD}}{`Data frame` of the SD of MDPI. Will not _return_ if
+#'  \item{\code{MDI SD}}{`Data frame` of the SD of MDPI. Will not _return_ if
 #'   only national computation is carried out.}
 #'   \item{\code{national}}{`Data frame` of national MDPI with mean and SD.}
 #'  \item{\code{dimensions}}{`Data frame` of the scores for each dimension in
@@ -72,7 +72,7 @@
 #'
 #' @importFrom tidyselect all_of
 #'
-#' @export mdpi
+#' @export mdi
 #'
 #' @aliases mdpi1
 #' @aliases mdpi2
@@ -86,16 +86,16 @@
 #' #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
 #' #                   "Access.to.an.improve.sanatation", "Electricity",
 #' #                   "Housing.Materials", "Asset.ownership"))
-#' # mdpi(data, dm, plots = "t", Factor = "Region")
-#' # mdpi(data, dm, plots = "t")
+#' # mdi(data, dm, plots = "t", Factor = "Region")
+#' # mdi(data, dm, plots = "t")
 #' #
 #' # # data from `mpitbR` package
 #' # data <- mdpi2
 #' # dm <- list(d1 = c("d_nutr","d_cm"),
 #' #            d2 = c("d_satt","d_educ"),
 #' #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
-#' # mdpi(data, dm, plots = "t", Factor = "region")
-#' # mdpi(data, dm, plots = "t")
+#' # mdi(data, dm, plots = "t", Factor = "region")
+#' # mdi(data, dm, plots = "t")
 #'
 #' @references
 #' Alkire, S. & Foster, J. (2011). Counting and Multidimensional Poverty
@@ -117,7 +117,7 @@
 #'  Siu Ming Chan & Hung Wong (2024): Measurement and determinants of
 #'  multidimensional poverty: the case of Hong Kong, Journal of Asian Public
 #'  Policy, DOI: 10.1080/17516234.2024.2325857
-mdpi <- function(data, dm, Bar = 0.4,
+mdi <- function(data, dm, Bar = 0.4,
                  id_addn = NULL,
                  Factor = NULL,
                  plots = NULL,
@@ -126,6 +126,12 @@ mdpi <- function(data, dm, Bar = 0.4,
                  id_add1 = "Employment and Income",
                  Echo = TRUE) {
 
+  if (lifecycle::is_present(mdpi)) {
+    lifecycle::deprecate_warn(
+      when = "11.11.28",
+      what   = "mdpi()",
+      with   = "mdi()")
+  }
   Bar <-  Bar
   Factor <- Factor
   plots <- plots
@@ -161,11 +167,11 @@ mdpi <- function(data, dm, Bar = 0.4,
     cata <- "Additional dimension is null..."
     progaress(Echo, cata)
   }
-  Analysis <- c("q", "Non Poor", "n", "Incidence of poverty",
-                rep("Adjusted incidence of poverty", ddm + 1),
+  Analysis <- c("q", "Non Poor", "n", "Incidence",
+                rep("Adjusted incidence", ddm + 1),
                 rep("Deprivation Score", ddm + 1),
-                rep("Intensity of poverty", ddm + 1),
-                rep("Multidimensional poverty index", ddm + 1),
+                rep("Intensity", ddm + 1),
+                rep("Multidimensional index", ddm + 1),
                 rep("Contribution", ddm + 1),
                 rep("Average deprivation among the deprived", ddm + 1),
                 rep("Sen Infdex", ddm + 1))
@@ -472,14 +478,14 @@ mdpi <- function(data, dm, Bar = 0.4,
     }
     cata <- "The computation is progressing...8"
     progaress(Echo, cata)
-    model_l <- list(MDPI_p = modelsummary::datasummary_df(models2, fmt = 4),
-                    MDPI = models2,
+    model_l <- list(MDI_p = modelsummary::datasummary_df(models2, fmt = 4),
+                    MDI = models2,
                     national = cbind(kay2[, -1], Mean = KaY2m[, 4],
                                      SD = kaY2s[, 4]),
                     dimensions = dds,
                     Score = Scores,
-                    `MDPI mean` = modEls2m,
-                    `MDPI SD` = modEls2s,
+                    `MDI mean` = modEls2m,
+                    `MDI SD` = modEls2s,
                     plots = plots)
     cata <- "National and factor MDPI..."
     progaress(Echo, cata)

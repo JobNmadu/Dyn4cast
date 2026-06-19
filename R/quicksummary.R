@@ -40,6 +40,17 @@
 quicksummary <- function(x, Type,  Cut = deprecated(),
                          Up = deprecated(),
                          Down = deprecated(), Dig = 2, ci = 0.95) {
+
+  if (lifecycle::is_present(Cut) |
+      lifecycle::is_present(Up) |
+      lifecycle::is_present(Down)) {
+    lifecycle::deprecate_warn(
+      when = "11.11.26",
+      what   = "quicksummary(Cut)" | "quicksummary(Up)" | "quicksummary(Down)",
+      with   = "quicksummary(NULL)"
+    )
+  }
+
  Dig <- Dig
  y  <-  as.matrix(x)
   if (is.null(colnames(y))) {

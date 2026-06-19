@@ -1,20 +1,20 @@
-#' Plots of Multidimensional Poverty Measures
+#' Plots of Multidimensional Index Measures
 #'
-#' @param data `Data frame` of Multidimensional Poverty measures which is an
-#' object from `mdpi`
+#' @param data `Data frame` of Multidimensional Index measures which is an
+#' object from `mdi`
 #' @param kala color palette with at least 15 colors but must be equal or higher
 #'  than the number of options in the factor argument
 #' @param factor the optional grouping factor used in the computation measures.
 #' If not supplied only the national plots will be produced irrespective of
 #' whether the factor was used in the computation.
 #' @param dma number of `Dimensions` involved in the computation of
-#' Multidimensional Poverty measures.
+#' Multidimensional Index measures.
 #'
 #' @returns A list of the following plots:
-#' \item{\code{Multidimensional poverty index}}{plot.}
+#' \item{\code{Multidimensional index}}{plot.}
 #' \item{\code{Deprivation Score}}{plot.}
-#' \item{\code{Adjusted incidence of poverty}}{plot.}
-#' \item{\code{Intensity of poverty}}{plot.}
+#' \item{\code{Adjusted incidence}}{plot.}
+#' \item{\code{Intensity}}{plot.}
 #' \item{\code{Average deprivation among the deprived}}{plot.}
 #' \item{\code{Contribution of each Dimension}}{plot.}
 #' \item{\code{combined dimensions}}{plot.}
@@ -35,31 +35,39 @@
 #' #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
 #' #                   "Access.to.an.improve.sanatation", "Electricity",
 #' #                   "Housing.Materials", "Asset.ownership"))
-#' # dp <- mdpi(data, dm, Factor = "Region")
+#' # dp <- mdi(data, dm, Factor = "Region")
 #' # library(MetBrewer)
 #' # kala <- met.brewer("OKeeffe1", 15, type = "continuous")
 #' # dma <- 3
-#' # plot_mdpi(dp$MDPI, kala, dma, "Region")
-plot_mdpi <- function(data, kala, dma, factor = NULL) {
+#' # plot_mdi(dp$MDI, kala, dma, "Region")
+plot_mdi <- function(data, kala, dma, factor = NULL) {
+
+  if (lifecycle::is_present(plot_mdpi)) {
+    lifecycle::deprecate_warn(
+      when = "11.11.28",
+      what   = "plot_mdpi()",
+      with   = "plot_mdi()")
+  }
+
   factor <- factor
-  Analysis <-  Dimension <-  `Multidimensional poverty measure` <-
+  Analysis <-  Dimension <-  `Multidimensional index measure` <-
     State <- NULL
   idk <- data[6:(dma + 6 - 1), 2]
   data <- tidyr::pivot_longer(data, -c(1, 2), names_to = "State",
-                              values_to = "Multidimensional poverty measure")
+                              values_to = "Multidimensional index measure")
   D7 <- data %>%
     dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
     dplyr::filter(Dimension %in% idk) %>%
     dplyr::filter(State %in% "National") %>%
-    dplyr::filter(`Multidimensional poverty measure` > 0)
+    dplyr::filter(`Multidimensional index measure` > 0)
 
   L7 <- ggplot(D7) +
     ggplot2::aes(x = stats::reorder(Dimension,
-                                    `Multidimensional poverty measure`),
-                 y = `Multidimensional poverty measure`, fill = Dimension) +
+                                    `Multidimensional index measure`),
+                 y = `Multidimensional index measure`, fill = Dimension) +
     ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
     scale_fill_manual(values = kala) +
-    labs(y = "Multidimensional poverty measure", x = "Dimensions") +
+    labs(y = "Multidimensional index measure", x = "Dimensions") +
     ggplot2::theme_minimal() +
     guides(color = ggplot2::guide_none()) +
     theme_minimal() +
@@ -71,10 +79,10 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
     dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
     dplyr::filter(Dimension %in% "Combined") %>%
     dplyr::filter((State %in% "National")) %>%
-    dplyr::filter(`Multidimensional poverty measure` > 0)
+    dplyr::filter(`Multidimensional index measure` > 0)
 
   L9 <- ggplot(D9) +
-    ggplot2::aes(x = Analysis, y = `Multidimensional poverty measure`,
+    ggplot2::aes(x = Analysis, y = `Multidimensional index measure`,
                  fill = Analysis) +
     ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
     scale_fill_manual(values = kala) +
@@ -83,19 +91,19 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
     facet_wrap(vars(Analysis), scales = "free")
   if (!is.null(factor)) {
     D1 <- data %>%
-      dplyr::filter(Analysis %in% "Multidimensional poverty index") %>%
+      dplyr::filter(Analysis %in% "Multidimensional index") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L1 <- ggplot(D1) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      ggplot2::labs(y = "Multidimensional poverty index",
+      ggplot2::labs(y = "Multidimensional index",
                     x = "Factor options") +
       ggplot2::theme_minimal() +
       ggplot2::theme(legend.position = "none") +
@@ -106,12 +114,12 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       dplyr::filter(Analysis %in% "Deprivation Score") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L2 <- ggplot(D2) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
@@ -123,19 +131,19 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       facet_wrap(vars(Dimension), scales = "free")
 
     D3 <- data %>%
-      dplyr::filter(Analysis %in% "Adjusted incidence of poverty") %>%
+      dplyr::filter(Analysis %in% "Adjusted incidence") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L3 <- ggplot(D3) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      ggplot2::labs(y = "Adjusted incidence of poverty",
+      ggplot2::labs(y = "Adjusted incidence",
                     x = "Factor options") +
       ggplot2::theme_minimal() +
       ggplot2::theme(legend.position = "none") +
@@ -143,19 +151,19 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       facet_wrap(vars(Dimension), scales = "free")
 
     D4 <- data %>%
-      dplyr::filter(Analysis %in% "Intensity of poverty") %>%
+      dplyr::filter(Analysis %in% "Intensity") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L4 <- ggplot(D4) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      ggplot2::labs(y = "Intensity of poverty",
+      ggplot2::labs(y = "Intensity",
                     x = "Factor options") +
       ggplot2::theme_minimal() +
       ggplot2::theme(legend.position = "none") +
@@ -166,12 +174,12 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       dplyr::filter(Analysis %in% "Average deprivation among the deprived") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L5 <- ggplot(D5) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
@@ -186,12 +194,12 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       dplyr::filter(Analysis %in% "Contribution") %>%
       dplyr::filter(Dimension %in% idk) %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L6 <- ggplot(D6) +
       ggplot2::aes(x = stats::reorder(State,
-                                      `Multidimensional poverty measure`),
-                   y = `Multidimensional poverty measure`,
+                                      `Multidimensional index measure`),
+                   y = `Multidimensional index measure`,
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
@@ -206,26 +214,26 @@ plot_mdpi <- function(data, kala, dma, factor = NULL) {
       dplyr::filter(!(Analysis %in% c("q", "Non Poor", "n"))) %>%
       dplyr::filter(Dimension %in% "Combined") %>%
       dplyr::filter(!(State %in% "National")) %>%
-      dplyr::filter(`Multidimensional poverty measure` > 0)
+      dplyr::filter(`Multidimensional index measure` > 0)
 
     L8 <- ggplot(D8) +
       ggplot2::aes(x = reorder(State,
-                               `Multidimensional poverty measure`),
-                   y = round(`Multidimensional poverty measure`, 3),
+                               `Multidimensional index measure`),
+                   y = round(`Multidimensional index measure`, 3),
                    fill = State) +
       ggplot2::geom_bar(stat = "summary", fun = "mean", position = "dodge2") +
       scale_fill_manual(values = kala) +
-      labs(y = "Multidimensional poverty measure", x = "Factor options") +
+      labs(y = "Multidimensional index measure", x = "Factor options") +
       ggplot2::theme_minimal() +
       guides(color = ggplot2::guide_none()) +
       theme_minimal() +
       ggplot2::theme(legend.position = "none") +
       ggplot2::coord_flip() +
       facet_wrap(vars(Analysis), scales = "free")
-    return(list(`Multidimensional poverty index` = L1,
+    return(list(`Multidimensional index` = L1,
                 `Deprivation Score` = L2,
-                `Adjusted incidence of poverty` = L3,
-                `Intensity of poverty` = L4,
+                `Adjusted incidence` = L3,
+                `Intensity` = L4,
                 `Average deprivation among the deprived` = L5,
                 `Contribution of each Dimension` = L6,
                 combined_only = L8,

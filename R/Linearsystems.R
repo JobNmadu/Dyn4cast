@@ -171,7 +171,7 @@ utils::globalVariables(c("Variables", "Model", "values", "Observed"))
 Linearsystems <- function(y, x, mod, limit, Test = NA) {
   y1 <- y
   Data <- cbind(y, x)
-  # Names <- names(Data)
+
   case <- if (ncol(Data) > 9) {
     "complex"
   } else {
@@ -198,7 +198,8 @@ Linearsystems <- function(y, x, mod, limit, Test = NA) {
     e_Linear <- NULL
   }
   KNN <- Data %>% dplyr::select_if(is.numeric)
-  KNN1 <- quicksummary(x = KNN, Type = 1)
+  KNN1 <- quicksummary(x = KNN, Type = 1, Cut = deprecated(),
+                       Up = deprecated(), Down = deprecated())
   KKC <- Data %>%
     dplyr::select_if(is.character) %>%
     summary()

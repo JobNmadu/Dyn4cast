@@ -15,7 +15,26 @@ NULL
 Model_factors <- function(...) {
   lifecycle::deprecate_warn(
     "11.11.26",
-    "Model_factors",
-    "Please use `model_factors` instead"
+    "Model_factors()",
+    "model_factors()",
+    "Please use `model_factors()` instead"
+  )
+}
+
+mdpi <- function(...) {
+  lifecycle::deprecate_warn(
+    "11.11.28",
+    "mdpi()",
+    "mdi()",
+    "Please use `mdi()` instead"
+  )
+}
+
+plot_mdpi <- function(...) {
+  lifecycle::deprecate_warn(
+    "11.11.28",
+    "plot_mdpi()",
+    "plot_mdi()",
+    "Please use `plot_mdi()` instead"
   )
 }
