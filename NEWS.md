@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-theta 2026-06-25
+
+`phi` coefficients in __odds_summary__ are now better controlled. The output variables in __mdi__ are now better aligned.
+
 # Dyn4cast 11.11.28-eta 2026-06-19
 
 There has been huge improvements and higher efficiency as `mdpi` and `plot_mdpi` deprecated in favor of __mdi__ and __plot_mdi__ as the functions can now handle any multidimensional indices like __poverty__, __wellbieng__, etc, as long as they have _indicators_ and _dimensions_.
