@@ -239,6 +239,12 @@ odds_summary <- function(model) {
 
     odds_ratios <- data.frame(Odds_ratio = exp(coef(model))) %>%
       tibble::rownames_to_column(., var = "Variables")
+
+    odds_ratios$Odds_ratio  <-
+      case_when(odds_ratios$Odds_ratio > 9999 ~
+                  as.numeric(sprintf("%.2e", odds_ratios$Odds_ratio)),
+                             .default = odds_ratios$Odds_ratio)
+
     p <- cctable$`p value`
     cctable <- cctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
