@@ -219,10 +219,10 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
 #                     "Access.to.an.improve.sanatation", "Electricity",
 #                     "Housing.Materials", "Asset.ownership"))
-#   mdpi(data, dm, plots = "t", Factor = "Region")
+#   mdi(data, dm, plots = "t", Factor = "Region")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
-# mdpi(data, dm, plots = "t")
+# mdi(data, dm, plots = "t")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
 # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
@@ -232,7 +232,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d4 = c("Access.to.clean.source.of.water",
 #                     "Access.to.an.improve.sanatation"))
 # 
-#   mdpi(data, dm, id_add = c("Water and Sanitation"),
+#   mdi(data, dm, id_add = c("Water and Sanitation"),
 #                 plots = "t", Factor = "Region")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
@@ -242,15 +242,15 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d4 = c("d_sani","d_wtr"),
 #              d5 = c("d_nutr"))
 # 
-#   mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+#   mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
 #        plots = "t", Factor = "region")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
-# mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+# mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
 #        Factor = "region")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
-# mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition")
+# mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
 # dm <- list(d1 = c("d_cm"),
@@ -260,7 +260,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d5 = c("d_nutr"),
 #              d6 = c("d_hsg","d_asst"))
 # 
-#   mdpi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
+#   mdi(data1, dm, id_add = "Water and Sanitation", id_add1 = "Nutrition",
 #                 id_addn = "Housing and Assets", plots = "t", Factor = "region")
 
 ## ----echo = TRUE, warning = FALSE, eval = FALSE-------------------------------
@@ -272,7 +272,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d6 = c("d_hsg"),
 #              d7 = c("d_asst"))
 # 
-#   mdpi(data1, dm, id_add = "Water and Sanitation",
+#   mdi(data1, dm, id_add = "Water and Sanitation",
 #                 id_add1 = "Nutrition", id_addn = c("Housing", "Assets"),
 #                 plots = "t", Factor = "region")
 
@@ -286,7 +286,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d7 = c("d_asst"),
 #              d8 = c("d_wtr"))
 # 
-#   mdpi(data1, dm, id_add = "Sanitation",
+#   mdi(data1, dm, id_add = "Sanitation",
 #                  id_add1 = "Nutrition",
 #                  id_addn = c("Housing", "Assets", "Water"),
 #                  plots = "t", Factor = "region")
@@ -302,7 +302,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #              d8 = c("d_wtr"),
 #              d9 = c("d_elct"))
 # 
-#   mdpi(data1, dm, id_add = "Sanitation",
+#   mdi(data1, dm, id_add = "Sanitation",
 #                  id_add1 = "Nutrition",
 #                  id_addn = c("Housing", "Assets", "Water", "Electricity"),
 #                  plots = "t", Factor = "region")

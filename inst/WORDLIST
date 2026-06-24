@@ -60,7 +60,7 @@ lifecycle
 likert
 lm
 lockdown
-mdpi
+mdi
 modelsummary's
 pak
 quicksummary
@@ -71,4 +71,5 @@ testthat
 tinytable
 unitless
 visualise
+wellbieng
 worlddev

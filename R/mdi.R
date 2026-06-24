@@ -167,7 +167,7 @@ mdi <- function(data, dm, Bar = 0.4,
     cata <- "Additional dimension is null..."
     progaress(Echo, cata)
   }
-  Analysis <- c("q", "Non Poor", "n", "Incidence",
+  Analysis <- c("q", "Below cut off", "n", "Incidence",
                 rep("Adjusted incidence", ddm + 1),
                 rep("Deprivation Score", ddm + 1),
                 rep("Intensity", ddm + 1),
@@ -550,7 +550,7 @@ mmmm <- function(data, Scores, score, Factor, ddm, Analysis, kay2, id1) {
   ddfnq <- ddfn - ddfq
   IOP <- ddfq / ddfn
   model <- cbind(q = ddfq, Non_Poor = ddfnq, n = ddfn, IOP = IOP)
-  names(model) <- c("q", "Non Poor", "n", "IOP")
+  names(model) <- c("q", "Below cut off", "n", "IOP")
   iop   <- ddfd / model$q
   MPIc  <- ddfd$Combined / model$n
   MPI   <- ddfd / model$n
