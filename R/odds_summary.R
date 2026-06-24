@@ -240,14 +240,10 @@ odds_summary <- function(model) {
     odds_ratios <- data.frame(Odds_ratio = exp(coef(model))) %>%
       tibble::rownames_to_column(., var = "Variables")
 
-    oddsratio <- case_when(odds_ratios$Odds_ratio > 9999 ~
-                  sprintf("%.2e", odds_ratios$Odds_ratio),
-                             .default = as.character(odds_ratios$Odds_ratio))
-
     p <- cctable$`p value`
     cctable <- cctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100
-    odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, oddsratio))
+    odds_ratios <- odds_ratios %>% mutate(`Odds Sig` = p2(p, Odds_ratio))
 
     ctable <- data.frame(Variables = or_ci[, 1], cctable[, -1])
 
@@ -284,14 +280,19 @@ odds_summary <- function(model) {
 
 p2 <- function(p1, ggt) {
 
-  dplyr::case_when(p1 > 0.1    ~ ifelse(is.character(ggt), paste0(ggt, ""),
-                                        paste0(round(ggt, 3), "")),
-                   p1 <= 0.001 ~ ifelse(is.character(ggt), paste0(ggt, "***"),
-                                        paste0(round(ggt, 3), "***")),
-                   p1 <= 0.01  ~ ifelse(is.character(ggt), paste0(ggt, "**"),
-                                        paste0(round(ggt, 3), "**")),
-                   p1 <= 0.05  ~ ifelse(is.character(ggt), paste0(ggt, "*"),
-                                        paste0(round(ggt, 3), "*")),
-                   p1 <= 0.1   ~ ifelse(is.character(ggt), paste0(ggt, "+"),
-                                        paste0(round(ggt, 3), "+")))
+  dplyr::case_when(p1 > 0.1    ~ ifelse(ggt > 9999,
+                                        paste0(sprintf("%.2e", ggt) , ""),
+                            paste0(round(ggt, 3), "")),
+                   p1 <= 0.001 ~ ifelse(ggt > 9999,
+                                        paste0(sprintf("%.2e", ggt) , "***"),
+                            paste0(round(ggt, 3), "***")),
+                   p1 <= 0.01  ~ ifelse(ggt > 9999,
+                                        paste0(sprintf("%.2e", ggt) , "**"),
+                            paste0(round(ggt, 3), "**")),
+                   p1 <= 0.05  ~ ifelse(ggt > 9999,
+                                        paste0(sprintf("%.2e", ggt) , "*"),
+                            paste0(round(ggt, 3), "*")),
+                   p1 <= 0.1   ~ ifelse(ggt > 9999,
+                                        paste0(sprintf("%.2e", ggt) , "+"),
+                            paste0(round(ggt, 3), "+")))
 }
