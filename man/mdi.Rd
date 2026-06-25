@@ -34,7 +34,7 @@ supplied.}
 computation up to a \strong{maximum of four}.}
 
 \item{Factor}{an optional grouping factor for the computation which must be a
-variable in the \emph{data}. If not supplied, only the national MDPI will be
+variable in the \emph{data}. If not supplied, only the national MDI will be
 computed.}
 
 \item{plots}{plots of the various measures. For this to be possible, the
@@ -58,15 +58,15 @@ defaults to TRUE.}
 \value{
 A list with the following components:
 \item{\code{MDI_p}}{Publication-ready table of the factor and national
-MDPI prepared with \verb{summarymodels package}. Will not \emph{return} if only
+MDI prepared with \verb{summarymodels package}. Will not \emph{return} if only
 national computation is carried out.}
-\item{\code{MDI}}{\verb{Data frame} of the factor and national MDPI. Will
+\item{\code{MDI}}{\verb{Data frame} of the factor and national MDI. Will
 not \emph{return} if only national computation is carried out.}
-\item{\code{MDI mean}}{\verb{Data frame} of the mean MDPI. Will not \emph{return} if
+\item{\code{MDI mean}}{\verb{Data frame} of the mean MDI. Will not \emph{return} if
 only national computation is carried out.}
-\item{\code{MDI SD}}{\verb{Data frame} of the SD of MDPI. Will not \emph{return} if
+\item{\code{MDI SD}}{\verb{Data frame} of the SD of MDI. Will not \emph{return} if
 only national computation is carried out.}
-\item{\code{national}}{\verb{Data frame} of national MDPI with mean and SD.}
+\item{\code{national}}{\verb{Data frame} of national MDI with mean and SD.}
 \item{\code{dimensions}}{\verb{Data frame} of the scores for each dimension in
 the computation.}
 \item{\code{Score}}{\verb{Data frame} of the scores for each indicator in the

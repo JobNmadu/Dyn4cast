@@ -38,7 +38,7 @@
 #' @param id_addn an optional vector of additional dimensions to be used for the
 #'  computation up to a __maximum of four__.
 #' @param Factor an optional grouping factor for the computation which must be a
-#'  variable in the *data*. If not supplied, only the national MDPI will be
+#'  variable in the *data*. If not supplied, only the national MDI will be
 #'   computed.
 #' @param id a vector of the first three dimensions used in the computation
 #'  given as **Health**, **Education** and **Living standard**. Can be redefined
@@ -56,15 +56,15 @@
 #'
 #' @returns A list with the following components:
 #' \item{\code{MDI_p}}{Publication-ready table of the factor and national
-#' MDPI prepared with `summarymodels package`. Will not _return_ if only
+#' MDI prepared with `summarymodels package`. Will not _return_ if only
 #' national computation is carried out.}
-#' \item{\code{MDI}}{`Data frame` of the factor and national MDPI. Will
+#' \item{\code{MDI}}{`Data frame` of the factor and national MDI. Will
 #'  not _return_ if only national computation is carried out.}
-#'  \item{\code{MDI mean}}{`Data frame` of the mean MDPI. Will not _return_ if
+#'  \item{\code{MDI mean}}{`Data frame` of the mean MDI. Will not _return_ if
 #'   only national computation is carried out.}
-#'  \item{\code{MDI SD}}{`Data frame` of the SD of MDPI. Will not _return_ if
+#'  \item{\code{MDI SD}}{`Data frame` of the SD of MDI. Will not _return_ if
 #'   only national computation is carried out.}
-#'   \item{\code{national}}{`Data frame` of national MDPI with mean and SD.}
+#'   \item{\code{national}}{`Data frame` of national MDI with mean and SD.}
 #'  \item{\code{dimensions}}{`Data frame` of the scores for each dimension in
 #' the computation.}
 #'  \item{\code{Score}}{`Data frame` of the scores for each indicator in the
@@ -469,7 +469,7 @@ mdi <- function(data, dm, Bar = 0.4,
       cat("Palette have 40 colors, plots not possible...", "\n")
     } else if (!is.null(plots) & length(unique(Factor)) < 41) {
       kala <- kolo_mix("Renoir", 40, type = "continuous", direction = -1)
-      plots <- plot_mdpi(models2, kala, ddm, factor = Factor)
+      plots <- plot_mdi(models2, kala, ddm, factor = Factor)
       cata <- "Proceeding after plots produced..."
       progaress(Echo, cata)
     } else {
@@ -487,7 +487,7 @@ mdi <- function(data, dm, Bar = 0.4,
                     `MDI mean` = modEls2m,
                     `MDI SD` = modEls2s,
                     plots = plots)
-    cata <- "National and factor MDPI..."
+    cata <- "National and factor MDI..."
     progaress(Echo, cata)
   } else {
     model_l <- list(national = cbind(kay2[, -1], Mean = KaY2m[, 4],
@@ -495,7 +495,7 @@ mdi <- function(data, dm, Bar = 0.4,
                     dimensions = dds,
                     Score = Scores,
                     plots = plots)
-    cata <- "National MDPI only..."
+    cata <- "National MDI only..."
     progaress(Echo, cata)
   }
   cata <- "The computation completed..."
