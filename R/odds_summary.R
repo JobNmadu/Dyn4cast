@@ -105,8 +105,9 @@ odds_summary <- function(model) {
   Coefficient <- 0
   Odds_ratio <- 0
   dist <-  model$dist
-  hhh <- c(" ", "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
-            " " ," " ," " ," " ," " ," " ," " ," " ," ")
+  hhh <- c(" ", " " ," " ," " ," " ,
+           "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
+           " " ," " ," " ," " ," ")
 
 # Get the coefficient table
   ctable <- data.frame(coef(summary(model))) %>%
