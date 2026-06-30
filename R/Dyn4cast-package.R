@@ -78,3 +78,4 @@ NULL
 #' + `gender`
 #' + `index_construction`
 #' + `relative_likert`
+#' + `odds_summary`
