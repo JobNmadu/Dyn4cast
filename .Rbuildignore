@@ -3,7 +3,6 @@
 ^Dyn4cast\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
-^LICENSE\.md$
 ^README\.Rmd$
 ^\.travis\.yml$
 ^codecov\.yml$
@@ -20,3 +19,4 @@
 ^\.positai$
 ^\.claude$
 ^CRAN-SUBMISSION$
+^LICENSE\.md$
