@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-iota 2026-07-03
+
+Coefficient estimates of `probit` model are now well aligned for conversion to odds ratio in _odds_summary__.
+
 # Dyn4cast 11.11.28-theta 2026-06-25
 
 `phi` coefficients in __odds_summary__ are now better controlled. The output variables in __mdi__ are now better aligned.
