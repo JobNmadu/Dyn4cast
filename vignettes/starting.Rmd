@@ -23,8 +23,8 @@ knitr::opts_chunk$set(tidy      = "styler",
                       dpi       = 132,
                       echo      = FALSE)
 
-options(scipen = 999, digits = 2)
-options(rmarkdown.html_vignette.check_title = FALSE)
+old_options <- options(scipen = 999, digits = 2)
+olds <- options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
 ## Installation
@@ -76,7 +76,7 @@ A number of other packages are required for the smooth running of the package an
 
 ```{r install-suggested, echo = TRUE, eval = FALSE}
 install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
-                   "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
+                   "covr", "caret", "kableExtra", "knitr", "spelling",
                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext", 
                    "lubridate", "forecast", "MASS", "mlogit", "nnet", "betareg",
                    "mvProbit", "miscTools"))
@@ -87,6 +87,9 @@ install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
 
 ```{r citation, comment = "", warning = FALSE}
+
+options(olds)
+options(old_options)
 
 citation("Dyn4cast")
 

@@ -24,11 +24,12 @@ knitr::opts_chunk$set(tidy      = "styler",
                       dpi       = 132,
                       echo      = FALSE)
 
-options(scipen = 999, digits = 2)
+old_options <- options(scipen = 999, digits = 2)
+olds <- options(rmarkdown.html_vignette.check_title = FALSE)
 
 library(Dyn4cast)
 library(tidyverse, quietly = T)
-options(rmarkdown.html_vignette.check_title = FALSE)
+
 ```
 <!-- 
 
@@ -77,39 +78,6 @@ install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https
 ```
 
 Outlined below are the various functions and their capacities as provided by the package.
-
-# constrainedforecast: Constrained Forecast of One-sided Integer Response Model
-
-This function constrains the forecast of one-sided integer data to ensure that the forecast remain within the limits of the data. It is used in conjunction with two other functions: `scaled_logit` and `inv_scaled_logit`. The basic usage of the function is as follows:
-
-```
-constrainedforecast(model10, lower, upper)
-
-With the following arguments:
-
-`model10`	This is the exponential values from the `inv_scaled_logit` function.
-
-`lower`	The lower limit of the forecast
-
-`upper`	The upper limit of the forecast
-```
-
-## Example
-
-```{r echo = TRUE, eval = FALSE}
-library(splines)
-library(forecast)
-library(readr)
-lower <- 1
-upper <- 37
-Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-FitModel <- scaledlogit(x2 = fitted.values(Model), lower = lower,
- upper = upper)
-ForecastModel <- forecast(FitModel, h = length(200))
-constrainedforecast(model10 = ForecastModel, lower, upper)
-```
-
-The values are the unconstrained and constrained forecast. The constrained forecast remains within the limits of the data.
 
 # data_transform: Standardize data.frame for comparable Machine Learning prediction and visualization
 
@@ -973,3 +941,11 @@ estResultStart <- mvProbit(cbind(y1, y2, y3) ~ x1 + x2, start = c(beta),
 startSigma = sigma, data = as.data.frame(cbind(xMat, yMat)), iterlim = 1,
 nGHK = 50)
 odds_summary(estResultStart)
+```
+
+```{r}
+options(olds)
+options(old_options)
+```
+
+

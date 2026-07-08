@@ -34,7 +34,7 @@
 #' tally())
 formattedcut <- function(data, breaks, cut = FALSE) {
   cut <- cut
-  options(scipen = 999, digits = 2)
+  old_options <- options(scipen = 999, digits = 2)
   if (cut == FALSE) {
     tally <- as.data.frame(table(cut(data, breaks, include.lowest = FALSE)))
     group <- as.data.frame(cbind(`Lower class` = as.numeric(sub("\\((.+),.*",
@@ -56,5 +56,6 @@ formattedcut <- function(data, breaks, cut = FALSE) {
                                     group$`Upper class`)
     cut <- group
   }
+  options(old_options)
   cut
 }

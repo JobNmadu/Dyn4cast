@@ -12,8 +12,8 @@ knitr::opts_chunk$set(tidy      = "styler",
                       dpi       = 132,
                       echo      = FALSE)
 
-options(scipen = 999, digits = 2)
-options(rmarkdown.html_vignette.check_title = FALSE)
+old_options <- options(scipen = 999, digits = 2)
+olds <- options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----github, echo = TRUE, eval = FALSE----------------------------------------
 # 
@@ -26,12 +26,15 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----install-suggested, echo = TRUE, eval = FALSE-----------------------------
 # install.packages(c("lubridate", "tidyverse", "xlsx", "readxl", "rmarkdown",
-#                    "covr", "qpdf", "caret", "kableExtra", "knitr", "spelling",
+#                    "covr", "caret", "kableExtra", "knitr", "spelling",
 #                    "psych", "lifecycle", "MetBrewer", "data.table", "ggtext",
 #                    "lubridate", "forecast", "MASS", "mlogit", "nnet", "betareg",
 #                    "mvProbit", "miscTools"))
 
 ## ----citation, comment = "", warning = FALSE----------------------------------
+
+options(olds)
+options(old_options)
 
 citation("Dyn4cast")
 

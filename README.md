@@ -83,62 +83,55 @@ At present, the package exports the following functions:
     last date Data was collected and `BREAKS`, which is a vector of
     numbers and is used as `knots` in estimating spline polynomials.
 
-2.  `constrainedforecast` which constrain forecast of one-sided integer
-    forecast to lie between the lower and upper limits of the base data.
-    The function estimates the lower and upper 80% and 95% forecasts of
-    the estimated model. This function works with two other functions,
-    that is, `invscaledligit` and `scaledlogit` which are adapted from
-    Hyndman & Athanasopoulos (2021) and both of which are adopted.
-
-3.  `Percent` which affix the % sign on a value or a vector or data
+2.  `Percent` which affix the % sign on a value or a vector or data
     frame of values.
 
-4.  `MLMetrics` which collects more than 40 metrics that are useful in
+3.  `MLMetrics` which collects more than 40 metrics that are useful in
     model selection. The beauty of this function is the simplicity with
     which these metrics are collected from difference packages and saves
     the user the need to load more than 10 libraries in order to get
     these metrics.
 
-5.  `MallowsCP` for determining the the Mallows CP.
+4.  `MallowsCP` for determining the the Mallows CP.
 
-6.  `Linearsystems` for linear regression model with some
+5.  `Linearsystems` for linear regression model with some
     transformation.
 
-7.  `quicksummary` which outputs a formatted table of useful summary
+6.  `quicksummary` which outputs a formatted table of useful summary
     statistics of machine learning data.
 
-8.  `formattedcut` is a wrapper for providing publication ready
+7.  `formattedcut` is a wrapper for providing publication ready
     frequency tables for continuous variable.
 
-9.  `data_transform` is a wrapper for standardizing `data.frame` to make
+8.  `data_transform` is a wrapper for standardizing `data.frame` to make
     the values comparable for estimation and/or visualization.
 
-10. `estimate_plot` is a function for plotting estimated coefficients of
+9.  `estimate_plot` is a function for plotting estimated coefficients of
     a model in their order of significance.
 
-11. `corplot` is for plotting the correlation matrix.
+10. `corplot` is for plotting the correlation matrix.
 
-12. `garrett_ranking` is for ranking Likert-type data.
+11. `garrett_ranking` is for ranking Likert-type data.
 
-13. `Model_factors` is for determining and retrieving latent factors
+12. `Model_factors` is for determining and retrieving latent factors
     from Likert-type data for estimation and Machine Learning.
 
-14. `treatment_model` is for propensity matching treatments effects and
+13. `treatment_model` is for propensity matching treatments effects and
     other metrics in the Machine Learning Environment.
 
-15. `mdi` is for computation of multidimensional indicators and indices
+14. `mdi` is for computation of multidimensional indicators and indices
 
-16. `plot_mdi` is to plot the indices
+15. `plot_mdi` is to plot the indices
 
-17. `gender` is to convert age and sex to gender
+16. `gender` is to convert age and sex to gender
 
-18. `index_construction` is to convert indicators of exposure or
+17. `index_construction` is to convert indicators of exposure or
     sensitivity to vector of index
 
-19. `relative_likert` converts likert scores to vector of index for
+18. `relative_likert` converts likert scores to vector of index for
     adaptive capacity
 
-20. `odds_summary` computes odds ratios, percentage changes, and
+19. `odds_summary` computes odds ratios, percentage changes, and
     confidence intervals from fitted binary and categorical regression
     models
 
@@ -153,7 +146,7 @@ citation("Dyn4cast")
 To cite package 'Dyn4cast' in publications use:
 
   Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-  Environment_. R package version 11.11.26, 
+  Environment_. R package version 11.11.26,
   <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
@@ -175,7 +168,7 @@ already installed on your machine. Some of the packages are listed
 below:
 
 ``` r
-install.packages(c("testthat", "tidyverse", "rmarkdown", "covr", "qpdf",
+install.packages(c("testthat", "tidyverse", "rmarkdown", "covr"
                    "caret", "kableExtra", "knitr", "spelling", "psych",
                    "readr", "MetBrewer", "data.table", "ggtext", "lubridate",
                    "forecast", "MASS", "mlogit", "nnet", "betareg", "mvProbit",

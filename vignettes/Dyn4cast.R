@@ -13,11 +13,12 @@ knitr::opts_chunk$set(tidy      = "styler",
                       dpi       = 132,
                       echo      = FALSE)
 
-options(scipen = 999, digits = 2)
+old_options <- options(scipen = 999, digits = 2)
+olds <- options(rmarkdown.html_vignette.check_title = FALSE)
 
 library(Dyn4cast)
 library(tidyverse, quietly = T)
-options(rmarkdown.html_vignette.check_title = FALSE)
+
 
 ## ----github, echo = TRUE, eval = FALSE----------------------------------------
 # 
@@ -27,18 +28,6 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ## ----universe, echo = TRUE, eval = FALSE--------------------------------------
 # 
 # install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
-
-## ----echo = TRUE, eval = FALSE------------------------------------------------
-# library(splines)
-# library(forecast)
-# library(readr)
-# lower <- 1
-# upper <- 37
-# Model   <- lm(states ~ bs(sequence, knots = c(30, 115)), data = Data)
-# FitModel <- scaledlogit(x2 = fitted.values(Model), lower = lower,
-#  upper = upper)
-# ForecastModel <- forecast(FitModel, h = length(200))
-# constrainedforecast(model10 = ForecastModel, lower, upper)
 
 ## ----echo = TRUE, eval = FALSE------------------------------------------------
 # data0 <- Transform %>%
@@ -476,4 +465,8 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 # startSigma = sigma, data = as.data.frame(cbind(xMat, yMat)), iterlim = 1,
 # nGHK = 50)
 # odds_summary(estResultStart)
+
+## -----------------------------------------------------------------------------
+options(olds)
+options(old_options)
 
