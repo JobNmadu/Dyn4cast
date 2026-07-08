@@ -131,7 +131,7 @@ the simplicity, and it is a \emph{one line} code.
 library(tidyverse)
 library(ggtext)
 
-y <- linearsystems$MKTcost # to run all the exercises, uncomment.
+y <- linearsystems$MKTcost
 x <- select(linearsystems, -MKTcost)
 x <- sampling[, -1]
 y <- sampling$qOutput
