@@ -100,7 +100,7 @@ printLoadings <- function(x, digits = 3, cutoff = 0.01, sort = TRUE, ...) {
     mx[abs(Lambda[ind]) < 0.5] <- factors + 1
     Lambda <- Lambda[order(mx, 1L:p), ]
   }
-  cat("\nLoadings:\n")
+  message("\nLoadings:\n")
   fx <- format(round(Lambda, digits))
   names(fx) <- NULL
   nc <- nchar(fx[1L], type = "c")
@@ -113,7 +113,7 @@ printLoadings <- function(x, digits = 3, cutoff = 0.01, sort = TRUE, ...) {
     if (factors > 1)
       varex <- rbind(varex, `Cumulative Var` = cumsum(vx / p))
   }
-  cat("\n")
+  message("\n")
   print(round(varex, digits))
   invisible(newx)
 }

@@ -19,10 +19,8 @@ there is any difference at all. This function will create clarity between
 them.
 }
 \examples{
-# df <- data.frame(Age = c(49, 30, 44, 37, 29, 56, 28, 26, 33, 45, 45, 19,
-#   32, 22, 19, 28, 28, 36, 56, 34),
-#  Sex = c("male", "female", "female", "male", "male", "male", "female",
-#  "female", "Prefer not to say", "male", "male", "female", "female", "male",
-#  "Non-binary/third gender", "male", "female", "female", "male", "male"))
-#  gender(df)
+df <- data.frame(Age = c(49, 30, 44, 37, 29, 56),
+ Sex = c("male", "female", "female", "male", "Prefer not to say",
+  "Non-binary/third gender"))
+ gender(df)
 }

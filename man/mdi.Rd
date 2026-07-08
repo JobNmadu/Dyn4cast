@@ -16,7 +16,7 @@ mdi(
   id = c("Health", "Education", "Living standard"),
   id_add = "Social security",
   id_add1 = "Employment and Income",
-  Echo = TRUE
+  Echo = FALSE
 )
 }
 \arguments{
@@ -53,7 +53,7 @@ as \strong{Social security}. Can be re-defined but never \code{NULL}.}
 as \strong{Employment and Income}. Can be re-defined but never \code{NULL}.}
 
 \item{Echo}{Optional indicating whether the progress note is visible
-defaults to TRUE.}
+defaults to FALSE.}
 }
 \value{
 A list with the following components:
@@ -100,24 +100,12 @@ existing guidelines in Alkire & Foster (2011) and Alkire & Santos
 (2010). See also Alkire & Santos (2014) and Chan & Wong (2024).
 }
 \examples{
-# # Not run, uncomment to run
-# # data from `MPI` package
-# data <- mdpi1
-# dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
-#            d2 = c("Years.of.education", "School.attendance", "School.lag"),
-#            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
-#                   "Access.to.an.improve.sanatation", "Electricity",
-#                   "Housing.Materials", "Asset.ownership"))
-# mdi(data, dm, plots = "t", Factor = "Region")
-# mdi(data, dm, plots = "t")
-#
-# # data from `mpitbR` package
-# data <- mdpi2
-# dm <- list(d1 = c("d_nutr","d_cm"),
-#            d2 = c("d_satt","d_educ"),
-#            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
-# mdi(data, dm, plots = "t", Factor = "region")
-# mdi(data, dm, plots = "t")
+# data from `mpitbR` package
+data <- mdpi2
+dm <- list(d1 = c("d_nutr","d_cm"),
+           d2 = c("d_satt","d_educ"),
+           d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
+mdi(data, dm, Factor = "region")
 
 }
 \references{

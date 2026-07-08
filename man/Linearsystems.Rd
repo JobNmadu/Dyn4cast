@@ -128,33 +128,16 @@ time and energy are saved. The interesting thing about this function is
 the simplicity, and it is a \emph{one line} code.
 }
 \examples{
-## Without test data (not run)
-# library(tidyverse)
-# library(ggtext)
-#
-# y <- linearsystems$MKTcost # to run all the exercises, uncomment.
-# x <- select(linearsystems, -MKTcost)
-# Linearsystems(y, x, 6, 15) # NaNs produced if run
-## Without test data (not run)
-# x <- sampling[, -1]
-# y <- sampling$qOutput
-# limit <- 20
-# mod <-3
-# Test <- NA
-# Linearsystems(y, x, 3, 15) # NaNs produced if run
-# # with test data
-# x <- sampling[, -1]
-# y <- sampling$qOutput
-# Data <- cbind(y, x)
-# # 80\% of data is sampled
-# sampling <- sample(1 : nrow(Data), 0.8 * nrow(Data))
-# # for training the model
-# train <- Data[sampling, ]
-# Test  <- Data[-sampling, ]
-# # 20\% of data is reserved for testing (predicting) the model
-# y <- train$y
-# x <- train[, -1]
-# mod <- 4
-# Linearsystems(y, x, 4, 15, Test) # NaNs produced if run
+library(tidyverse)
+library(ggtext)
+
+y <- linearsystems$MKTcost # to run all the exercises, uncomment.
+x <- select(linearsystems, -MKTcost)
+x <- sampling[, -1]
+y <- sampling$qOutput
+limit <- 20
+mod <-3
+Test <- NA
+Linearsystems(y, x, 3, 15)
 
 }

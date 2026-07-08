@@ -21,6 +21,7 @@
 #'
 #' @export MLMetrics
 #' @name MLMetrics
+#' @aliases Data
 #'
 #' @importFrom stats AIC
 #' @importFrom generics augment
@@ -409,7 +410,7 @@ fetchdata <- function(object) {
 }
 
 counter <- function(i) {
-  if (i %% 10 == 0) cat(i) else cat(".")
-  if (i %% 50 == 0) cat("\n")
+  if (i %% 10 == 0) message(i) else cat(".")
+  if (i %% 50 == 0) message("\n")
   flush.console()
 }

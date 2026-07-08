@@ -26,20 +26,16 @@
 #' @export
 #'
 #' @examples
-#' # Not run, uncomment to run
-#' # library(MPI)
-#' # data("examplePovertydf")
-#' # data <- examplePovertydf
-#' # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
-#' #            d2 = c("Years.of.education", "School.attendance", "School.lag"),
-#' #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
-#' #                   "Access.to.an.improve.sanatation", "Electricity",
-#' #                   "Housing.Materials", "Asset.ownership"))
-#' # dp <- mdi(data, dm, Factor = "Region")
-#' # library(MetBrewer)
-#' # kala <- met.brewer("OKeeffe1", 15, type = "continuous")
-#' # dma <- 3
-#' # plot_mdi(dp$MDI, kala, dma, "Region")
+#' # data from `mpitbR` package
+#' data <- mdpi2
+#' dm <- list(d1 = c("d_nutr","d_cm"),
+#'            d2 = c("d_satt","d_educ"),
+#'            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
+#' dp <-  mdi(data, dm, plots = "t")
+#' library(MetBrewer)
+#' kala <- met.brewer("OKeeffe1", 20, type = "continuous")
+#' dma <- 3
+#' plot_mdi(dp$national, kala, dma)
 plot_mdi <- function(data, kala, dma, factor = NULL) {
 
   if (lifecycle::is_present(plot_mdpi)) {

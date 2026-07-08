@@ -52,7 +52,7 @@
 #'  is `NULL`. To produce the plots, any character string will overwrite the
 #'   default.
 #' @param Echo Optional indicating whether the progress note is visible
-#'  defaults to TRUE.
+#'  defaults to FALSE.
 #'
 #' @returns A list with the following components:
 #' \item{\code{MDI_p}}{Publication-ready table of the factor and national
@@ -78,24 +78,12 @@
 #' @aliases mdpi2
 #'
 #' @examples
-#' # # Not run, uncomment to run
-#' # # data from `MPI` package
-#' # data <- mdpi1
-#' # dm <- list(d1 = c("Child.Mortality", "Access.to.health.care"),
-#' #            d2 = c("Years.of.education", "School.attendance", "School.lag"),
-#' #            d3 = c("Cooking.Fuel", "Access.to.clean.source.of.water",
-#' #                   "Access.to.an.improve.sanatation", "Electricity",
-#' #                   "Housing.Materials", "Asset.ownership"))
-#' # mdi(data, dm, plots = "t", Factor = "Region")
-#' # mdi(data, dm, plots = "t")
-#' #
-#' # # data from `mpitbR` package
-#' # data <- mdpi2
-#' # dm <- list(d1 = c("d_nutr","d_cm"),
-#' #            d2 = c("d_satt","d_educ"),
-#' #            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
-#' # mdi(data, dm, plots = "t", Factor = "region")
-#' # mdi(data, dm, plots = "t")
+#' # data from `mpitbR` package
+#' data <- mdpi2
+#' dm <- list(d1 = c("d_nutr","d_cm"),
+#'            d2 = c("d_satt","d_educ"),
+#'            d3 = c("d_elct","d_sani","d_wtr","d_hsg","d_ckfl","d_asst"))
+#' mdi(data, dm, Factor = "region")
 #'
 #' @references
 #' Alkire, S. & Foster, J. (2011). Counting and Multidimensional Poverty
@@ -124,7 +112,7 @@ mdi <- function(data, dm, Bar = 0.4,
                  id = c("Health", "Education", "Living standard"),
                  id_add  = "Social security",
                  id_add1 = "Employment and Income",
-                 Echo = TRUE) {
+                 Echo = FALSE) {
 
   if (lifecycle::is_present(mdpi)) {
     lifecycle::deprecate_warn(
@@ -157,7 +145,7 @@ mdi <- function(data, dm, Bar = 0.4,
     progaress(Echo, cata)
   } else if (ddm == 5) {
     id0 <- c(id, id_add, id_add1)
-    cat("Additional dimension is null...", "\n")
+    warning("Additional dimension is null...", "\n")
   } else if (ddm == 4) {
     id0 <- c(id, id_add)
     cata <- "Additional dimension is null..."
@@ -466,7 +454,7 @@ mdi <- function(data, dm, Bar = 0.4,
     progaress(Echo, cata)
     models2 <- mmmm(data, Scores, score, Factor, ddm, Analysis, kay2, id1)
     if (!is.null(plots) & length(unique(Factor)) > 40) {
-      cat("Palette have 40 colors, plots not possible...", "\n")
+      stop("Palette have 40 colors, plots not possible...", "\n")
     } else if (!is.null(plots) & length(unique(Factor)) < 41) {
       kala <- kolo_mix("Renoir", 40, type = "continuous", direction = -1)
       plots <- plot_mdi(models2, kala, ddm, factor = Factor)
@@ -655,8 +643,8 @@ kolo_mix <- function(palette_name, n, type = c("discrete", "continuous"),
 
 progaress <- function(Echo, cata) {
   if (Echo == TRUE) {
-    cat(cata, "\n")
+    message(cata, "\n")
   } else{
-    cat("", "\n")
+    message("", "\n")
   }
 }

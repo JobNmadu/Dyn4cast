@@ -2,6 +2,7 @@
 % Please edit documentation in R/MLMetrics.R
 \name{MLMetrics}
 \alias{MLMetrics}
+\alias{Data}
 \title{Collection of Machine Learning Model Metrics for Easy Reference}
 \usage{
 MLMetrics(Observed, yvalue, modeli, K, Name, Form, kutuf, TTy)

@@ -41,7 +41,7 @@
 #' data frame is in scores rather than text. There are only four choices
 #'  i.e. 3, 5, 7, 9.
 #' @param Echo Optional indicating whether the progress note is visible
-#'  defaults to TRUE.
+#'  defaults to FALSE.
 #'
 #' @returns A list with the following components:
 #' \item{\code{Likert-scores}}{`dataframe` of likert scores}
@@ -84,7 +84,7 @@
 #'
 #'  relative_likert(data_l, Likert = ranking)
 relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
-                            Echo = TRUE) {
+                            Echo = FALSE) {
 
   Likert  <-  Likert
   Ranks  <-  Ranks
@@ -103,9 +103,9 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
   }
 
   if (Echo == TRUE){
-    cat("Preliminary check success, proceeding...", "\n")
+    message("Preliminary check success, proceeding...", "\n")
   } else{
-    cat("", "\n")
+    warning("", "\n")
   }
 
 
@@ -113,9 +113,9 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
     stop("Likert lenght out of range, try again")
   } else {
     if (Echo == TRUE){
-      cat("Likert lenght check success, proceeding...", "\n")
+      message("Likert lenght check success, proceeding...", "\n")
     } else{
-      cat("", "\n")
+      warning("", "\n")
     }
   }
 
@@ -271,9 +271,9 @@ relative_likert <- function(data, Likert = NULL, Ranks = NULL, Option = "text",
   ssss <- quicksummary(rrrr, 1)$Summary
 
   if (Echo == TRUE){
-    cat("Success, DONE!", "\n")
+    message("Success, DONE!", "\n")
   } else{
-    cat("", "\n")
+    warning("", "\n")
   }
 
   return(list("Likert-scores" = dddd,

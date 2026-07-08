@@ -183,7 +183,7 @@ checkInstall <- function(pkg){
                  sep = "")
 
     if(interactive()) {
-      cat(msg)
+      message(msg)
       bioc <- c("affy", "logicFS", "gpls", "vbmp")
       installChoice <- menu(c("yes", "no"))
       if(installChoice == 1){

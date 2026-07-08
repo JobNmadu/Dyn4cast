@@ -9,7 +9,7 @@ relative_likert(
   Likert = NULL,
   Ranks = NULL,
   Option = "text",
-  Echo = TRUE
+  Echo = FALSE
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ i.e. 3, 5, 7, 9.}
 or scores format. Defaults to \strong{text} if not given.}
 
 \item{Echo}{Optional indicating whether the progress note is visible
-defaults to TRUE.}
+defaults to FALSE.}
 }
 \value{
 A list with the following components:

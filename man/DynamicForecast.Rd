@@ -100,7 +100,9 @@ the various models in the forecast.}
 \description{
 The function estimates, predict and forecast time series data with models,
 and also make subset forecasts within the length of the entire trend of the
-data. The recognized models are lm, smooth spline, polynomial splines with or
+data. However, the forecast is constrained to lower and upper 80\% and 95\% forecasts of the
+of the data for \verb{integer series} in line with Hyndman & Athanasopoulos (2021).
+The recognized models are lm, smooth spline, polynomial splines with or
 without knots, quadratic polynomial, and ARIMA. The robust output include
 the models' estimates, time-varying forecasts and plots  based on themes
 from ggplot. The main attraction of this function is the use of the newly
@@ -108,26 +110,19 @@ introduced \emph{equal number of trend to forecast from the model}.
 The function takes \verb{daily, monthly and yearly data sets for now}.
 }
 \examples{
-# library(readr)
-# library(forecast)
-# COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
-#  #The date is formatted to R format
-# LEN <- length(COVID19$Case)
-# Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
-#  #data length for forecast
-# ORIGIN = "2020-02-29"
-# lastdayfo21 <- Dss[length(Dss)] # The maximum length # uncomment to run
-# Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
-# # desired length of forecast
-# BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-# dyrima <- auto.arima(Data$Case)
-# DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
-# BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
-#
-# lastdayfo21 <- Dss[length(Dss)]
-# Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
-# BREAKS = c(70, 131, 173, 228, 274)
-# dyrima <- auto.arima(Data$Case)
-# DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
-# BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
+ library(readr)
+ library(forecast)
+ COVID19$Date <- zoo::as.Date(COVID19$Date, format = '\%m/\%d/\%Y')
+  #The date is formatted to R format
+ LEN <- length(COVID19$Case)
+ Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
+  #data length for forecast
+ ORIGIN = "2020-02-29"
+ lastdayfo21 <- Dss[length(Dss)] # The maximum length # uncomment to run
+ Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
+ # desired length of forecast
+ BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
+ dyrima <- auto.arima(Data$Case)
+ DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
+ BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
 }

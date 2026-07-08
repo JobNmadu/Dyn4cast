@@ -3,7 +3,9 @@
 #' @description
 #' The function estimates, predict and forecast time series data with models,
 #' and also make subset forecasts within the length of the entire trend of the
-#' data. The recognized models are lm, smooth spline, polynomial splines with or
+#' data. However, the forecast is constrained to lower and upper 80% and 95% forecasts of the
+#' of the data for `integer series` in line with Hyndman & Athanasopoulos (2021).
+#' The recognized models are lm, smooth spline, polynomial splines with or
 #'  without knots, quadratic polynomial, and ARIMA. The robust output include
 #'   the models' estimates, time-varying forecasts and plots  based on themes
 #'    from ggplot. The main attraction of this function is the use of the newly
@@ -115,28 +117,21 @@
 #' @aliases COVID19
 #'
 #' @examples
-#' # library(readr)
-#' # library(forecast)
-#' # COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
-#' #  #The date is formatted to R format
-#' # LEN <- length(COVID19$Case)
-#' # Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
-#' #  #data length for forecast
-#' # ORIGIN = "2020-02-29"
-#' # lastdayfo21 <- Dss[length(Dss)] # The maximum length # uncomment to run
-#' # Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
-#' # # desired length of forecast
-#' # BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
-#' # dyrima <- auto.arima(Data$Case)
-#' # DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
-#' # BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
-#' #
-#' # lastdayfo21 <- Dss[length(Dss)]
-#' # Data <- COVID19[COVID19$Date <= lastdayfo21 - 14, ]
-#' # BREAKS = c(70, 131, 173, 228, 274)
-#' # dyrima <- auto.arima(Data$Case)
-#' # DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
-#' # BREAKS = BREAKS , Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
+#'  library(readr)
+#'  library(forecast)
+#'  COVID19$Date <- zoo::as.Date(COVID19$Date, format = '%m/%d/%Y')
+#'   #The date is formatted to R format
+#'  LEN <- length(COVID19$Case)
+#'  Dss <- seq(COVID19$Date[1], by = "day", length.out = LEN)
+#'   #data length for forecast
+#'  ORIGIN = "2020-02-29"
+#'  lastdayfo21 <- Dss[length(Dss)] # The maximum length # uncomment to run
+#'  Data <- COVID19[COVID19$Date <= lastdayfo21 - 28, ]
+#'  # desired length of forecast
+#'  BREAKS <- c(70, 131, 173, 228, 274) # The default breaks for the data
+#'  dyrima <- auto.arima(Data$Case)
+#'  DynamicForecast(date = Data$Date, series = Data$Case, dyrima = dyrima,
+#'  BREAKS = BREAKS, Trend = "Day", Length = 0, Type = "Integer", x100 = 0)
 # #' @keywords internal
 utils::globalVariables(c("origin", "Spline without knots",
                          "Spline with knots",
@@ -510,4 +505,27 @@ kiliya <- function(deta, lower, upper) {
   object[is.nan(object)] <- NA
   object[is.na(object)] <- 0
   return(object)
+}
+
+scaledlogit <- function(x2, lower, upper) {
+  log((x2 - lower) / (upper - x2))
+}
+
+invscaledlogit <- function(x3, lower, upper) {
+  (upper - lower) * exp(x3) / (1 + exp(x3)) + lower
+}
+
+constrainedforecast <- function(model10, lower, upper) {
+  f2 <- model10$upper
+  f1 <- model10$lower
+  f1l1 <- invscaledlogit(x3 = f1[, 1], lower = lower, upper = upper)
+  f1l2 <- invscaledlogit(x3 = f1[, 2], lower = lower, upper = upper)
+  f2u1 <- invscaledlogit(x3 = f2[, 1], lower = lower, upper = upper)
+  f2u2 <- invscaledlogit(x3 = f2[, 2], lower = lower, upper = upper)
+
+  results <- list("Lower80" = f1l1,
+                  "Lower95" = f1l2,
+                  "Upper80" = f2u1,
+                  "Upper95" = f2u2)
+  return(results)
 }
