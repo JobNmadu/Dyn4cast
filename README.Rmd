@@ -106,7 +106,7 @@ At present, the package exports the following functions:
 
 The citation information for this package can be obtained easily when you run `citation("Dyn4cast")` in your `R` console.
 
-```{r citation, comment = "", warning = FALSE}
+```{r citation, warning = FALSE}
 
 citation("Dyn4cast")
 
