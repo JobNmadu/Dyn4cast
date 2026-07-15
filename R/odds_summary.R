@@ -155,7 +155,7 @@ odds_summary <- function(model) {
     ctable <- data.frame(coef(summary(model)))
     phiy <- ctable[1, 5:8]
 
-    if (dist != "beta") {
+    if (model[["dist"]] != "beta") {
       nunu <- ctable[1, 9:12]
       names(phiy) <- names(nunu) <- names(ctable[, 1:4])
       cctable <- dplyr::bind_rows(ctable[, 1:4], phiy, nunu)
