@@ -75,10 +75,15 @@ odds_summary <- function(model) {
     cdd <- dplyr::bind_cols(ctable, Odds_ratio = odds_ratios, or_ci)
     return(rbind(cdd, hhh))
 
-  } else if (call == "glm") {
-# call == "mlogit" |
-    oddsplyr <- ifelse (model[["family"]][["family"]] == "binomial" &
-                          model[["family"]][["link"]] == "probit", 1.6, 1)
+  } else if (call == "mlogit" | call == "glm") {
+
+    if (is.null(model[["family"]])) {
+      oddsplyr <- 1
+    } else if (model[["family"]][["link"]] == "probit") {
+      oddsplyr <- 1.6
+    } else {
+      oddsplyr <- 1
+    }
 
     names(ctable) <- c("Variables", "Coefficient", "Std Error", "t value",
                        "p value")
@@ -88,7 +93,7 @@ odds_summary <- function(model) {
     or_ci <- data.frame(exp(confint(model) * oddsplyr))
     colnames(or_ci) <- c("CI_lower", "CI_upper")
 
-      odds_ratios <- data.frame(Odds_ratio = exp(coef(model) * oddsplyr))
+    odds_ratios <- data.frame(Odds_ratio = exp(coef(model) * oddsplyr))
 
     ctable <- ctable %>% mutate(`Coef Sig` =  p2(p, Coefficient))
     odds_ratios$`%` <- (odds_ratios$Odds_ratio - 1) * 100

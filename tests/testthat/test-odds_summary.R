@@ -41,13 +41,13 @@ test_that("odds_summary works", {
   lm3 <- glm(y ~ x, family = poisson)
   ts8 <- odds_summary(lm3)
 
-  #library(mlogit)
-  #data("Fishing", package = "mlogit")
-  #Fish <- dfidx(Fishing, varying = 2:9, shape = "wide", choice = "mode")
+  library(mlogit)
+  data("Fishing", package = "mlogit")
+  Fish <- dfidx(Fishing, varying = 2:9, shape = "wide", choice = "mode")
 
-  ## a pure "conditional" model
-  #mml <- mlogit(mode ~ price + catch, data = Fish)
-  #ts6 <- odds_summary(mml)
+  # a pure "conditional" model
+  mml <- mlogit(mode ~ price + catch, data = Fish)
+  ts6 <- odds_summary(mml)
 
   library(nnet)
   data(iris)
@@ -90,7 +90,7 @@ test_that("odds_summary works", {
   expect_identical(ts3, odds_summary(lot1))
   expect_identical(ts4, odds_summary(lot2))
   expect_identical(ts5, odds_summary(lm2))
-  #expect_identical(ts6, odds_summary(mml))
+  expect_identical(ts6, odds_summary(mml))
   expect_identical(ts7, odds_summary(tinom))
   expect_identical(ts8, odds_summary(lm3))
   expect_identical(ts9, odds_summary(gy))
