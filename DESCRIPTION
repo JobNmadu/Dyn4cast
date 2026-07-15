@@ -34,7 +34,7 @@ Imports:
     lifecycle,
     tidyselect
 Depends:
-    R (>= 4.1)
+    R (>= 4.2)
 Suggests: 
     testthat (>= 3.0.0),
     tidyverse,

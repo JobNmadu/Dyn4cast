@@ -21,7 +21,7 @@ jobs:
           - {os: macOS-15,   r: 'release'}
           - {os: macOS-26,   r: 'release'}
 
-          - {os: windows-latest,   r: '4.1'}
+          - {os: windows-latest,   r: '4.2'}
           - {os: windows-latest,   r: '4.6'}
           - {os: windows-latest,   r: 'release'}
 #          - {os: windows-latest,   r: 'devel'}

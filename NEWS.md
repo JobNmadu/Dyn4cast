@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-iota 2026-07-15
+
+Due to compatibility with `dfidx` which is used in the `mlogit` package for obtaining __odds ratio__, the package dependency is raise to R >= 4.2.
+
 # Dyn4cast 11.11.28-iota 2026-07-03
 
 Coefficient estimates of `probit` model are now well aligned for conversion to odds ratio in __odds_summary__.
