@@ -14,7 +14,10 @@ knitr::opts_chunk$set(tidy      = "styler",
                       echo      = FALSE)
 
 old_options <- options(scipen = 999, digits = 2)
+on.exit(options(old_options))
+
 olds <- options(rmarkdown.html_vignette.check_title = FALSE)
+on.exit(options(olds))
 
 library(Dyn4cast)
 library(tidyverse, quietly = T)
@@ -465,8 +468,4 @@ library(tidyverse, quietly = T)
 # startSigma = sigma, data = as.data.frame(cbind(xMat, yMat)), iterlim = 1,
 # nGHK = 50)
 # odds_summary(estResultStart)
-
-## -----------------------------------------------------------------------------
-options(olds)
-options(old_options)
 

@@ -37,7 +37,10 @@
 #' H = c(2100, 5760, 8250, 3900, 1800, 1200, 4800, 1800, 7800, 2035, 8000, 3000))
 #' Percent(Data = df, Type = "Frame")  # Value, Frame
 Percent <- function(Data, Type, format = "f", ...) {
+
   old_options <- options(scipen = 999, digits = 2)
+  on.exit(options(old_options))
+
   if (Type == "Value") {
     percent <- Data
     Rate <- (percent / percent) * 100
@@ -62,6 +65,5 @@ Percent <- function(Data, Type, format = "f", ...) {
   }
   result <- list(percent = percent,
                  Rate = Rate)
-  options(old_options)
   return(result)
 }

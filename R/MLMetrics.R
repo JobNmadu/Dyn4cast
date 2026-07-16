@@ -373,7 +373,7 @@ predict_square <- function(object, verbose = TRUE) {
     press.res[i] <- data[i, resp.pos] - y.hat
   }
 
-  if (verbose) cat("\n")
+  if (verbose) message("\n")
 
   yi <- residuals(object) - fitted(object)
   tss <- sum((yi - mean(yi))^2)
@@ -410,7 +410,7 @@ fetchdata <- function(object) {
 }
 
 counter <- function(i) {
-  if (i %% 10 == 0) message(i) else cat(".")
+  if (i %% 10 == 0) message(i) else message(".")
   if (i %% 50 == 0) message("\n")
   flush.console()
 }

@@ -13,7 +13,10 @@ knitr::opts_chunk$set(tidy      = "styler",
                       echo      = FALSE)
 
 old_options <- options(scipen = 999, digits = 2)
+on.exit(options(old_options))
+
 olds <- options(rmarkdown.html_vignette.check_title = FALSE)
+on.exit(options(olds))
 
 ## ----github, echo = TRUE, eval = FALSE----------------------------------------
 # 
@@ -31,10 +34,7 @@ olds <- options(rmarkdown.html_vignette.check_title = FALSE)
 #                    "lubridate", "forecast", "MASS", "mlogit", "nnet", "betareg",
 #                    "mvProbit", "miscTools"))
 
-## ----citation, comment = "", warning = FALSE----------------------------------
-
-options(olds)
-options(old_options)
+## ----citation, warning = FALSE------------------------------------------------
 
 citation("Dyn4cast")
 
