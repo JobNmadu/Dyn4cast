@@ -1,6 +1,6 @@
 # Dyn4cast 11.11.28-iota 2026-07-15
 
-Due to compatibility with `dfidx` which is used in the `mlogit` package for obtaining __odds ratio__, the package dependency is raise to R >= 4.2.
+Due to compatibility with `dfidx` which is used in the `mlogit` package for obtaining __odds ratio__, the package dependency is raise to R >= 4.2. The test cycle is now between `R4.2 and R4.6`.
 
 # Dyn4cast 11.11.28-iota 2026-07-03
 
