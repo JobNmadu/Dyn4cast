@@ -16,8 +16,10 @@ badge](https://jobnmadu.r-universe.dev/badges/:name)](https://jobnmadu.r-univers
 [![GitHub release (latest by
 date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
+
 <!--
-&#10;[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
 &#10;[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 &#10;-->
 
@@ -48,15 +50,16 @@ machine learning tasks.
 
 ## Installation
 
-Although the released version of *Dyn4cast* could be installed from
-[CRAN](https://CRAN.R-project.org), the plans to submit it to *CRAN* is
-underway. Therefore, only the development version is currently running.
-The canonical form for [CRAN](https://CRAN.R-project.org) is:
+The released version of *Dyn4cast* can be installed from
+[CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html).
+Therefore, only the development version is currently running. The
+canonical form for
+[CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html) is:
 
     install.packages("Dyn4cast")
 
-The development version is the only one available now and can be
-installed from [GitHub](https://github.com/) with:
+The development version is available now and can be installed from
+[GitHub](https://github.com/JobNmadu/Dyn4cast) with:
 
 ``` r
 # install.packages("devtools")
@@ -146,7 +149,8 @@ citation("Dyn4cast")
 #> To cite package 'Dyn4cast' in publications use:
 #> 
 #>   Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-#>   Environment_. R package version 11.11.26,
+#>   Environment_. R package version 11.11.26, commit
+#>   fe563be951b4872d11eff13601190bfaae39379f,
 #>   <https://github.com/JobNmadu/Dyn4cast>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -155,7 +159,7 @@ citation("Dyn4cast")
 #>     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
 #>     author = {Job Nmadu},
 #>     year = {2026},
-#>     note = {R package version 11.11.26},
+#>     note = {R package version 11.11.26, commit fe563be951b4872d11eff13601190bfaae39379f},
 #>     url = {https://github.com/JobNmadu/Dyn4cast},
 #>   }
 ```

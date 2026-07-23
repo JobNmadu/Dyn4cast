@@ -12,6 +12,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
+Config/Needs/website: rmarkdown
 VignetteBuilder: knitr
 Imports: 
     stats,

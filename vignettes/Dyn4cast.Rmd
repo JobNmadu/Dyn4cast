@@ -46,6 +46,8 @@ library(tidyverse, quietly = T)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
+[![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
+
 <!--
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://codecov.io/gh/JobNmadu/Dyn4cast)
@@ -65,15 +67,21 @@ The `Dyn4cast` is designed to be a lightweight package. The philosophy behind it
 
 ## Installation
 
-`Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. To install the development version of `Dyn4cast` from GitHub, use the following canonical form:
- 
-```{r github, echo = TRUE, eval = FALSE}
+The released version of _Dyn4cast_ can be installed from [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html). Therefore, only the development version is currently running. The canonical form for  [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html) is:
 
-# install.packages("devtools")
-devtools::install_github("JobNmadu/Dyn4cast")
+```
+install.packages("Dyn4cast")
 ```
 
-The development version can also be installed through r-universe. Use the form:
+The development version is available now and can be installed from [GitHub](https://github.com/JobNmadu/Dyn4cast) with:
+
+
+``` r
+# install.packages("devtools")
+pak::pak("JobNmadu/Dyn4cast")
+```
+
+The development version can also be installed through [r-universe](https://jobnmadu.r-universe.dev/Dyn4cast). Use the form:
 
 ```{r universe, echo = TRUE, eval = FALSE}
 

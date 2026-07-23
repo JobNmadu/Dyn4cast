@@ -23,11 +23,6 @@ library(Dyn4cast)
 library(tidyverse, quietly = T)
 
 
-## ----github, echo = TRUE, eval = FALSE----------------------------------------
-# 
-# # install.packages("devtools")
-# devtools::install_github("JobNmadu/Dyn4cast")
-
 ## ----universe, echo = TRUE, eval = FALSE--------------------------------------
 # 
 # install.packages("Dyn4cast", repos = c("https://jobnmadu.r-universe.dev", "https://cloud.r-project.org"))
