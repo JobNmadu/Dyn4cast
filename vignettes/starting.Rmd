@@ -65,7 +65,7 @@ library(tidyverse, quietly = T)
 
 <!-- badges: end -->
 
-The released version of _Dyn4cast_ can be installed from [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html). Therefore, only the development version is currently running. The canonical form for  [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html) is:
+The released version of _Dyn4cast_ can be installed from [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html). The canonical form for  [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html) is:
 
 ```
 install.packages("Dyn4cast")
