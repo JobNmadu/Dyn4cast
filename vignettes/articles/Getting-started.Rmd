@@ -1,10 +1,10 @@
 ---
-title: "Getting started with Dyn4cast"
+title: "Getting started"
 output: rmarkdown::html_vignette
 description: |
   An overview of installation procedures.
 vignette: >
-  %\VignetteIndexEntry{Getting started with Dyn4cast}
+  %\VignetteIndexEntry{Getting started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
