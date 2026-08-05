@@ -11,12 +11,12 @@ articles:
   - title: "Tutorials"
     desc: "Vignettes introducing various functions in the package"
     contents:
-      - Dyn4cast-techniques
+      - articles/Dyn4cast-techniques
 
   - title: "Getting started"
     desc: "Installation and onboarding"
     contents:
-      - Beginning-with-Dyn4cast
+      - articles/Beginning-with-Dyn4cast
 
 reference:
   - title: "Functions"
