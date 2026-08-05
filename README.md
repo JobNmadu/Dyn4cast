@@ -1,7 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- This README requires access to the vignettes in the package. Please run
+     devtools::install(build_vignettes = TRUE) before knitting this to README.md -->
+
+``` r
+# get package versions
+library(Dyn4cast)
+cran_version <- available.packages(repos = "https://cloud.r-project.org")["Dyn4cast", "Version"]
+dev_version <- getNamespaceVersion("Dyn4cast")
+```
+
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
+
+<!-- Version 0.8-6 -->
+
+Version 11.11.26; documentation built for `pkgdown` 2026-08-05
 
 <!-- badges: start -->
 
@@ -17,6 +31,9 @@ badge](https://jobnmadu.r-universe.dev/badges/:name)](https://jobnmadu.r-univers
 date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
 
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
+
+[![lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
 <!--
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
