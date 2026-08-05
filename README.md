@@ -6,9 +6,8 @@
 
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
-<!-- Version 0.8-6 -->
-
-Version 11.11.26; documentation built for `pkgdown` 2026-08-05
+<!-- Version 0.8-6 
+&#10;Version 11.11.26; documentation built for `Dyn4cast` 2026-08-05    -->
 
 <!-- badges: start -->
 
@@ -33,9 +32,8 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 &#10;[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 &#10;-->
 
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Project Status:
+Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 

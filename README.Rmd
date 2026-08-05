@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 
 
-```{r echo = FALSE}
+```{r echo = FALSE, eval = FALSE}
 # get package versions
 library(Dyn4cast)
 cran_version <- available.packages(repos = "https://cloud.r-project.org")["Dyn4cast", "Version"]
@@ -29,9 +29,9 @@ dev_version <- getNamespaceVersion("Dyn4cast")
 # Dyn4cast  <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />  
 
 
-<!-- Version 0.8-6 -->
+<!-- Version 0.8-6 
 
-Version `r getNamespaceVersion("Dyn4cast")`; documentation built for `pkgdown` `r Sys.Date()`
+Version `r getNamespaceVersion("Dyn4cast")`; documentation built for `Dyn4cast` `r Sys.Date()`    -->
 
 
 <!-- badges: start -->
@@ -55,7 +55,7 @@ Version `r getNamespaceVersion("Dyn4cast")`; documentation built for `pkgdown` `
 
 --> 
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 
