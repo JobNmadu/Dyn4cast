@@ -1,4 +1,92 @@
 url: https://jobnmadu.github.io/Dyn4cast/
 template:
   bootstrap: 5
+  light-switch: true
+  math-rendering: mathjax
+  bslib:
+    primary: "gold"
+    secondary: "forestgreen"
 
+articles:
+  - title: "Tutorials"
+    desc: "Vignettes introducing various functions in the package"
+    contents:
+      - Dyn4cast
+
+  - title: "Getting started"
+    desc: "Installation and onboarding"
+    contents:
+      - Starting
+
+reference:
+
+  - title: corplot
+    desc: Custom plot of correlation matrix
+
+  - title: DynamicForecast
+    desc: Dynamic Forecast of Five Models and their Ensembles
+
+  - title: estimate_plot
+    desc: Plot of Order of Significance of Estimated Regression Coefficients
+
+  - title: formattedcut
+    desc: Convert continuous vector variable to formatted factors
+
+  - title: garrett_ranking
+    desc: Garrett Ranking of Categorical Data
+
+  - title: gender
+    desc: Create Gender Variable
+
+  - title: index_construction
+    desc: Index Construction for estimation of *Exposure* or *Sensitivity*
+
+  - title: Linearsystems
+    desc: Linear Model and various Transformations for Efficiency
+
+  - title: MallowsCP
+    desc:  Computation of MallowsCp
+
+  - title: mdi
+    desc:  Sequential Computation of Dynamic Multidimensional Indices (MDI)
+
+  - title: MLMetrics
+    desc:  Collection of Machine Learning Model Metrics for Easy Reference
+
+  - title: model_factors
+    desc:  Latent Factors Recovery from Variables Loadings
+
+  - title: odds_summary
+    desc:  Odds-Based Measures for Binary and Categorical Models
+
+  - title: Percent
+    desc:  Attach Per Cent Sign to Data
+
+  - title: plot_mdi
+    desc:  Plots of Multidimensional Index Measures
+
+  - title: quicksummary
+    desc:  Quick Formatted Summary of Machine Learning Data
+
+  - title: relative_likert
+    desc:  Convert Likert Data to Relative Scores and knowledge-based *Adaptive Capacity*
+
+  - title: data_transform
+    desc:  Standardize 'data.frame' for comparable *Machine Learning* prediction and visualization
+
+  - title: treatment_model
+    desc:  Enhanced Estimation of Treatment Effects of Binary Data from Randomized Experiments
+
+  - title: Datasets
+    contents:
+      - COVID19
+      - Data
+      - garrett_data
+      - garrett_table
+      - linearsystems
+      - mdpi1
+      - mdpi2
+      - Quicksummary
+      - sampling
+      - Transform
+      - treatments

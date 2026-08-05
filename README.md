@@ -132,7 +132,7 @@ At present, the package exports the following functions:
 
 11. `garrett_ranking` is for ranking Likert-type data.
 
-12. `Model_factors` is for determining and retrieving latent factors
+12. `model_factors` is for determining and retrieving latent factors
     from Likert-type data for estimation and Machine Learning.
 
 13. `treatment_model` is for propensity matching treatments effects and
