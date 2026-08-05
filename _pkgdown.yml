@@ -8,15 +8,15 @@ template:
     secondary: "forestgreen"
 
 articles:
-  - title: "Tutorials"
-    desc: "Vignettes introducing various functions in the package"
+  - title: ""
+    desc: ""
     contents:
-      - articles/Dyn4cast
 
-  - title: "Getting started"
-    desc: "Installation and onboarding"
+
+  - title: ""
+    desc: ""
     contents:
-      - articles/Starting
+
 
 reference:
   - title: "Functions"
