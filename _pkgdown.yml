@@ -8,15 +8,11 @@ template:
     secondary: "forestgreen"
 
 articles:
-  - title: ""
-    desc: ""
+  - title: "Tutorials"
     contents:
-
-
-  - title: ""
-    desc: ""
-    contents:
-
+    navbar:
+      - Beginning-with-Dyn4cast
+      - Dyn4cast-techniques
 
 reference:
   - title: "Functions"
