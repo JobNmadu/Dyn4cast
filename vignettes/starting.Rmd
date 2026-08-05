@@ -38,7 +38,7 @@ library(tidyverse, quietly = T)
 
 ## Installation
 
-`Dyn4cast` is not yet on CRAN, so only the development version is available. However, the package is very functional and stable and is actively being watched for any issue. Presently, it has passed all the tests it was subjected to as can be seen here.
+`Dyn4cast` is on CRAN and the development version is available. The package is very functional and stable and is actively being watched for any issue. Presently, it has passed all the tests it was subjected to.
 
 <!--  
 
