@@ -4,13 +4,6 @@
 <!-- This README requires access to the vignettes in the package. Please run
      devtools::install(build_vignettes = TRUE) before knitting this to README.md -->
 
-``` r
-# get package versions
-library(Dyn4cast)
-cran_version <- available.packages(repos = "https://cloud.r-project.org")["Dyn4cast", "Version"]
-dev_version <- getNamespaceVersion("Dyn4cast")
-```
-
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- Version 0.8-6 -->

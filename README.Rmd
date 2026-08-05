@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 
 
-```{r}
+```{r echo = FALSE}
 # get package versions
 library(Dyn4cast)
 cran_version <- available.packages(repos = "https://cloud.r-project.org")["Dyn4cast", "Version"]
