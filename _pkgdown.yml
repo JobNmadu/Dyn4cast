@@ -11,8 +11,8 @@ articles:
   - title: "Tutorials"
     navbar:
     contents:
-      - Beginning-with-Dyn4cast
-      - Dyn4cast-techniques
+      - Beginning-with-the-package
+      - The-package-techniques
 
 reference:
   - title: "Functions"
