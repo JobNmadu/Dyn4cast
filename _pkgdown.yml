@@ -9,8 +9,8 @@ template:
 
 articles:
   - title: "Tutorials"
-    contents:
     navbar:
+    contents:
       - Beginning-with-Dyn4cast
       - Dyn4cast-techniques
 
