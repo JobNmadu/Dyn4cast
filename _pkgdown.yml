@@ -11,8 +11,8 @@ articles:
   - title: "Tutorials"
     navbar:
     contents:
-      - Beginning-with-the-package
-      - The-package-techniques
+      - Beginning
+      - Techniques
 
 reference:
   - title: "Functions"
