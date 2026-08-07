@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-rho 2026-08-07
+
+The vignette is now updated to the current version.
+
 # Dyn4cast 11.11.28-omicron 2026-07-23
 
 History is made. The package climbs into CRAN today. Minor fixes to vignette.
