@@ -7,13 +7,6 @@ template:
     primary: "gold"
     secondary: "forestgreen"
 
-articles:
-  - title: "Tutorials"
-    navbar:
-    contents:
-      - Beginning
-      - Techniques
-
 reference:
   - title: "Functions"
     desc: "Main functions available in Dyn4cast"
