@@ -2,11 +2,6 @@
 
 ### All vignettes
 
-- [Getting
-  started](https://jobnmadu.github.io/Dyn4cast/articles/Beginning.md):
-
-  An overview of installation procedures.
-
 - [Dynamic Modeling and Machine Learning
   Environment](https://jobnmadu.github.io/Dyn4cast/articles/Dyn4cast.md):
 
