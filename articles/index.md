@@ -2,14 +2,14 @@
 
 ### All vignettes
 
-- [Dynamic Modeling and Machine Learning
+- [Dyn4cast
   Environment](https://jobnmadu.github.io/Dyn4cast/articles/Dyn4cast.md):
 
   An introduction to Dyn4cast packge and the various functions it
   presents.
 
-- [Getting started with
-  Dyn4cast](https://jobnmadu.github.io/Dyn4cast/articles/starting.md):
+- [Getting
+  started](https://jobnmadu.github.io/Dyn4cast/articles/starting.md):
 
   An overview of installation procedures.
 
