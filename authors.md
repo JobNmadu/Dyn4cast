@@ -8,16 +8,18 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/JobNmadu/Dyn4cast/blob/master/DESCRIPTION)
+[`inst/CITATION`](https://github.com/JobNmadu/Dyn4cast/blob/master/inst/CITATION)
 
 Nmadu J (2026). *Dyn4cast: Dynamic Modeling and Machine Learning
-Environment*. R package version 11.11.26,
-<https://github.com/JobNmadu/Dyn4cast>.
+Environment*.
+[doi:10.32614/CRAN.package.Dyn4cast](https://doi.org/10.32614/CRAN.package.Dyn4cast).
+R package version 11.11.26, <https://jobnmadu.github.io/Dyn4cast/>.
 
     @Manual{,
       title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
+      note = {R package version 11.11.26},
       author = {Job Nmadu},
       year = {2026},
-      note = {R package version 11.11.26},
-      url = {https://github.com/JobNmadu/Dyn4cast},
+      doi = {10.32614/CRAN.package.Dyn4cast},
+      url = {https://jobnmadu.github.io/Dyn4cast/},
     }
