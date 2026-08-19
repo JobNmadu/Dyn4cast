@@ -1,0 +1,8 @@
+bibentry(
+  bibtype = "Manual",
+  title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
+  author = {Job Nmadu},
+  year = {2026},
+  note = {R package version 11.11.26},
+  doi = {10.32614/CRAN.package.Dyn4cast}
+)
