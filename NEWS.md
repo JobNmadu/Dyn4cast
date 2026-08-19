@@ -1,6 +1,6 @@
 # Dyn4cast 11.11.28-rho 2026-08-07
 
-The vignette is now updated to the current version.
+The vignette is now updated to the current version. Citation file is added.
 
 # Dyn4cast 11.11.28-omicron 2026-07-23
 
