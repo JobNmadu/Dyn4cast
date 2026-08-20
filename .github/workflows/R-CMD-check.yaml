@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-14,   r: 'release'}
+#          - {os: macOS-14,   r: 'release'}
           - {os: macOS-15,   r: 'release'}
           - {os: macOS-26,   r: 'release'}
 
