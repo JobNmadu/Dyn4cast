@@ -332,8 +332,8 @@ May be identical with plots of marginal effects if performed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     corrplot::corrplot.mixed(r, bg = "forestgreen", lower.col = "black", </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         tl.pos = "lt", tl.col = "darkgreen")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x55de9d34bf28&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55de9d34bac8&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x557e7b9f7588&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x557e7b9f7160&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Summary of numeric variables`</span>
@@ -495,7 +495,7 @@ May be identical with plots of marginal effects if performed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5        Akaike's Information Criterion AIC     1400      1400    1300</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6            Area under the ROC curve (AUC)        0         0       0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7                    Average Precision at k        0         0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                                      Bias   -4e-15    -1e-14   8e-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                                      Bias  2.6e-14  -2.7e-14 1.2e-14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9                               Brier score       70        70      40</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10                     Classification Error        1         1       1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11                                 F1 Score        0         0       0</span>
@@ -543,19 +543,19 @@ May be identical with plots of marginal effects if performed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +===================+=============+============+================+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | land dY/dX        | 29.342***   | 16.493*    | -496.674***    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (1.274)     | (8.105)    | (78.161)       |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (1.274)     | (8.104)    | (78.160)       |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | qLabor dY/dX      | -185.953**  | 4321.492*  | -379999.844*** |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (60.208)    | (1845.479) | (64802.872)    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (60.199)    | (1845.464) | (64803.121)    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | qVarInput dY/dX   | 1.061***    | 1.773*     | -71.426***     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (0.077)     | (0.848)    | (8.462)        |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (0.077)     | (0.848)    | (8.461)        |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | time dY/dX        | 21.027***   | 16.753***  | 91.522***      |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (1.060)     | (2.973)    | (7.706)        |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   | (1.060)     | (2.973)    | (7.724)        |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | Iland dY/dX       |             | 0.172      | 16.376***      |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
@@ -563,7 +563,7 @@ May be identical with plots of marginal effects if performed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | IqLabor dY/dX     |             | -1403.465* | 247353.561***  |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   |             | (589.319)  | (41708.812)    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   |             | (589.318)  | (41708.985)    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | IqVarInput dY/dX  |             | -0.000     | 0.104***       |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
@@ -579,7 +579,7 @@ May be identical with plots of marginal effects if performed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | ICqLabor dY/dX    |             |            | -53516.656***  |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |                   |             |            | (8926.137)     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |                   |             |            | (8926.097)     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | ICqVarInput dY/dX |             |            | -0.000***      |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +-------------------+-------------+------------+----------------+</span>
