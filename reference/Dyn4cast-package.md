@@ -18,7 +18,7 @@ Useful links:
 
 - <https://github.com/JobNmadu/Dyn4cast>
 
-- <https://jobnmadu.github.io/Dyn4cast/>
+- <https://jobnmadu.github.io/software.html>
 
 - <https://jobnmadu.r-universe.dev/Dyn4cast>
 
