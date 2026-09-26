@@ -3,7 +3,7 @@
 #'
 #'@description
 #' This function computes the indices and all associated measures of
-#'  multidimensional poverty sequentially in a dynamic way. Sequentially
+#'  multidimensional index sequentially in a dynamic way. Sequentially
 #'   the function computes _Incidence (H = q / n)_,
 #'  _Adjusted incidence (H / (q / D))_, _Deprivation Score_ of each
 #'   dimension in the computation, _Intensity (A)_,
