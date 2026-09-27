@@ -6,7 +6,7 @@
     }
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Sequential Computation of Dynamic Multidimensional Indices (MDI) — mdi"><meta name="description" content="This function computes the indices and all associated measures of
-multidimensional poverty sequentially in a dynamic way. Sequentially
+multidimensional index sequentially in a dynamic way. Sequentially
 the function computes Incidence (H = q / n),
 Adjusted incidence (H / (q / D)), Deprivation Score of each
 dimension in the computation, Intensity (A),
@@ -30,7 +30,7 @@ three dimensions to nine. Each dimension is given equal weight in
 the computation but all indicators are weighted in line with
 existing guidelines in Alkire &amp;amp; Foster (2011) and Alkire &amp;amp; Santos
 (2010). See also Alkire &amp;amp; Santos (2014) and Chan &amp;amp; Wong (2024)."><meta property="og:description" content="This function computes the indices and all associated measures of
-multidimensional poverty sequentially in a dynamic way. Sequentially
+multidimensional index sequentially in a dynamic way. Sequentially
 the function computes Incidence (H = q / n),
 Adjusted incidence (H / (q / D)), Deprivation Score of each
 dimension in the computation, Intensity (A),
@@ -100,7 +100,7 @@ existing guidelines in Alkire &amp;amp; Foster (2011) and Alkire &amp;amp; Santo
 
     <div class="ref-description section level2">
     <p>This function computes the indices and all associated measures of
-multidimensional poverty sequentially in a dynamic way. Sequentially
+multidimensional index sequentially in a dynamic way. Sequentially
 the function computes <em>Incidence (H = q / n)</em>,
 <em>Adjusted incidence (H / (q / D))</em>, <em>Deprivation Score</em> of each
 dimension in the computation, <em>Intensity (A)</em>,
@@ -349,13 +349,13 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | Average deprivation among the deprived | Living.standard | 0.3028   | 0.3093   | 0.3003   | 0.2881   | 0.2960   | 0.3077   | 0.2868   | 0.3115   | 0.3147   | 0.3118   | 0.3091   | 0.2900   | 0.2971   | 0.3070   | 0.2921   | 0.2891   | 0.2918   | 0.2975   | 0.2981   | 0.3001   | 0.2998     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Infdex                             | Combined        | 0.1463   | 0.1437   | 0.1453   | 0.1652   | 0.1418   | 0.1432   | 0.1552   | 0.1442   | 0.1392   | 0.1533   | 0.1481   | 0.1745   | 0.1580   | 0.1390   | 0.1516   | 0.1580   | 0.1615   | 0.1470   | 0.1478   | 0.1479   | 0.0376     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Index                              | Combined        | 0.1463   | 0.1437   | 0.1453   | 0.1652   | 0.1418   | 0.1432   | 0.1552   | 0.1442   | 0.1392   | 0.1533   | 0.1481   | 0.1745   | 0.1580   | 0.1390   | 0.1516   | 0.1580   | 0.1615   | 0.1470   | 0.1478   | 0.1479   | 0.0376     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Infdex                             | Health          | 0.0087   | 0.0072   | 0.0078   | 0.0087   | 0.0077   | 0.0068   | 0.0086   | 0.0066   | 0.0071   | 0.0085   | 0.0067   | 0.0085   | 0.0080   | 0.0074   | 0.0080   | 0.0063   | 0.0087   | 0.0072   | 0.0084   | 0.0077   | 0.0017     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Index                              | Health          | 0.0087   | 0.0072   | 0.0078   | 0.0087   | 0.0077   | 0.0068   | 0.0086   | 0.0066   | 0.0071   | 0.0085   | 0.0067   | 0.0085   | 0.0080   | 0.0074   | 0.0080   | 0.0063   | 0.0087   | 0.0072   | 0.0084   | 0.0077   | 0.0017     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Infdex                             | Education       | 0.0302   | 0.0264   | 0.0300   | 0.0329   | 0.0278   | 0.0316   | 0.0312   | 0.0296   | 0.0281   | 0.0307   | 0.0275   | 0.0374   | 0.0302   | 0.0287   | 0.0301   | 0.0347   | 0.0324   | 0.0290   | 0.0295   | 0.0300   | 0.0070     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Index                              | Education       | 0.0302   | 0.0264   | 0.0300   | 0.0329   | 0.0278   | 0.0316   | 0.0312   | 0.0296   | 0.0281   | 0.0307   | 0.0275   | 0.0374   | 0.0302   | 0.0287   | 0.0301   | 0.0347   | 0.0324   | 0.0290   | 0.0295   | 0.0300   | 0.0070     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Infdex                             | Living.standard | 0.0233   | 0.0274   | 0.0241   | 0.0284   | 0.0244   | 0.0237   | 0.0258   | 0.0260   | 0.0245   | 0.0263   | 0.0292   | 0.0292   | 0.0288   | 0.0233   | 0.0261   | 0.0278   | 0.0274   | 0.0263   | 0.0246   | 0.0253   | 0.0060     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | Sen Index                              | Living.standard | 0.0233   | 0.0274   | 0.0241   | 0.0284   | 0.0244   | 0.0237   | 0.0258   | 0.0260   | 0.0245   | 0.0263   | 0.0292   | 0.0292   | 0.0288   | 0.0233   | 0.0261   | 0.0278   | 0.0274   | 0.0263   | 0.0246   | 0.0253   | 0.0060     |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $MDI</span>
@@ -388,10 +388,10 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 Average deprivation among the deprived          Health   0.18097282</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 Average deprivation among the deprived       Education   0.34692418</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 Average deprivation among the deprived Living.standard   0.30281354</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29                             Sen Infdex        Combined   0.14629133</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30                             Sen Infdex          Health   0.00865920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                             Sen Infdex       Education   0.03021061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                             Sen Infdex Living.standard   0.02334280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                              Sen Index        Combined   0.14629133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                              Sen Index          Health   0.00865920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                              Sen Index       Education   0.03021061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                              Sen Index Living.standard   0.02334280</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              X2           X3           X4           X5           X6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  6.230000e+02 6.300000e+02 6.920000e+02 6.570000e+02 6.300000e+02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  8.300000e+01 9.100000e+01 7.600000e+01 9.100000e+01 9.800000e+01</span>
@@ -555,10 +555,10 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 Average deprivation among the deprived          Health 1.597249e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 Average deprivation among the deprived       Education 3.249221e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 Average deprivation among the deprived Living standard 2.997897e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29                             Sen Infdex        Combined 3.764970e-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30                             Sen Infdex          Health 1.734665e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                             Sen Infdex       Education 6.988335e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                             Sen Infdex Living standard 5.973684e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                              Sen Index        Combined 3.764970e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                              Sen Index          Health 1.734665e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                              Sen Index       Education 6.988335e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                              Sen Index Living standard 5.973684e-03</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Mean           SD</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  1.315700e+04 1.315700e+04</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  1.746000e+03 1.746000e+03</span>
@@ -35532,10 +35532,10 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 Average deprivation among the deprived          Health      Inf      Inf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 Average deprivation among the deprived       Education      Inf      Inf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 Average deprivation among the deprived Living.standard      Inf      Inf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29                             Sen Infdex        Combined      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30                             Sen Infdex          Health      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                             Sen Infdex       Education      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                             Sen Infdex Living.standard      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                              Sen Index        Combined      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                              Sen Index          Health      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                              Sen Index       Education      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                              Sen Index Living.standard      NaN      NaN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          X3       X4       X5       X6       X7       X8       X9      X10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</span>
@@ -35666,10 +35666,10 @@ Policy, DOI: 10.1080/17516234.2024.2325857</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 Average deprivation among the deprived          Health      Inf      Inf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 Average deprivation among the deprived       Education      Inf      Inf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 Average deprivation among the deprived Living.standard      Inf      Inf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29                             Sen Infdex        Combined      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30                             Sen Infdex          Health      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                             Sen Infdex       Education      NaN      NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                             Sen Infdex Living.standard      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                              Sen Index        Combined      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                              Sen Index          Health      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                              Sen Index       Education      NaN      NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                              Sen Index Living.standard      NaN      NaN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          X3       X4       X5       X6       X7       X8       X9      X10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</span>

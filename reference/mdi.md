@@ -1,7 +1,7 @@
 # Sequential Computation of Dynamic Multidimensional Indices (MDI)
 
 This function computes the indices and all associated measures of
-multidimensional poverty sequentially in a dynamic way. Sequentially the
+multidimensional index sequentially in a dynamic way. Sequentially the
 function computes *Incidence (H = q / n)*, *Adjusted incidence (H / (q /
 D))*, *Deprivation Score* of each dimension in the computation,
 *Intensity (A)*, *Multidimensional index (MDI = H \* A)*, the
@@ -258,13 +258,13 @@ mdi(data, dm, Factor = "region")
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
 #> | Average deprivation among the deprived | Living.standard | 0.3028   | 0.3093   | 0.3003   | 0.2881   | 0.2960   | 0.3077   | 0.2868   | 0.3115   | 0.3147   | 0.3118   | 0.3091   | 0.2900   | 0.2971   | 0.3070   | 0.2921   | 0.2891   | 0.2918   | 0.2975   | 0.2981   | 0.3001   | 0.2998     |
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
-#> | Sen Infdex                             | Combined        | 0.1463   | 0.1437   | 0.1453   | 0.1652   | 0.1418   | 0.1432   | 0.1552   | 0.1442   | 0.1392   | 0.1533   | 0.1481   | 0.1745   | 0.1580   | 0.1390   | 0.1516   | 0.1580   | 0.1615   | 0.1470   | 0.1478   | 0.1479   | 0.0376     |
+#> | Sen Index                              | Combined        | 0.1463   | 0.1437   | 0.1453   | 0.1652   | 0.1418   | 0.1432   | 0.1552   | 0.1442   | 0.1392   | 0.1533   | 0.1481   | 0.1745   | 0.1580   | 0.1390   | 0.1516   | 0.1580   | 0.1615   | 0.1470   | 0.1478   | 0.1479   | 0.0376     |
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
-#> | Sen Infdex                             | Health          | 0.0087   | 0.0072   | 0.0078   | 0.0087   | 0.0077   | 0.0068   | 0.0086   | 0.0066   | 0.0071   | 0.0085   | 0.0067   | 0.0085   | 0.0080   | 0.0074   | 0.0080   | 0.0063   | 0.0087   | 0.0072   | 0.0084   | 0.0077   | 0.0017     |
+#> | Sen Index                              | Health          | 0.0087   | 0.0072   | 0.0078   | 0.0087   | 0.0077   | 0.0068   | 0.0086   | 0.0066   | 0.0071   | 0.0085   | 0.0067   | 0.0085   | 0.0080   | 0.0074   | 0.0080   | 0.0063   | 0.0087   | 0.0072   | 0.0084   | 0.0077   | 0.0017     |
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
-#> | Sen Infdex                             | Education       | 0.0302   | 0.0264   | 0.0300   | 0.0329   | 0.0278   | 0.0316   | 0.0312   | 0.0296   | 0.0281   | 0.0307   | 0.0275   | 0.0374   | 0.0302   | 0.0287   | 0.0301   | 0.0347   | 0.0324   | 0.0290   | 0.0295   | 0.0300   | 0.0070     |
+#> | Sen Index                              | Education       | 0.0302   | 0.0264   | 0.0300   | 0.0329   | 0.0278   | 0.0316   | 0.0312   | 0.0296   | 0.0281   | 0.0307   | 0.0275   | 0.0374   | 0.0302   | 0.0287   | 0.0301   | 0.0347   | 0.0324   | 0.0290   | 0.0295   | 0.0300   | 0.0070     |
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
-#> | Sen Infdex                             | Living.standard | 0.0233   | 0.0274   | 0.0241   | 0.0284   | 0.0244   | 0.0237   | 0.0258   | 0.0260   | 0.0245   | 0.0263   | 0.0292   | 0.0292   | 0.0288   | 0.0233   | 0.0261   | 0.0278   | 0.0274   | 0.0263   | 0.0246   | 0.0253   | 0.0060     |
+#> | Sen Index                              | Living.standard | 0.0233   | 0.0274   | 0.0241   | 0.0284   | 0.0244   | 0.0237   | 0.0258   | 0.0260   | 0.0245   | 0.0263   | 0.0292   | 0.0292   | 0.0288   | 0.0233   | 0.0261   | 0.0278   | 0.0274   | 0.0263   | 0.0246   | 0.0253   | 0.0060     |
 #> +----------------------------------------+-----------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+ 
 #> 
 #> $MDI
@@ -297,10 +297,10 @@ mdi(data, dm, Factor = "region")
 #> 26 Average deprivation among the deprived          Health   0.18097282
 #> 27 Average deprivation among the deprived       Education   0.34692418
 #> 28 Average deprivation among the deprived Living.standard   0.30281354
-#> 29                             Sen Infdex        Combined   0.14629133
-#> 30                             Sen Infdex          Health   0.00865920
-#> 31                             Sen Infdex       Education   0.03021061
-#> 32                             Sen Infdex Living.standard   0.02334280
+#> 29                              Sen Index        Combined   0.14629133
+#> 30                              Sen Index          Health   0.00865920
+#> 31                              Sen Index       Education   0.03021061
+#> 32                              Sen Index Living.standard   0.02334280
 #>              X2           X3           X4           X5           X6
 #> 1  6.230000e+02 6.300000e+02 6.920000e+02 6.570000e+02 6.300000e+02
 #> 2  8.300000e+01 9.100000e+01 7.600000e+01 9.100000e+01 9.800000e+01
@@ -464,10 +464,10 @@ mdi(data, dm, Factor = "region")
 #> 26 Average deprivation among the deprived          Health 1.597249e-01
 #> 27 Average deprivation among the deprived       Education 3.249221e-01
 #> 28 Average deprivation among the deprived Living standard 2.997897e-01
-#> 29                             Sen Infdex        Combined 3.764970e-02
-#> 30                             Sen Infdex          Health 1.734665e-03
-#> 31                             Sen Infdex       Education 6.988335e-03
-#> 32                             Sen Infdex Living standard 5.973684e-03
+#> 29                              Sen Index        Combined 3.764970e-02
+#> 30                              Sen Index          Health 1.734665e-03
+#> 31                              Sen Index       Education 6.988335e-03
+#> 32                              Sen Index Living standard 5.973684e-03
 #>            Mean           SD
 #> 1  1.315700e+04 1.315700e+04
 #> 2  1.746000e+03 1.746000e+03
@@ -35441,10 +35441,10 @@ mdi(data, dm, Factor = "region")
 #> 26 Average deprivation among the deprived          Health      Inf      Inf
 #> 27 Average deprivation among the deprived       Education      Inf      Inf
 #> 28 Average deprivation among the deprived Living.standard      Inf      Inf
-#> 29                             Sen Infdex        Combined      NaN      NaN
-#> 30                             Sen Infdex          Health      NaN      NaN
-#> 31                             Sen Infdex       Education      NaN      NaN
-#> 32                             Sen Infdex Living.standard      NaN      NaN
+#> 29                              Sen Index        Combined      NaN      NaN
+#> 30                              Sen Index          Health      NaN      NaN
+#> 31                              Sen Index       Education      NaN      NaN
+#> 32                              Sen Index Living.standard      NaN      NaN
 #>          X3       X4       X5       X6       X7       X8       X9      X10
 #> 1   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
 #> 2   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
@@ -35575,10 +35575,10 @@ mdi(data, dm, Factor = "region")
 #> 26 Average deprivation among the deprived          Health      Inf      Inf
 #> 27 Average deprivation among the deprived       Education      Inf      Inf
 #> 28 Average deprivation among the deprived Living.standard      Inf      Inf
-#> 29                             Sen Infdex        Combined      NaN      NaN
-#> 30                             Sen Infdex          Health      NaN      NaN
-#> 31                             Sen Infdex       Education      NaN      NaN
-#> 32                             Sen Infdex Living.standard      NaN      NaN
+#> 29                              Sen Index        Combined      NaN      NaN
+#> 30                              Sen Index          Health      NaN      NaN
+#> 31                              Sen Index       Education      NaN      NaN
+#> 32                              Sen Index Living.standard      NaN      NaN
 #>          X3       X4       X5       X6       X7       X8       X9      X10
 #> 1   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
 #> 2   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
