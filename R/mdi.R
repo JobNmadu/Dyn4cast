@@ -162,7 +162,7 @@ mdi <- function(data, dm, Bar = 0.4,
                 rep("Multidimensional index", ddm + 1),
                 rep("Contribution", ddm + 1),
                 rep("Average deprivation among the deprived", ddm + 1),
-                rep("Sen Infdex", ddm + 1))
+                rep("Sen Index", ddm + 1))
   Order <- seq(1, length(Analysis), by = 1)
   cata <- "Computation commences..."
   progaress(Echo, cata)
