@@ -18,7 +18,7 @@ date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](h
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![downloads](http://cranlogs.r-pkg.org/badges/grand-total/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
+[![downloads](https://cranlogs.r-pkg.org/badges/grand-total/Dyn4cast)](https://r-pkg.org/pkg/Dyn4cast)
 
 The released version of *Dyn4cast* can be installed from
 [CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html). The
