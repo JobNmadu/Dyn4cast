@@ -7,7 +7,7 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- Version 0.8-6 
-&#10;Version 11.11.26; documentation built for `Dyn4cast` 2026-08-20    -->
+&#10;Version 11.11.26; documentation built for `Dyn4cast` 2026-10-23    -->
 
 <!-- badges: start -->
 
@@ -23,14 +23,13 @@ date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](h
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![downloads](http://cranlogs.r-pkg.org/badges/grand-total/Dyn4cast)](https://cran.r-project.org/package=Dyn4cast)
-
-<!-- badges: end -->
-
-<!--
+[![downloads](https://cranlogs.r-pkg.org/badges/grand-total/Dyn4cast)](https://r-pkg.org/pkg/Dyn4cast)
+<!-- badges: end --> <!--
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
-&#10;[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-&#10;-->
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+
+-->
 
 The **Dyn4cast** package is designed to be a lightweight package. The
 philosophy behind it was the need to provide quick updates and
