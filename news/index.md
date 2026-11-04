@@ -1,5 +1,7 @@
 # Changelog
 
+## Dyn4cast 11.11.28
+
 ## Dyn4cast 11.11.28-rho 2026-08-07
 
 The vignette is now updated to the current version. Citation file is
