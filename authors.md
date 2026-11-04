@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/JobNmadu/Dyn4cast/blob/v0.11.11.28/inst/CITATION)
+[`inst/CITATION`](https://github.com/JobNmadu/Dyn4cast/blob/master/inst/CITATION)
 
 Nmadu J (2026). *Dyn4cast: Dynamic Modeling and Machine Learning
 Environment*.
