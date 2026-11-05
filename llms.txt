@@ -22,9 +22,9 @@ machine learning tasks.
 ## Installation
 
 The released version of *Dyn4cast* can be installed from
-[CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html). The
+[CRAN](https://CRAN.R-project.org/package=Dyn4cast/index.html). The
 canonical form for
-[CRAN](https://cran.r-project.org/web/packages/Dyn4cast/index.html) is:
+[CRAN](https://CRAN.R-project.org/package=Dyn4cast/index.html) is:
 
 ``` R
 install.packages("Dyn4cast")
