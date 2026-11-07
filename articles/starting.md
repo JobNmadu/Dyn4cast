@@ -72,13 +72,13 @@ you run `citation("Dyn4cast")` in your `R` console.
       Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
       Environment_. doi:10.32614/CRAN.package.Dyn4cast
       <https://doi.org/10.32614/CRAN.package.Dyn4cast>. R package version
-      11.11.26, <https://jobnmadu.github.io/Dyn4cast/>.
+      11.11.28, <https://jobnmadu.github.io/Dyn4cast/>.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
         title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
-        note = {R package version 11.11.26},
+        note = {R package version 11.11.28},
         author = {Job Nmadu},
         year = {2026},
         doi = {10.32614/CRAN.package.Dyn4cast},
