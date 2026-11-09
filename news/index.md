@@ -2,17 +2,25 @@
 
 ## Dyn4cast 11.11.28
 
+CRAN release: 2026-11-07
+
 ## Dyn4cast 11.11.28-rho 2026-08-07
+
+CRAN release: 2026-11-07
 
 The vignette is now updated to the current version. Citation file is
 added.
 
 ## Dyn4cast 11.11.28-omicron 2026-07-23
 
+CRAN release: 2026-11-07
+
 History is made. The package climbs into CRAN today. Minor fixes to
 vignette.
 
 ## Dyn4cast 11.11.28-lambda 2026-07-15
+
+CRAN release: 2026-11-07
 
 Due to compatibility with `dfidx` which is used in the `mlogit` package
 for obtaining **odds ratio**, the package dependency is raise to R \>=
@@ -21,15 +29,21 @@ sticker.
 
 ## Dyn4cast 11.11.28-iota 2026-07-03
 
+CRAN release: 2026-11-07
+
 Coefficient estimates of `probit` model are now well aligned for
 conversion to odds ratio in **odds_summary**.
 
 ## Dyn4cast 11.11.28-theta 2026-06-25
 
+CRAN release: 2026-11-07
+
 `phi` coefficients in **odds_summary** are now better controlled. The
 output variables in **mdi** are now better aligned.
 
 ## Dyn4cast 11.11.28-eta 2026-06-19
+
+CRAN release: 2026-11-07
 
 There has been huge improvements and higher efficiency as `mdpi` and
 `plot_mdpi` deprecated in favor of **mdi** and **plot_mdi** as the
@@ -38,13 +52,19 @@ functions can now handle any multidimensional indices like **poverty**,
 
 ## Dyn4cast 11.11.28-zeta 2026-05-22
 
+CRAN release: 2026-11-07
+
 Exaggerated `Nobs` in `quicksummary` function is corrected.
 
 ## Dyn4cast 11.11.28-epsilon 2026-04-25
 
+CRAN release: 2026-11-07
+
 `qpdf` is out of suggests in the first check with R4.6.0.
 
 ## Dyn4cast 11.11.28-delta 2026-04-09
+
+CRAN release: 2026-11-07
 
 Deprecation list introduced. It is now possible to specify the number of
 digits in `quicksummary`. The flow of the output in `quicksummary`
@@ -53,10 +73,14 @@ summary is more logical now, i.e., *Min, Q1, Median, Q3, Max, IQR*.
 
 ## Dyn4cast 11.11.28-gamma 2026-03-23
 
+CRAN release: 2026-11-07
+
 `odds_summary` added. `select` tightened in testthat.
 devtools:install_github changed to pak::pak.
 
 ## Dyn4cast 11.11.28-kappa 2026-02-06
+
+CRAN release: 2026-11-07
 
 `case_match` replaced with `recode_values` in `treatment_model` and
 vector list used with `case_when` in `model_factors` following the
@@ -64,11 +88,15 @@ release of `dplyr` 1.2.0.
 
 ## Dyn4cast 11.11.28-beta 2026-01-15
 
+CRAN release: 2026-11-07
+
 `forecst` now demoted; it is no more **imported namespace** but is
 suggested as **forecast** is now *generics*. The `DynamicFocast` is now
 more efficient as a result of this change.
 
 ## Dyn4cast 11.11.28-alpha 2025-12-31
+
+CRAN release: 2026-11-07
 
 **Sen Index**, by Amartya Sen, is now evaluated along with **MDPI** in
 the `mdpi` function.

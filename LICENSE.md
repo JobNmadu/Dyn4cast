@@ -5,11 +5,10 @@ YEAR: 2021 COPYRIGHT HOLDER: Job Nmadu
 To cite current version of the package ‘Dyn4cast’ in publications use:
 
 Nmadu J (2026). *Dyn4cast: Dynamic Modeling and Machine Learning
-Environment*. R package version 11.11.28,
-<https://github.com/JobNmadu/Dyn4cast>.
+Environment*. R package, <https://github.com/JobNmadu/Dyn4cast>.
 
 A BibTeX entry for LaTeX users is
 
 @Manual{, title = {Dyn4cast: Dynamic Modeling and Machine Learning
-Environment}, author = {Job Nmadu}, year = {2026}, note = {R package
-version 11.11.28}, url = {<https://github.com/JobNmadu/Dyn4cast>}, }
+Environment}, author = {Job Nmadu}, year = {2026}, note = {R package},
+url = {<https://github.com/JobNmadu/Dyn4cast>}, }

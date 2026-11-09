@@ -13,11 +13,11 @@ Source:
 Nmadu J (2026). *Dyn4cast: Dynamic Modeling and Machine Learning
 Environment*.
 [doi:10.32614/CRAN.package.Dyn4cast](https://doi.org/10.32614/CRAN.package.Dyn4cast).
-R package version 11.11.28, <https://jobnmadu.github.io/Dyn4cast/>.
+R package, <https://jobnmadu.github.io/Dyn4cast/>.
 
     @Manual{,
       title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
-      note = {R package version 11.11.28},
+      note = {R package},
       author = {Job Nmadu},
       year = {2026},
       doi = {10.32614/CRAN.package.Dyn4cast},
