@@ -296,8 +296,8 @@ Linearsystems(y, x, 3, 15)
 #>     corrplot::corrplot.mixed(r, bg = "forestgreen", lower.col = "black", 
 #>         tl.pos = "lt", tl.col = "darkgreen")
 #> }
-#> <bytecode: 0x632697bc1e90>
-#> <environment: 0x632697bc2360>
+#> <bytecode: 0x6115e6882460>
+#> <environment: 0x6115e6882a10>
 #> 
 #> 
 #> $`Summary of numeric variables`
@@ -459,7 +459,7 @@ Linearsystems(y, x, 3, 15)
 #> 5        Akaike's Information Criterion AIC     1400      1400    1300
 #> 6            Area under the ROC curve (AUC)        0         0       0
 #> 7                    Average Precision at k        0         0       0
-#> 8                                      Bias   -4e-15    -1e-14   8e-15
+#> 8                                      Bias  3.1e-14   1.6e-14 6.3e-15
 #> 9                               Brier score       70        70      40
 #> 10                     Classification Error        1         1       1
 #> 11                                 F1 Score        0         0       0
