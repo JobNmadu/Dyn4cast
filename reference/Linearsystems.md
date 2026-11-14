@@ -260,7 +260,7 @@ library(tidyverse)
 #> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.2.1     ✔ purrr     1.2.2
 #> ✔ forcats   1.0.1     ✔ stringr   1.6.0
-#> ✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+#> ✔ ggplot2   4.0.4     ✔ tibble    3.3.1
 #> ✔ lubridate 1.9.5     ✔ tidyr     1.3.2
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
@@ -296,8 +296,8 @@ Linearsystems(y, x, 3, 15)
 #>     corrplot::corrplot.mixed(r, bg = "forestgreen", lower.col = "black", 
 #>         tl.pos = "lt", tl.col = "darkgreen")
 #> }
-#> <bytecode: 0x55ac623fbf08>
-#> <environment: 0x55ac623fc330>
+#> <bytecode: 0x632697bc1e90>
+#> <environment: 0x632697bc2360>
 #> 
 #> 
 #> $`Summary of numeric variables`
@@ -459,7 +459,7 @@ Linearsystems(y, x, 3, 15)
 #> 5        Akaike's Information Criterion AIC     1400      1400    1300
 #> 6            Area under the ROC curve (AUC)        0         0       0
 #> 7                    Average Precision at k        0         0       0
-#> 8                                      Bias  2.6e-14  -2.7e-14 1.2e-14
+#> 8                                      Bias   -4e-15    -1e-14   8e-15
 #> 9                               Brier score       70        70      40
 #> 10                     Classification Error        1         1       1
 #> 11                                 F1 Score        0         0       0

@@ -273,7 +273,7 @@ MLMetrics(Observed = Data, yvalue = Data$states, modeli = Model, K = 2,
 #> [1] 0
 #> 
 #> $Bias
-#> [1] 1.9e-17
+#> [1] 2.4e-17
 #> 
 #> $`Brier score`
 #> [1] 8
