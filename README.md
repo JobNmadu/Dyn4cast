@@ -7,7 +7,7 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- Version 0.8-6 
-&#10;Version 11.11.28; documentation built for `Dyn4cast` 2026-11-15    -->
+&#10;Version 11.11.28; documentation built for `Dyn4cast` 2026-11-16    -->
 
 <!-- badges: start -->
 
