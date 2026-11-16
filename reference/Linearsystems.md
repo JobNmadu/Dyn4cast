@@ -296,8 +296,8 @@ Linearsystems(y, x, 3, 15)
 #>     corrplot::corrplot.mixed(r, bg = "forestgreen", lower.col = "black", 
 #>         tl.pos = "lt", tl.col = "darkgreen")
 #> }
-#> <bytecode: 0x641c1032b368>
-#> <environment: 0x641c1032b790>
+#> <bytecode: 0x63ac617f1c68>
+#> <environment: 0x63ac617ee308>
 #> 
 #> 
 #> $`Summary of numeric variables`
