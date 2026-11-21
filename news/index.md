@@ -2,6 +2,8 @@
 
 ## Dyn4cast 11.11.28-1
 
+CRAN release: 2026-11-18
+
 ## Dyn4cast 11.11.28
 
 CRAN release: 2026-11-07
