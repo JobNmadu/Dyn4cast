@@ -121,21 +121,21 @@ you run `citation("Dyn4cast")` in your `R` console.
 
 
 citation("Dyn4cast")
-#> To cite package 'Dyn4cast' in publications use:
+#> To cite Dyn4cast in publications, please use
 #> 
-#>   Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-#>   Environment_. doi:10.32614/CRAN.package.Dyn4cast
-#>   <https://doi.org/10.32614/CRAN.package.Dyn4cast>. R package,
-#>   <https://jobnmadu.github.io/Dyn4cast/>.
+#>   Nmadu, J. (2026). Dyn4cast: Dynamic Modeling and Machine Learning
+#>   Environment. CRAN R package.,
+#>   doi:doi.org/10.32614/CRAN.package.Dyn4cast
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
+#>     author = {Job Nmadu},
 #>     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
 #>     note = {R package},
-#>     author = {Job Nmadu},
+#>     publisher = {CRAN},
 #>     year = {2026},
-#>     doi = {10.32614/CRAN.package.Dyn4cast},
+#>     doi = {doi.org/10.32614/CRAN.package.Dyn4cast},
 #>     url = {https://jobnmadu.github.io/Dyn4cast/},
 #>   }
 ```

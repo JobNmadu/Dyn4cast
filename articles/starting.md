@@ -70,7 +70,8 @@ you run `citation("Dyn4cast")` in your `R` console.
     To cite Dyn4cast in publications, please use
 
       Nmadu, J. (2026). Dyn4cast: Dynamic Modeling and Machine Learning
-      Environment. CRAN R package., 10.32614/CRAN.package.Dyn4cast
+      Environment. CRAN R package.,
+      doi:doi.org/10.32614/CRAN.package.Dyn4cast
 
     A BibTeX entry for LaTeX users is
 
@@ -80,6 +81,6 @@ you run `citation("Dyn4cast")` in your `R` console.
         note = {R package},
         publisher = {CRAN},
         year = {2026},
-        doi = {10.32614/CRAN.package.Dyn4cast},
+        doi = {doi.org/10.32614/CRAN.package.Dyn4cast},
         url = {https://jobnmadu.github.io/Dyn4cast/},
       }
