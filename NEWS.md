@@ -1,3 +1,7 @@
+# Dyn4cast 11.11.28-2
+
+Some fixes to the citation page.
+
 # Dyn4cast 11.11.28-1
 
 # Dyn4cast 11.11.28

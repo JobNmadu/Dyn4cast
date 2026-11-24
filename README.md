@@ -7,7 +7,7 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- Version 0.8-6 
-&#10;Version 11.11.28-1; documentation built for `Dyn4cast` 2026-11-21    -->
+&#10;Version 11.11.28-1; documentation built for `Dyn4cast` 2026-11-25    -->
 
 <!-- badges: start -->
 
@@ -147,21 +147,21 @@ you run `citation("Dyn4cast")` in your `R` console.
 ``` r
 
 citation("Dyn4cast")
-#> To cite package 'Dyn4cast' in publications use:
+#> To cite Dyn4cast in publications, please use
 #> 
-#>   Nmadu J (2026). _Dyn4cast: Dynamic Modeling and Machine Learning
-#>   Environment_. doi:10.32614/CRAN.package.Dyn4cast
-#>   <https://doi.org/10.32614/CRAN.package.Dyn4cast>. R package,
-#>   <https://jobnmadu.github.io/Dyn4cast/>.
+#>   Nmadu, J. (2026). Dyn4cast: Dynamic Modeling and Machine Learning
+#>   Environment. CRAN R package.,
+#>   doi:doi.org/10.32614/CRAN.package.Dyn4cast
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
+#>     author = {Job Nmadu},
 #>     title = {Dyn4cast: Dynamic Modeling and Machine Learning Environment},
 #>     note = {R package},
-#>     author = {Job Nmadu},
+#>     publisher = {CRAN},
 #>     year = {2026},
-#>     doi = {10.32614/CRAN.package.Dyn4cast},
+#>     doi = {doi.org/10.32614/CRAN.package.Dyn4cast},
 #>     url = {https://jobnmadu.github.io/Dyn4cast/},
 #>   }
 ```
