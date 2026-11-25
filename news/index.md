@@ -2,6 +2,8 @@
 
 ## Dyn4cast 11.11.28-2
 
+CRAN release: 2026-11-24
+
 Some fixes to the citation page.
 
 ## Dyn4cast 11.11.28-1
