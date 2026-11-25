@@ -19,6 +19,6 @@ Environment. CRAN R package., doi:doi.org/10.32614/CRAN.package.Dyn4cast
       note = {R package},
       publisher = {CRAN},
       year = {2026},
-      doi = {doi.org/10.32614/CRAN.package.Dyn4cast},
+      doi = {10.32614/CRAN.package.Dyn4cast},
       url = {https://jobnmadu.github.io/Dyn4cast/},
     }
