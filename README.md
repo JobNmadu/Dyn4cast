@@ -7,7 +7,7 @@
 # Dyn4cast <img src="man/figures/logo.png" align="right" alt="" width="150" height="150" />
 
 <!-- Version 0.8-6 
-&#10;Version 11.11.28-1; documentation built for `Dyn4cast` 2026-11-25    -->
+&#10;Version 11.11.28-2; documentation built for `Dyn4cast` 2026-11-26    -->
 
 <!-- badges: start -->
 
@@ -17,7 +17,7 @@ badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-uni
 [![name status
 badge](https://jobnmadu.r-universe.dev/badges/:name)](https://jobnmadu.r-universe.dev/)
 [![GitHub release (latest by
-date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases)
+date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases/tags/)
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
 [![lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
@@ -161,7 +161,7 @@ citation("Dyn4cast")
 #>     note = {R package},
 #>     publisher = {CRAN},
 #>     year = {2026},
-#>     doi = {doi.org/10.32614/CRAN.package.Dyn4cast},
+#>     doi = {10.32614/CRAN.package.Dyn4cast},
 #>     url = {https://jobnmadu.github.io/Dyn4cast/},
 #>   }
 ```
