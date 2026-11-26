@@ -17,7 +17,7 @@ badge](https://jobnmadu.r-universe.dev/badges/:registry)](https://jobnmadu.r-uni
 [![name status
 badge](https://jobnmadu.r-universe.dev/badges/:name)](https://jobnmadu.r-universe.dev/)
 [![GitHub release (latest by
-date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases/tags/)
+date)](https://img.shields.io/github/v/release/JobNmadu/Dyn4cast?color=green)](https://github.com/JobNmadu/Dyn4cast/releases/)
 [![codecov](https://codecov.io/gh/JobNmadu/Dyn4cast/graph/badge.svg?token=RYV9KWHBN5)](https://app.codecov.io/gh/JobNmadu/Dyn4cast)
 [![lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
